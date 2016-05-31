@@ -8,6 +8,7 @@ use app\models\native\AdvertisementSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AdvertisementController implements the CRUD actions for Advertisement model.
