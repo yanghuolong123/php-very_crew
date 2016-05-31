@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-5-10, 18:07:06
+    Author     : yanghuolong
+*/
+
+.navbar {
+    height: 86px;
+}
+
+.navbar-nav {
+    font-size: 20px;
+    margin: 15px;    
+}
+
+.navbar-inverse .navbar-nav > li > a {    
+    color: #52aea5;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    background-color: transparent;
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #080808;
+    color: #fff;
+}
+
+.wrap > .container {
+    padding: 100px 15px 20px;
+}
+
+.navbar-inverse .navbar-right .btn-link {
+    color: #666;
+}
+
+.navbar-inverse .navbar-right .btn-link:hover, .navbar-inverse .navbar-right .btn-link:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+img.avatar {
+    height: 32px;
+    width: 32px;
+}
+
+.form-horizontal .control-label, .form-group label {
+    color: #aaa;
+}
+
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label {
+    color: #3c763d;
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+    color: #a94442;
+}

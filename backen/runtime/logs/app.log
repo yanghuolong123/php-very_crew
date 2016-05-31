@@ -1,0 +1,1240 @@
+2016-05-10 02:12:40 [127.0.0.1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php:600
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php(600): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php(542): yii\db\Connection->createPdoInstance()
+#2 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php(861): yii\db\Connection->open()
+#3 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php(848): yii\db\Connection->getMasterPdo()
+#4 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Command.php(894): yii\db\Command->prepare('<span class="ke...')
+#6 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Command.php(405): yii\db\Command->queryInternal('<span class="st...', '<span class="nu...')
+#7 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/mysql/Schema.php(348): yii\db\Command->queryColumn()
+#8 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Schema.php(231): yii\db\mysql\Schema->findTableNames('<span class="st...')
+#9 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/generators/model/Generator.php(158): yii\db\Schema->getTableNames()
+#10 [internal function]: yii\gii\generators\model\Generator->yii\gii\generators\model\{closure}()
+#11 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/components/ActiveField.php(41): call_user_func(Object(Closure))
+#12 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Object.php(107): yii\gii\components\ActiveField->init()
+#13 [internal function]: yii\base\Object->__construct('[<span class="s...')
+#14 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/di/Container.php(374): ReflectionClass->newInstanceArgs('[[<span class="...')
+#15 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/di/Container.php(153): yii\di\Container->build('<span class="st...', '[]', '[<span class="s...')
+#16 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('<span class="st...', '[]', '[<span class="s...')
+#17 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/widgets/ActiveForm.php(293): yii\BaseYii::createObject('[<span class="s...')
+#18 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/generators/model/form.php(9): yii\widgets\ActiveForm->field(Object(yii\gii\generators\model\Generator), '<span class="st...')
+#19 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(325): require('/var/work/work_...')
+#20 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#21 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/views/default/view.php(38): yii\base\View->renderFile('<span class="st...', '[<span class="s...')
+#22 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(325): require('/var/work/work_...')
+#23 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#24 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(yii\gii\controllers\DefaultController))
+#25 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('<span class="st...', '[<span class="s...', Object(yii\gii\controllers\DefaultController))
+#26 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/controllers/DefaultController.php(61): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#27 [internal function]: yii\gii\controllers\DefaultController->actionView('<span class="st...')
+#28 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#29 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#30 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#31 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#32 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#33 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#34 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php:547
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php(861): yii\db\Connection->open()
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Connection.php(848): yii\db\Connection->getMasterPdo()
+#2 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Command.php(894): yii\db\Command->prepare('<span class="ke...')
+#4 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Command.php(405): yii\db\Command->queryInternal('<span class="st...', '<span class="nu...')
+#5 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/mysql/Schema.php(348): yii\db\Command->queryColumn()
+#6 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/Schema.php(231): yii\db\mysql\Schema->findTableNames('<span class="st...')
+#7 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/generators/model/Generator.php(158): yii\db\Schema->getTableNames()
+#8 [internal function]: yii\gii\generators\model\Generator->yii\gii\generators\model\{closure}()
+#9 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/components/ActiveField.php(41): call_user_func(Object(Closure))
+#10 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Object.php(107): yii\gii\components\ActiveField->init()
+#11 [internal function]: yii\base\Object->__construct('[<span class="s...')
+#12 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/di/Container.php(374): ReflectionClass->newInstanceArgs('[[<span class="...')
+#13 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/di/Container.php(153): yii\di\Container->build('<span class="st...', '[]', '[<span class="s...')
+#14 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('<span class="st...', '[]', '[<span class="s...')
+#15 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/widgets/ActiveForm.php(293): yii\BaseYii::createObject('[<span class="s...')
+#16 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/generators/model/form.php(9): yii\widgets\ActiveForm->field(Object(yii\gii\generators\model\Generator), '<span class="st...')
+#17 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(325): require('/var/work/work_...')
+#18 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#19 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/views/default/view.php(38): yii\base\View->renderFile('<span class="st...', '[<span class="s...')
+#20 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(325): require('/var/work/work_...')
+#21 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#22 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(yii\gii\controllers\DefaultController))
+#23 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('<span class="st...', '[<span class="s...', Object(yii\gii\controllers\DefaultController))
+#24 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2-gii/controllers/DefaultController.php(61): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#25 [internal function]: yii\gii\controllers\DefaultController->actionView('<span class="st...')
+#26 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array('[<span class="t...', '[<span class="s...')
+#27 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams('[<span class="s...')
+#28 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#29 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#30 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#31 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#32 {main}
+Additional Information:
+
+2016-05-10 02:12:40 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'gii/default/view'
+    'id' => 'model'
+]
+
+$_COOKIE = [
+    '_csrf' => '16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=gii%2Fdefault%2Fview&id=model'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=gii%2Fdefault%2Fview&id=model'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '46917'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/?r=gii'
+    'HTTP_COOKIE' => '_csrf=16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1462846360.4796
+    'REQUEST_TIME' => 1462846360
+]
+2016-05-10 05:33:43 [127.0.0.1][1][cog58g0roesgh1hv0i26e90ac3][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "metadata/".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('metadata/', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-10 05:33:43 [127.0.0.1][1][cog58g0roesgh1hv0i26e90ac3][info][application] $_GET = [
+    'r' => 'metadata/'
+]
+
+$_COOKIE = [
+    '_csrf' => '16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn\";}'
+    'PHPSESSID' => 'cog58g0roesgh1hv0i26e90ac3'
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__captcha/site/captcha' => 'jujetfr'
+    '__captcha/site/captchacount' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=metadata/'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=metadata/'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '47820'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn%22%3B%7D; PHPSESSID=cog58g0roesgh1hv0i26e90ac3; _identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1462858423.9587
+    'REQUEST_TIME' => 1462858423
+]
+2016-05-10 05:37:13 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\controllers\AccessControl' not found' in /var/work/work_php/very_crew/backen/controllers/MetaDataController.php:23
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-05-10 05:37:13 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'meta-data/index'
+]
+
+$_COOKIE = [
+    '_csrf' => '16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn\";}'
+    'PHPSESSID' => '1pep17j4pfseimi26irtp1vvv6'
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=meta-data%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=meta-data%2Findex'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '47835'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php'
+    'HTTP_COOKIE' => '_csrf=16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn%22%3B%7D; PHPSESSID=1pep17j4pfseimi26irtp1vvv6; _identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1462858633.5598
+    'REQUEST_TIME' => 1462858633
+]
+2016-05-10 14:20:34 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\controllers\AccessControl' not found' in /var/work/work_php/very_crew/backen/controllers/MetaDataController.php:23
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-05-10 14:20:34 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'meta-data/index'
+]
+
+$_COOKIE = [
+    '_csrf' => '16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn\";}'
+    'PHPSESSID' => '0asap51sk6qr6n5bule8ovi2n7'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=meta-data%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=meta-data%2Findex'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '48175'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php?r=meta-data%2Findex'
+    'HTTP_COOKIE' => '_csrf=16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn%22%3B%7D; PHPSESSID=0asap51sk6qr6n5bule8ovi2n7'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1462861234.5394
+    'REQUEST_TIME' => 1462861234
+]
+2016-05-10 15:29:45 [127.0.0.1][1][kf5uvvgk0cri8s0pmks6n17bl6][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "administrator".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('administrator', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-10 15:29:45 [127.0.0.1][1][kf5uvvgk0cri8s0pmks6n17bl6][info][application] $_GET = [
+    'r' => 'administrator'
+]
+
+$_COOKIE = [
+    '_csrf' => '16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn\";}'
+    'PHPSESSID' => 'kf5uvvgk0cri8s0pmks6n17bl6'
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/index.php?r=meta-data%2Findex'
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=administrator'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=administrator'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '48568'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=16ef1eb8e9546ddf5f4dba0d11176ee0676c1272faa1f8b5981ca1d535b8ef6ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lOqaB31iGxSW-3YRHHE5FW6FNnIp3SAn%22%3B%7D; PHPSESSID=kf5uvvgk0cri8s0pmks6n17bl6; _identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1462865385.6449
+    'REQUEST_TIME' => 1462865385
+]
+2016-05-18 17:34:00 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "district".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('district', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:34:00 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'district'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=district'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=district'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60011'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564040.3857
+    'REQUEST_TIME' => 1463564040
+]
+2016-05-18 17:34:12 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "district".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('district', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:34:12 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'district'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=district'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=district'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60011'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564052.082
+    'REQUEST_TIME' => 1463564052
+]
+2016-05-18 17:34:56 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "district".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('district', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:34:56 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'district'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=district'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=district'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60011'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564096.9195
+    'REQUEST_TIME' => 1463564096
+]
+2016-05-18 17:36:11 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "district".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('district', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:36:11 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'district'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=district'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=district'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60014'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564171.2929
+    'REQUEST_TIME' => 1463564171
+]
+2016-05-18 17:36:24 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "districts".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('districts', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:36:24 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'districts'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=districts'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=districts'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60014'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564184.5175
+    'REQUEST_TIME' => 1463564184
+]
+2016-05-18 17:36:27 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "districts".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('districts', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:36:27 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'districts'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=districts'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=districts'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60014'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564187.441
+    'REQUEST_TIME' => 1463564187
+]
+2016-05-18 17:36:38 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "video".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('video', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-18 17:36:38 [127.0.0.1][1][alsrag3fhasvgfb2m3q8tv7s23][info][application] $_GET = [
+    'r' => 'video'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'alsrag3fhasvgfb2m3q8tv7s23'
+    '_csrf' => '96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"6Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=video'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=video'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '60014'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=alsrag3fhasvgfb2m3q8tv7s23; _csrf=96cc0debc9b3f472ed7d69aa39b7b077d8df26531f3c431a987cb7e865962659a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%226Xy4N5uXwKhCyFq4mBnUxz6wPjaF8ShZ%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1463564198.6567
+    'REQUEST_TIME' => 1463564198
+]
+2016-05-27 13:42:21 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\models\extend\app\models\native\TblAdvertisement' not found' in /var/work/work_php/very_crew/backen/models/extend/Advertisement.php:5
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-05-27 13:42:21 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'gii/default/view'
+    'id' => 'crud'
+]
+
+$_POST = [
+    '_csrf' => 'clR1SXc0a1IYYTciAXwoHxUWMQIoXRwjPR4TGwQAORwRGU08P3EPaw=='
+    'Generator' => [
+        'modelClass' => 'app\\models\\extend\\Advertisement'
+        'searchModelClass' => 'app\\models\\native\\AdvertisementSearch'
+        'controllerClass' => 'app\\controllers\\AdvertisementController'
+        'viewPath' => ''
+        'baseControllerClass' => 'yii\\web\\Controller'
+        'indexWidgetType' => 'grid'
+        'enableI18N' => '0'
+        'enablePjax' => '0'
+        'messageCategory' => 'app'
+        'template' => 'default'
+    ]
+    'preview' => ''
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'v58p0offcog5n0uubkeg4o22p0'
+    '_csrf' => '2c82aba1a45df175f78c295bad44f3abc7c9d805480b158beaa9f38bebf79ee5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"j5BkvHCMgBDK_iwqOJfRs4RNcM8uHEd9\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=gii%2Fdefault%2Fview&id=crud'
+    'REQUEST_METHOD' => 'POST'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '532'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=gii%2Fdefault%2Fview&id=crud'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '39643'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php?r=gii%2Fdefault%2Fview&id=crud'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=v58p0offcog5n0uubkeg4o22p0; _csrf=2c82aba1a45df175f78c295bad44f3abc7c9d805480b158beaa9f38bebf79ee5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22j5BkvHCMgBDK_iwqOJfRs4RNcM8uHEd9%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_CONTENT_LENGTH' => '532'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464327741.1121
+    'REQUEST_TIME' => 1464327741
+]
+2016-05-27 17:54:30 [127.0.0.1][1][v58p0offcog5n0uubkeg4o22p0][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "advertisement".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-27 17:54:30 [127.0.0.1][1][v58p0offcog5n0uubkeg4o22p0][info][application] $_GET = [
+    'r' => 'advertisement'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'v58p0offcog5n0uubkeg4o22p0'
+    '_csrf' => '2c82aba1a45df175f78c295bad44f3abc7c9d805480b158beaa9f38bebf79ee5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"j5BkvHCMgBDK_iwqOJfRs4RNcM8uHEd9\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=advertisement'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=advertisement'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '42930'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=v58p0offcog5n0uubkeg4o22p0; _csrf=2c82aba1a45df175f78c295bad44f3abc7c9d805480b158beaa9f38bebf79ee5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22j5BkvHCMgBDK_iwqOJfRs4RNcM8uHEd9%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464342870.5833
+    'REQUEST_TIME' => 1464342870
+]
+2016-05-30 10:41:43 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "upload/upload-file".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('upload/upload-f...', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-30 10:41:43 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'upload/upload-file'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '2015-03-23-19-23-09-656.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phps60un2'
+        'error' => 0
+        'size' => 40462
+    ]
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'tq3gg934mhglpcm4tccr0mje54'
+    '_csrf' => 'eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"5mkJONH3NASb52osCLvaElfsHkEoL4Co\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=upload/upload-file'
+    'REQUEST_METHOD' => 'POST'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=---------------------------6434259877932359191629379713'
+    'CONTENT_LENGTH' => '40697'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=upload/upload-file'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '37598'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_X_CSRF_TOKEN' => 'MHBXZVgyYlIFHTwvF3wqYX4xBAdtAA0hczwhBB1eBCF4GxIKFAYhPQ=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php?r=advertisement%2Fcreate'
+    'HTTP_CONTENT_LENGTH' => '40697'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=---------------------------6434259877932359191629379713'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=tq3gg934mhglpcm4tccr0mje54; _csrf=eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%225mkJONH3NASb52osCLvaElfsHkEoL4Co%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464576103.7939
+    'REQUEST_TIME' => 1464576103
+]
+2016-05-30 10:42:12 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "upload/upload-file".' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php:460
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('upload/upload-f...', Array)
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php:96
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2016-05-30 10:42:12 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'upload/upload-file'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '2015-03-23-19-23-15-610.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpzlIM56'
+        'error' => 0
+        'size' => 47908
+    ]
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'tq3gg934mhglpcm4tccr0mje54'
+    '_csrf' => 'eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"5mkJONH3NASb52osCLvaElfsHkEoL4Co\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=upload/upload-file'
+    'REQUEST_METHOD' => 'POST'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=---------------------------1594019284257132941530645908'
+    'CONTENT_LENGTH' => '48143'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=upload/upload-file'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '37602'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_X_CSRF_TOKEN' => 'WjdvZXJRVVhvWgQvPR8daxR2PAdHYzorGXsZBDc9MysSXCoKPmUWNw=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php?r=advertisement%2Fcreate'
+    'HTTP_CONTENT_LENGTH' => '48143'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=---------------------------1594019284257132941530645908'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=tq3gg934mhglpcm4tccr0mje54; _csrf=eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%225mkJONH3NASb52osCLvaElfsHkEoL4Co%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464576132.9644
+    'REQUEST_TIME' => 1464576132
+]
+2016-05-30 10:42:57 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'mkdir(): Permission denied' in /var/work/work_php/very_crew/backen/controllers/UploadController.php:18
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'mkdir(): Permis...', '/var/work/work_...', 18, Array)
+#1 /var/work/work_php/very_crew/backen/controllers/UploadController.php(18): mkdir('/var/work/work_...', 511, true)
+#2 [internal function]: app\controllers\UploadController->actionUploadFile()
+#3 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#4 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#5 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('upload-file', Array)
+#6 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('upload/upload-f...', Array)
+#7 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#9 {main}
+2016-05-30 10:42:57 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'upload/upload-file'
+]
+
+$_FILES = [
+    'file' => [
+        'name' => '2015-03-23-19-23-09-656.jpg'
+        'type' => 'image/jpeg'
+        'tmp_name' => '/tmp/phpNI8KGR'
+        'error' => 0
+        'size' => 40462
+    ]
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'tq3gg934mhglpcm4tccr0mje54'
+    '_csrf' => 'eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"5mkJONH3NASb52osCLvaElfsHkEoL4Co\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=upload/upload-file'
+    'REQUEST_METHOD' => 'POST'
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=---------------------------17173467161602128851924751874'
+    'CONTENT_LENGTH' => '40699'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=upload/upload-file'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '37602'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'application/json, text/javascript, */*; q=0.01'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_X_CSRF_TOKEN' => 'Q0VXMTJqZzd2KDx7fSQvBA0EBFMHWAhEAAkhUHcGAUQLLhJefl4kWA=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php?r=advertisement%2Fcreate'
+    'HTTP_CONTENT_LENGTH' => '40699'
+    'HTTP_CONTENT_TYPE' => 'multipart/form-data; boundary=---------------------------17173467161602128851924751874'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=tq3gg934mhglpcm4tccr0mje54; _csrf=eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%225mkJONH3NASb52osCLvaElfsHkEoL4Co%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464576177.2871
+    'REQUEST_TIME' => 1464576177
+]
+2016-05-30 11:26:16 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\native\AdvertisementSearch::postion' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('postion')
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/validators/Validator.php(249): yii\db\BaseActiveRecord->__get('postion')
+#2 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Model.php(356): yii\validators\Validator->validateAttributes(Object(app\models\native\AdvertisementSearch), Array)
+#3 /var/work/work_php/very_crew/backen/models/native/AdvertisementSearch.php(54): yii\base\Model->validate()
+#4 /var/work/work_php/very_crew/backen/controllers/AdvertisementController.php(39): app\models\native\AdvertisementSearch->search(Array)
+#5 [internal function]: app\controllers\AdvertisementController->actionIndex()
+#6 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#7 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#8 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('index', Array)
+#9 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement/i...', Array)
+#10 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#12 {main}
+2016-05-30 11:26:16 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'advertisement/index'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'tq3gg934mhglpcm4tccr0mje54'
+    '_csrf' => 'eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"5mkJONH3NASb52osCLvaElfsHkEoL4Co\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=advertisement%2Findex'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=advertisement%2Findex'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '37874'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=tq3gg934mhglpcm4tccr0mje54; _csrf=eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%225mkJONH3NASb52osCLvaElfsHkEoL4Co%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464578776.1033
+    'REQUEST_TIME' => 1464578776
+]
+2016-05-30 11:27:37 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\extend\Advertisement::postion' in /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Component.php:143
+Stack trace:
+#0 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/db/BaseActiveRecord.php(252): yii\base\Component->__get('postion')
+#1 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/helpers/BaseHtml.php(2068): yii\db\BaseActiveRecord->__get('postion')
+#2 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/helpers/BaseHtml.php(1243): yii\helpers\BaseHtml::getAttributeValue(Object(app\models\extend\Advertisement), 'postion')
+#3 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/helpers/BaseHtml.php(1292): yii\helpers\BaseHtml::activeInput('text', Object(app\models\extend\Advertisement), 'postion', Array)
+#4 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/widgets/ActiveField.php(362): yii\helpers\BaseHtml::activeTextInput(Object(app\models\extend\Advertisement), 'postion', Array)
+#5 /var/work/work_php/very_crew/backen/views/advertisement/_form.php(22): yii\widgets\ActiveField->textInput(Array)
+#6 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(325): require('/var/work/work_...')
+#7 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/work/work_...', Array)
+#8 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/work/work_...', Array, NULL)
+#9 /var/work/work_php/very_crew/backen/views/advertisement/create.php(19): yii\base\View->render('_form', Array)
+#10 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(325): require('/var/work/work_...')
+#11 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(247): yii\base\View->renderPhpFile('/var/work/work_...', Array)
+#12 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/View.php(149): yii\base\View->renderFile('/var/work/work_...', Array, Object(app\controllers\AdvertisementController))
+#13 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(378): yii\base\View->render('create', Array, Object(app\controllers\AdvertisementController))
+#14 /var/work/work_php/very_crew/backen/controllers/AdvertisementController.php(73): yii\base\Controller->render('create', Array)
+#15 [internal function]: app\controllers\AdvertisementController->actionCreate()
+#16 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#17 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#18 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Module.php(454): yii\base\Controller->runAction('create', Array)
+#19 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('advertisement/c...', Array)
+#20 /var/work/work_php/very_crew/backen/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 /var/work/work_php/very_crew/backen/web/index.php(12): yii\base\Application->run()
+#22 {main}
+2016-05-30 11:27:37 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'advertisement/create'
+]
+
+$_COOKIE = [
+    '_identity' => '13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"e10adc3949ba59abbe56e057f20f883e\",2592000]\";}'
+    'PHPSESSID' => 'tq3gg934mhglpcm4tccr0mje54'
+    '_csrf' => 'eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"5mkJONH3NASb52osCLvaElfsHkEoL4Co\";}'
+]
+
+$_SERVER = [
+    'USER' => 'www-data'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/var/work/work_php/very_crew/backen/web/index.php'
+    'QUERY_STRING' => 'r=advertisement%2Fcreate'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=advertisement%2Fcreate'
+    'DOCUMENT_URI' => '/index.php'
+    'DOCUMENT_ROOT' => '/var/work/work_php/very_crew/backen/web'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.4.6'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '37875'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'my.backen.verycrew.com'
+    'REDIRECT_STATUS' => '200'
+    'PATH_INFO' => '/index.php'
+    'HTTP_HOST' => 'my.backen.verycrew.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh_cn,cn;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://my.backen.verycrew.com/index.php?r=advertisement%2Findex'
+    'HTTP_COOKIE' => '_identity=13f726b9a4265af74149e08ea89bff7f4950fa643ee1d97736b9e0a328cfffb2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22e10adc3949ba59abbe56e057f20f883e%22%2C2592000%5D%22%3B%7D; PHPSESSID=tq3gg934mhglpcm4tccr0mje54; _csrf=eea4d0cc410ceff365901ce38d140e53c5e9d6396fc4fd356dd51f4ba850ca6aa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%225mkJONH3NASb52osCLvaElfsHkEoL4Co%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PHP_SELF' => '/index.php/index.php'
+    'REQUEST_TIME_FLOAT' => 1464578857.7503
+    'REQUEST_TIME' => 1464578857
+]
