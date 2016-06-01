@@ -14,23 +14,34 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('上传我的作品', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'layout' => "{items}\n{pager}",
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'title',
+            [
+                'label' => '作品',
+                'format' => 'raw',
+                'value' => function($data){return Html::a(Html::img($data->logo,['style'=>'width:150px;height:150px;']), ['view','id'=>$data->id])."<p>  ".$data->title."</p>";},
+            ],
+            
+            //'title',
             'content:ntext',
-            'logo',
-            'file',
+            //'logo',
+            //'file',
             // 'type',
-            // 'views',
-            // 'comments',
+             'views',
+             'comments',
             // 'support',
             // 'oppose',
             // 'status',
-            // 'createtime:datetime',
+            //'createtime:datetime',
+            [
+                'attribute'=>'createtime',
+                'format' => ['date', 'Y-m-d H:i:s'],
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
