@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </ul>
         </p>
         <div class="comment">
-            <?= app\components\comment\CommentWidget::widget(['vid' => $model->id]) ?>
+            <?= app\components\comment\CommentWidget::widget(['type'=>1,'vid' => $model->id, 'title'=>'用户评论']) ?>
         </div>
     </div>
 

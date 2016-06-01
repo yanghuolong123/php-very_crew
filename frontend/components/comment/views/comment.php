@@ -7,7 +7,7 @@ use app\models\extend\Comment;
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">用户评论</h3>
+        <h3 class="panel-title"><?= $title ?></h3>
     </div>
     <div class="panel-body">
 
@@ -38,6 +38,7 @@ use app\models\extend\Comment;
                                     </div>
                                     <?= $form->field($model, 'vid',['options'=>['class'=>'hid-field']])->hiddenInput() ?>
                                     <?= $form->field($model, 'uid',['options'=>['class'=>'hid-field']])->hiddenInput() ?>
+                                    <?= $form->field($model, 'type',['options'=>['class'=>'hid-field']])->hiddenInput() ?>
                                     <?= $form->field($model, 'parent_id', ['options'=>['class'=>'hid-field']])->hiddenInput(['value'=>$list['id']]) ?>
                             <?php ActiveForm::end(); ?>
                         </div>
@@ -73,6 +74,7 @@ use app\models\extend\Comment;
         <?= $form->field($model, 'content')->textarea(['rows' => 5]) ?>
         <?= $form->field($model, 'vid')->hiddenInput() ?>
         <?= $form->field($model, 'uid')->hiddenInput() ?>
+        <?= $form->field($model, 'type')->hiddenInput() ?>
         
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">

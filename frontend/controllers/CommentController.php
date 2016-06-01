@@ -18,8 +18,10 @@ class CommentController extends \app\util\BaseController {
             $arr['avatar'] = User::getInfo($model->uid)->avatar;
             $arr['nickname'] = User::getInfo($model->uid)->nickname;
 
-            $videoModel = Video::findOne($model->vid);
-            $videoModel->updateCounters(['comments' => 1]);
+            if (!empty($model->vid)) {
+                $videoModel = Video::findOne($model->vid);
+                $videoModel->updateCounters(['comments' => 1]);
+            }
 
             $this->sendRes(true, 'success', $arr);
         }

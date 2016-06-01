@@ -6,14 +6,14 @@ class Comment extends \app\models\native\TblComment {
 
     public function rules() {
         return [
-            [['uid', 'vid', 'content'], 'required'],
-            [['uid', 'vid', 'parent_id', 'status', 'createtime'], 'integer'],
+            [['uid', 'type', 'content'], 'required'],
+            [['uid', 'type', 'vid', 'parent_id', 'status', 'createtime'], 'integer'],
             [['content'], 'string', 'max' => 255],
         ];
     }
 
     public function beforeSave($insert) {
-        $this->status = 1;
+        $this->status = empty($this->status) ? 1 : $this->status;
         $this->createtime = time();
 
         return parent::beforeSave($insert);
