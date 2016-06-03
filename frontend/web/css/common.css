@@ -22,3 +22,43 @@ img.avatar {
     width: 48px;
     border-radius: 5px;
 }
+
+.abtn {
+    color: #222;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 28px;
+    position: relative;    
+}
+
+.abtn::before {
+    content: "";
+    height: 20px;
+    left: 0;
+    margin-top: -10px;
+    position: absolute;
+    top: 42%;
+    width: 20px;
+}
+
+.abtn-digg::before {
+    background: rgba(0, 0, 0, 0) url("../image/ding.png") no-repeat scroll center center;
+}
+
+.abtn-digg.selected::before, .abtn-digg.selected:hover::before {
+    background: rgba(0, 0, 0, 0) url("../image/ding_do.png") no-repeat scroll center center;
+}
+
+.abtn-bury {
+     margin-right: 38px;
+}
+
+.abtn-bury::before {
+    background: rgba(0, 0, 0, 0) url("../image/cai.png") no-repeat scroll center center;
+    margin-top: -7px;
+}
+
+.abtn-bury.selected::before, .abtn-bury.selected:hover::before {
+    background: rgba(0, 0, 0, 0) url("../image/cai_do.png") no-repeat scroll center center;
+}

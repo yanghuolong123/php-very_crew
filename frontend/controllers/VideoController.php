@@ -5,11 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\extend\Video;
 use app\models\native\VideoSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class VideoController extends Controller {
+class VideoController extends \app\util\BaseController {
 
     public function behaviors() {
         return [
@@ -47,8 +46,8 @@ class VideoController extends Controller {
 
     public function actionView($id) {
         $model = $this->findModel($id);
-        $model->updateCounters(['views'=>1]);
-        
+        $model->updateCounters(['views' => 1]);
+
         return $this->render('view', [
                     'model' => $model,
         ]);
@@ -73,7 +72,7 @@ class VideoController extends Controller {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             $model->tag = explode(',', trim($model->tag, ','));
-            
+
             return $this->render('update', [
                         'model' => $model,
             ]);
@@ -81,7 +80,7 @@ class VideoController extends Controller {
     }
 
     public function actionDelete($id) {
-        $this->findModel($id)->updateAttributes(['status'=>0]);
+        $this->findModel($id)->updateAttributes(['status' => 0]);
 
         return $this->redirect(['index']);
     }
@@ -92,6 +91,21 @@ class VideoController extends Controller {
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionDing($id) {
+        $model = $this->findModel($id);
+        $model->updateCounters(['support' => 1]);
+
+        $this->sendRes(true, '', $model->support);
+    }
+
+    public function actionCai() {
+        $id = Yii::$app->request->post('id');
+        $model = $this->findModel($id);
+        $model->updateCounters(['oppose' => 1]);
+
+        $this->sendRes(true, '', $model->oppose);
     }
 
 }

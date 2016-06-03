@@ -6,6 +6,8 @@ use app\models\extend\MetaData;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 ?>
 <div class="video-view">
 
@@ -30,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 so.write("CuPlayer");
             </script>
         </div>
+        <p>
+            <a href="javascript:video_ding(<?= $model->id ?>);" class="abtn abtn-digg"><?= $model->support ?></a>
+            <a href="javascript:video_cai(<?= $model->id ?>);" class="abtn abtn-bury"><?= $model->oppose ?></a>
+        </p>
         <p>
             <ul class="list-group">
                 <li class="list-group-item"><label>作品名称：</label> <?= $model->title ?></li>
