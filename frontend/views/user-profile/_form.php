@@ -32,39 +32,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
     <?= $form->field($model, 'gender')->radioList(MetaData::getGroupList('gender')) ?>
     
-    <?= $form->field($model, 'province')->dropDownList(Distrinct::getDistrictList(0), [
-        'prompt'=>'请选择省',
-        'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){
-                $("#userprofile-city").html("<option value=\"\">请选择城市</option>").append(data);
-                $("#userprofile-county").html("<option value=\"\">请选择县</option>");
-                $("#userprofile-country").html("<option value=\"\">请选择县</option>");
-            });   
-        ',
-    ]) ?>
-
-    <?= $form->field($model, 'city')->dropDownList(Distrinct::getDistrictList($model->province), [
-        'prompt'=>'请选择城市',
-        'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){               
-                $("#userprofile-county").html("<option value=\"\">请选择县</option>").append(data);  
-                $("#userprofile-country").html("<option value=\"\">请选择县</option>");
-            });   
-        ',
-    ]) ?>
-
-    <?= $form->field($model, 'county')->dropDownList(Distrinct::getDistrictList($model->city), [
-        'prompt'=>'请选择县', 
-        'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){               
-                $("#userprofile-country").html("<option value=\"\">请选择县</option>").append(data);               
-            });   
-        ',
-    ]) ?>
-
-    <?= $form->field($model, 'country')->dropDownList(Distrinct::getDistrictList($model->city), [
-        'prompt'=>'请选择县',        
-    ]) ?>    
+    <?= app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'出生地区', 'level'=>4]) ?>   
     
     <?= $form->field($model, 'birthday')->widget(
             DatePicker::className(), [

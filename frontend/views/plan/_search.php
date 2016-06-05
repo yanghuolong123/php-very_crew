@@ -24,28 +24,7 @@ use app\models\extend\Distrinct;
 
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     
-    <?= $form->field($model, 'province')->dropDownList(Distrinct::getDistrictList(0), [
-        'prompt'=>'请选择省',
-        'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){
-                $("#plansearch-city").html("<option value=\"\">请选择城市</option>").append(data);
-                $("#plansearch-county").html("<option value=\"\">请选择县</option>");
-            });   
-        ',
-    ]) ?>
-    
-    <?= $form->field($model, 'city')->dropDownList(Distrinct::getDistrictList($model->province), [
-        'prompt'=>'请选择城市',
-        'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){               
-                $("#plansearch-county").html("<option value=\"\">请选择县</option>").append(data);               
-            });   
-        ',
-    ]) ?>
-    
-    <?= $form->field($model, 'county')->dropDownList(Distrinct::getDistrictList($model->city), [
-        'prompt'=>'请选择县',        
-    ]) ?>
+    <?= app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>    
     
     <?= $form->field($model, 'plan_role', [
         'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
