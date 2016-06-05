@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\extend\Plan;
 use app\models\extend\PlanUser;
-use app\models\native\PlanSearch;
+use app\models\search\PlanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,9 +36,11 @@ class PlanController extends Controller {
 
     public function actionIndex() {
         $searchModel = new PlanSearch();
-        $searchModel->uid = Yii::$app->user->id;
         $searchModel->status = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 10;
+        $searchModel->plan_role = explode(',', trim($searchModel->plan_role, ','));
+        $searchModel->plan_skill = explode(',', trim($searchModel->plan_skill, ','));
 
         return $this->render('index', [
                     'searchModel' => $searchModel,

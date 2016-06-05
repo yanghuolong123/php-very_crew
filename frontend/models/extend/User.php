@@ -9,7 +9,7 @@ class User extends \app\models\native\TblUser {
     private static $_user = [];
     public $verifyCode;
     public $verifyPassword;
-    public $profile;
+    //public $profile;
 
     public function rules() {
         return [
@@ -48,12 +48,16 @@ class User extends \app\models\native\TblUser {
 
         return self::$_user[$id];
     }
+    
+    public function getProfile() {
+        return $this->hasOne('app\models\extend\UserProfile', ['uid'=>'id']);
+    }
 
     public function afterFind() {
         if (empty($this->avatar)) {
             $this->avatar = './image/default_avatar.jpg';
         }
-        $this->profile = UserProfile::findOne(['uid' => $this->id]);
+        //$this->profile = UserProfile::findOne(['uid' => $this->id]);
 
         parent::afterFind();
     }

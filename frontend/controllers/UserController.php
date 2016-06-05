@@ -9,9 +9,15 @@ use app\models\extend\UserProfile;
 class UserController extends \yii\web\Controller {
 
     public function actionIndex() {
+        $searchModel = new \app\models\search\UserSearch();
+        $searchModel->status = 1;
+        
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 10;
         
         return $this->render('index', [
-            
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models\native;
+namespace app\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\extend\Video;
+use app\models\extend\User;
 
 /**
- * VideoSearch represents the model behind the search form about `app\models\extend\Video`.
+ * UserSearch represents the model behind the search form about `app\models\extend\User`.
  */
-class VideoSearch extends Video
+class UserSearch extends User
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class VideoSearch extends Video
     public function rules()
     {
         return [
-            [['id', 'uid', 'type', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
-            [['title', 'content', 'logo', 'file', 'tag'], 'safe'],
+            [['id', 'status', 'createtime'], 'integer'],
+            [['username', 'password', 'nickname', 'mobile', 'email', 'avatar'], 'safe'],
         ];
     }
 
@@ -41,7 +41,8 @@ class VideoSearch extends Video
      */
     public function search($params)
     {
-        $query = Video::find();
+        $query = User::find();
+        $query->joinWith(['profile']);
 
         // add conditions that should always apply here
 
@@ -60,21 +61,17 @@ class VideoSearch extends Video
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'uid' => $this->uid,
-            'type' => $this->type,
-            'views' => $this->views,
-            'comments' => $this->comments,
-            'support' => $this->support,
-            'oppose' => $this->oppose,
             'status' => $this->status,
             'createtime' => $this->createtime,
+            //'profile.gender' =>
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'logo', $this->logo])
-            ->andFilterWhere(['like', 'file', $this->file])
-            ->andFilterWhere(['like', 'tag', $this->tag]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'password', $this->password])
+            ->andFilterWhere(['like', 'nickname', $this->nickname])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'avatar', $this->avatar]);
 
         return $dataProvider;
     }

@@ -40,9 +40,9 @@ AppAsset::register($this);
             ['label' => '上传作品', 'url' => ['/video/create']], 
             ['label' => '发布计划', 'url' => ['/plan/create']],
             ['label' => '参与比赛', 'url' => ['/game']],
-            ['label' => '搜作品', 'url' => ['/video']],
-            ['label' => '找搭档', 'url' => ['/user']],
-            ['label' => '加入拍摄', 'url' => ['/plan']],
+            ['label' => '搜作品', 'url' => ['/video/index']],
+            ['label' => '找搭档', 'url' => ['/user/index']],
+            ['label' => '加入拍摄', 'url' => ['/plan/index']],
         ],
     ]);
     

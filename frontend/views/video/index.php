@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\GridView;
 use app\models\extend\MetaData;
 
 $this->title = '作品搜索';
@@ -14,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if(!empty($dataProvider->models)): ?>
    <div class="row">
-        <div class="container"><h3>作品搜索</h3></div>
+        <div class="container"><h3>拍摄计划搜索</h3></div>
         <?php foreach ($dataProvider->models as $video): ?>
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
