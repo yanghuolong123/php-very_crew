@@ -23,6 +23,10 @@ img.avatar {
     border-radius: 5px;
 }
 
+.navbar-nav > li > a.avatar {
+    padding-top: 3px;
+}
+
 .abtn {
     color: #222;
     font-size: 16px;

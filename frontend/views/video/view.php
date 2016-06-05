@@ -39,6 +39,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         <p>
             <ul class="list-group">
                 <li class="list-group-item"><label>作品名称：</label> <?= $model->title ?></li>
+                <li class="list-group-item"><label>浏览量：</label> <?= $model->views ?></li>
                 <li class="list-group-item"><label>类型：</label> <?= MetaData::getVal($model->type) ?></li>
                 <li class="list-group-item"><label>发布时间：</label> <?= date('Y-m-d H:i:s', $model->createtime) ?></li>
                 <li class="list-group-item"><label>标签：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($model->tag)))) ?></li>

@@ -107,5 +107,17 @@ class VideoController extends \app\util\BaseController {
 
         $this->sendRes(true, '', $model->oppose);
     }
+    
+    public function actionMy() {
+        $searchModel = new VideoSearch();
+        $searchModel->uid = Yii::$app->user->id;
+        $searchModel->status = 1;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('my', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
 
 }

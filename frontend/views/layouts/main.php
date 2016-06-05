@@ -39,6 +39,10 @@ AppAsset::register($this);
             ['label' => '首页', 'url' => ['/home/index']],
             ['label' => '上传作品', 'url' => ['/video/create']], 
             ['label' => '发布计划', 'url' => ['/plan/create']],
+            ['label' => '参与比赛', 'url' => ['/game']],
+            ['label' => '搜作品', 'url' => ['/video']],
+            ['label' => '找搭档', 'url' => ['/user']],
+            ['label' => '加入拍摄', 'url' => ['/plan']],
         ],
     ]);
     
@@ -49,10 +53,11 @@ AppAsset::register($this);
                 'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.Yii::$app->user->identity->avatar.'">  '.Yii::$app->user->identity->nickname : '',
                 'visible' => !Yii::$app->user->isGuest,
                 'encode' => false,
+                'linkOptions' => ['class'=>'avatar'],
                 'items' => [
                      ['label' => '我的资料', 'url' => ['user-profile/view', 'uid'=>Yii::$app->user->id]],
-                     ['label' => '我的计划', 'url' => ['plan/index']],
-                     ['label' => '我的作品', 'url' => ['video/index']],
+                     ['label' => '我的计划', 'url' => ['plan/my']],
+                     ['label' => '我的作品', 'url' => ['video/my']],
                      '<li class="divider"></li>',
                      '<li>'
                     . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])

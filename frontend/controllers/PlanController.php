@@ -138,4 +138,16 @@ class PlanController extends Controller {
         return $this->redirect(['user', 'plan_id' => $model->plan_id]);
     }
 
+    public function actionMy() {
+        $searchModel = new PlanSearch();
+        $searchModel->uid = Yii::$app->user->id;
+        $searchModel->status = 1;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('my', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+
 }
