@@ -34,10 +34,12 @@ class VideoController extends \app\util\BaseController {
 
     public function actionIndex() {
         $searchModel = new VideoSearch();
-        $searchModel->uid = Yii::$app->user->id;
         $searchModel->status = 1;
+        
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $dataProvider->pagination->pageSize = 10;
+        $searchModel->tag = explode(',', trim($searchModel->tag, ','));
+        
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,

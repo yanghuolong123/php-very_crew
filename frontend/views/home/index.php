@@ -75,7 +75,7 @@ $this->title = '非常剧组';
 </div>
 
 <div class="row">
-    <div class="container"><h3>排档推荐</h3></div>
+    <div class="container"><h3>搭档推荐</h3></div>
     <?php foreach ($recomUsers as $user): ?>
     <div class="col-sm-5 col-md-3">
       <div class="thumbnail">
