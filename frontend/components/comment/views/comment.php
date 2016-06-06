@@ -34,12 +34,12 @@ use app\models\extend\Comment;
                             ]); ?>                                    
                                     <?= $form->field($model, 'content',['options'=>['class'=>'']])->textInput(['class'=>'col-sm-offset-1 col-sm-8 reply_content', 'id'=>'reply_'.$list['id'],'placeholder'=>'回复'.User::getInfo($list['uid'])->nickname]) ?>
                                     <div class="col-lg-offset-1 col-lg-11">
+                                        <?= Html::activeHiddenInput($model, 'vid') ?>
+                                        <?= Html::activeHiddenInput($model, 'uid') ?>
+                                        <?= Html::activeHiddenInput($model, 'type') ?>
+                                        <?= Html::activeHiddenInput($model, 'parent_id',['value'=>$list['id']]) ?>
                                     <?= Html::submitButton('回复', ['class' => 'btn btn-info btn-sm', 'name' => 'reply-button']) ?> 
                                     </div>
-                                    <?= $form->field($model, 'vid',['options'=>['class'=>'hid-field']])->hiddenInput() ?>
-                                    <?= $form->field($model, 'uid',['options'=>['class'=>'hid-field']])->hiddenInput() ?>
-                                    <?= $form->field($model, 'type',['options'=>['class'=>'hid-field']])->hiddenInput() ?>
-                                    <?= $form->field($model, 'parent_id', ['options'=>['class'=>'hid-field']])->hiddenInput(['value'=>$list['id']]) ?>
                             <?php ActiveForm::end(); ?>
                         </div>
                         <div class="to_reply">
@@ -71,16 +71,16 @@ use app\models\extend\Comment;
             ],
         ]); ?>
         
-        <?= $form->field($model, 'content')->textarea(['rows' => 5]) ?>
-        <?= $form->field($model, 'vid')->hiddenInput() ?>
-        <?= $form->field($model, 'uid')->hiddenInput() ?>
-        <?= $form->field($model, 'type')->hiddenInput() ?>
+        <?= $form->field($model, 'content')->textarea(['rows' => 5]) ?>        
         
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
+            <div class="col-sm-offset-1">
+                <?= Html::activeHiddenInput($model, 'vid') ?>
+                <?= Html::activeHiddenInput($model, 'uid') ?>
+                <?= Html::activeHiddenInput($model, 'type') ?>
                 <?= Html::submitButton('发布', ['class' => 'btn btn-success', 'name' => 'comment-button']) ?>
             </div>
-        </div>
+        </div>        
         
         <?php ActiveForm::end(); ?>
     </div>
