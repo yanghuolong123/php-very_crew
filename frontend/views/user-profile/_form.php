@@ -37,10 +37,10 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     <?= $form->field($model, 'birthday')->widget(
             DatePicker::className(), [
                     // inline too, not bad
-                    'inline' => true, 
+                    'inline' => false, 
                     'language' => 'zh-CN',
                     // modify template for custom rendering
-                    'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+                    'template' => '{addon}{input}',
                     'clientOptions' => [
                             'autoclose' => true,
                             'format' => 'yyyy-mm-dd'
