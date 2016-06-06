@@ -71,6 +71,11 @@ use app\models\extend\Comment;
             ],
         ]); ?>
         
+        <?php if($model->type == 2): ?>
+        <?php $model->status = 1; ?>
+            <?= Html::activeRadioList($model, 'status', [1=>'留言', 2=>'私信']) ?>
+        <?php endif; ?>
+        
         <?= $form->field($model, 'content')->textarea(['rows' => 5]) ?>        
         
         <div class="form-group">
