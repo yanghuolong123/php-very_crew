@@ -57,11 +57,17 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
     
 
-    <?= $form->field($model, 'good_at_job')->checkboxList(MetaData::getGroupList('planRole')) ?>
+    <?= $form->field($model, 'good_at_job', [
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->checkboxList(MetaData::getGroupList('planRole')) ?>
 
-    <?= $form->field($model, 'speciality')->checkboxList(MetaData::getGroupList('planSkill')) ?>
+    <?= $form->field($model, 'speciality', [
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->checkboxList(MetaData::getGroupList('planSkill')) ?>
 
-    <?= $form->field($model, 'usingtime')->radioList(MetaData::getGroupList('usingTime')) ?>
+    <?= $form->field($model, 'usingtime', [
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->radioList(MetaData::getGroupList('usingTime')) ?>
 
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 
