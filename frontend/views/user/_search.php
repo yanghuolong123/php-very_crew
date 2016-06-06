@@ -20,8 +20,20 @@ use app\models\extend\MetaData;
 
     <?= $form->field($model, 'nickname') ?>
     
-    <?= $form->field($model, 'profile[gender]')->radioList(MetaData::getGroupList('gender'))->label("性别") ?>
+    <?= $form->field($model, 'gender')->radioList(MetaData::getGroupList('gender'))->label("性别") ?>
 
+    <?= $form->field($model, 'good_at_job', [
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->checkboxList(MetaData::getGroupList('planRole'))->label('角色') ?>
+
+    <?= $form->field($model, 'speciality', [
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->checkboxList(MetaData::getGroupList('planSkill'))->label('特长') ?>
+
+    <?= $form->field($model, 'usingtime', [
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->radioList(MetaData::getGroupList('usingTime'))->label('可用于拍摄时间') ?>
+    
     <div class="form-group">
         <div class="col-sm-offset-2">
         <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>

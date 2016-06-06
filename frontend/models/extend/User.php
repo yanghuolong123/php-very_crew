@@ -50,7 +50,7 @@ class User extends \app\models\native\TblUser {
     }
     
     public function getProfile() {
-        return $this->hasOne('app\models\extend\UserProfile', ['uid'=>'id']);
+        return $this->hasOne(UserProfile::className(), ['uid'=>'id']);
     }
 
     public function afterFind() {
