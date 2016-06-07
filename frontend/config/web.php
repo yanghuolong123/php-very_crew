@@ -14,9 +14,9 @@ $config = [
             'cookieValidationKey' => 'a8lSsRqjuIKp6p77MsnefGrG11qQTC0W',
             //'enableCsrfValidation' => false,
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+//        'cache' => [
+//            'class' => 'yii\caching\FileCache',
+//        ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
@@ -40,7 +40,9 @@ $config = [
                 ],
             ],
         ],
+        'cache' => require(__DIR__.'/memcache.php'),
         'db' => require(__DIR__ . '/db.php'),
+        'redis' => require(__DIR__ . '/redis.php'),
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

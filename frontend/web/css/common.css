@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : yanghuolong
 */
 
+span.tip_num {
+    color:red;
+}
+
 img.avatar {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;

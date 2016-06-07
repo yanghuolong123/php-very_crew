@@ -10,6 +10,12 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
+$redis = Yii::$app->redis;
+$user_msg = $redis->get('user_msg_'.Yii::$app->user->id);
+$user_private_msg = $redis->get('user_private_msg_'.Yii::$app->user->id);
+$tips = $user_msg || $user_private_msg ? '<span class="glyphicon glyphicon-volume-up" style="color:red;"></span>' : '';
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -50,19 +56,22 @@ AppAsset::register($this);
         'options' => ['class' =>'navbar-nav navbar-right'],
         'items' => [
             [
-                'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.Yii::$app->user->identity->avatar.'">  '.Yii::$app->user->identity->nickname : '',
+                'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.Yii::$app->user->identity->avatar.'">  '.Yii::$app->user->identity->nickname.' '.$tips : '',
                 'visible' => !Yii::$app->user->isGuest,
                 'encode' => false,
                 'linkOptions' => ['class'=>'avatar'],
                 'items' => [
-                     ['label' => '我的资料', 'url' => ['user-profile/view', 'uid'=>Yii::$app->user->id]],
+                     ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">'.($user_private_msg ? '('.$user_private_msg.')' : '').'</span>', 'url' => ['comment/my-private-msg'],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">'.($user_msg ? '('.$user_msg.')' : '').'</span>', 'url' => ['comment/my-msg'],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-user"></span> 我的资料', 'url' => ['user-profile/view', 'uid'=>Yii::$app->user->id],'encode' => false],
+                     '<li class="divider"></li>',
                      ['label' => '我的计划', 'url' => ['plan/my']],
                      ['label' => '我的作品', 'url' => ['video/my']],
                      '<li class="divider"></li>',
                      '<li>'
                     . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                     . Html::submitButton(
-                          '安全退出',
+                          '<span class="glyphicon glyphicon-log-out"></span> 安全退出',
                           ['class' => 'btn btn-link']
                       )
                     . Html::endForm()

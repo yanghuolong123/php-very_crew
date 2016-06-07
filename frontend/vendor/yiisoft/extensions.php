@@ -66,4 +66,13 @@ return array (
       '@dosamigos/datepicker' => $vendorDir . '/2amigos/yii2-date-picker-widget',
     ),
   ),
+  'yiisoft/yii2-redis' => 
+  array (
+    'name' => 'yiisoft/yii2-redis',
+    'version' => '2.0.5.0',
+    'alias' => 
+    array (
+      '@yii/redis' => $vendorDir . '/yiisoft/yii2-redis',
+    ),
+  ),
 );
