@@ -29,6 +29,7 @@ app\components\comment\CommentAsset::register($this);
     </div>
     <div class="col-md-9">
         <div class="comment_list">
+            <?php if(!empty($commentList)): ?>
             <ul class="media-list">
                 <?php foreach ($commentList as $list): ?>
                     <li class="media">
@@ -59,6 +60,11 @@ app\components\comment\CommentAsset::register($this);
                     </li>
                 <?php endforeach; ?>
             </ul> 
+            <?php else: ?>
+            <div class="alert alert-info">
+                <h3>暂时没有私信...</h3>
+            </div>
+            <?php endif; ?>
         </div>
         <?php
         echo yii\widgets\LinkPager::widget([
