@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
-use app\models\extend\Distrinct;
 use app\models\extend\MetaData;
 
 $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]); 

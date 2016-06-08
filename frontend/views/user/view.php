@@ -52,6 +52,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
         
+        <div class="row container">
+            
+                <h3>个人照片</h3>
+                <p>
+                    <?= Html::a('上传我的照片', ['user-album/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+                     
+        </div>
+        
         <?php if(!empty($perVideo)): ?>
         <div class="row">
             <div class="container"><h3>个人作品</h3></div>

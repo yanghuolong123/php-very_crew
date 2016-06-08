@@ -5,25 +5,24 @@ namespace app\models\native;
 use Yii;
 
 /**
- * This is the model class for table "tbl_comment".
+ * This is the model class for table "tbl_user_album".
  *
  * @property integer $id
- * @property integer $type
  * @property integer $uid
- * @property integer $vid
- * @property integer $parent_id
- * @property string $content
+ * @property string $title
+ * @property string $url
+ * @property string $desc
  * @property integer $status
  * @property integer $createtime
  */
-class TblComment extends \yii\db\ActiveRecord
+class TblUserAlbum extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'tbl_comment';
+        return 'tbl_user_album';
     }
 
     /**
@@ -32,9 +31,10 @@ class TblComment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'uid', 'vid', 'parent_id', 'content', 'status', 'createtime'], 'required'],
-            [['type', 'uid', 'vid', 'parent_id', 'status', 'createtime'], 'integer'],
-            [['content'], 'string', 'max' => 255],
+            [['uid', 'title', 'url', 'desc', 'status', 'createtime'], 'required'],
+            [['uid', 'status', 'createtime'], 'integer'],
+            [['title', 'url'], 'string', 'max' => 128],
+            [['desc'], 'string', 'max' => 255],
         ];
     }
 
@@ -45,11 +45,10 @@ class TblComment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => '类型',
             'uid' => '用户id',
-            'vid' => '对象id',
-            'parent_id' => '父级id',
-            'content' => '内容',
+            'title' => '标题',
+            'url' => '路径',
+            'desc' => '简介',
             'status' => '状态',
             'createtime' => '创建时间',
         ];
