@@ -98,5 +98,19 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         <?= app\components\comment\CommentWidget::widget(['type'=>2,'vid' => $model->id, 'title'=>'留言']) ?>
     </div>
 
-
 </div>
+
+<?php $this->beginBlock('flexslider_Js') ?> 
+$(function() {
+    $(".flexslider").flexslider({
+        animation: "slide",
+        //animationLoop: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        minItems: 2,
+        maxItems: 4
+                // pausePlay: true
+    });
+});
+<?php $this->endBlock() ?>  
+<?php $this->registerJs($this->blocks['flexslider_Js'], \yii\web\View::POS_END); ?> 
