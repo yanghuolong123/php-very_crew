@@ -21,7 +21,7 @@ function video_ding(id) {
 }
 
 function video_cai(id) {
-    $.post("index.php?r=video/cai", {id:id}, function(e) {
+    $.post("index.php?r=video/cai", {id: id}, function(e) {
         $("a.abtn-bury").addClass("selected");
         $("a.abtn-bury").html(e.data);
         $("a.abtn-bury").on('click', function(evt) {
@@ -29,5 +29,17 @@ function video_cai(id) {
         });
     });
 }
+
+$(function() {
+    $(".flexslider").flexslider({
+        animation: "slide",
+        //animationLoop: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        minItems: 2,
+        maxItems: 4
+                // pausePlay: true
+    });
+});
 
 

@@ -1,5 +1,6 @@
 <?php
 
+use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\extend\MetaData;
@@ -7,6 +8,11 @@ use app\models\extend\Distrinct;
 
 $this->title = '查看个人主页';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerCssFile('@web/plugin/flexslider/flexslider.css');
+$this->registerCss('.flex-direction-nav a {background: rgba(0, 0, 0, 0) url("../image/arr.png") no-repeat scroll 0 0}');
+$this->registerJsFile('@web/plugin/flexslider/jquery.flexslider-min.js',['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 ?>
 <div class="user-profile-view">
     <div class="container">
@@ -51,15 +57,25 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
         </div>
-        
+                
         <div class="row container">
             
                 <h3>个人照片</h3>
+                <?php if($model->id == Yii::$app->user->id): ?>
                 <p>
                     <?= Html::a('上传我的照片', ['user-album/index'], ['class' => 'btn btn-success']) ?>
                 </p>
-                     
-        </div>
+                <?php endif; ?>
+                
+                <div class="flexslider carousel">
+                    <ul class="slides">
+                      <?php foreach ($albums as $album): ?>
+                      <li><img src="<?= $album->url ?>" /></li>
+                      <?php endforeach; ?>
+                    </ul>
+                </div>
+                                     
+        </div>        
         
         <?php if(!empty($perVideo)): ?>
         <div class="row">
