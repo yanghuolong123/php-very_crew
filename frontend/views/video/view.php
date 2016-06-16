@@ -7,20 +7,15 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->registerCssFile('@web/plugin/video.js/video-js.min.css',['depends'=>['app\assets\AppAsset']]);
-$this->registerJsFile('@web/plugin/video.js/video.min.js',['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
+//$this->registerCssFile('@web/plugin/video.js/video-js.min.css',['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('http://api.html5media.info/1.1.8/html5media.min.js',['depends'=>['app\assets\AppAsset']]);
 ?>
 <div class="video-view">
 
     <div class="container">
         
-        <video id="example_video_1" class="video-js vjs-default-skin"
-            controls preload="auto" width="1130" height="720"
-            poster="<?= $model->logo; ?>"
-            data-setup='{}'>           
-            <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
-           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-        </video>
+        <video src="<?= $model->file; ?>" width="1130" height="720" controls preload></video>
         
         <p>
             <a href="javascript:video_ding(<?= $model->id ?>);" class="abtn abtn-digg"><?= $model->support ?></a>
