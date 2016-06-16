@@ -14,14 +14,15 @@ $this->registerJsFile('@web/plugin/video.js/video.min.js',['depends'=>['app\asse
 <div class="video-view">
 
     <div class="container">
-        
+        <div class="row">
         <video id="example_video_1" class="video-js vjs-default-skin"
-            controls preload="auto" 
+            controls preload="auto"
             poster="<?= $model->logo; ?>"
-            data-setup='{}'>           
+            data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>           
             <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
         </video>
+        </div>
         
         <p>
             <a href="javascript:video_ding(<?= $model->id ?>);" class="abtn abtn-digg"><?= $model->support ?></a>
