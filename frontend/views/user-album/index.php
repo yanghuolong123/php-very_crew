@@ -3,12 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\search\UserAlbumSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = '我的照片';
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerCssFile('@web/plugin/zoom/css/zoom.css',['depends'=>['app\assets\AppAsset'], 'media'=>'all']);
+
+$this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\AppAsset']]);
+
 ?>
 <div class="user-album-index">
     
@@ -19,19 +20,19 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
      
     <?php if(!empty($dataProvider->models)): ?>
-    <div class="row">
-        <?php foreach ($dataProvider->models as $album): ?>
-        <div class="col-xs-6 col-md-3">
-          <div class="thumbnail">
-            <img src="<?= $album->url ?>" alt="<?= $album->title ?>">
-            <div class="caption">
-              <h3><?= $album->title ?></h3>
-              <p><?= $album->desc ?></p>
+        <div class="row gallery">
+            <?php foreach ($dataProvider->models as $album): ?>
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <a href="<?= $album->url ?>"><img src="<?= $album->url ?>" alt="<?= $album->title ?>"></a>
+                  <div class="caption">
+                    <h3><?= $album->title ?></h3>
+                    <p><?= $album->desc ?></p>
+                  </div>
+                </div>
             </div>
-          </div>
+            <?php endforeach; ?>    
         </div>
-        <?php endforeach; ?>
-    </div>
     <?php else: ?>
         <div class="alert alert-info">
             <h3>暂时没有我的照片</h3>
