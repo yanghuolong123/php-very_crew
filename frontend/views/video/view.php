@@ -17,7 +17,7 @@ $this->registerJsFile('@web/plugin/video.js/video.min.js',['depends'=>['app\asse
         <video id="example_video_1" class="video-js vjs-default-skin"
             controls preload="auto" width="1130" height="720"
             poster="<?= $model->logo; ?>"
-            data-setup=''>           
+            data-setup='{}'>           
             <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
         </video>
