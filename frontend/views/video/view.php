@@ -14,9 +14,9 @@ $this->registerJsFile('http://api.html5media.info/1.1.8/html5media.min.js',['dep
 <div class="video-view">
 
     <div class="container">
-        
-        <video src="<?= $model->file; ?>" width="1130" height="720" controls preload></video>
-        
+        <div class="row">
+        <video src="<?= $model->file; ?>" controls preload></video>
+        </div>
         <p>
             <a href="javascript:video_ding(<?= $model->id ?>);" class="abtn abtn-digg"><?= $model->support ?></a>
             <a href="javascript:video_cai(<?= $model->id ?>);" class="abtn abtn-bury"><?= $model->oppose ?></a>
