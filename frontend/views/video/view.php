@@ -7,31 +7,21 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
+$this->registerCssFile('@web/plugin/video.js/video-js.min.css',['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/plugin/video.js/video.min.js',['depends'=>['app\assets\AppAsset']]);
 ?>
 <div class="video-view">
 
     <div class="container">
-        <div class="payer" id="CuPlayer">
-            <script type="text/javascript" src="/plugin/CuPlayer/images/swfobject.js"></script>
-            <script type="text/javascript">
-                var so = new SWFObject("/plugin/CuPlayer/CuPlayerMiniV4.swf", "CuPlayerV4", "1130", "720", "9", "#000000");
-                so.addParam("allowfullscreen", "true");
-                so.addParam("allowscriptaccess", "always");
-                so.addParam("wmode", "opaque");
-                so.addParam("quality", "high");
-                so.addParam("salign", "lt");
-                so.addVariable("CuPlayerSetFile", "/plugin/CuPlayer/CuPlayerSetFile.php"); //播放器配置文件地址,例SetFile.xml、SetFile.asp、SetFile.php、SetFile.aspx
-                so.addVariable("CuPlayerFile", "<?= $model->file; ?>"); //视频文件地址
-                so.addVariable("CuPlayerImage", "<?= $model->logo; ?>");//视频略缩图,本图片文件必须正确
-                so.addVariable("CuPlayerWidth", "1130"); //视频宽度
-                so.addVariable("CuPlayerHeight", "720"); //视频高度
-                so.addVariable("CuPlayerAutoPlay", "yes"); //是否自动播放
-                so.addVariable("CuPlayerLogo", "/image/logo.png"); //Logo文件地址
-                so.addVariable("CuPlayerPosition", "bottom-right"); //Logo显示的位置
-                so.write("CuPlayer");
-            </script>
-        </div>
+        
+        <video id="example_video_1" class="video-js vjs-default-skin"
+            controls preload="auto" width="1130" height="720"
+            poster="<?= $model->logo; ?>"
+            data-setup=''>           
+            <source src="<?= $model->file; ?>" type="video/<?php echo trim(strrchr($model->file, '.'), '.') ?>" />
+           <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+        
         <p>
             <a href="javascript:video_ding(<?= $model->id ?>);" class="abtn abtn-digg"><?= $model->support ?></a>
             <a href="javascript:video_cai(<?= $model->id ?>);" class="abtn abtn-bury"><?= $model->oppose ?></a>
