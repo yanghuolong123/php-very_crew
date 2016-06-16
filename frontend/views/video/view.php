@@ -16,7 +16,7 @@ $this->registerJsFile('@web/plugin/video.js/video.min.js',['depends'=>['app\asse
     <div class="container">
         
         <video id="example_video_1" class="video-js vjs-default-skin"
-            controls preload="auto" width="1130" height="720"
+            controls preload="auto" 
             poster="<?= $model->logo; ?>"
             data-setup='{}'>           
             <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
