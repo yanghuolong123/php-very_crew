@@ -3,6 +3,7 @@
 namespace app\models\extend;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 class Plan extends \app\models\native\TblPlan {
 
@@ -12,7 +13,7 @@ class Plan extends \app\models\native\TblPlan {
             [['content'], 'string'],
             [['type', 'status', 'createtime'], 'integer'],
             [['title', 'address', 'remark'], 'string', 'max' => 255],
-            [['tag', 'plan_role', 'plan_skill', 'video_ids'], 'string', 'max' => 128],
+            [['tag', 'plan_role', 'plan_skill'], 'string', 'max' => 128],
         ];
     }
 
@@ -33,6 +34,12 @@ class Plan extends \app\models\native\TblPlan {
         $this->video_ids = is_array($this->video_ids) ? ',' . implode(',', $this->video_ids) . ',' : $this->video_ids;
 
         return parent::beforeValidate();
+    }
+    
+    public static function getPlanList($uid) {
+        $data = static::find()->where(['uid' => $uid, 'status' => 1])->orderBy('id desc')->all();
+
+        return ArrayHelper::map(ArrayHelper::toArray($data), 'id', 'title');
     }
 
 }

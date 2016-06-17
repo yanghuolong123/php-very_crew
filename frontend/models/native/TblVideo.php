@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $uid
+ * @property integer $plan_id
  * @property string $title
  * @property string $content
  * @property string $logo
@@ -38,8 +39,8 @@ class TblVideo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'title', 'content', 'logo', 'file', 'type', 'tag', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'required'],
-            [['uid', 'type', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
+            [['uid', 'plan_id', 'title', 'content', 'logo', 'file', 'type', 'tag', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'required'],
+            [['uid', 'plan_id', 'type', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['content'], 'string'],
             [['title', 'logo', 'file', 'tag'], 'string', 'max' => 128],
         ];
@@ -53,6 +54,7 @@ class TblVideo extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'uid' => '用户ID',
+            'plan_id' => '所属计划',
             'title' => '视频名称',
             'content' => '剧情介绍',
             'logo' => '作品封面',

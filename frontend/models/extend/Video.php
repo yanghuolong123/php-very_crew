@@ -10,7 +10,7 @@ class Video extends \app\models\native\TblVideo {
     public function rules() {
         return [
             [['title', 'content', 'logo', 'file', 'type', 'tag'], 'required'],
-            [['type'], 'integer'],
+            [['type', 'plan_id'], 'integer'],
             [['content'], 'string'],
             [['title', 'logo', 'tag', 'file'], 'string', 'max' => 128],
         ];

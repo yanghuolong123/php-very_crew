@@ -6,6 +6,7 @@ use app\models\extend\MetaData;
 
 $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);  
 
+$planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 ?>
 
 <div class="video-form">
@@ -21,6 +22,10 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     ]); ?>    
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    
+    <?php if(!empty($planList)): ?>
+    <?= $form->field($model, 'plan_id')->dropDownList($planList,['prompt'=>'请选择']) ?>
+    <?php endif; ?>
     
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     

@@ -76,8 +76,7 @@ class PlanController extends Controller {
         } else {
             $model->tag = explode(',', trim($model->tag, ','));
             $model->plan_role = explode(',', trim($model->plan_role, ','));
-            $model->plan_skill = explode(',', trim($model->plan_skill, ','));
-            $model->video_ids = explode(',', trim($model->video_ids, ','));
+            $model->plan_skill = explode(',', trim($model->plan_skill, ','));            
 
             return $this->render('update', [
                         'model' => $model,

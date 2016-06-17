@@ -36,11 +36,7 @@ use app\models\extend\Video;
 
     <?= $form->field($model, 'plan_role')->checkboxList(MetaData::getGroupList('planRole')) ?>
 
-    <?= $form->field($model, 'plan_skill')->checkboxList(MetaData::getGroupList('planSkill')) ?>
-    
-    <?php if(Video::getVideoList(Yii::$app->user->id)): ?>
-    <?= $form->field($model, 'video_ids')->checkboxList(Video::getVideoList(Yii::$app->user->id),['separator'=>'<br>']) ?>
-    <?php endif; ?>
+    <?= $form->field($model, 'plan_skill')->checkboxList(MetaData::getGroupList('planSkill')) ?>   
     
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
    
