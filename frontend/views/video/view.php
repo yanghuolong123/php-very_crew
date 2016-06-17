@@ -10,18 +10,18 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 $this->registerCssFile('http://vjs.zencdn.net/5.4.6/video-js.min.css',['depends'=>['app\assets\AppAsset']]);
 $this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js',['depends'=>['app\assets\AppAsset']]);
-$this->registerCss('.example_video_1-dimensions {
+$this->registerCss('#payer {
     max-height: 720px;
     max-width: 1130px;
-    width:100%;
-    height:720px;
+    width:100%; 
+    min-height:720px;
 }');
 ?>
 <div class="video-view">
 
     <div class="container">
         <div class="row">
-        <video id="example_video_1" class="video-js vjs-default-skin"
+        <video id="payer" class="video-js vjs-default-skin"
             controls preload="auto"
             poster="<?= $model->logo; ?>"
             data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>           
