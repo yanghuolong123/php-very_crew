@@ -18,7 +18,7 @@ class Video extends \app\models\native\TblVideo {
 
     public function beforeSave($insert) {
         if ($this->getIsNewRecord()) {
-            $this->status = 1;
+            //$this->status = 1;
             $this->uid = Yii::$app->user->id;
             $this->createtime = time();
         }
