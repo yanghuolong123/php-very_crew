@@ -31,8 +31,7 @@ class Plan extends \app\models\native\TblPlan {
         $this->tag = is_array($this->tag) ? ',' . implode(',', $this->tag) . ',' : $this->tag;
         $this->plan_role = is_array($this->plan_role) ? ',' . implode(',', $this->plan_role) . ',' : $this->plan_role;
         $this->plan_skill = is_array($this->plan_skill) ? ',' . implode(',', $this->plan_skill) . ',' : $this->plan_skill;
-        $this->video_ids = is_array($this->video_ids) ? ',' . implode(',', $this->video_ids) . ',' : $this->video_ids;
-
+        
         return parent::beforeValidate();
     }
     

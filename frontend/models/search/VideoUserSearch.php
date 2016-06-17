@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\extend\Plan;
+use app\models\extend\VideoUser;
 
 /**
- * PlanSearch represents the model behind the search form about `app\models\extend\Plan`.
+ * VideoUserSearch represents the model behind the search form about `app\models\extend\VideoUser`.
  */
-class PlanSearch extends Plan
+class VideoUserSearch extends VideoUser
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class PlanSearch extends Plan
     public function rules()
     {
         return [
-            [['id', 'uid', 'type', 'province', 'city', 'county', 'country', 'status', 'createtime'], 'integer'],
-            [['title', 'content', 'tag', 'address', 'plan_role', 'plan_skill', 'remark'], 'safe'],
+            [['id', 'uid', 'video_id', 'role', 'is_star', 'status', 'createtime'], 'integer'],
+            [['desc'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PlanSearch extends Plan
      */
     public function search($params)
     {
-        $query = Plan::find();
+        $query = VideoUser::find();
 
         // add conditions that should always apply here
 
@@ -61,22 +61,14 @@ class PlanSearch extends Plan
         $query->andFilterWhere([
             'id' => $this->id,
             'uid' => $this->uid,
-            'type' => $this->type,
-            'province' => $this->province,
-            'city' => $this->city,
-            'county' => $this->county,
-            'country' => $this->country,
+            'video_id' => $this->video_id,
+            'role' => $this->role,
+            'is_star' => $this->is_star,
             'status' => $this->status,
             'createtime' => $this->createtime,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'tag', $this->tag])
-            ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'plan_role', $this->plan_role])
-            ->andFilterWhere(['like', 'plan_skill', $this->plan_skill])
-            ->andFilterWhere(['like', 'remark', $this->remark]);
+        $query->andFilterWhere(['like', 'desc', $this->desc]);
 
         return $dataProvider;
     }

@@ -10,6 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'i
 $this->params['breadcrumbs'][] = '编辑';
 ?>
 <div class="video-update">
+    <p><?= Html::a('管理参与成员', ['video-user/index', 'id' => $model->id], ['class' => 'btn btn-success']) ?></p>
 
     <?= $this->render('_form', [
         'model' => $model,
