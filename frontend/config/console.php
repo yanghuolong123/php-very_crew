@@ -23,6 +23,7 @@ $config = [
             ],
         ],
         'db' => $db,
+        'redis' => require(__DIR__ . '/redis.php'),
     ],
     'params' => $params,
     /*
