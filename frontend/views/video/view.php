@@ -13,8 +13,7 @@ $this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js',['depends'=>['a
 $this->registerCss('#payer {
     max-height: 720px;
     max-width: 1130px;
-    width:100%; 
-    min-height:720px;
+    width:100%;     
 }');
 ?>
 <div class="video-view">
