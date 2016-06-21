@@ -1,0 +1,7 @@
+@CHARSET "GB18030";
+
+.msgInfo{ font-weight: bold; font-size: 24px; margin-bottom: 10px; color:red;}
+.tipInfo{ font-size: 12px; }
+.tipInfo span{color: red;}
+.goto a{color:#3F3F3F}
+.goto a:hover {color:#FF6600;}
