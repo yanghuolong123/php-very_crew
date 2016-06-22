@@ -12,7 +12,7 @@ $this->registerJsFile('@web/js/main.js', ['depends' => ['app\assets\AppAsset']])
 $this->registerCssFile('http://vjs.zencdn.net/5.4.6/video-js.min.css', ['depends' => ['app\assets\AppAsset']]);
 $this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCss('#payer {
-    min-height: 720px;
+    /*min-height: 720px;*/
     max-width: 1130px;
     width:100%;     
 }');
