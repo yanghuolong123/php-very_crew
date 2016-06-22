@@ -16,6 +16,7 @@ class UploadController extends \app\util\BaseController {
         $fileName = time() . mt_rand(10000, 99999);
         if (!is_dir($filePath)) {
             mkdir($filePath, 0777, true);
+            chmod($filePath, 0777);
         }
 
         if ($file) {
