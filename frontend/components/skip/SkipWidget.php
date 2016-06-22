@@ -27,7 +27,7 @@ class SkipWidget extends Widget {
     public function run() {
 
         if (empty($this->skipUrl)) {
-            $this->skipUrl = Yii::app()->user->returnUrl;
+            $this->skipUrl = Yii::$app->user->returnUrl;
         }
         $view = $this->getView();
         SkipAsset::register($view);

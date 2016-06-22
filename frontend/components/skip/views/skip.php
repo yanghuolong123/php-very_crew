@@ -11,10 +11,8 @@ use yii\helpers\Html;
     </div>
     <p class="tipInfo" style="">请稍等......该页将在<span id='sec'>&nbsp;&nbsp;<?= $seconds; ?>&nbsp;&nbsp;</span>秒后自动跳转!<br><br/>
     <div class="goto">
-<?php if (!isset($_GET['skipUrl']) || empty($_GET['skipUrl'])): ?>
-            <p><a href="<?php echo Yii::$app->request->referrer; ?>" style="color:#3F3F3F;">返回上一页</a></p>
-            <p><a href="<?php echo 'http://' . Yii::$app->request->serverName . Yii::$app->request->baseUrl . '/' . basename(Yii::$app->request->scriptFile); ?>" style="color:#3F3F3F;">返回首页</a></p>
-<?php endif; ?>
+        <p><a href="<?php echo Yii::$app->request->referrer; ?>" style="color:#3F3F3F;">返回上一页</a></p>
+        <p><a href="<?php echo 'http://' . Yii::$app->request->serverName . Yii::$app->request->baseUrl . '/' . basename(Yii::$app->request->scriptFile); ?>" style="color:#3F3F3F;">返回首页</a></p>
     </div>
 </div>
 

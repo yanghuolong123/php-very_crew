@@ -42,11 +42,20 @@ class VideoUserController extends Controller {
     public function actionCreate() {
         $model = new VideoUser();
         $uid = Yii::$app->request->get('uid');
+        if (empty($uid)) {
+            return $this->redirect(['site/info', 'msg' => '没有指定具体成员']);
+        }
+        
         $model->uid = $uid;
         $model->is_star = empty($model->is_star) ? 0 : $model->is_star;
 
+        $model->load(Yii::$app->request->post());
+        if (VideoUser::find()->where(['uid' => $uid, 'video_id' => $model->video_id])->exists()) {
+            return $this->redirect(['site/info', 'msg' => '该用户已经是此作品成员']);
+        }
+        
         $model->status = 1;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->save()) {
             return $this->redirect(['index', 'video_id' => $model->video_id]);
         } else {
             return $this->render('create', [
