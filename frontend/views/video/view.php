@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\extend\MetaData;
+use app\util\CommonUtil;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
@@ -12,10 +13,14 @@ $this->registerJsFile('@web/js/main.js', ['depends' => ['app\assets\AppAsset']])
 $this->registerCssFile('http://vjs.zencdn.net/5.4.6/video-js.min.css', ['depends' => ['app\assets\AppAsset']]);
 $this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCss('#payer {
-    /*min-height: 720px;*/
     max-width: 1130px;
     width:100%;     
 }');
+if (!CommonUtil::isMobile()) {
+    $this->registerCss('#payer {
+    min-height: 720px;
+}');
+}
 ?>
 <div class="video-view">
 
