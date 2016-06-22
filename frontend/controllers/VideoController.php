@@ -35,11 +35,11 @@ class VideoController extends \app\util\BaseController {
     public function actionIndex() {
         $searchModel = new VideoSearch();
         $searchModel->status = 1;
-        
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 10;
         $searchModel->tag = explode(',', trim($searchModel->tag, ','));
-        
+
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
@@ -59,6 +59,8 @@ class VideoController extends \app\util\BaseController {
         $model = new Video();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \app\models\extend\PlanUser::turnToVideoUser($model->plan_id, $model->id);
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -109,7 +111,7 @@ class VideoController extends \app\util\BaseController {
 
         $this->sendRes(true, '', $model->oppose);
     }
-    
+
     public function actionMy() {
         $searchModel = new VideoSearch();
         $searchModel->uid = Yii::$app->user->id;

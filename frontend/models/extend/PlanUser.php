@@ -22,4 +22,17 @@ class PlanUser extends \app\models\native\TblPlanUser {
         return parent::beforeSave($insert);
     }
 
+    public static function turnToVideoUser($planId, $videoId) {
+        $models = self::findAll(['plan_id' => $planId, 'status' => 1]);
+        
+        foreach ($models as $model) {
+            $videoUser = new \app\models\extend\VideoUser();
+            $videoUser->uid = $model->uid;
+            $videoUser->video_id = $videoId;
+            $videoUser->role = $model->role;
+            $videoUser->status = 0;
+            $videoUser->save(false);
+        }
+    }
+
 }

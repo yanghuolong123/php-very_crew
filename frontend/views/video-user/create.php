@@ -3,16 +3,11 @@
 use yii\helpers\Html;
 
 
-/* @var $this yii\web\View */
-/* @var $model app\models\extend\VideoUser */
-
-$this->title = 'Create Video User';
-$this->params['breadcrumbs'][] = ['label' => 'Video Users', 'url' => ['index']];
+$this->title = '添加他为作品成员';
+//$this->params['breadcrumbs'][] = ['label' => '成员管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-user-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

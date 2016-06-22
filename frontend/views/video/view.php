@@ -24,10 +24,11 @@ if (!CommonUtil::isMobile()) {
 ?>
 <div class="video-view">
 
-    <div class="container">
-        <?php if ($model->status == 0): ?>
-            <?= app\components\skip\SkipWidget::widget(['seconds' => 60, 'skipUrl' => Url::to(['view', 'id' => $model->id]), 'msg' => '视频转码中，请等候...']) ?>
-        <?php else: ?>
+
+    <?php if ($model->status == 0): ?>
+        <?= app\components\skip\SkipWidget::widget(['seconds' => 60, 'skipUrl' => Url::to(['view', 'id' => $model->id]), 'msg' => '视频转码中，请等候...']) ?>
+    <?php else: ?>
+        <div class="container">
             <div class="row">                
                 <video id="payer" class="video-js vjs-default-skin"
                        controls preload="auto"
@@ -56,7 +57,8 @@ if (!CommonUtil::isMobile()) {
             <div class="comment">
                 <?= app\components\comment\CommentWidget::widget(['type' => 1, 'vid' => $model->id, 'title' => '作品大家聊']) ?>
             </div>
-        <?php endif; ?>
-    </div>    
+        </div> 
+    <?php endif; ?>
+
 
 </div>

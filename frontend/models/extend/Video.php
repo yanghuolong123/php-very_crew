@@ -25,10 +25,16 @@ class Video extends \app\models\native\TblVideo {
 
         if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
             $this->status = 0;
-            Yii::$app->redis->LPUSH("convert_video_list", $this->id);
         }
 
         return parent::beforeSave($insert);
+    }
+
+    public function afterSave($insert, $changedAttributes) {
+        if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
+            Yii::$app->redis->LPUSH("convert_video_list", $this->id);
+        }
+        parent::afterSave($insert, $changedAttributes);
     }
 
     public function beforeValidate() {

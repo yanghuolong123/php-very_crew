@@ -19,10 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($dataProvider->models as $user): ?>
         <div class="col-sm-5 col-md-3">
           <div class="thumbnail">
-              <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img style="height:250px; width:250px;" src="<?= User::getInfo($user->id)->avatar ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
+            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img style="height:250px; width:250px;" src="<?= User::getInfo($user->id)->avatar ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
             <div class="caption">
               <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
-              <p><?= implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
+              <p><?= empty($user->profile['province']) ? "<br>" : implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
+              <?php if(!Yii::$app->user->isGuest): ?>
+              <p><a class="btn btn-default" href="<?= Url::to(['video-user/create', 'uid'=>$user->id]) ?>">添加他为作品成员 &raquo;</a></p>
+              <?php endif; ?>
             </div>
           </div>
         </div>
