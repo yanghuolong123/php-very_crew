@@ -76,7 +76,7 @@ use app\models\extend\Comment;
             <?= Html::activeRadioList($model, 'status', [1=>'留言', 2=>'私信']) ?>
         <?php endif; ?>
         
-        <?= $form->field($model, 'content')->textarea(['rows' => 5]) ?>        
+        <?= $form->field($model, 'content')->textarea(['rows' => 5, 'placeholder'=>'大胆说说你对作品的感觉吧~']) ?>        
         
         <div class="form-group">
             <div class="col-sm-offset-1">

@@ -54,7 +54,7 @@ if (!CommonUtil::isMobile()) {
             </ul>
             </p>
             <div class="comment">
-                <?= app\components\comment\CommentWidget::widget(['type' => 1, 'vid' => $model->id, 'title' => '用户评论']) ?>
+                <?= app\components\comment\CommentWidget::widget(['type' => 1, 'vid' => $model->id, 'title' => '作品大家聊']) ?>
             </div>
         <?php endif; ?>
     </div>    
