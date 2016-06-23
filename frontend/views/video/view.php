@@ -29,7 +29,7 @@ if (!CommonUtil::isMobile()) {
         <?= app\components\skip\SkipWidget::widget(['seconds' => 60, 'skipUrl' => Url::to(['view', 'id' => $model->id]), 'msg' => '视频转码中，请等候...']) ?>
     <?php else: ?>
         <div class="container">
-            <div class="row">                
+                            
                 <video id="payer" class="video-js vjs-default-skin"
                        controls preload="auto"
                        poster="<?= $model->logo; ?>"
@@ -38,7 +38,7 @@ if (!CommonUtil::isMobile()) {
                     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                 </video>      
 
-            </div>
+             
 
             <p>
                 <a href="javascript:video_ding(<?= $model->id ?>);" class="abtn abtn-digg"><?= $model->support ?></a>
