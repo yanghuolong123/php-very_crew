@@ -6,7 +6,7 @@ use yii\widgets\Menu;
 use app\models\extend\User;
 use app\models\extend\Comment;
 
-$this->title = '我的私信';
+$this->title = '我的留言';
 $this->params['breadcrumbs'][] = ['label' => '消息中心', 'url' => ['']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -20,8 +20,8 @@ app\components\comment\CommentAsset::register($this);
         echo Menu::widget([
             'options' => ['class'=>'nav well well-sm'],
             'items' => [
-                ['label' => '我的留言', 'url' => ['comment/my-msg']],
-                ['label' => '我的私信', 'url' => ['comment/my-private-msg']],
+                ['label' => '我的留言', 'url' => ['comment/my-list', 'type'=>2]],
+                ['label' => '我的私信', 'url' => ['comment/my-list', 'type'=>3]],
             ],
         ]);
         ?>
@@ -40,21 +40,17 @@ app\components\comment\CommentAsset::register($this);
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading"><?= User::getInfo($list['uid'])->nickname ?> <span><?php echo date('Y-m-d H:i:s', $list['createtime']); ?></span></h4>
-                            <div><?= $list['content']; ?></div>
-
-                            <div class="to_reply">
-                                <?php $childrenCommentList = Comment::getChildren($list['id']); ?>   
-                                <?php foreach ($childrenCommentList as $child): ?>
-                                    <div class="media child-media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="<?= User::getInfo($child['uid'])->avatar ?>" alt="<?= User::getInfo($child['uid'])->nickname ?>">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading"><?= User::getInfo($child['uid'])->nickname ?> <span><?php echo date('Y-m-d H:i:s', $child['createtime']); ?></span></h4>
-                                            <?= $child['content'] ?>
-                                        </div>
+                            <div>
+                                <?php if (!empty($list['parent_id'])): ?>
+                                    <?php $parent = Comment::findOne($list['parent_id']); ?>
+                                    <div class="quote">
+                                        <blockquote>
+                                            <font size="2"><a href=""><font color="#999999"><?= User::getInfo($parent['uid'])->nickname ?> 发表于 <?= date('Y-m-d H:i:s', $parent['createtime']); ?></font></a></font>
+                                            <p><?= $parent['content'] ?></p>
+                                        </blockquote>
                                     </div>
-                                <?php endforeach; ?>                        
+                                <?php endif; ?>
+                                <p class="comment_content"><?= $list['content']; ?></p>
                             </div>
                         </div>
                     </li>
@@ -62,7 +58,7 @@ app\components\comment\CommentAsset::register($this);
             </ul> 
             <?php else: ?>
             <div class="alert alert-info">
-                <h3>暂时没有私信...</h3>
+                <h3>暂时没有留言...</h3>
             </div>
             <?php endif; ?>
         </div>

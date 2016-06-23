@@ -18,9 +18,12 @@ class CommentWidget extends Widget {
         $model->type = $this->type;
         $model->vid = $this->vid;
         $model->uid = Yii::$app->user->isGuest ? 0 : Yii::$app->user->identity->id;
-
+        
+        if (is_array($this->type) && in_array(3, $this->type) && $this->vid != $model->uid) {
+            $this->type = 2;
+        }
         $query = Comment::find()->where(['type' => $this->type, 'vid' => $this->vid]);
-        ($this->type == 2 && $this->vid == $model->uid) ? $query->andWhere(['in', 'status', [1, 2]]) : $query->andWhere(['status' => 1]);
+        //($this->type == 2 && $this->vid == $model->uid) ? $query->andWhere(['in', 'status', [1, 2]]) : $query->andWhere(['status' => 1]);
 
         $commentList = $query->orderBy('id desc')->all();
 

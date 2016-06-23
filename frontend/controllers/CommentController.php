@@ -14,7 +14,7 @@ class CommentController extends \app\util\BaseController {
         $model = new Comment();
 
         $model->load(Yii::$app->request->post());
-        if ($model->type == 1 && $content = strstr($model->content, '[/quote]')) {
+        if ($content = strstr($model->content, '[/quote]')) {
             $model->content = trim(ltrim($content, '[/quote]'));
         }
         if ($model->save()) {
@@ -37,12 +37,10 @@ class CommentController extends \app\util\BaseController {
                     }
                     break;
                 case 2:
-                    $redis = Yii::$app->redis;
-                    if ($model->status == 1) {
-                        $redis->incr('user_msg_' . $model->vid);
-                    } elseif ($model->status == 2) {
-                        $redis->incr('user_private_msg_' . $model->vid);
-                    }
+                    Yii::$app->redis->incr('user_msg_' . $model->vid);
+                    break;
+                case 3:
+                    Yii::$app->redis->incr('user_private_msg_' . $model->vid);
                     break;
             }
 
@@ -52,31 +50,16 @@ class CommentController extends \app\util\BaseController {
         $this->sendRes(false);
     }
 
-    public function actionMyMsg() {
+    public function actionMyList($type) {
         Yii::$app->redis->del('user_msg_' . Yii::$app->user->id);
 
-        $query = Comment::find()->where(['type' => 2, 'vid' => Yii::$app->user->id, 'status' => 1]);
+        $query = Comment::find()->where(['type' => $type, 'vid' => Yii::$app->user->id]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->defaultPageSize = 5;
         $models = $query->offset($pages->offset)->limit($pages->limit)->orderby('createtime desc')->all();
 
-        return $this->render('myMsg', [
-                    'commentList' => $models,
-                    'pages' => $pages,
-        ]);
-    }
-
-    public function actionMyPrivateMsg() {
-        Yii::$app->redis->del('user_private_msg_' . Yii::$app->user->id);
-
-        $query = Comment::find()->where(['type' => 2, 'vid' => Yii::$app->user->id, 'status' => 2]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count()]);
-        $pages->defaultPageSize = 5;
-        $models = $query->offset($pages->offset)->limit($pages->limit)->orderby('createtime desc')->all();
-
-        return $this->render('myPrivateMsg', [
+        return $this->render('myList', [
                     'commentList' => $models,
                     'pages' => $pages,
         ]);

@@ -24,14 +24,14 @@ use app\models\extend\Comment;
                         <div class="media-body">
                             <h4 class="media-heading"><?= User::getInfo($list['uid'])->nickname ?> <span><?php echo date('Y-m-d H:i:s', $list['createtime']); ?></span></h4>
                             <div>
-                                <?php if(!empty($list['parent_id'])): ?>
-                                <?php $parent = Comment::findOne($list['parent_id']); ?>
-                                <div class="quote">
-                                    <blockquote>
-                                        <font size="2"><a href=""><font color="#999999"><?= User::getInfo($parent['uid'])->nickname ?> 发表于 <?= date('Y-m-d H:i:s', $parent['createtime']); ?></font></a></font>
-                                        <p><?= $parent['content'] ?></p>
-                                    </blockquote>
-                                </div>
+                                <?php if (!empty($list['parent_id'])): ?>
+                                    <?php $parent = Comment::findOne($list['parent_id']); ?>
+                                    <div class="quote">
+                                        <blockquote>
+                                            <font size="2"><a href=""><font color="#999999"><?= User::getInfo($parent['uid'])->nickname ?> 发表于 <?= date('Y-m-d H:i:s', $parent['createtime']); ?></font></a></font>
+                                            <p><?= $parent['content'] ?></p>
+                                        </blockquote>
+                                    </div>
                                 <?php endif; ?>
                                 <p class="comment_content"><?= $list['content']; ?></p>
                             </div>
@@ -58,9 +58,11 @@ use app\models\extend\Comment;
         ]);
         ?>
 
-        <?php if ($model->type == 2): ?>
-            <?php $model->status = 1; ?>
-            <?= Html::activeRadioList($model, 'status', [1 => '留言', 2 => '私信']) ?>
+        <?php if (is_array($model->type)): ?>
+            <?php $model->type = 2; ?>
+            <?= Html::activeRadioList($model, 'type', [2 => '留言', 3 => '私信']) ?>
+        <?php else: ?>
+            <?= Html::activeHiddenInput($model, 'type') ?>
         <?php endif; ?>
 
         <?= $form->field($model, 'content')->textarea(['rows' => 5, 'placeholder' => '大胆说说你对作品的感觉吧~']) ?>        
@@ -68,9 +70,8 @@ use app\models\extend\Comment;
         <div class="form-group">
             <div class="col-sm-offset-1">
                 <?= Html::activeHiddenInput($model, 'vid') ?>
-                <?= Html::activeHiddenInput($model, 'uid') ?>
-                <?= Html::activeHiddenInput($model, 'type') ?>
-                <?= Html::activeHiddenInput($model, 'parent_id',['value'=>0]) ?>
+                <?= Html::activeHiddenInput($model, 'uid') ?>                
+                <?= Html::activeHiddenInput($model, 'parent_id', ['value' => 0]) ?>
                 <?= Html::submitButton('发布', ['class' => 'btn btn-success', 'name' => 'comment-button']) ?>
             </div>
         </div>        

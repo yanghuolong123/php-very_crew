@@ -61,8 +61,8 @@ $tips = $user_msg || $user_private_msg ? '<span class="glyphicon glyphicon-volum
                 'encode' => false,
                 'linkOptions' => ['class'=>'avatar'],
                 'items' => [
-                     ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">'.($user_private_msg ? '('.$user_private_msg.')' : '').'</span>', 'url' => ['comment/my-private-msg'],'encode' => false],
-                     ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">'.($user_msg ? '('.$user_msg.')' : '').'</span>', 'url' => ['comment/my-msg'],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">'.($user_private_msg ? '('.$user_private_msg.')' : '').'</span>', 'url' => ['comment/my-list','type'=>2],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">'.($user_msg ? '('.$user_msg.')' : '').'</span>', 'url' => ['comment/my-list', 'type'=>3],'encode' => false],
                      ['label' => '<span class="glyphicon glyphicon-user"></span> 我的资料', 'url' => ['user-profile/view', 'uid'=>Yii::$app->user->id],'encode' => false],
                      '<li class="divider"></li>',
                      ['label' => '我的计划', 'url' => ['plan/my']],

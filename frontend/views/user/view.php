@@ -94,7 +94,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         </div>
         <?php endif; ?>
         
-        <?= app\components\comment\CommentWidget::widget(['type'=>2,'vid' => $model->id, 'title'=>'留言']) ?>
+        <?= app\components\comment\CommentWidget::widget(['type'=>[2,3],'vid' => $model->id, 'title'=>'留言']) ?>
     </div>
 
 </div>
