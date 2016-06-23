@@ -13,11 +13,21 @@ class CommentController extends \app\util\BaseController {
     public function actionCreate() {
         $model = new Comment();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model->load(Yii::$app->request->post());
+        if ($model->type == 1 && $content = strstr($model->content, '[/quote]')) {
+            $model->content = trim(ltrim($content, '[/quote]'));
+        }
+        if ($model->save()) {
             $model->createtime = date('Y-m-d H:i:s', $model->createtime);
             $arr = \yii\helpers\ArrayHelper::toArray($model);
             $arr['avatar'] = User::getInfo($model->uid)->avatar;
             $arr['nickname'] = User::getInfo($model->uid)->nickname;
+            $parent = Comment::findOne($model->parent_id);
+            if ($parent) {
+                $parent->createtime = date('Y-m-d H:i:s', $parent->createtime);
+                $arr['parent'] = $parent->toArray();
+                $arr['parent_nickname'] = User::getInfo($parent['uid'])->nickname;
+            }
 
             switch ($model->type) {
                 case 1:
@@ -43,7 +53,7 @@ class CommentController extends \app\util\BaseController {
     }
 
     public function actionMyMsg() {
-        Yii::$app->redis->del('user_msg_'.Yii::$app->user->id);
+        Yii::$app->redis->del('user_msg_' . Yii::$app->user->id);
 
         $query = Comment::find()->where(['type' => 2, 'vid' => Yii::$app->user->id, 'status' => 1]);
         $countQuery = clone $query;
@@ -58,8 +68,8 @@ class CommentController extends \app\util\BaseController {
     }
 
     public function actionMyPrivateMsg() {
-        Yii::$app->redis->del('user_private_msg_'.Yii::$app->user->id);
-        
+        Yii::$app->redis->del('user_private_msg_' . Yii::$app->user->id);
+
         $query = Comment::find()->where(['type' => 2, 'vid' => Yii::$app->user->id, 'status' => 2]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);

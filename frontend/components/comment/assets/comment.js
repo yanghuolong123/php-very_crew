@@ -19,6 +19,9 @@ $(function() {
             type: 'post',
             data: $form.serialize(),
             success: function(obj) {
+                if(!obj.success) {
+                    return;
+                }
                 // do something
                 $('#comment-content').val('');
                 var data = obj.data;
@@ -30,58 +33,75 @@ $(function() {
                 str += '</div>';
                 str += '<div class="media-body">';
                 str += '<h4 class="media-heading">' + data['nickname'] + ' <span>' + data['createtime'] + '</span></h4>';
+                str += '<div>';
+                if(data['parent']) {
+                    str += '<div class="quote"><blockquote>';
+                    str += '<font size="2"><a href=""><font color="#999999">'+data['parent_nickname']+' 发表于 '+data['parent']['createtime']+'</font></a></font>';
+                    str += '<p>'+data['parent']['content']+'</p>',
+                    str += '</blockquote></div>';
+                }
                 str += data['content'] + '                     </div>';
+                str += '</div>';
                 str += '</li>';
 
                 $('.comment_list ul').prepend(str);
+                $("#comment-parent_id").val(0);
+                $(window).scrollTop($('.comment_list').offset().top-150);
             }
         });
     }).on('submit', function(e) {
         e.preventDefault();
+    });
+    
+    $('a.reply_btn').on('click',function(){
+        var pid = $(this).next().val();
+        $("#comment-parent_id").val(pid);
+        var quote = $(this).parent().prev().children(".comment_content").html();
+        $("#comment-content").val("[quote]"+quote+"[/quote]\n");
     });
 
     // 回复
-    $('form.reply_form').on('beforeSubmit', function(e) {
-        var $form = $(this);
-        if ($form.find("input[name='Comment[uid]']").val() == 0) {
-            alerting({msg: '请先登陆'});
-            return false;
-        }
-
-        if ($.trim($form.find('.reply_content').val()) === '') {
-            alerting({msg: '回复内容不能为空'});
-            return false;
-        }        
-
-        $.ajax({
-            url: $form.attr('action'),
-            type: 'post',
-            data: $form.serialize(),
-            success: function(obj) {
-                // do something
-                $('.reply_content').val('');
-                var data = obj.data;
-                var str = '<div class="media child-media">';
-                str += ' <a href="#" class="pull-left">';
-                str += '<img alt="' + data['nickname'] + '" src="' + data['avatar'] + '" class="media-object">';
-                str += ' </a><div class="media-body">';
-                str += '<h4 class="media-heading">' + data['nickname'] + '<span>' + data['createtime'] + '</span></h4>';
-                str += data['content'] + '                        </div></div>';
-
-                $form.parents('.reply').siblings('.to_reply').prepend(str);
-            }
-        });
-    }).on('submit', function(e) {
-        e.preventDefault();
-    })
-
-    $('.reply_btn').on('click', function() {
-        var reply = $(this).next('.reply_form');
-        if (reply.is(":visible")) {
-            reply.hide();
-        } else {
-            reply.show();
-        }
-    });
+//    $('form.reply_form').on('beforeSubmit', function(e) {
+//        var $form = $(this);
+//        if ($form.find("input[name='Comment[uid]']").val() == 0) {
+//            alerting({msg: '请先登陆'});
+//            return false;
+//        }
+//
+//        if ($.trim($form.find('.reply_content').val()) === '') {
+//            alerting({msg: '回复内容不能为空'});
+//            return false;
+//        }        
+//
+//        $.ajax({
+//            url: $form.attr('action'),
+//            type: 'post',
+//            data: $form.serialize(),
+//            success: function(obj) {
+//                // do something
+//                $('.reply_content').val('');
+//                var data = obj.data;
+//                var str = '<div class="media child-media">';
+//                str += ' <a href="#" class="pull-left">';
+//                str += '<img alt="' + data['nickname'] + '" src="' + data['avatar'] + '" class="media-object">';
+//                str += ' </a><div class="media-body">';
+//                str += '<h4 class="media-heading">' + data['nickname'] + '<span>' + data['createtime'] + '</span></h4>';
+//                str += data['content'] + '                        </div></div>';
+//
+//                $form.parents('.reply').siblings('.to_reply').prepend(str);
+//            }
+//        });
+//    }).on('submit', function(e) {
+//        e.preventDefault();
+//    })
+//
+//    $('.reply_btn').on('click', function() {
+//        var reply = $(this).next('.reply_form');
+//        if (reply.is(":visible")) {
+//            reply.hide();
+//        } else {
+//            reply.show();
+//        }
+//    });
 
 });
