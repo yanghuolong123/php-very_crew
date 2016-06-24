@@ -105,3 +105,25 @@ $(function() {
 //    });
 
 });
+
+function comment_ding(id) {
+    var obj = $("#comment_support_"+id);
+    $.post("index.php?r=comment/ding&id=" + id, function(e) {
+        obj.addClass("selected");
+        obj.html(e.data);
+        obj.on('click', function(evt) {
+            evt.preventDefault();
+        });
+    });
+}
+
+function comment_cai(id) {
+    var obj = $("#comment_oppose_"+id);
+    $.post("index.php?r=comment/cai", {id: id}, function(e) {
+        obj.addClass("selected");
+        obj.html(e.data);
+        obj.on('click', function(evt) {
+            evt.preventDefault();
+        });
+    });
+}

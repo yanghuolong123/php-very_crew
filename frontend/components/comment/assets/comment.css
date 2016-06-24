@@ -34,9 +34,13 @@ and open the template in the editor.
     padding-top: 10px;
 }
 
+.reply {
+    text-align: right;
+}
+
 .reply a {
     color: #00c66b;
-    float: right;
+    margin-right: 15px;
 }
 
 

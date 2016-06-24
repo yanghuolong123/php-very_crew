@@ -65,4 +65,27 @@ class CommentController extends \app\util\BaseController {
         ]);
     }
 
+    public function actionDing($id) {
+        $model = $this->findModel($id);
+        $model->updateCounters(['support' => 1]);
+
+        $this->sendRes(true, '', $model->support);
+    }
+
+    public function actionCai() {
+        $id = Yii::$app->request->post('id');
+        $model = $this->findModel($id);
+        $model->updateCounters(['oppose' => 1]);
+
+        $this->sendRes(true, '', $model->oppose);
+    }
+
+    protected function findModel($id) {
+        if (($model = Comment::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
 }

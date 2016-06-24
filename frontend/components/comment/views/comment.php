@@ -35,8 +35,10 @@ use app\models\extend\Comment;
                                 <?php endif; ?>
                                 <p class="comment_content"><?= $list['content']; ?></p>
                             </div>
-                            <div class="reply">
-                                <a href="#reply" class="reply_btn">回复</a>
+                            <div class="reply">                                                                
+                                <a href="javascript:comment_ding(<?= $list->id ?>);" id="comment_support_<?= $list->id ?>" class="abtn abtn-digg"><?= $list->support ?></a>
+                                <a href="javascript:comment_cai(<?= $list->id ?>);" id="comment_oppose_<?= $list->id ?>" class="abtn abtn-bury"><?= $list->oppose ?></a>
+                                <a href="#reply" class="reply_btn abtn">回复</a>
                                 <?= Html::hiddenInput("comment_id", $list->id) ?>
                             </div>
 
