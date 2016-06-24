@@ -11,20 +11,22 @@ $('a.thumbnail').on('click', function() {
 });
 
 function video_ding(id) {
+    var obj = $("#video_ding_"+id);
     $.post("index.php?r=video/ding&id=" + id, function(e) {
-        $("a.abtn-digg").addClass("selected");
-        $("a.abtn-digg").html(e.data);
-        $("a.abtn-digg").on('click', function(evt) {
+        obj.addClass("selected");
+        obj.html(e.data);
+        obj.on('click', function(evt) {
             evt.preventDefault();
         });
     });
 }
 
 function video_cai(id) {
+    var obj = $("#video_cai_"+id);
     $.post("index.php?r=video/cai", {id: id}, function(e) {
-        $("a.abtn-bury").addClass("selected");
-        $("a.abtn-bury").html(e.data);
-        $("a.abtn-bury").on('click', function(evt) {
+        obj.addClass("selected");
+        obj.html(e.data);
+        obj.on('click', function(evt) {
             evt.preventDefault();
         });
     });
