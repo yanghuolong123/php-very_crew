@@ -23,7 +23,8 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     
     <?= $form->field($userModel, 'username')->textInput(['maxlength' => true]) ?>
     
-    <?= $form->field($userModel, 'avatar')->imgInput() ?>
+    <?php // $form->field($userModel, 'avatar')->imgInput() ?>
+    <?= app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$userModel, 'title'=>'头像', 'attribute'=>'avatar']) ?>
     
     <?= $form->field($userModel, 'email')->textInput(['maxlength' => true]) ?>
     
