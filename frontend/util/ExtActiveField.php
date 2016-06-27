@@ -49,7 +49,7 @@ class ExtActiveField extends \yii\widgets\ActiveField {
         $this->parts['{input}'] = '<button type="button" class="btn btn-primary upload_img">上传图像</button>';
         $this->parts['{input}'] .= '<a href="#" class="crop_thumbnail" title="请先上传图像"><img class="cropbox" src="' . $this->model->{$this->attribute} . '" alt="点击上传图片"></a>' . Html::activeHiddenInput($this->model, $this->attribute, $options);
         $this->parts['{input}'] .= '<input type="hidden" id="x" name="x" /><input type="hidden" id="y" name="y" /><input type="hidden" id="w" name="w" /><input type="hidden" id="h" name="h" />';
-        $this->parts['{input}'] .= '<button type="button" class="btn btn-success">裁剪图像</button>';
+        $this->parts['{input}'] .= '<button type="button" id="cut_img" class="btn btn-success">裁剪图像</button>';
 
         return $this;
     }

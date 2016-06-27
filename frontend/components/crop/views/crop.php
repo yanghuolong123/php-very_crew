@@ -1,3 +1,6 @@
+<?php 
+use yii\helpers\Url;
+?>
 <style>
 .crop_thumbnail {
     background-color: #fff;
@@ -26,6 +29,28 @@
     $('.cropbox').Jcrop({
       aspectRatio: 1,
       onSelect: updateCoords
+    });
+    
+    $('#cut_img').click(function(){
+        var cropImg = $('.crop_img').val();
+        if(cropImg == '') {
+            alerting({msg: '请先上传图像'});
+        }
+        
+        var x = $('#x').val();
+        var y = $('#y').val();
+        var w = $('#w').val();
+        var h = $('#h').val();
+        if(x=='' || y=='' || w=='' || h=='') {
+            alerting({msg: '请先选中要裁剪的图像'});
+        }        
+        
+        $.post('<?= Url::to(['upload/cut-img']) ?>', {x:x,y:y,w:w,h:h,cropImg:cropImg}, function(obj){
+            if(!obj.success) {
+                return;
+            }
+            alerting({msg: '裁剪图像成功'});
+        });
     });
 
   });
@@ -66,4 +91,4 @@
 <?php $this->endBlock() ?>
 <?php $this->registerJs($this->blocks['cropImgJs'], \yii\web\View::POS_END); ?>
 
-<?= $form->field($model, $attribute)->cropImgInput() ?>
+<?= $form->field($model, $attribute)->cropImgInput(['class'=>'crop_img']) ?>

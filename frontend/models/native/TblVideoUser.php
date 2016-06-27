@@ -50,7 +50,7 @@ class TblVideoUser extends \yii\db\ActiveRecord
             'role' => '角色',
             'is_star' => '是否为主演',
             'status' => '状态',
-            'desc' => '申请说明',
+            'desc' => '描述',
             'createtime' => '加入时间',
         ];
     }
