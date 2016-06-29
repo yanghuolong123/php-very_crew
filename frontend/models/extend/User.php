@@ -9,6 +9,7 @@ class User extends \app\models\native\TblUser {
     private static $_user = [];
     public $verifyCode;
     public $verifyPassword;
+
     //public $profile;
 
     public function rules() {
@@ -19,7 +20,7 @@ class User extends \app\models\native\TblUser {
             ['username', 'unique'],
             [['username', 'email'], 'email'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
-            [['avatar'], 'string', 'max' => 255],
+            [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
             ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => 'register'],
             ['verifyCode', 'captcha', 'on' => 'register'],
         ];
@@ -48,15 +49,16 @@ class User extends \app\models\native\TblUser {
 
         return self::$_user[$id];
     }
-    
+
     public function getProfile() {
-        return $this->hasOne(UserProfile::className(), ['uid'=>'id']);
+        return $this->hasOne(UserProfile::className(), ['uid' => 'id']);
     }
 
     public function afterFind() {
         if (empty($this->avatar)) {
             $this->avatar = './image/default_avatar.jpg';
         }
+        
         //$this->profile = UserProfile::findOne(['uid' => $this->id]);
 
         parent::afterFind();

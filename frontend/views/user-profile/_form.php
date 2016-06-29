@@ -23,7 +23,16 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     
     <?= $form->field($userModel, 'username')->textInput(['maxlength' => true]) ?>
     
-    <?php // $form->field($userModel, 'avatar')->imgInput() ?>
+    <?php if(!empty($userModel->thumb_avatar)): ?>
+    <div class="form-group field-user-thumb_avatar">
+        <label for="user-thumb_avatar" class="col-lg-2 control-label">缩略图</label>
+        <div class="col-lg-2"><img class="thumbnail" src="<?= $userModel->thumb_avatar ?>"></div>
+        <div class="col-lg-1"><button class="btn btn-info update_avatarImg" type="button">修改</button></div>
+        <div class="col-lg-4"><div class="help-block"></div></div>
+    </div>
+    <?php // $form->field($userModel, 'thumb_avatar')->imgInput() ?>
+    <?php endif; ?>
+    
     <?= app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$userModel, 'title'=>'头像', 'attribute'=>'avatar']) ?>
     
     <?= $form->field($userModel, 'email')->textInput(['maxlength' => true]) ?>
@@ -53,9 +62,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
     <?= $form->field($model, 'height')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'weight')->textInput(['maxlength' => true]) ?>
-
-    
+    <?= $form->field($model, 'weight')->textInput(['maxlength' => true]) ?>   
 
     <?= $form->field($model, 'good_at_job', [
         'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
@@ -80,3 +87,13 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php $this->beginBlock('updateAvatarImgJs') ?>
+$(function(){
+    $('.form-crop').hide();
+    $('.update_avatarImg').click(function(){
+        $('.form-crop').show();
+    });
+});
+<?php $this->endBlock() ?>
+<?php $this->registerJs($this->blocks['updateAvatarImgJs'], \yii\web\View::POS_END); ?>

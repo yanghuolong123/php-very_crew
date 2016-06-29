@@ -32,7 +32,10 @@ class UploadController extends \app\util\BaseController {
             $targ_w = $targ_h = 150;
             $jpeg_quality = 90;
 
-            $src = Yii::$app->basePath . '/web'.$_POST['cropImg'];// 'demo_files/pool.jpg';
+            $pathInfo = pathinfo($_POST['cropImg']);
+            $relatePath = $pathInfo['dirname'] . '/' . 'thumb_' . $pathInfo['filename'] . '.' . $pathInfo['extension'];
+            $src = Yii::$app->basePath . '/web' .$relatePath ;
+            copy(Yii::$app->basePath . '/web' . $_POST['cropImg'], $src);
             $img_r = imagecreatefromjpeg($src);
             $dst_r = ImageCreateTrueColor($targ_w, $targ_h);
 
@@ -43,7 +46,7 @@ class UploadController extends \app\util\BaseController {
 //            header('Content-type: image/jpeg');
 //            imagejpeg($dst_r, null, $jpeg_quality);
 
-            $this->sendRes();
+            $this->sendRes(true,'ok', $relatePath);
         }
 
         $this->sendRes(false);

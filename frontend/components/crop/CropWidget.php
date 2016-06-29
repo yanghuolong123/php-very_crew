@@ -11,6 +11,7 @@ class CropWidget extends Widget {
     public $model;
     public $title;
     public $attribute;
+    public $options=[];
 
     public function run() {
         $view = $this->getView();
@@ -21,6 +22,7 @@ class CropWidget extends Widget {
                     'model' => $this->model,
                     'title' => $this->title,
                     'attribute' => $this->attribute,
+                    'options' => array_merge(['class' => 'form-group form-crop'], $this->options),
         ]);
     }
 
