@@ -25,7 +25,7 @@ use yii\helpers\Html;
 #preview-pane {
   display: block;
   position: absolute;
-  z-index: 2000;
+  z-index: 1000;
   top: 10px;
   right: -280px;
   padding: 6px;
@@ -99,6 +99,7 @@ use yii\helpers\Html;
         var cropImg = $('.crop_img').val();
         if(cropImg == '') {
             alerting({msg: '请先上传图像'});
+            return;
         }
         
         var x = $('#x').val();
@@ -107,6 +108,7 @@ use yii\helpers\Html;
         var h = $('#h').val();
         if(x=='' || y=='' || w=='' || h=='') {
             alerting({msg: '请先选中要裁剪的图像'});
+            return;
         }        
         
         $.post('<?= Url::to(['upload/cut-img']) ?>', {x:x,y:y,w:w,h:h,cropImg:cropImg}, function(obj){
@@ -114,7 +116,7 @@ use yii\helpers\Html;
                 return;
             }
             $('.thumb_img').val(obj.data);
-            alerting({msg: '裁剪图像成功'});
+            greeting({msg: '裁剪图像成功'});
         });
     });
 
