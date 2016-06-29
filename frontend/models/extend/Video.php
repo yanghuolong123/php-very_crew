@@ -38,6 +38,9 @@ class Video extends \app\models\native\TblVideo {
     }
 
     public function beforeValidate() {
+        if ($this->logo == './image/blank_img.jpg') {
+            $this->logo = '';
+        }
         $this->tag = is_array($this->tag) ? ',' . implode(',', $this->tag) . ',' : $this->tag;
 
         return parent::beforeValidate();

@@ -13,7 +13,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 
     <?php $form = ActiveForm::begin([
         'id' => 'video-form',
-        'options' => ['enctype' => 'multipart/form-data','class' => 'form-horizontal'],
+        'options' => ['enctype' => 'multipart/form-data','class' => 'form-horizontal', 'onsubmit'=>''],
         'fieldClass' => 'app\util\ExtActiveField',
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
@@ -33,8 +33,10 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'logo')->imgInput() ?>
+    <?php // $form->field($model, 'logo')->imgInput() ?>
+    <?= app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'作品封面', 'attribute'=>'logo','options'=>['style'=>'height:350px;'], 'defaultVal'=>'./image/blank_img.jpg']) ?>
 
+    <p></p><p></p><br>
     <?= $form->field($model, 'file')->uploadifyInput() ?>    
 
     <div class="form-group">
