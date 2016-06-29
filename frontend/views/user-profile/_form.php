@@ -26,9 +26,9 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     <?php if(!empty($userModel->thumb_avatar)): ?>
     <div class="form-group field-user-thumb_avatar">
         <label for="user-thumb_avatar" class="col-lg-2 control-label">缩略图</label>
-        <div class="col-lg-2"><img class="thumbnail" src="<?= $userModel->thumb_avatar ?>"></div>
+        <div class="col-lg-3"><img class="thumbnail" src="<?= $userModel->thumb_avatar ?>"></div>
         <div class="col-lg-1"><button class="btn btn-info update_avatarImg" type="button">修改</button></div>
-        <div class="col-lg-4"><div class="help-block"></div></div>
+        <div class="col-lg-2"><div class="help-block"></div></div>
     </div>
     <?php // $form->field($userModel, 'thumb_avatar')->imgInput() ?>
     <?php endif; ?>
@@ -90,7 +90,9 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
 <?php $this->beginBlock('updateAvatarImgJs') ?>
 $(function(){
+    <?php if(!empty($userModel->thumb_avatar)): ?>
     $('.form-crop').hide();
+    <?php endif; ?>
     $('.update_avatarImg').click(function(){
         $('.form-crop').show();
     });
