@@ -126,7 +126,7 @@ use yii\helpers\Html;
     var uploader = new PicUploader({
         success: function(obj) {
             $('img.cropbox').attr('src', obj['data']);
-            $('a.crop_thumbnail').next('input').val(obj['data']);
+            $('.crop_img').val(obj['data']);
             $('.jcrop-holder img').attr('src', obj['data']);
         }
     });
@@ -146,6 +146,13 @@ use yii\helpers\Html;
 <?= $form->field($model, $attribute,[
     'options' => $options,
     'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div id=\"preview-pane\"><div class=\"preview-container\"><img src=\"".$model->$attribute."\" class=\"jcrop-preview\" alt=\"Preview\" /></div></div><div class=\"col-lg-2\">{error}</div>",
-])->cropImgInput(['class'=>'crop_img']) ?>
+])->cropImgInput() ?>
 
-  <?= Html::activeHiddenInput($model, 'thumb_'.$attribute,['class'=>'thumb_img']) ?>
+<?php if($model->{$attribute} == $defaultVal) {
+    $model->{$attribute} = '';
+} ?>
+
+<?= Html::activeHiddenInput($model, $attribute,['class'=>'crop_img']) ?>
+<?= Html::activeHiddenInput($model, 'thumb_'.$attribute,['class'=>'thumb_img']) ?>
+
+<div class="clearfix"></div>

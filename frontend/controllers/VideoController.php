@@ -63,6 +63,7 @@ class VideoController extends \app\util\BaseController {
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->logo = './image/blank_img.jpg';
             return $this->render('create', [
                         'model' => $model,
             ]);
