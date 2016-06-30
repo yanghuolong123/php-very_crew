@@ -70,3 +70,7 @@ img.avatar {
 .abtn-bury.selected::before, .abtn-bury.selected:hover::before {
     background: rgba(0, 0, 0, 0) url("../image/cai_do.png") no-repeat scroll center center;
 }
+
+.thumbnail a img {
+    height: 250px;
+}
