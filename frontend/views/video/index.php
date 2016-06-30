@@ -13,11 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if(!empty($dataProvider->models)): ?>
    <div class="row">
-        <div class="container"><h3>拍摄计划搜索</h3></div>
+        <div class="container"><h3>作品搜索</h3></div>
         <?php foreach ($dataProvider->models as $video): ?>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-              <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img style="height:350px; width:350px;" src="<?= $video->logo ?>" alt="<?= $video->title ?>"></a>
+            <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= $video->logo ?>" alt="<?= $video->title ?>"></a>
             <div class="caption">
                 <h3><a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= $video->title ?></a></h3>
               <p><?= MetaData::getVal($video->type) ?>  - <?= implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))) ?></p>  

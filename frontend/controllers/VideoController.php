@@ -38,6 +38,7 @@ class VideoController extends \app\util\BaseController {
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 10;
+        $dataProvider->sort = ['defaultOrder' => ['createtime'=>SORT_DESC]];
         $searchModel->tag = explode(',', trim($searchModel->tag, ','));
 
         return $this->render('index', [
