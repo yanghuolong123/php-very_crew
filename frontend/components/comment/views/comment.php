@@ -70,7 +70,7 @@ use app\models\extend\Comment;
         <?= $form->field($model, 'content')->textarea(['rows' => 5, 'placeholder' => '大胆说说你对作品的感觉吧~']) ?>        
 
         <div class="form-group">
-            <div class="col-sm-offset-1">
+            <div class="col-lg-1">
                 <?= Html::activeHiddenInput($model, 'vid') ?>
                 <?= Html::activeHiddenInput($model, 'uid') ?>                
                 <?= Html::activeHiddenInput($model, 'parent_id', ['value' => 0]) ?>
