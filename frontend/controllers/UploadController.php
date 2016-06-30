@@ -21,6 +21,7 @@ class UploadController extends \app\util\BaseController {
 
         if ($file) {
             $file->saveAs($filePath . $fileName . '.' . $file->extension);
+            chmod($filePath . $fileName . '.' . $file->extension, 0777);
             $this->sendRes(true, '', $relatePath . $fileName . '.' . $file->extension);
         } else {
             $this->sendRes(false);
