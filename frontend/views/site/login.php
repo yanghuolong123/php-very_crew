@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-2">
+            <div class="col-sm-2 col-lg-offset-2">
                 <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
         </div>
