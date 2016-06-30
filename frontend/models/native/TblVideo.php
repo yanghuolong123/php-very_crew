@@ -43,8 +43,7 @@ class TblVideo extends \yii\db\ActiveRecord
             [['uid', 'plan_id', 'title', 'content', 'logo', 'thumb_logo', 'file', 'type', 'tag', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'required'],
             [['uid', 'plan_id', 'type', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['content'], 'string'],
-            [['title', 'logo', 'file', 'tag'], 'string', 'max' => 128],
-            [['thumb_logo'], 'string', 'max' => 255],
+            [['title', 'logo', 'thumb_logo', 'file', 'tag'], 'string', 'max' => 128],
         ];
     }
 

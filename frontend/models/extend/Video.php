@@ -12,7 +12,7 @@ class Video extends \app\models\native\TblVideo {
             [['title', 'content', 'logo', 'file', 'type', 'tag'], 'required'],
             [['type', 'plan_id'], 'integer'],
             [['content'], 'string'],
-            [['title', 'logo', 'tag', 'file'], 'string', 'max' => 128],
+            [['title', 'logo', 'thumb_logo', 'tag', 'file'], 'string', 'max' => 128],
         ];
     }
 
