@@ -35,7 +35,7 @@ use app\models\extend\MetaData;
     ])->radioList(MetaData::getGroupList('usingTime'))->label('可用于拍摄时间') ?>
     
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-1 col-md-offset-2 col-md-2">
         <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
         </div>
