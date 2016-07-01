@@ -22,7 +22,8 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     ]); ?>    
 
     
-    <?= $form->field($model, 'file')->fileInput() ?>    
+    <?= $form->field($model, 'file')->fileInput() ?>   
+    <?= $form->field($model, 'file')->imgInput() ?>
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2">
