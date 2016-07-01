@@ -79,7 +79,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-1 col-md-offset-2 col-md-2">
         <?= Html::submitButton('提交并保存', ['class' => 'btn btn-success btn-primary']) ?>
         </div>
     </div>
