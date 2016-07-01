@@ -24,6 +24,8 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     
     <?= $form->field($model, 'file')->fileInput() ?>   
     <?= $form->field($model, 'file')->imgInput() ?>
+    
+    <input type="file"  id="picupload-36756859256639507" accept=".jpg,.png,.jpeg,.gif">
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2">
@@ -35,31 +37,4 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 
 </div>
 
-<?php $this->beginBlock('uploadVideoJs') ?> 
 
-$(function() {
-    $("#file_upload").uploadify({
-        //debug    : true,
-        multi    : false,
-        uploadLimit : 1,
-        queueSizeLimit : 1,
-        buttonText  : '上传视频',
-        removeCompleted : false,
-        fileObjName   : 'file',
-        fileSizeLimit : 0,
-        height        : 30,
-        swf           : '/plugin/uploadify/uploadify.swf',
-        uploader      : 'index.php?r=upload/upload-file',
-        width         : 120,
-        onUploadSuccess : function(file, data, response) {
-            var res = eval("("+data+")");
-            $('#video-file').val(res['data']);
-        }
-
-    });
-});
-
-<?php $this->endBlock() ?>  
-<?php $this->registerJsFile('/plugin/uploadify/jquery.uploadify.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
-<?php $this->registerJs($this->blocks['uploadVideoJs'], \yii\web\View::POS_END); ?>
-<?php $this->registerCssFile('/plugin/uploadify/uploadify.css',['depends'=>['app\assets\AppAsset']]); ?>
