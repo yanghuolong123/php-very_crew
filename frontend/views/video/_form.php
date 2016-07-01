@@ -40,7 +40,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?= $form->field($model, 'file')->uploadifyInput() ?>    
 
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-1 col-md-offset-2">
         <?= Html::submitButton('提交并保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>
     </div>
