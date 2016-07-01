@@ -25,7 +25,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?= $form->field($model, 'file')->fileInput() ?>   
     <?= $form->field($model, 'file')->imgInput() ?>
     
-    <input type="file"  id="picupload-dsdssdds" >
+    <input type="file"  id="picupload-dsdssdds" accept="image/png,image/gif,image/jpg,image/jpeg">
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2">
