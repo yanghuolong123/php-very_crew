@@ -2,6 +2,8 @@
 
 namespace app\util;
 
+use Yii;
+
 class CommonUtil {
 
     /**
@@ -79,7 +81,7 @@ class CommonUtil {
      * @param String $dot		超出长度时缺省符合
      */
     public static function cutstr($string, $length, $dot = '...') {
-        $charset = Yii::app()->charset;  //'utf-8';
+        $charset = Yii::$app->charset;  //'utf-8';
         if (strlen($string) <= $length) {
             return $string;
         }
