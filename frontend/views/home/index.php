@@ -64,7 +64,7 @@ $this->title = '非常剧组';
         
         <div class="caption">
             <h3><a href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= $plan->title ?></a></h3>
-          <p><?= MetaData::getVal($plan->type) ?>  - <?= implode(', ',MetaData::getArrVal(explode(',', trim($plan->tag)))) ?></p>  
+            <p><?= MetaData::getVal($plan->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->tag)))),26) ?></p>  
           <p>拍摄地区：<?= implode(' ',Distrinct::getArrDistrict([$plan->province, $plan->city, $plan->county])) ?></p>
           <p>所需角色：<?= implode(', ',MetaData::getArrVal(explode(',', trim($plan->plan_role)))) ?></p>
           <p>所需演技：<?= implode(', ',MetaData::getArrVal(explode(',', trim($plan->plan_skill)))) ?></p>
