@@ -3,6 +3,7 @@ use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 use app\models\extend\User;
 use yii\helpers\Url;
+use app\util\CommonUtil;
 
 $this->title = '非常剧组';
 ?>
@@ -47,7 +48,7 @@ $this->title = '非常剧组';
         <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= $video->logo ?>" alt="<?= $video->title ?>"></a>
         <div class="caption">
           <h3><a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= $video->title ?></a></h3>
-          <p><?= MetaData::getVal($video->type) ?>  - <?= implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))) ?></p>  
+          <p><?= MetaData::getVal($video->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))), 12) ?></p>  
           <p><?= $video->views ?>人气/ <?= $video->comments ?>点评/ <?= $video->support ?>赞</p>
         </div>
       </div>
