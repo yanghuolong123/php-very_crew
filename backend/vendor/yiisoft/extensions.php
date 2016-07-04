@@ -57,4 +57,41 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'rmrevin/yii2-fontawesome' => 
+  array (
+    'name' => 'rmrevin/yii2-fontawesome',
+    'version' => '2.15.1.0',
+    'alias' => 
+    array (
+      '@rmrevin/yii/fontawesome' => $vendorDir . '/rmrevin/yii2-fontawesome',
+    ),
+  ),
+  'deesoft/yii2-adminlte' => 
+  array (
+    'name' => 'deesoft/yii2-adminlte',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@dee/adminlte' => $vendorDir . '/deesoft/yii2-adminlte',
+    ),
+  ),
+  'deesoft/yii2-angular' => 
+  array (
+    'name' => 'deesoft/yii2-angular',
+    'version' => '1.3.0.0',
+    'alias' => 
+    array (
+      '@dee/angular' => $vendorDir . '/deesoft/yii2-angular',
+    ),
+    'bootstrap' => 'dee\\angular\\Bootstrap',
+  ),
+  'mdmsoft/yii2-admin' => 
+  array (
+    'name' => 'mdmsoft/yii2-admin',
+    'version' => '3.2.0.0',
+    'alias' => 
+    array (
+      '@mdm/admin' => $vendorDir . '/mdmsoft/yii2-admin',
+    ),
+  ),
 );

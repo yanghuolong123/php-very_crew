@@ -23,6 +23,13 @@ $config = [
             ],
         ],
         'db' => $db,
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',  
+            'itemTable' => 'tbl_auth_item',  
+            'assignmentTable' => 'tbl_auth_assignment',  
+            'itemChildTable' => 'tbl_auth_item_child',  
+            'ruleTable'=>'tbl_auth_rule'
+        ],
     ],
     'params' => $params,
     /*
