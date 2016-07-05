@@ -33,7 +33,7 @@ $tips = $user_msg || $user_private_msg ? '<span class="glyphicon glyphicon-volum
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => '<img style="height:32px;" src="image/logo.png" />',
+        'brandLabel' => '<img style="height:32px;" src="/image/logo.png" />',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
