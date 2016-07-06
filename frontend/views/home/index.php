@@ -45,7 +45,7 @@ $this->title = '非常剧组';
     <?php foreach ($recomVideos as $video): ?>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= $video->logo ?>" alt="<?= $video->title ?>"></a>
+        <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= $video->logo.'!250!250' ?>" alt="<?= $video->title ?>"></a>
         <div class="caption">
           <h3><a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= $video->title ?></a></h3>
           <p><?= MetaData::getVal($video->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))), 26) ?></p>  
