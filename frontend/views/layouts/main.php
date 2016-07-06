@@ -56,7 +56,7 @@ $tips = $user_msg || $user_private_msg ? '<span class="glyphicon glyphicon-volum
         'options' => ['class' =>'navbar-nav navbar-right'],
         'items' => [
             [
-                'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.Yii::$app->user->identity->avatar.'">  '.Yii::$app->user->identity->nickname.' '.$tips : '',
+                'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.Yii::$app->user->identity->avatar.'!50!50">  '.Yii::$app->user->identity->nickname.' '.$tips : '',
                 'visible' => !Yii::$app->user->isGuest,
                 'encode' => false,
                 'linkOptions' => ['class'=>'avatar'],
