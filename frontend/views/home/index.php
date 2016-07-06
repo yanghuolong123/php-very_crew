@@ -80,7 +80,7 @@ $this->title = '非常剧组';
     <?php foreach ($recomUsers as $user): ?>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-          <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= User::getInfo($user->id)->avatar ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
+          <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= User::getInfo($user->id)->avatar.'!250!250' ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
         <div class="caption">
           <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
           <p><?= implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
