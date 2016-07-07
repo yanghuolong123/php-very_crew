@@ -1,5 +1,5 @@
 <?php
-use Yii;
+//use Yii;
 use yii\helpers\Html;
 use app\models\extend\MetaData;
 use app\models\extend\User;
