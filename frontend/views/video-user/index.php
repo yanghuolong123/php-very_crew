@@ -12,8 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-user-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search_user', ['model' => $searchModel]); ?>
 
+    <h3>作品成员列表</h3>
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,

@@ -5,11 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\extend\VideoUser;
 use app\models\search\VideoUserSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\extend\User;
 
-class VideoUserController extends Controller {
+class VideoUserController extends \app\util\BaseController {
 
     public function behaviors() {
         return [
@@ -45,7 +45,7 @@ class VideoUserController extends Controller {
         if (empty($uid)) {
             return $this->redirect(['site/info', 'msg' => '没有指定具体成员']);
         }
-        
+
         $model->uid = $uid;
         $model->is_star = empty($model->is_star) ? 0 : $model->is_star;
 
@@ -53,7 +53,7 @@ class VideoUserController extends Controller {
         if (VideoUser::find()->where(['uid' => $uid, 'video_id' => $model->video_id])->exists()) {
             return $this->redirect(['site/info', 'msg' => '该用户已经是此作品成员']);
         }
-        
+
         $model->status = 1;
         if ($model->save()) {
             return $this->redirect(['index', 'video_id' => $model->video_id]);
@@ -89,6 +89,17 @@ class VideoUserController extends Controller {
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionUserSearch() {
+        $search = trim(Yii::$app->request->post('search'));
+
+        $condition = is_numeric($search) ? ['id' => $search, 'status' => 1] : ['nickname' => $search, 'status' => 1];
+        $userModel = User::find()->where($condition)->orderBy('id desc')->all();
+
+        return $this->renderAjax('user-search', [
+                    'userModel' => $userModel
+        ]);
     }
 
 }
