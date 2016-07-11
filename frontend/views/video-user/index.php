@@ -6,7 +6,7 @@ use app\models\extend\User;
 use app\models\extend\Video;
 use app\models\extend\MetaData;
 
-$this->title = '参与人员管理';
+$this->title = '关联作品成员';
 //$this->params['breadcrumbs'][] = ['label' => '作品修改', 'url' => ['video/update', 'id' => $searchModel->video_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
