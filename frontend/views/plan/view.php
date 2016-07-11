@@ -6,7 +6,7 @@ use app\models\extend\Distrinct;
 use app\models\extend\User;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => '我的计划', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = ['label' => '我的计划', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="plan-view">
