@@ -156,6 +156,6 @@ use yii\helpers\Html;
 } ?>
 
 <?= Html::activeHiddenInput($model, $attribute,['class'=>'crop_img']) ?>
-<?= Html::activeHiddenInput($model, 'thumb_'.$attribute,['class'=>'thumb_img']) ?>
-
+<?php // Html::activeHiddenInput($model, 'thumb_'.$attribute,['class'=>'thumb_img']) ?>
+<?= $form->field($model, 'thumb_'.$attribute)->hiddenInput(['class'=>'thumb_img'])->label(false) ?>
 <div class="clearfix"></div>
