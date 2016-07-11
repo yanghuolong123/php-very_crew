@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'createtime:datetime',
             [
                 'attribute'=>'createtime',
-                'format' => ['date', 'Y-m-d H:i:s'],
+                'format' => ['date', 'Y-M-d H:i:s'],
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
