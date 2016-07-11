@@ -19,13 +19,13 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
             'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
-    ]); ?>    
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    ]); ?> 
     
     <?php if(!empty($planList)): ?>
-    <?= $form->field($model, 'plan_id')->dropDownList($planList,['prompt'=>'请选择']) ?>
+    <?= $form->field($model, 'plan_id')->dropDownList($planList,['prompt'=>'请选择'])->label('匹配计划') ?>
     <?php endif; ?>
+
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>   
     
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     
