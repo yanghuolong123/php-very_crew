@@ -64,7 +64,7 @@ use yii\helpers\Html;
     $('.cropbox').Jcrop({      
       bgFade: true,
       bgOpacity: .2,
-      setSelect: [ 20, 40, 340, 130 ],
+      setSelect: [ 10, 10, 340, 130 ],
       onChange: updatePreview,
       onSelect: updatePreview,
       aspectRatio: xsize / ysize
