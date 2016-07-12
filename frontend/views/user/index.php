@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
               <p><?= empty($user->profile['province']) ? "<br>" : implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
               <?php if(!Yii::$app->user->isGuest): ?>
-              <p><a class="btn btn-default" href="<?= Url::to(['video-user/create', 'uid'=>$user->id]) ?>">添加他为我的作品成员 &raquo;</a></p>
+              <p><a class="btn btn-default" href="<?= Url::to(['plan/invitation', 'uid'=>$user->id]) ?>">将其添加到我的计划备选人员 &raquo;</a></p>
               <?php endif; ?>
             </div>
           </div>

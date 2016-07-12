@@ -6,11 +6,10 @@ use Yii;
 use app\models\extend\Plan;
 use app\models\extend\PlanUser;
 use app\models\search\PlanSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class PlanController extends Controller {
+class PlanController extends \app\util\BaseController {
 
     public function behaviors() {
         return [
@@ -76,7 +75,7 @@ class PlanController extends Controller {
         } else {
             $model->tag = explode(',', trim($model->tag, ','));
             $model->plan_role = explode(',', trim($model->plan_role, ','));
-            $model->plan_skill = explode(',', trim($model->plan_skill, ','));            
+            $model->plan_skill = explode(',', trim($model->plan_skill, ','));
 
             return $this->render('update', [
                         'model' => $model,
@@ -105,12 +104,8 @@ class PlanController extends Controller {
         if (!empty($planUser)) {
             Yii::$app->session->setFlash('hasJoin', $planUser->status);
         }
-        $plan = Plan::findOne($plan_id);
-        if ($plan->uid == Yii::$app->user->id) {
-            $model->type = 1;
-            $model->status = 1;
-        }
 
+        $model->type = 1;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             return $this->redirect(['view', 'id' => $model->plan_id]);
@@ -144,12 +139,36 @@ class PlanController extends Controller {
         $searchModel->uid = Yii::$app->user->id;
         $searchModel->status = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['createtime'=>SORT_DESC]];
-        
+        $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
+
         return $this->render('my', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionInvitation($uid) {
+        $model = new PlanUser();
+
+        $model->uid = $uid;
+        $model->type = 2;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $comment = new \app\models\extend\Comment();
+            $comment->type = 4;
+            $comment->uid = Yii::$app->user->id;
+            $comment->vid = $model->uid;
+            $comment->content = '某某将您加入计划XX备选人员，建议您主动联系他沟通合作事宜。';
+            $comment->save();
+
+            Yii::$app->redis->incr('user_news_' . $model->uid);
+            return $this->redirect(['view', 'id' => $model->plan_id]);
+        } else {
+            return $this->render('invitation', [
+                        'model' => $model,
+            ]);
+        }
+
+        $this->sendRes(false, '操作失败');
     }
 
 }

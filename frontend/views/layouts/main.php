@@ -14,7 +14,8 @@ AppAsset::register($this);
 $redis = Yii::$app->redis;
 $user_msg = $redis->get('user_msg_'.Yii::$app->user->id);
 $user_private_msg = $redis->get('user_private_msg_'.Yii::$app->user->id);
-$tips = $user_msg || $user_private_msg ? '<span class="glyphicon glyphicon-volume-up" style="color:red;"></span>' : '';
+$user_news = $redis->get('user_news_'.Yii::$app->user->id);
+$tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon glyphicon-volume-up" style="color:red;"></span>' : '';
 
 ?>
 <?php $this->beginPage() ?>
@@ -63,6 +64,7 @@ $tips = $user_msg || $user_private_msg ? '<span class="glyphicon glyphicon-volum
                 'items' => [
                      ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">'.($user_private_msg ? '('.$user_private_msg.')' : '').'</span>', 'url' => ['comment/my-list','type'=>2],'encode' => false],
                      ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">'.($user_msg ? '('.$user_msg.')' : '').'</span>', 'url' => ['comment/my-list', 'type'=>3],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的消息 <span class="tip_num">'.($user_news ? '('.$user_news.')' : '').'</span>', 'url' => ['comment/my-list', 'type'=>4],'encode' => false],
                      ['label' => '<span class="glyphicon glyphicon-user"></span> 我的资料', 'url' => ['user-profile/view', 'uid'=>Yii::$app->user->id],'encode' => false],
                      '<li class="divider"></li>',
                      ['label' => '我的计划', 'url' => ['plan/my']],
