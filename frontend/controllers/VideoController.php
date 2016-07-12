@@ -62,7 +62,8 @@ class VideoController extends \app\util\BaseController {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             \app\models\extend\PlanUser::turnToVideoUser($model->plan_id, $model->id);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['video-user/index', 'video_id' => $model->id]);
         } else {
             $model->logo = './image/blank_img.jpg';
             return $this->render('create', [
