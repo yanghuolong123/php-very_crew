@@ -19,7 +19,7 @@ use app\models\extend\MetaData;
     ]);
     ?>
 
-    <?= $form->field($model, 'video_id')->dropDownList(Video::getVideoList(Yii::$app->user->id), ['prompt' => '请选择作品'])->label('作品') ?>
+    <?= $form->field($model, 'video_id')->dropDownList(Video::getVideoList(Yii::$app->user->id), ['prompt' => '请选择作品', 'disabled'=> !empty($model->video_id)])->label('作品') ?>
 
     <?= $form->field($model, 'role')->dropDownList(MetaData::getGroupList('planRole'),['prompt'=>'请选择角色']) ?>
 

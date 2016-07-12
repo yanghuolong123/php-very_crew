@@ -39,7 +39,7 @@ use yii\helpers\Url;
 $(function() {    
     $(".user-search-bt").click(function(){
         var search = $('#usersearch').val();
-        $.post("<?= Url::to(['user-search']) ?>",{search:search}, function(data){
+        $.post("<?= Url::to(['user-search']) ?>",{search:search, video_id:<?= $_GET['video_id'] ?>}, function(data){
             $('#search-user-content').html(data);
         });
     });

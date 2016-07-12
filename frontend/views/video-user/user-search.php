@@ -15,7 +15,7 @@ use yii\helpers\Url;
         <div class="caption">
           <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
           <p><?= implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
-          <p><a class="btn btn-default" href="<?= Url::to(['video-user/create', 'uid'=>$user->id]) ?>">添加他为我的作品成员 &raquo;</a></p>
+          <p><a class="btn btn-default" href="<?= Url::to(['video-user/create', 'uid'=>$user->id, 'video_id'=>$video_id]) ?>">添加他为我的作品成员 &raquo;</a></p>
         </div>
       </div>
     </div>

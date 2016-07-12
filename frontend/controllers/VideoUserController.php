@@ -42,6 +42,7 @@ class VideoUserController extends \app\util\BaseController {
     public function actionCreate() {
         $model = new VideoUser();
         $uid = Yii::$app->request->get('uid');
+        $video_id = Yii::$app->request->get('video_id');
         if (empty($uid)) {
             return $this->redirect(['site/info', 'msg' => '没有指定具体成员']);
         }
@@ -50,6 +51,9 @@ class VideoUserController extends \app\util\BaseController {
         $model->is_star = empty($model->is_star) ? 0 : $model->is_star;
 
         $model->load(Yii::$app->request->post());
+        if(!empty($video_id)) {
+            $model->video_id = $video_id;
+        }
         if (VideoUser::find()->where(['uid' => $uid, 'video_id' => $model->video_id])->exists()) {
             return $this->redirect(['site/info', 'msg' => '该用户已经是此作品成员']);
         }
@@ -93,12 +97,14 @@ class VideoUserController extends \app\util\BaseController {
 
     public function actionUserSearch() {
         $search = trim(Yii::$app->request->post('search'));
+        $video_id = Yii::$app->request->post('video_id');
 
         $condition = is_numeric($search) ? ['id' => $search, 'status' => 1] : ['nickname' => $search, 'status' => 1];
         $userModel = User::find()->where($condition)->orderBy('id desc')->all();
 
         return $this->renderAjax('user-search', [
-                    'userModel' => $userModel
+                    'userModel' => $userModel,
+                    'video_id' => $video_id,
         ]);
     }
 
