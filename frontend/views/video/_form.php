@@ -34,7 +34,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
     <?php // $form->field($model, 'logo')->imgInput() ?>
-    <?= app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'作品封面', 'attribute'=>'logo','options'=>['style'=>'height:350px;'], 'defaultVal'=>'./image/blank_img.jpg']) ?>
+    <?= app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'作品封面', 'attribute'=>'logo','options'=>['style'=>'height:220px;'], 'defaultVal'=>'./image/blank_img.jpg']) ?>
 
     <p></p><p></p><br>
     <?= $form->field($model, 'file')->uploadifyInput() ?>    

@@ -64,7 +64,7 @@ use yii\helpers\Html;
     $('.cropbox').Jcrop({      
       bgFade: true,
       bgOpacity: .2,
-      setSelect: [ 10, 10, 340, 130 ],
+      //setSelect: [ 10, 10, 340, 130 ],
       onChange: updatePreview,
       onSelect: updatePreview,
       aspectRatio: xsize / ysize
@@ -148,7 +148,8 @@ use yii\helpers\Html;
   
 <?= $form->field($model, $attribute,[
     'options' => $options,
-    'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div id=\"preview-pane\"><div class=\"preview-container\"><img src=\"".$model->$attribute."\" class=\"jcrop-preview\" alt=\"Preview\" /></div></div><div class=\"col-lg-2\">{error}</div>",
+    //'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div id=\"preview-pane\"><div class=\"preview-container\"><img src=\"".$model->$attribute."\" class=\"jcrop-preview\" alt=\"Preview\" /></div></div><div class=\"col-lg-2\">{error}</div>",
+    'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
 ])->cropImgInput() ?>
 
 <?php if($model->{$attribute} == $defaultVal) {
