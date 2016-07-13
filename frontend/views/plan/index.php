@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container"><h3>最新计划</h3></div>
         <?php foreach ($dataProvider->models as $plan): ?>
         <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
+          <div class="thumbnail" style="height:272px;">
 
             <div class="caption">
                 <h3><a href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= $plan->title ?></a></h3>
