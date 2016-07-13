@@ -20,6 +20,22 @@ class ExtActiveField extends \yii\widgets\ActiveField {
 
         return $this;
     }
+    
+    public function uploadImg($options = []) {
+        // https://github.com/yiisoft/yii2/pull/795
+        if ($this->inputOptions !== ['class' => 'form-control']) {
+            $options = array_merge($this->inputOptions, $options);
+        }
+        // https://github.com/yiisoft/yii2/issues/8779
+        if (!isset($this->form->options['enctype'])) {
+            $this->form->options['enctype'] = 'multipart/form-data';
+        }
+        $this->adjustLabelFor($options);
+        $this->parts['{input}'] = '<div class="thumbnail" style="height:220px;"><img src="' . $this->model->{$this->attribute} . '" style="display:none;"></div>';
+        $this->parts['{input}'] .= '<button type="button" class="btn btn-primary upload_img">上传图像</button> ';
+        $this->parts['{input}'] .= Html::activeHiddenInput($this->model, $this->attribute, $options);
+        return $this;
+    }
 
     public function uploadifyInput($options = []) {
         // https://github.com/yiisoft/yii2/pull/795
