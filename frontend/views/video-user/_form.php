@@ -23,13 +23,7 @@ use app\models\extend\MetaData;
 
     <?= $form->field($model, 'role')->dropDownList(MetaData::getGroupList('planRole'),['prompt'=>'请选择角色']) ?>
 
-    <?= $form->field($model, 'is_star')->radioList([0 => '否', 1 => '是']) ?>
-    
-    <?php if(!$model->isNewRecord): ?>
-    <?= $form->field($model, 'status')->dropDownList([1=>'已确定', 0=> '待确定']) ?>
-    <?php endif; ?>
-
-    <?= $form->field($model, 'desc')->textarea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'desc')->textarea(['maxlength' => true])->label('备注') ?>
 
     <?= Html::activeHiddenInput($model, 'uid') ?>
 

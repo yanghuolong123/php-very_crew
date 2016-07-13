@@ -39,27 +39,22 @@ class VideoUserController extends \app\util\BaseController {
         ]);
     }
 
-    public function actionCreate() {
-        $model = new VideoUser();
+    public function actionCreate() {        
         $uid = Yii::$app->request->get('uid');
         $video_id = Yii::$app->request->get('video_id');
         if (empty($uid)) {
             return $this->redirect(['site/info', 'msg' => '没有指定具体成员']);
         }
 
+        $model = new VideoUser();
         $model->uid = $uid;
-        $model->is_star = empty($model->is_star) ? 0 : $model->is_star;
+        $model->video_id = $video_id;
 
-        $model->load(Yii::$app->request->post());
-        if(!empty($video_id)) {
-            $model->video_id = $video_id;
-        }
         if (VideoUser::find()->where(['uid' => $uid, 'video_id' => $model->video_id])->exists()) {
             return $this->redirect(['site/info', 'msg' => '该用户已经是此作品成员']);
         }
 
-        $model->status = 1;
-        if ($model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'video_id' => $model->video_id]);
         } else {
             return $this->render('create', [
