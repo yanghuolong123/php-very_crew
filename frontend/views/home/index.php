@@ -60,15 +60,14 @@ $this->title = '非常剧组';
     <div class="container"><h3>最新计划</h3></div>
     <?php foreach ($latestPlans as $plan): ?>
     <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        
+      <div class="thumbnail" style="height:272px;">        
         <div class="caption">
             <h3><a href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= $plan->title ?></a></h3>
             <p><?= MetaData::getVal($plan->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->tag)))),40) ?></p>  
           <p>拍摄地区：<?= implode(' ',Distrinct::getArrDistrict([$plan->province, $plan->city, $plan->county])) ?></p>
           <p>所需角色：<?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->plan_role)))), 40) ?></p>
           <p>所需演技：<?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->plan_skill)))), 40) ?></p>
-          <p>剧情简介：<?= CommonUtil::cutstr($plan->content, 42) ?></p>
+          <p>剧情简介：<?= CommonUtil::cutstr($plan->content, 125) ?></p>
         </div>
       </div>
     </div>
