@@ -8,7 +8,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
 
     public function rules() {
         return [
-            [['uid', 'plan_id', 'role', 'desc'], 'required'],
+            [['uid', 'plan_id'], 'required'],
             [['uid', 'plan_id', 'role', 'status', 'createtime', 'updatetime'], 'integer'],
             [['desc'], 'string', 'max' => 255],
         ];
@@ -16,7 +16,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
 
     public function beforeSave($insert) {
         if ($this->isNewRecord) {
-            $this->createtime = time();
+            $this->updatetime = $this->createtime = time();
         }
 
         return parent::beforeSave($insert);
@@ -24,7 +24,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
 
     public static function turnToVideoUser($planId, $videoId) {
         $models = self::findAll(['plan_id' => $planId, 'status' => 1]);
-        
+
         foreach ($models as $model) {
             $videoUser = new \app\models\extend\VideoUser();
             $videoUser->uid = $model->uid;
