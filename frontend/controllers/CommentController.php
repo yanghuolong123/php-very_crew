@@ -51,7 +51,18 @@ class CommentController extends \app\util\BaseController {
     }
 
     public function actionMyList($type) {
-        Yii::$app->redis->del('user_msg_' . Yii::$app->user->id);
+        switch ($type) {
+            case 2:
+                Yii::$app->redis->del('user_msg_' . Yii::$app->user->id);
+                break;
+            case 3:
+                Yii::$app->redis->del('user_private_msg_' . Yii::$app->user->id);
+                break;
+            case 4:
+                Yii::$app->redis->del('user_news_' . Yii::$app->user->id);
+                break;
+        }
+        
 
         $query = Comment::find()->where(['type' => $type, 'vid' => Yii::$app->user->id]);
         $countQuery = clone $query;

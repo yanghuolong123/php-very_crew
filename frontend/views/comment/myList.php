@@ -7,7 +7,7 @@ use app\models\extend\User;
 use app\models\extend\Comment;
 
 $this->title = '我的留言';
-$this->params['breadcrumbs'][] = ['label' => '消息中心', 'url' => ['']];
+$this->params['breadcrumbs'][] = '消息中心';//['label' => '消息中心', 'url' => ['']];
 $this->params['breadcrumbs'][] = $this->title;
 
 app\components\comment\CommentAsset::register($this);
@@ -22,6 +22,7 @@ app\components\comment\CommentAsset::register($this);
             'items' => [
                 ['label' => '我的留言', 'url' => ['comment/my-list', 'type'=>2]],
                 ['label' => '我的私信', 'url' => ['comment/my-list', 'type'=>3]],
+                ['label' => '我的消息', 'url' => ['comment/my-list', 'type'=>4]],
             ],
         ]);
         ?>
