@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use app\models\extend\MetaData;
 
 
-$this->title = '邀请他加入拍摄计划';
+$this->title = '添加到计划备选人员';
 $this->params['breadcrumbs'][] = $this->title;
 
 $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
@@ -38,16 +38,21 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
         ],
     ]); ?>
     
-    <?= $form->field($model, 'plan_id')->dropDownList($planList,['prompt'=>'请选择计划']) ?>
+    <div class="form-group">
+        <div class="col-sm-offset-2">  
+        <div class="alert alert-info col-lg-8" role="alert">添加后建议您主动联系对方沟通合作,并在"我的计划"中对人员进行备注</div>
+        </div>
+    </div>
     
-    <?= $form->field($model, 'desc')->textarea(['rows' => 6]) ?> 
+    <?= $form->field($model, 'plan_id')->dropDownList($planList,['prompt'=>'请选择计划']) ?>
+       
     
     <?= Html::activeHiddenInput($model, 'uid')  ?>
     <?= Html::activeHiddenInput($model, 'type')  ?>
     
    
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-offset-2">            
         <?= Html::submitButton('确定', ['class' => 'btn btn-success']) ?>
         </div>
     </div>
