@@ -2,6 +2,8 @@
 
 namespace app\util;
 
+use Yii;
+
 class BaseController extends \yii\web\Controller {
 
     protected function sendRes($success = true, $msg = '', $data = '', $code = '') {
@@ -14,6 +16,13 @@ class BaseController extends \yii\web\Controller {
 
         echo json_encode($arr);
         exit;
+    }
+
+    public function actionInfo($info_view) {
+        $data = Yii::$app->request->get('data');
+        return $this->render($info_view, [
+                    'data' => empty($data) ? '' : $data,
+        ]);
     }
 
 }

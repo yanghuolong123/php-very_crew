@@ -14,15 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if (Yii::$app->session->hasFlash('hasJoin')): ?>
     <?php if(Yii::$app->session->getFlash('hasJoin') == 0):  ?>
         <div class="alert alert-warning">
-            <h2>亲，您已经申请加入了此拍摄计划，请等待计划发起人审核。</h2>
-        </div>
-    <?php elseif(Yii::$app->session->getFlash('hasJoin') == 1): ?>
-        <div class="alert alert-info">
-            <h2>亲，计划发起人已经审核通过你的申请，您已经是此计划的成员。</h2>
+            <h2>亲，您已经成功申请加入了此拍摄计划，请主动联系计划发起人进行沟通。</h2>
         </div>
     <?php else: ?>
         <div class="alert alert-danger">
-            <h2>亲，计划发起人经过审核你的申请，已确认你不适合加入此计划。</h2>
+            <h2>亲，计划发起人已经删除您的申请，如果有疑问请主动联系发起人。</h2>
         </div>
     <?php endif; ?>
 <?php else: ?>

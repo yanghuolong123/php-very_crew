@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = '编辑';
 ?>
 <div class="plan-update">
     <p>    
-    <?= Html::a('管理计划成员', ['user', 'plan_id' => $model->id], ['class' => 'btn btn-info']) ?>
+    <?= Html::a('管理计划成员', ['plan-user/index', 'plan_id' => $model->id], ['class' => 'btn btn-info']) ?>
     </p>        
 
     <?= $this->render('_form', [
