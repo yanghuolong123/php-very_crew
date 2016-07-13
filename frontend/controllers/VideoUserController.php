@@ -25,6 +25,7 @@ class VideoUserController extends \app\util\BaseController {
     public function actionIndex($video_id) {
         $searchModel = new VideoUserSearch();
         $searchModel->video_id = $video_id;
+        $searchModel->status = 0;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -79,7 +80,7 @@ class VideoUserController extends \app\util\BaseController {
         $model = $this->findModel($id);
         $model->updateAttributes(['status' => -1]);
 
-        return $this->redirect(['index', ['video_id' => $model->video_id]]);
+        return $this->redirect(['index', 'video_id' => $model->video_id]);
     }
 
     protected function findModel($id) {
