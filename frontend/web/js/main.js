@@ -10,6 +10,17 @@ $('a.thumbnail').on('click', function() {
     uploader.start();
 });
 
+$('.upload_img').on('click', function() {
+    var $this = $(this);
+    var uploader = new PicUploader({
+        success: function(obj) {
+            $this.prev('div').find('img').attr('src', obj['data']).css({width:'350px',height:'210px'}).show();
+            $this.next('input').val(obj['data']);
+        }
+    });
+    uploader.start();
+});
+
 function video_ding(id) {
     var obj = $("#video_ding_"+id);
     $.post("index.php?r=video/ding&id=" + id, function(e) {
