@@ -12,11 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="plan-view">
 
     <div class="container">
-        <p>
-            <?php if($model->uid == Yii::$app->user->id): ?>
-            <?= Html::a('管理我的计划', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('管理计划成员', ['user', 'plan_id' => $model->id], ['class' => 'btn btn-info']) ?>
-            <?php endif; ?>
+        <p>       
            
             <?= Html::a('加入拍摄计划', ['join', 'plan_id' => $model->id], ['class' => 'btn btn-success']) ?>
         </p>
