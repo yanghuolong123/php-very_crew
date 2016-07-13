@@ -43,11 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => '角色',
-                'attribute' => 'role',
-                'format' => 'raw',
-                'value' => function($data) {
-                    return MetaData::getVal($data->role);
-                },
+                'attribute' => 'role_name',
+//                'format' => 'raw',
+//                'value' => function($data) {
+//                    return MetaData::getVal($data->role);
+//                },
             ],
             //'video_id',
             //'role',

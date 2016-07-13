@@ -3,6 +3,7 @@
 namespace app\models\extend;
 
 use Yii;
+use app\models\extend\MetaData;
 
 class PlanUser extends \app\models\native\TblPlanUser {
 
@@ -30,6 +31,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
             $videoUser->uid = $model->uid;
             $videoUser->video_id = $videoId;
             $videoUser->role = $model->role;
+            $videoUser->role_name = MetaData::getVal($model->role);
             $videoUser->status = 0;
             $videoUser->save(false);
         }

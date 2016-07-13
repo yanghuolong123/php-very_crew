@@ -46,11 +46,11 @@ class TblPlanUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => '类型',
+            'type' => '类型:1申请 2邀请',
             'uid' => '用户ID',
             'plan_id' => '计划',
             'role' => '申请角色',
-            'status' => '状态',
+            'status' => '状态：-1不通过，0等待审核，1通过审核',
             'desc' => '申请说明',
             'createtime' => '申请时间',
             'updatetime' => '审核时间',
