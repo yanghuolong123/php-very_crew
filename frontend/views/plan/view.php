@@ -40,7 +40,7 @@ $plan = Plan::findOne($model->id);
         <?php foreach ($planUsers as $user): ?>
         <div class="col-sm-5 col-md-3">
           <div class="thumbnail">
-            <img style="height:250px; width:250px;" src="<?= User::getInfo($user->uid)->avatar ?>" alt="<?= User::getInfo($user->uid)->nickname ?>">
+            <img style="height:250px;" src="<?= User::getInfo($user->uid)->avatar ?>" alt="<?= User::getInfo($user->uid)->nickname ?>">
             <div class="caption">
               <h3><?= User::getInfo($user->uid)->nickname ?></h3>
               <p>角色：<?php if($user->uid == $plan->uid): ?>发起人 <?php endif; ?><?= MetaData::getVal($user->role) ?></p>              
