@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use app\models\extend\User;
 use app\models\extend\Video;
 use app\models\extend\MetaData;
+use app\models\extend\Distrinct;
 
 $this->title = '关联作品成员';
 //$this->params['breadcrumbs'][] = ['label' => '作品修改', 'url' => ['video/update', 'id' => $searchModel->video_id]];
@@ -38,7 +39,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function($data) {
                     $user = User::getInfo($data->uid);
-                    return Html::a(Html::img($user->avatar, ['style' => 'width:150px;height:150px;']), ['user-profile/view', 'uid' => $user->id]) . "<p>  " . $user->nickname . "</p>";
+                    $content = '<div class="row">';
+                    $content .= '<div class="col-md-3">';
+                    $content .= Html::a(Html::img($user->avatar.'!150!150', ['style' => 'width:150px;height:150px;']), ['user-profile/view', 'uid' => $user->id]);
+                    $content .= '</div>';
+                    $content .= '<div class="col-md-6">';
+                    $content .= '<p>'.Html::a($user->nickname,['user-profile/view', 'uid' => $user->id]).'</p>' ;
+                    $content .= '<p>';
+                    $content .= '性别：'.(empty($user->profile) ? '' : MetaData::getVal($user->profile->gender));
+                    $content .= '</p>';
+                    $content .= '<p>';
+                    $content .= '所在地区：'.(empty($user->profile) ? '' : implode(' ',Distrinct::getArrDistrict([$user->profile->province, $user->profile->city, $user->profile->county, $user->profile->country])));
+                    $content .= '</p>';
+                    $content .= '<p>';
+                    $content .= '表演特长：'.(empty($user->profile) ? '' : implode(', ',MetaData::getArrVal(explode(',', trim($user->profile->speciality)))));
+                    $content .= '</p>';
+                    $content .= '</div>';
+                    $content .= '</div>';
+                   
+                    return $content;
                 },
             ],
             [
