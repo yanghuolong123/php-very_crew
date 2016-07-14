@@ -1,0 +1,2 @@
+ALTER TABLE  `tbl_plan_user` ADD  `role_name` VARCHAR( 128 ) NOT NULL COMMENT '角色名称' AFTER  `role` ;
+

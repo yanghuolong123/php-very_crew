@@ -8,6 +8,8 @@ use app\models\extend\PlanUser;
 use app\models\search\PlanSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\extend\User;
+use app\models\extend\MetaData;
 
 class PlanController extends \app\util\BaseController {
 
@@ -50,7 +52,7 @@ class PlanController extends \app\util\BaseController {
     public function actionView($id) {
         return $this->render('view', [
                     'model' => $this->findModel($id),
-                    'planUsers' => PlanUser::findAll(['plan_id' => $id, 'status' => 1]),
+                    'planUsers' => PlanUser::findAll(['plan_id' => $id, 'status' => 0]),
         ]);
     }
 
@@ -106,15 +108,18 @@ class PlanController extends \app\util\BaseController {
         }
 
         $model->type = 1;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
-            return $this->redirect(['info', 'info_view' => 'join_info', 'data'=>$model->plan_id]);
-        } else {
-            return $this->render('join', [
-                        'model' => $model,
-                        'plan_id' => $plan_id,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->role_name = MetaData::getVal($model->role);
+
+            if ($model->save()) {
+                return $this->redirect(['info', 'info_view' => 'join_info', 'data' => $model->plan_id]);
+            }
         }
+
+        return $this->render('join', [
+                    'model' => $model,
+                    'plan_id' => $plan_id,
+        ]);
     }
 
 //    public function actionUser($plan_id) {
@@ -152,23 +157,30 @@ class PlanController extends \app\util\BaseController {
 
         $model->uid = $uid;
         $model->type = 2;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $comment = new \app\models\extend\Comment();
-            $comment->type = 4;
-            $comment->uid = Yii::$app->user->id;
-            $comment->vid = $model->uid;
-            $comment->content = '某某将您加入计划XX备选人员，建议您主动联系他沟通合作事宜。';
-            $comment->save();
+        if ($model->load(Yii::$app->request->post())) {
 
-            Yii::$app->redis->incr('user_news_' . $model->uid);
-            return $this->redirect(['view', 'id' => $model->plan_id]);
-        } else {
-            return $this->render('invitation', [
-                        'model' => $model,
-            ]);
+            $planUser = PlanUser::findOne(['plan_id' => $model->plan_id, 'uid' => $model->uid]);
+            if (!empty($planUser)) {
+                Yii::$app->session->setFlash('hasJoin', $planUser->status);
+            }
+
+            if (empty($planUser) && $model->save()) {
+                $plan = Plan::findOne($model->plan_id);
+                $comment = new \app\models\extend\Comment();
+                $comment->type = 4;
+                $comment->uid = Yii::$app->user->id;
+                $comment->vid = $model->uid;
+                $comment->content = Yii::$app->user->identity->nickname . ' 将您加入计划:' . $plan->title . ' 备选人员，建议您主动联系他沟通合作事宜。';
+                $comment->save();
+
+                Yii::$app->redis->incr('user_news_' . $model->uid);
+                return $this->redirect(['view', 'id' => $model->plan_id]);
+            }
         }
 
-        $this->sendRes(false, '操作失败');
+        return $this->render('invitation', [
+                    'model' => $model,
+        ]);
     }
 
 }

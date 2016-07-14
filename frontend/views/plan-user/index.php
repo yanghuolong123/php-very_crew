@@ -2,39 +2,49 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\extend\User;
+use app\models\extend\Video;
+use app\models\extend\MetaData;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\search\PlanUserSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Plan Users';
+ 
+$this->title = '计划成员管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="plan-user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Plan User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a('Create Plan User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'type',
+            //'id',
+            //'type',
             'uid',
-            'plan_id',
-            'role',
+            //'plan_id',
+            //'role',
+            [
+                'label' => '角色',
+                'attribute' => 'role',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return MetaData::getVal($data->role);
+                },
+            ],
             // 'status',
-            // 'desc',
+            'desc',
             // 'createtime:datetime',
             // 'updatetime:datetime',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
+            ],
         ],
     ]); ?>
 </div>

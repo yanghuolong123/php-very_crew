@@ -11,6 +11,18 @@ $this->params['breadcrumbs'][] = $this->title;
 $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 ?>
 
+<?php if (Yii::$app->session->hasFlash('hasJoin')): ?>
+    <?php if(Yii::$app->session->getFlash('hasJoin') == 0):  ?>
+        <div class="alert alert-warning">
+            <h2>亲，您已经成功加入了此拍摄计划，请主动联系计划发起人进行沟通。</h2>
+        </div>
+    <?php else: ?>
+        <div class="alert alert-danger">
+            <h2>亲，计划发起人已经删除您的申请，如果有疑问请主动联系发起人。</h2>
+        </div>
+    <?php endif; ?>
+<?php else: ?>
+
 <div class="plan-form">
 
     <?php $form = ActiveForm::begin([
@@ -44,3 +56,4 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php endif; ?>

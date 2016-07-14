@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if (Yii::$app->session->hasFlash('hasJoin')): ?>
     <?php if(Yii::$app->session->getFlash('hasJoin') == 0):  ?>
         <div class="alert alert-warning">
-            <h2>亲，您已经成功申请加入了此拍摄计划，请主动联系计划发起人进行沟通。</h2>
+            <h2>亲，您已经成功加入了此拍摄计划，请主动联系计划发起人进行沟通。</h2>
         </div>
     <?php else: ?>
         <div class="alert alert-danger">
