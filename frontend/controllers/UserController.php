@@ -29,7 +29,7 @@ class UserController extends \yii\web\Controller {
         
         return $this->render('view', [
                     'model' => $model,
-                    'profile' => $profie,
+                    'profile' => empty($profie) ? new UserProfile() : $profie,
                     'perVideo' => $perVideo,
                     'albums' => $albums,
         ]);
