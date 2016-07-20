@@ -45,6 +45,9 @@ class User extends \app\models\native\TblUser {
     public static function getInfo($id) {
         if (empty(self::$_user[$id])) {
             self::$_user[$id] = self::findOne($id);
+            if (empty(self::$_user[$id]->profile)) {
+                self::$_user[$id]->profile = new UserProfile();
+            }
         }
 
         return self::$_user[$id];
@@ -52,6 +55,10 @@ class User extends \app\models\native\TblUser {
 
     public function getProfile() {
         return $this->hasOne(UserProfile::className(), ['uid' => 'id']);
+    }
+
+    public function setProfile($profile) {
+        $this->profile = $profile;
     }
 
     public function afterFind() {
@@ -62,7 +69,6 @@ class User extends \app\models\native\TblUser {
 //        if (empty($this->thumb_avatar)) {
 //            $this->thumb_avatar = './image/default_avatar.jpg';
 //        }
-
         //$this->profile = UserProfile::findOne(['uid' => $this->id]);
 
         parent::afterFind();
