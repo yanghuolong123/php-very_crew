@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 use app\models\extend\User;
+use yii\helpers\Url;
 //use app\models\extend\Plan;
 
 $this->title = $model->title;
@@ -41,9 +42,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($planUsers as $user): ?>
         <div class="col-sm-5 col-md-3">
           <div class="thumbnail">
-            <img style="height:250px;" src="<?= User::getInfo($user->uid)->avatar ?>" alt="<?= User::getInfo($user->uid)->nickname ?>">
+            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img style="height:250px;" src="<?= User::getInfo($user->uid)->avatar ?>" alt="<?= User::getInfo($user->uid)->nickname ?>"></a>
             <div class="caption">
-              <h3><?= User::getInfo($user->uid)->nickname ?></h3>
+                <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->uid)->nickname ?></a></h3>
               <p>角色：<?php if(empty($user->type)): ?>发起人 <?php endif; ?><?= MetaData::getVal($user->role) ?></p>              
             </div>
           </div>
