@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-profile-view">
     <div class="container">
         <p>
-            <?= Html::a('完善我的资料', ['update', 'uid' => $model->uid], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('完善我的资料', ['user-profile/update', 'uid' => $userModel->id], ['class' => 'btn btn-success']) ?>
 
         </p>
 
