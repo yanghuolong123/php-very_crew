@@ -18,7 +18,7 @@ use app\models\extend\MetaData;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'nickname') ?>
+    <?= $form->field($model, 'nickname')->label('姓名') ?>
     
     <?= $form->field($model, 'gender')->radioList(MetaData::getGroupList('gender'))->label("性别") ?>
 

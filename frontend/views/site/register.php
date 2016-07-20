@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'username') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
         <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
-        <?= $form->field($model, 'nickname') ?>
+        <?= $form->field($model, 'nickname')->label('姓名') ?>
         <?=
         $form->field($model, 'verifyCode')->widget(Captcha::className(), [
             'template' => '<div class="row"><div class="col-lg-5">{image}</div><div class="col-lg-6">{input}</div></div>',

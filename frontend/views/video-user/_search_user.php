@@ -18,7 +18,7 @@ use yii\helpers\Url;
     ]); ?>
 
     <div class="form-group field-usersearch-nickname">
-        <label for="usersearch" class="col-lg-2 control-label">昵称/ID</label>
+        <label for="usersearch" class="col-lg-2 control-label">姓名/ID</label>
         <div class="col-lg-4"><input type="text" name="userSearch" class="form-control" id="usersearch"></div>        
     </div>
     
