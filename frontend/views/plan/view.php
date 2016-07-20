@@ -4,22 +4,23 @@ use yii\helpers\Html;
 use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 use app\models\extend\User;
-use app\models\extend\Plan;
+//use app\models\extend\Plan;
 
 $this->title = $model->title;
 //$this->params['breadcrumbs'][] = ['label' => '我的计划', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$plan = Plan::findOne($model->id);
+//$plan = Plan::findOne($model->id);
 ?>
 <div class="plan-view">
 
+    <?php if($model->uid != Yii::$app->user->id): ?>
     <div class="container">
-        <p>       
-           
+        <p>           
             <?= Html::a('加入拍摄计划', ['join', 'plan_id' => $model->id], ['class' => 'btn btn-success']) ?>
         </p>
     </div>
+    <?php endif; ?>
     
     <p>        
         <ul class="list-group">
@@ -43,7 +44,7 @@ $plan = Plan::findOne($model->id);
             <img style="height:250px;" src="<?= User::getInfo($user->uid)->avatar ?>" alt="<?= User::getInfo($user->uid)->nickname ?>">
             <div class="caption">
               <h3><?= User::getInfo($user->uid)->nickname ?></h3>
-              <p>角色：<?php if($user->uid == $plan->uid): ?>发起人 <?php endif; ?><?= MetaData::getVal($user->role) ?></p>              
+              <p>角色：<?php if(empty($user->type)): ?>发起人 <?php endif; ?><?= MetaData::getVal($user->role) ?></p>              
             </div>
           </div>
         </div>

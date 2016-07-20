@@ -60,8 +60,10 @@ class PlanController extends \app\util\BaseController {
         $model = new Plan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->db->createCommand('insert into tbl_plan_user (uid, plan_id, createtime) values (:uid, :plan_id, :createtime)', [':uid' => $model->uid, ':plan_id' => $model->id, ':createtime' => time()])->execute();
 
-            return $this->redirect(['join', 'plan_id' => $model->id]);
+            //return $this->redirect(['join', 'plan_id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                         'model' => $model,
