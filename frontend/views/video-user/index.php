@@ -12,14 +12,6 @@ $this->title = '关联作品成员';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-user-index">
-    <div class="btn-group btn-group-justified" style="width: 80%;margin:0 0 20px 80px;" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-danger">第一步、上传基本信息</button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-success">第二步、关联作品成员</button>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-offset-1 col-md-8"><p class="text-muted">作品已成功上传，您可以在72小时内对作品的视频部分进行更新，可以任何时候在“我的作品"中对其基本信息及作品成员进行编辑，请输入昵称或ID添加成会员</p></div>
     </div>

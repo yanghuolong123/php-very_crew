@@ -5,14 +5,15 @@ $this->params['breadcrumbs'][] = ['label' => '我的作品', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-create">
-    <div class="btn-group btn-group-justified" style="width: 80%;margin:0 0 20px 80px;" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-success">第一步、上传基本信息</button>
+    <div class="row" style="margin-bottom: 30px; font-size: 16px; font-weight: bold; color:#090;">
+        <div class="col-sm-1 col-md-offset-2 col-md-3">
+            第一步：上传基本信息
         </div>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-warning">第二步、关联作品成员</button>
+        <div class="col-sm-1 col-md-3">
+            第二步：关联作品成员(可跳过)
         </div>
     </div>
+    
 
     <?=
     $this->render('_form', [

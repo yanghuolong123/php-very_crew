@@ -8,6 +8,11 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
 $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 ?>
+<style>
+    .plan_tips {
+        color: #aaa;
+    }
+</style>
 
 <div class="video-form">
 
@@ -22,7 +27,9 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     ]); ?> 
     
     <?php if(!empty($planList)): ?>
-    <?= $form->field($model, 'plan_id')->dropDownList($planList,['prompt'=>'请选择'])->label('匹配计划') ?>
+    <?= $form->field($model, 'plan_id',[
+        'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">(*匹配计划后可直接导入此计划的成员信息，省去分别添加和重新填写)</div>",
+    ])->dropDownList($planList,['prompt'=>'请选择'])->label('匹配计划') ?>
     <?php endif; ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>   
