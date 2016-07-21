@@ -4,13 +4,17 @@ use app\models\extend\Distrinct;
 
 $m = strtolower(substr(strrchr(get_class($model), '\\'), 1));
 ?>
-
+<style>
+    .district-label{
+        padding-right: 25px;
+    }
+</style>
 <?=
 
 $form->field($model, 'province', [
-    'template' => "{label}\n<div class=\"col-lg-2\">{input}</div>\n",
+    'template' => "{label}\n<div class=\"col-lg-2\" style=\"padding-left: 5px;\">{input}</div>\n",
     'options' => ['class' => 'form-horizontal'],
-    'labelOptions' => ['class' => 'col-lg-2 control-label'],
+    'labelOptions' => ['class' => 'col-lg-2 control-label district-label'],
 ])->dropDownList(Distrinct::getDistrictList(0), [
     'prompt' => '请选择省',
     'onchange' => '
