@@ -76,7 +76,7 @@ class UserProfileController extends Controller {
         $model->uid = $uid;
 
         if ($model->load(Yii::$app->request->post()) && $userModel->load(Yii::$app->request->post()) && $userModel->save() && $model->save()) {
-            return $this->redirect(['view', 'uid' => $model->uid]);
+            return $this->redirect(['user/view', 'id' => $model->uid]);
         } else {
             $model->good_at_job = is_array($model->good_at_job) ? $model->good_at_job : explode(',', trim($model->good_at_job, ','));
             $model->speciality = is_array($model->speciality) ? $model->speciality : explode(',', trim($model->speciality, ','));
