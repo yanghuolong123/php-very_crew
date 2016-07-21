@@ -20,9 +20,9 @@ use app\models\extend\MetaData;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('计划名称') ?>
     
-    <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
+    <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择'])->label('视频类型') ?>
     
     <?= $form->field($model, 'tag')->checkboxList(MetaData::getGroupList('videoTag')) ?>
 
@@ -34,9 +34,9 @@ use app\models\extend\MetaData;
 
     <?= $form->field($model, 'plan_role')->checkboxList(MetaData::getGroupList('planRole')) ?>
 
-    <?= $form->field($model, 'plan_skill')->checkboxList(MetaData::getGroupList('planSkill')) ?>   
+    <?= $form->field($model, 'plan_skill')->checkboxList(MetaData::getGroupList('planSkill'))->label('所需特长及形象') ?>   
     
-    <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'remark')->textarea()->label('其他说明') ?>
    
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2">
