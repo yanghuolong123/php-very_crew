@@ -25,6 +25,7 @@ img.avatar {
     padding: 1px;
     width: 38px;
     border-radius: 5px;
+    margin-top: 5px;
 }
 
 .navbar-nav > li > a.avatar {
