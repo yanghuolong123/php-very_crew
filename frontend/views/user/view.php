@@ -21,15 +21,19 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
             <div class="row">
                 <div class="col-lg-3">
-
-                    <p>
-                        <?= Html::img($model->avatar, ['style'=>'wdith:240px;height:240px;']) ?>
-                    </p>
-
+                    <?php if($model->id == Yii::$app->user->id): ?>
+                    <p><?= Html::a('完善我的资料', ['user-profile/update', 'uid' => $model->id], ['class' => 'btn btn-success']) ?></p>
+                    <?php endif; ?>
+                    <p class="thumbnail"><?= Html::img($model->avatar, ['style'=>'wdith:240px;height:240px;']) ?></p>
+                    
+                    <ul class="list-group">
+                        <li class="list-group-item"><label>电话：</label> <?= $model->mobile ?></li>
+                        <li class="list-group-item"><label>QQ：</label> <?= $profile->qq ?></li>
+                        <li class="list-group-item"><label>Email：</label> <?= $model->email ?></li>
+                        <li class="list-group-item"><label>微信：</label> <?= $profile->weixin ?></li>
+                    </ul>
                 </div>
-                <div class="col-lg-8">
-
-                    <p>
+                <div class="col-lg-8"> 
                         <ul class="list-group">
                             <li class="list-group-item"><label>姓名：</label> <?= $model->nickname ?></li>
                             <li class="list-group-item"><label>性别：</label> <?= MetaData::getVal($profile->gender) ?></li>
@@ -39,18 +43,9 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                             <li class="list-group-item"><label>体重：</label> <?= $profile->weight ?></li>
                             <li class="list-group-item"><label>可用于拍摄的时间：</label> <?= MetaData::getVal($profile->usingtime) ?></li>
                             <li class="list-group-item"><label>擅长角色：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->good_at_job)))) ?></li>
-                            <li class="list-group-item"><label>表演特长：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->speciality)))) ?></li>
-                            <li class="list-group-item"><label>联系方式：</label> 
-                                <ul class="list-group">
-                                    <li class="list-group-item"><label>电话：</label> <?= $model->mobile ?></li>
-                                    <li class="list-group-item"><label>QQ：</label> <?= $profile->qq ?></li>
-                                    <li class="list-group-item"><label>Email：</label> <?= $model->email ?></li>
-                                    <li class="list-group-item"><label>微信：</label> <?= $profile->weixin ?></li>
-                                </ul>
-                            </li>
+                            <li class="list-group-item"><label>表演特长：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->speciality)))) ?></li>                            
                             <li class="list-group-item"><label>其它个人说明：</label> <?= $profile->remark ?></li>
                         </ul>
-                    </p>
                 </div>
 
             </div>
@@ -67,12 +62,17 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                 <?php endif; ?>
                 
                 <div class="flexslider carousel">
+                    <?php if(!empty($albums)): ?>
                     <ul class="slides">
                       <?php foreach ($albums as $album): ?>
                       <li><img src="<?= $album->url ?>" /></li>
                       <?php endforeach; ?>
                     </ul>
+                    <?php else: ?>
+                    <p class="text-info">还没有上传照片哦！</p>
+                    <?php endif; ?>
                 </div>
+                
                                      
         </div>        
         

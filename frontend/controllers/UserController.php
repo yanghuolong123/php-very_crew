@@ -23,6 +23,9 @@ class UserController extends \yii\web\Controller {
 
     public function actionView($id) {
         $model = User::findOne($id);
+        if(empty($model)) {
+            throw new \yii\web\NotFoundHttpException('user not exist!');
+        }
         $profie = UserProfile::findOne(['uid' => $id]);
         $perVideo = \app\models\extend\Video::find()->where(['uid' => $id, 'status' => 1])->orderBy('createtime desc')->limit(4)->all();
         $albums = \app\models\extend\UserAlbum::find()->where(['uid' => $id, 'status' => 1])->orderBy('createtime desc')->all();
