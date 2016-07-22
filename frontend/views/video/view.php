@@ -9,7 +9,6 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->registerJsFile('@web/js/main.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCssFile('http://vjs.zencdn.net/5.4.6/video-js.min.css', ['depends' => ['app\assets\AppAsset']]);
 $this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCss('#payer {
@@ -62,3 +61,30 @@ if (!CommonUtil::isMobile()) {
 
 
 </div>
+
+<?php $this->beginBlock('video-ding-cai-Js') ?> 
+
+function video_ding(id) {
+    var obj = $("#video_ding_"+id);
+    $.post("index.php?r=video/ding&id=" + id, function(e) {
+        obj.addClass("selected");
+        obj.html(e.data);
+        obj.on('click', function(evt) {
+            evt.preventDefault();
+        });
+    });
+}
+
+function video_cai(id) {
+    var obj = $("#video_cai_"+id);
+    $.post("index.php?r=video/cai", {id: id}, function(e) {
+        obj.addClass("selected");
+        obj.html(e.data);
+        obj.on('click', function(evt) {
+            evt.preventDefault();
+        });
+    });
+}
+
+<?php $this->endBlock() ?> 
+<?php $this->registerJs($this->blocks['video-ding-cai-Js'], \yii\web\View::POS_END); ?>

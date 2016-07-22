@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\extend\MetaData;
 
-$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);  
+$this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);  
 
 $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 ?>

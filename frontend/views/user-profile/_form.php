@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 use app\models\extend\MetaData;
 
-$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]); 
+$this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]); 
 
 ?>
 

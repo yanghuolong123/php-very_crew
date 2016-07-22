@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->registerCssFile('@web/plugin/flexslider/flexslider.css');
 $this->registerCss('.flex-direction-nav a {background: rgba(0, 0, 0, 0) url("../image/arr.png") no-repeat scroll 0 0}');
 $this->registerJsFile('@web/plugin/flexslider/jquery.flexslider-min.js',['depends'=>['app\assets\AppAsset']]);
-$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
 ?>
 <div class="user-profile-view">
     <div class="container">

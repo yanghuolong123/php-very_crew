@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
 
 ?>
 

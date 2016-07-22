@@ -21,24 +21,3 @@ $('.upload_img').on('click', function() {
     uploader.start();
 });
 
-function video_ding(id) {
-    var obj = $("#video_ding_"+id);
-    $.post("index.php?r=video/ding&id=" + id, function(e) {
-        obj.addClass("selected");
-        obj.html(e.data);
-        obj.on('click', function(evt) {
-            evt.preventDefault();
-        });
-    });
-}
-
-function video_cai(id) {
-    var obj = $("#video_cai_"+id);
-    $.post("index.php?r=video/cai", {id: id}, function(e) {
-        obj.addClass("selected");
-        obj.html(e.data);
-        obj.on('click', function(evt) {
-            evt.preventDefault();
-        });
-    });
-}
