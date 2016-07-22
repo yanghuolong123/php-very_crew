@@ -2,6 +2,8 @@
 
 namespace app\models\extend;
 
+use Yii;
+
 class Comment extends \app\models\native\TblComment {
 
     public function rules() {
@@ -21,6 +23,17 @@ class Comment extends \app\models\native\TblComment {
 
     public static function getChildren($id) {
         return self::find()->where(['parent_id' => $id, 'status' => 1])->orderBy('id desc')->all();
+    }
+
+    public static function sendNews($toUid, $content) {
+        $comment = new self();
+        $comment->type = 4;
+        $comment->uid = Yii::$app->user->id;
+        $comment->vid = $toUid;
+        $comment->content = $content;
+        $comment->save();
+
+        Yii::$app->redis->incr('user_news_' . $toUid);
     }
 
 }
