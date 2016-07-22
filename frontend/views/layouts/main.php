@@ -48,8 +48,8 @@ $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon g
             ['label' => '发布计划', 'url' => ['/plan/create']],
             ['label' => '参与比赛', 'url' => ['/game']],
             ['label' => '搜作品', 'url' => ['/video/index']],
-            ['label' => '找搭档', 'url' => ['/user/index']],
-            ['label' => '加入拍摄', 'url' => ['/plan/index']],
+            ['label' => '搜人员', 'url' => ['/user/index']],
+            ['label' => '搜计划', 'url' => ['/plan/index']],
         ],
     ]);
     
