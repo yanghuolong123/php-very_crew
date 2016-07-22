@@ -22,7 +22,7 @@ use app\models\extend\Distrinct;
     
     <?= $form->field($model, 'title')->label('计划名称') ?>
 
-    <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
+    <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择'])->label('视频类型') ?>
     
     <?= app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>    
     
@@ -32,9 +32,9 @@ use app\models\extend\Distrinct;
 
     <?= $form->field($model, 'plan_skill',[
         'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
-    ])->checkboxList(MetaData::getGroupList('planSkill')) ?>
+    ])->checkboxList(MetaData::getGroupList('planSkill'))->label('所需特长及形象') ?>
         
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'content')->label('其他说明') ?>
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2 col-md-2">
