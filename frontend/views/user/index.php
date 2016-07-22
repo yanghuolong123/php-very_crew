@@ -6,7 +6,7 @@ use app\models\extend\MetaData;
 use app\models\extend\User;
 use app\models\extend\Distrinct;
 
-$this->title = '搭档搜索';
+$this->title = '人员搜索';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if(!empty($dataProvider->models)): ?>
     <div class="row">
-        <div class="container"><h3>搭档搜索</h3></div>
+        <div class="container"><h3>人员搜索</h3></div>
         <?php foreach ($dataProvider->models as $user): ?>
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">

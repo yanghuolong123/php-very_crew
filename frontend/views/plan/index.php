@@ -6,7 +6,7 @@ use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 use app\util\CommonUtil;
 
-$this->title = '加入拍摄';
+$this->title = '计划搜索';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="plan-index">

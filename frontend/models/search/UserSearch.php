@@ -13,11 +13,16 @@ class UserSearch extends User {
     public $good_at_job;
     public $speciality;
     public $usingtime;
+    public $province;
+    public $city;
+    public $county;
+    public $country;
 
     public function rules() {
         return [
             [['id', 'status', 'createtime'], 'integer'],
             [['username', 'password', 'nickname', 'mobile', 'email', 'avatar', 'gender', 'good_at_job','speciality', 'usingtime'], 'safe'],
+            [['province', 'city', 'county', 'country'], 'safe'],
         ];
     }
 
@@ -37,6 +42,10 @@ class UserSearch extends User {
 //       echo '<pre>';
 //              var_dump($params);echo '</pre>'; 
         $this->load($params);
+        
+        if(is_numeric($this->nickname)) {
+            $this->id = $this->nickname;
+        }
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -46,19 +55,26 @@ class UserSearch extends User {
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'tbl_user.id' => $this->id,
             'status' => $this->status,
             'createtime' => $this->createtime,
             'tbl_user_profile.gender' => $this->gender,
             'tbl_user_profile.usingtime' => $this->usingtime,
+            'tbl_user_profile.province' => $this->province,
+            'tbl_user_profile.city' => $this->city,
+            'tbl_user_profile.county' => $this->county,
+            'tbl_user_profile.country' => $this->country,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-                ->andFilterWhere(['like', 'password', $this->password])
-                ->andFilterWhere(['like', 'nickname', $this->nickname])
+                ->andFilterWhere(['like', 'password', $this->password])                
                 ->andFilterWhere(['like', 'mobile', $this->mobile])
                 ->andFilterWhere(['like', 'email', $this->email])
                 ->andFilterWhere(['like', 'avatar', $this->avatar]);
+        
+        if(!is_numeric($this->nickname)) {
+            $query->andFilterWhere(['like', 'nickname', $this->nickname]);
+        }
         
         if(!empty($this->good_at_job)&& is_array($this->good_at_job)) {
             foreach ($this->good_at_job as $good_job) {
