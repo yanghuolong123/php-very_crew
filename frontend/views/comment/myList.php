@@ -35,18 +35,18 @@ app\components\comment\CommentAsset::register($this);
                 <?php foreach ($commentList as $list): ?>
                     <li class="media">
                         <div class="media-left">
-                            <a href="#">
+                            <a class="thumbnail" href="<?= Url::to(['user/view', 'id'=>$list['uid']]) ?>">
                                 <img class="media-object" src="<?= User::getInfo($list['uid'])->avatar ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
                             </a>
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading"><?= User::getInfo($list['uid'])->nickname ?> <span><?php echo date('Y-m-d H:i:s', $list['createtime']); ?></span></h4>
+                            <h4 class="media-heading"><a href="<?= Url::to(['user/view', 'id'=>$list['uid']]) ?>"><?= User::getInfo($list['uid'])->nickname ?></a> <span><?php echo date('Y-m-d H:i:s', $list['createtime']); ?></span></h4>
                             <div>
                                 <?php if (!empty($list['parent_id'])): ?>
                                     <?php $parent = Comment::findOne($list['parent_id']); ?>
                                     <div class="quote">
                                         <blockquote>
-                                            <font size="2"><a href=""><font color="#999999"><?= User::getInfo($parent['uid'])->nickname ?> 发表于 <?= date('Y-m-d H:i:s', $parent['createtime']); ?></font></a></font>
+                                            <font size="2"><a href="<?= Url::to(['user/view', 'id'=>$parent['uid']]) ?>"><font color="#999999"><?= User::getInfo($parent['uid'])->nickname ?> 发表于 <?= date('Y-m-d H:i:s', $parent['createtime']); ?></font></a></font>
                                             <p><?= $parent['content'] ?></p>
                                         </blockquote>
                                     </div>
