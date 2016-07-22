@@ -50,6 +50,10 @@ class PlanSearch extends Plan
         ]);
 
         $this->load($params);
+        
+        if(is_numeric($this->title)) {
+            $this->id = $this->title;
+        }
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -70,13 +74,16 @@ class PlanSearch extends Plan
             'createtime' => $this->createtime,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content])
+        $query->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'tag', $this->tag])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'plan_role', $this->plan_role])
             ->andFilterWhere(['like', 'plan_skill', $this->plan_skill])
             ->andFilterWhere(['like', 'remark', $this->remark]);
+        
+        if(!is_numeric($this->title)) {
+            $query->andFilterWhere(['like', 'title', $this->title]);
+        }
 
         return $dataProvider;
     }
