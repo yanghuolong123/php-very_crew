@@ -10,15 +10,14 @@ use app\models\extend\Video;
 /**
  * VideoSearch represents the model behind the search form about `app\models\extend\Video`.
  */
-class VideoSearch extends Video
-{
+class VideoSearch extends Video {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'uid', 'type', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
+            [['id', 'uid', 'type', 'province', 'city', 'county', 'country', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['title', 'content', 'logo', 'file', 'tag'], 'safe'],
         ];
     }
@@ -26,8 +25,7 @@ class VideoSearch extends Video
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +37,7 @@ class VideoSearch extends Video
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Video::find();
 
         // add conditions that should always apply here
@@ -50,8 +47,8 @@ class VideoSearch extends Video
         ]);
 
         $this->load($params);
-        
-        if(is_numeric($this->title)) {
+
+        if (is_numeric($this->title)) {
             $this->id = $this->title;
         }
 
@@ -72,17 +69,22 @@ class VideoSearch extends Video
             'oppose' => $this->oppose,
             'status' => $this->status,
             'createtime' => $this->createtime,
+            'province' => $this->province,
+            'city' => $this->city,
+            'county' => $this->county,
+            'country' => $this->country,
         ]);
 
         $query->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'logo', $this->logo])
-            ->andFilterWhere(['like', 'file', $this->file])
-            ->andFilterWhere(['like', 'tag', $this->tag]);
-        
-        if(!is_numeric($this->title)) {
+                ->andFilterWhere(['like', 'logo', $this->logo])
+                ->andFilterWhere(['like', 'file', $this->file])
+                ->andFilterWhere(['like', 'tag', $this->tag]);
+
+        if (!is_numeric($this->title)) {
             $query->andFilterWhere(['like', 'title', $this->title]);
         }
 
         return $dataProvider;
     }
+
 }

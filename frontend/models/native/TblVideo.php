@@ -16,6 +16,10 @@ use Yii;
  * @property string $thumb_logo
  * @property string $file
  * @property integer $type
+ * @property integer $province
+ * @property integer $city
+ * @property integer $county
+ * @property integer $country
  * @property string $tag
  * @property integer $views
  * @property integer $comments
@@ -40,8 +44,8 @@ class TblVideo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'plan_id', 'title', 'content', 'logo', 'thumb_logo', 'file', 'type', 'tag', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'required'],
-            [['uid', 'plan_id', 'type', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
+            [['uid', 'plan_id', 'title', 'content', 'logo', 'thumb_logo', 'file', 'type', 'province', 'city', 'county', 'country', 'tag', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'required'],
+            [['uid', 'plan_id', 'type', 'province', 'city', 'county', 'country', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['content'], 'string'],
             [['title', 'logo', 'thumb_logo', 'file', 'tag'], 'string', 'max' => 128],
         ];
@@ -62,6 +66,10 @@ class TblVideo extends \yii\db\ActiveRecord
             'thumb_logo' => '缩略图',
             'file' => '视频文件',
             'type' => '视频类型',
+            'province' => '省',
+            'city' => '市',
+            'county' => '县',
+            'country' => '乡',
             'tag' => '标签',
             'views' => '浏览数',
             'comments' => '评论数',

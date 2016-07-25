@@ -48,7 +48,7 @@ class TblPlanUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => '类型:1申请 2邀请',
+            'type' => '类型:1申请 2邀请 0发起人',
             'uid' => '用户ID',
             'plan_id' => '计划',
             'role' => '申请角色',

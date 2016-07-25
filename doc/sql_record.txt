@@ -3,3 +3,9 @@ ALTER TABLE  `tbl_plan_user` ADD  `role_name` VARCHAR( 128 ) NOT NULL COMMENT '�
 
 /* done */
 ALTER TABLE  `tbl_plan_user` CHANGE  `type`  `type` TINYINT( 4 ) NOT NULL COMMENT  '类型:1申请 2邀请 0发起人';
+
+/* */
+ALTER TABLE  `tbl_video` ADD  `province` INT NOT NULL COMMENT  '省' AFTER  `type` ;
+ALTER TABLE  `tbl_video` ADD  `city` INT NOT NULL COMMENT  '市' AFTER  `province` ;
+ALTER TABLE  `tbl_video` ADD  `county` INT NOT NULL COMMENT  '县' AFTER  `city` ;
+ALTER TABLE  `tbl_video` ADD  `country` INT NOT NULL COMMENT  '乡' AFTER  `county` ;

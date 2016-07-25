@@ -23,7 +23,7 @@ use app\models\extend\MetaData;
 
     <?= $form->field($model, 'title')->label('视频名称/ID') ?>
     
-    <?php // app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>
+    <?= app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>
     
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     
