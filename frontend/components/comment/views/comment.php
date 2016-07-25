@@ -68,7 +68,7 @@ use yii\helpers\Url;
             <?= Html::activeHiddenInput($model, 'type') ?>
         <?php endif; ?>
 
-        <?= $form->field($model, 'content')->textarea(['rows' => 5, 'placeholder' => '大胆说说你对作品的感觉吧~']) ?>        
+        <?= $form->field($model, 'content')->textarea(['rows' => 5, 'placeholder' => $model->type == 1 ? '大胆说说你对作品的感觉吧~' : '']) ?>        
 
         <div class="form-group">
             <div class="col-lg-1">
