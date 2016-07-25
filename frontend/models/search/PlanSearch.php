@@ -18,8 +18,9 @@ class PlanSearch extends Plan
     public function rules()
     {
         return [
-            [['id', 'uid', 'type', 'province', 'city', 'county', 'country', 'status', 'createtime'], 'integer'],
+            [['uid', 'type', 'province', 'city', 'county', 'country', 'status', 'createtime'], 'integer'],
             [['title', 'content', 'tag', 'address', 'plan_role', 'plan_skill', 'remark'], 'safe'],
+            [['id'], 'safe'],
         ];
     }
 
@@ -63,7 +64,7 @@ class PlanSearch extends Plan
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            //'id' => $this->id,
             'uid' => $this->uid,
             'type' => $this->type,
             'province' => $this->province,
@@ -73,6 +74,12 @@ class PlanSearch extends Plan
             'status' => $this->status,
             'createtime' => $this->createtime,
         ]);
+        
+        if(is_array($this->id)) {
+            $query->andFilterWhere(['in', 'id', $this->id]);
+        } else {
+            $query->andFilterWhere(['id' => $this->id]);
+        }
 
         $query->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'tag', $this->tag])

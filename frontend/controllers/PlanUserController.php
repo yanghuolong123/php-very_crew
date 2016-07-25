@@ -79,4 +79,14 @@ class PlanUserController extends Controller {
         }
     }
 
+    public function actionRemove() {
+        $plan_id = Yii::$app->request->get('plan_id');
+        $uid = Yii::$app->request->get('uid');
+
+        $model = PlanUser::findOne(['plan_id' => $plan_id, 'uid' => $uid]);
+        $model->updateAttributes(['status' => -1]);
+
+        return $this->redirect(['plan/my', 'plan_id' => $model->plan_id]);
+    }
+
 }

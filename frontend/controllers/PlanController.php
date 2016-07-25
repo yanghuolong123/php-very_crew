@@ -144,9 +144,15 @@ class PlanController extends \app\util\BaseController {
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
 
+        $sql = 'select plan_id from tbl_plan_user where status>=0 and uid=' . Yii::$app->user->id;
+        $addPlanIdArr = Yii::$app->db->createCommand($sql)->queryColumn();
+        $searchModel->id = array_unique($addPlanIdArr);
+        $joinDataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('my', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
+                    'joinDataProvider' => $joinDataProvider
         ]);
     }
 
