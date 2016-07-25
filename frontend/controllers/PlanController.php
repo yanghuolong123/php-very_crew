@@ -120,7 +120,7 @@ class PlanController extends \app\util\BaseController {
                 $content = Yii::$app->user->identity->nickname . ' 申请加入您的计划: ' . Html::a($plan->title, ['plan/view', 'id' => $plan->id]) . ' 备选人员，建议您主动联系他沟通合作事宜。';
                 Comment::sendNews($plan->uid, $content);
 
-                return $this->redirect(['info', 'info_view' => 'join_info', 'data' => $model->plan_id]);
+                return $this->redirect(['tips', 'tips_view' => 'join_tips', 'data' => $model->plan_id]);
             }
         }
 

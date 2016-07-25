@@ -4,12 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller {
+class SiteController extends \app\util\BaseController {
 
     public function behaviors() {
         return [
@@ -107,7 +106,8 @@ class SiteController extends Controller {
             } else {
                 throw new \yii\web\HttpException(500, 'register login failed');
             }
-            return $this->goHome();
+            //return $this->goHome();
+            return $this->redirect(['tips', 'tips_view' => 'register_tips']);
         }
 
         return $this->render('register', [

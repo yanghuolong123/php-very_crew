@@ -18,9 +18,9 @@ class BaseController extends \yii\web\Controller {
         exit;
     }
 
-    public function actionInfo($info_view) {
+    public function actionTips($tips_view) {
         $data = Yii::$app->request->get('data');
-        return $this->render($info_view, [
+        return $this->render($tips_view, [
                     'data' => empty($data) ? '' : $data,
         ]);
     }
