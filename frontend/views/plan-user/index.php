@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data) {
                     $user = User::getInfo($data->uid);
                     $content = '<div class="row">';
-                    $content .= '<div class="col-md-3">';
-                    $content .= Html::a(Html::img($user->avatar.'!150!150', ['style' => 'width:150px;height:150px;']), ['user/view', 'id' => $user->id]);
+                    $content .= '<div class="col-md-2">';
+                    $content .= Html::a(Html::img($user->avatar.'!150!150', ['style' => 'width:130px;height:130px;', 'class'=>'thumbnail']), ['user/view', 'id' => $user->id]);
                     $content .= '</div>';
-                    $content .= '<div class="col-md-6">';
+                    $content .= '<div class="col-md-10">';
                     $content .= '<p>'.Html::a($user->nickname,['user/view', 'id' => $user->id]).'</p>' ;
                     $content .= '<p>';
                     $content .= '性别：'.MetaData::getVal($user->profile->gender);
@@ -53,21 +53,23 @@ $this->params['breadcrumbs'][] = $this->title;
                    
                     return $content;
                 },
+                //'options' => ['style'=>'width:600px;'],
             ],
             //'plan_id',
-            'role_name',
-//            [
-//                'label' => '角色',
-//                'attribute' => 'role',
+            //'role_name',
+            [
+                'label' => '角色',
+                'attribute' => 'role_name',
 //                'format' => 'raw',
 //                'value' => function($data) {
 //                    return MetaData::getVal($data->role);
 //                },
-//            ],
+            ],
             // 'status',
             [
                 'label' => '备注',
                 'attribute' => 'desc',
+                //'options' => ['style'=>'width:20%'],
             ],
             //'desc',
             // 'createtime:datetime',
