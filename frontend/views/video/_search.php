@@ -21,13 +21,15 @@ use app\models\extend\MetaData;
     ]); ?>
 
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'title')->label('视频名称/ID') ?>
+    
+    <?php // app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>
     
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     
     <?= $form->field($model, 'tag')->checkboxList(MetaData::getGroupList('videoTag')) ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?php // $form->field($model, 'content') ?>
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2 col-md-2">

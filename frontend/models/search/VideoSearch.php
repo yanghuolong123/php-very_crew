@@ -50,6 +50,10 @@ class VideoSearch extends Video
         ]);
 
         $this->load($params);
+        
+        if(is_numeric($this->title)) {
+            $this->id = $this->title;
+        }
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -70,11 +74,14 @@ class VideoSearch extends Video
             'createtime' => $this->createtime,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content])
+        $query->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'logo', $this->logo])
             ->andFilterWhere(['like', 'file', $this->file])
             ->andFilterWhere(['like', 'tag', $this->tag]);
+        
+        if(!is_numeric($this->title)) {
+            $query->andFilterWhere(['like', 'title', $this->title]);
+        }
 
         return $dataProvider;
     }
