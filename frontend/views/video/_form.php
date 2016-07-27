@@ -40,6 +40,8 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     
+    <?= app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>
+    
     <?= $form->field($model, 'tag')->checkboxList(MetaData::getGroupList('videoTag')) ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
