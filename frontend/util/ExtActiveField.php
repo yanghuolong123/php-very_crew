@@ -31,7 +31,8 @@ class ExtActiveField extends \yii\widgets\ActiveField {
             $this->form->options['enctype'] = 'multipart/form-data';
         }
         $this->adjustLabelFor($options);
-        $this->parts['{input}'] = '<div class="thumbnail" style="height:220px;"><img src="' . $this->model->{$this->attribute} . '" style="display:none;"></div>';
+        $style = $this->model->{$this->attribute} ? '' : ' style="display:none;" ';
+        $this->parts['{input}'] = '<div class="thumbnail" style="min-height:220px;"><img src="' . $this->model->{$this->attribute} . '"'.$style.' ></div>';
         $this->parts['{input}'] .= '<button type="button" class="btn btn-primary upload_img">上传图像</button> ';
         $this->parts['{input}'] .= Html::activeHiddenInput($this->model, $this->attribute, $options);
         return $this;

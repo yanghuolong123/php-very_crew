@@ -12,6 +12,10 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     .plan_tips {
         color: #aaa;
     }
+    .thumbnail img {
+        height: 220px;
+        width: 350px;
+    }
 </style>
 
 <div class="video-form">
