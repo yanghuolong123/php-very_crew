@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\extend\MetaData;
+use yii\helpers\Url;
 
 $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);  
 
@@ -33,16 +34,18 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?php if(!empty($planList)): ?>
     <?= $form->field($model, 'plan_id',[
         'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">(*匹配计划后可直接导入此计划的成员信息，省去分别添加和重新填写)</div>",
-    ])->dropDownList($planList,['prompt'=>'请选择'])->label('匹配计划') ?>
+    ])->dropDownList($planList,['prompt'=>'请选择','onchange'=>'selVideo(this)'])->label('匹配计划') ?>
     <?php endif; ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>   
     
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择']) ?>
     
-    <?= app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>
+    <?php // app\components\district\DistrictWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'拍摄地区']) ?>
     
-    <?= $form->field($model, 'tag')->checkboxList(MetaData::getGroupList('videoTag')) ?>
+    <?= $form->field($model, 'tag', [
+        'template' => "{label}\n<div class=\"col-lg-6\">{input}</div>\n<div class=\"col-lg-4\">{error}</div>",
+    ])->checkboxList(MetaData::getGroupList('videoTag')) ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
@@ -85,6 +88,31 @@ $(function() {
 
     });
 });
+
+function selVideo(obj) {
+    $('#video-tag input').attr("checked",false);
+    $('#video-type').val("");
+    var plan_id = $(obj).val();
+    $.post('<?= Url::to(['plan/ajax-get-sel']) ?>', {plan_id:plan_id}, function(o) {
+        if(!o.success) {
+            return;
+        }
+        var data = o.data;
+        $('#video-type').val(data.type);
+        var vArr = data.tag.split(',');                 
+        $('#video-tag input').each(function(index, e){
+            //$(e).attr("checked",false);
+            var v = $(e).val();            
+            $.each(vArr, function(i, n){
+                if(n == v) {
+                    e.checked=true;
+                    //$(e).attr("checked",true);
+                    return true;
+                }
+            });
+        });
+    });
+}
 
 <?php $this->endBlock() ?>  
 <?php $this->registerJsFile('/plugin/uploadify/jquery.uploadify.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]); ?>

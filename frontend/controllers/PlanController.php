@@ -182,4 +182,15 @@ class PlanController extends \app\util\BaseController {
         ]);
     }
 
+    public function actionAjaxGetSel() {
+        $plan_id = Yii::$app->request->post('plan_id');
+        if(empty($plan_id)) {
+            $this->sendRes(false);
+        }
+        
+        $model = Plan::findOne($plan_id);
+        
+        $this->sendRes(TRUE, 'success', $model->toArray());
+    }
+
 }
