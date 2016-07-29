@@ -3,6 +3,7 @@
 namespace app\util;
 
 use Yii;
+use yii\helpers\Url;
 
 class CommonUtil {
 
@@ -141,6 +142,18 @@ class CommonUtil {
         $strcut = str_replace(array('&', '"', '<', '>'), array('&amp;', '&quot;', '&lt;', '&gt;'), $strcut);
 
         return $strcut . $dot;
+    }
+
+    public static function cropImg($src, $dst, $width, $height, $mode) {
+        $ic = new \app\util\ImageCrop($src, $dst);
+        $ic->Crop($width, $height, $mode);
+        $ic->SaveImage();
+        $ic->SaveAlpha(); //将补白变成透明像素保存
+        $ic->destory();
+    }
+
+    public static function cropImgLink($src = '', $width = 255, $height = 162, $mode = 1) {
+        return Url::to(['home/crop-img', 'src' => base64_encode($src), 'width' => $width, 'height' => $height, 'mode' => $mode]);
     }
 
 }
