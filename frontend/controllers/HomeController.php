@@ -34,7 +34,7 @@ class HomeController extends \app\util\BaseController {
         $pathInfo = pathinfo($src);
         $dst = Yii::$app->basePath . '/web/assets/' . $etag . '.' . $pathInfo['extension'];
 
-        $inm = split(',', getenv("HTTP_IF_NONE_MATCH"));
+        $inm = explode(',', getenv("HTTP_IF_NONE_MATCH"));
         foreach ($inm as $i) {
             if (trim($i) == $etag) {
                 header("HTTP/1.0 304 Not Modified");
