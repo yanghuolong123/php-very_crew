@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
+use app\util\CommonUtil;
 
 $this->title = '查看个人主页';
 $this->params['breadcrumbs'][] = $this->title;
@@ -82,7 +83,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
             <?php foreach ($perVideo as $video): ?>
             <div class="col-sm-6 col-md-3">
               <div class="thumbnail">
-                  <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= $video->logo ?>" alt="<?= $video->title ?>"></a>
+                  <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"></a>
                 <div class="caption">
                     <h3><a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= $video->title ?></a></h3>
                   <p><?= MetaData::getVal($video->type) ?>  - <?= implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))) ?></p>  
