@@ -63,7 +63,7 @@ class User extends \app\models\native\TblUser {
 
     public function afterFind() {
         if (empty($this->avatar)) {
-            $this->avatar = './image/default_avatar.jpg';
+            $this->avatar = '/image/default_avatar.jpg';
         }
 
 //        if (empty($this->thumb_avatar)) {
