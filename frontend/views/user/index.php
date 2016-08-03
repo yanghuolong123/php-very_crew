@@ -1,10 +1,9 @@
 <?php
 
-use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\extend\MetaData;
 use app\models\extend\User;
 use app\models\extend\Distrinct;
+use app\util\CommonUtil;
 
 $this->title = '人员搜索';
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,14 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="container"><h3>人员搜索</h3></div>
         <?php foreach ($dataProvider->models as $user): ?>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <div class="thumbnail">
-            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= User::getInfo($user->id)->avatar ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
+            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
             <div class="caption">
               <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
-              <p><?= empty($user->profile['province']) ? "<br>" : implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
+              <p><?= empty($user->profile['province']) ? "<br>" : CommonUtil::cutstr(implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])), 18) ?></p>              
               <?php if(!Yii::$app->user->isGuest): ?>
-              <p><a class="btn btn-default" href="<?= Url::to(['plan/invitation', 'uid'=>$user->id]) ?>">将其添加到我的计划备选人员 &raquo;</a></p>
+              <p><a class="" href="<?= Url::to(['plan/invitation', 'uid'=>$user->id]) ?>">将其添加到我的计划备选人员 &raquo;</a></p>
               <?php endif; ?>
             </div>
           </div>
