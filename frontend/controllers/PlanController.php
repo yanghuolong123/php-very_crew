@@ -40,7 +40,7 @@ class PlanController extends \app\util\BaseController {
         $searchModel = new PlanSearch();
         $searchModel->status = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination->pageSize = 10;
+        $dataProvider->pagination->pageSize = 9;
         $searchModel->plan_role = explode(',', trim($searchModel->plan_role, ','));
         $searchModel->plan_skill = explode(',', trim($searchModel->plan_skill, ','));
 
