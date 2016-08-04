@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\util\CommonUtil;
 
 AppAsset::register($this);
 
@@ -57,7 +58,7 @@ $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon g
         'options' => ['class' =>'navbar-nav navbar-right'],
         'items' => [
             [
-                'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.Yii::$app->user->identity->avatar.'!150!150">  '.Yii::$app->user->identity->nickname.' '.$tips : '',
+                'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="'.CommonUtil::cropImgLink(Yii::$app->user->identity->avatar,50,50).'">  '.Yii::$app->user->identity->nickname.' '.$tips : '',
                 'visible' => !Yii::$app->user->isGuest,
                 'encode' => false,
                 'linkOptions' => ['class'=>'avatar'],

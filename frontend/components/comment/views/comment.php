@@ -5,6 +5,7 @@ use yii\bootstrap\ActiveForm;
 use app\models\extend\User;
 use app\models\extend\Comment;
 use yii\helpers\Url;
+use app\util\CommonUtil;
 ?>
 
 <div class="panel panel-default">
@@ -19,7 +20,7 @@ use yii\helpers\Url;
                     <li class="media">
                         <div class="media-left">
                             <a class="thumbnail" href="<?= Url::to(['user/view', 'id'=>$list['uid']]) ?>">
-                                <img class="media-object" src="<?= User::getInfo($list['uid'])->avatar ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
+                                <img class="media-object" src="<?= CommonUtil::cropImgLink(User::getInfo($list['uid'])->avatar,50,50) ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
                             </a>
                         </div>
                         <div class="media-body">
