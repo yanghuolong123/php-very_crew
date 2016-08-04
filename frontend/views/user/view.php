@@ -25,7 +25,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                     <?php if($model->id == Yii::$app->user->id): ?>
                     <p><?= Html::a('完善我的资料', ['user-profile/update', 'uid' => $model->id], ['class' => 'btn btn-success']) ?></p>
                     <?php endif; ?>
-                    <p class="thumbnail"><?= Html::img($model->avatar, ['style'=>'wdith:240px;height:240px;']) ?></p>
+                    <p class="thumbnail"><?= Html::img(CommonUtil::cropImgLink($model->avatar,260, 250)) ?></p>
                     
                     <ul class="list-group">
                         <li class="list-group-item"><label>电话：</label> <?= $model->mobile ?></li>
