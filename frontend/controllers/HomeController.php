@@ -46,7 +46,9 @@ class HomeController extends \app\util\BaseController {
             }
         }
 
-        \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $model);
+        if (!file_exists($dst)) {
+            \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $model);
+        }
 
         header('Last Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
         header('Expires: ' . gmdate("D, d M Y H:i:s", time() + 3600) . ' GMT');

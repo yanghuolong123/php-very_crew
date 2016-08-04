@@ -148,7 +148,7 @@ class CommonUtil {
         $ic = new \app\util\ImageCrop($src, $dst);
         $ic->Crop($width, $height, $mode);
         $ic->SaveImage();
-        $ic->SaveAlpha(); //将补白变成透明像素保存
+        //$ic->SaveAlpha(); //将补白变成透明像素保存
         $ic->destory();
     }
 
