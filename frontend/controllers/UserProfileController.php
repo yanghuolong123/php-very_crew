@@ -70,7 +70,7 @@ class UserProfileController extends Controller {
         if (empty($userModel)) {
             throw new NotFoundHttpException('此用户不存在.');
         }
-        $userModel->setScenario("perfect");
+        //$userModel->setScenario("perfect");
 
         $model = $this->findModel($userModel->id);
         $model->uid = $uid;
