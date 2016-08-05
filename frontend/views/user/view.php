@@ -36,6 +36,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                 </div>
                 <div class="col-lg-8"> 
                         <ul class="list-group">
+                            <li class="list-group-item"><label>ID：</label> <?= $model->id ?></li>
                             <li class="list-group-item"><label>姓名：</label> <?= $model->nickname ?></li>
                             <li class="list-group-item"><label>性别：</label> <?= MetaData::getVal($profile->gender) ?></li>
                             <li class="list-group-item"><label>所在地区：</label> <?= implode(' ',Distrinct::getArrDistrict([$profile->province, $profile->city, $profile->county, $profile->country])) ?></li>
