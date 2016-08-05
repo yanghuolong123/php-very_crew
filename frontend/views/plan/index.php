@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <div class="thumbnail" style="height:272px;">
 
             <div class="caption">
-                <h3><a href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= CommonUtil::cutstr($plan->title,24) ?></a></h3>
+                <h3><a data-toggle="tooltip" data-placement="bottom" title="<?= $plan->title ?>" href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= CommonUtil::cutstr($plan->title,24) ?></a></h3>
                 <p><?= MetaData::getVal($plan->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->tag)))),40) ?></p>  
                 <p>拍摄地区：<?= implode(' ',Distrinct::getArrDistrict([$plan->province, $plan->city, $plan->county])) ?></p>
                 <p>所需角色：<?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->plan_role)))), 40) ?></p>
