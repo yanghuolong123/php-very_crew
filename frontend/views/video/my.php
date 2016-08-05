@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\util\CommonUtil;
 
 $this->title = '我的作品';
 $this->params['breadcrumbs'][] = $this->title;
@@ -24,11 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => '作品',
                 'format' => 'raw',
-                'value' => function($data){return Html::a(Html::img($data->logo,['style'=>'width:150px;height:150px;']), ['view','id'=>$data->id])."<p>  ".$data->title."</p>";},
+                'value' => function($data){
+                    return Html::a(Html::img(CommonUtil::cropImgLink($data->logo, 240,150),['class'=>'thumbnail']))."<p>  ".Html::a($data->title,['video/view','id'=>$data->id])."</p>";                    
+                },
+                'options' => ['style'=>'width:20%;'],
             ],
             
             //'title',
-            'content:ntext',
+            [
+                'attribute' => 'content',
+                'options' => ['style'=>'width:45%;'],
+            ],
+            //'content:ntext',
             //'logo',
             //'file',
             // 'type',
