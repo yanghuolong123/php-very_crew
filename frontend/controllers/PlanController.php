@@ -41,6 +41,7 @@ class PlanController extends \app\util\BaseController {
         $searchModel->status = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 9;
+        $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
         $searchModel->plan_role = explode(',', trim($searchModel->plan_role, ','));
         $searchModel->plan_skill = explode(',', trim($searchModel->plan_skill, ','));
 
