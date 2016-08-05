@@ -8,12 +8,13 @@ class UserProfile extends \app\models\native\TblUserProfile {
 
     public function rules() {
         return [
-            [['gender', 'birthday', 'province', 'city', 'county', 'good_at_job', 'speciality'], 'required'],
+            [['gender', 'birthday', 'province', 'good_at_job', 'speciality'], 'required'],
             [['id', 'uid', 'gender', 'province', 'city', 'county', 'country'], 'integer'],
             [['birthday', 'weixin', 'qq'], 'string', 'max' => 65],
             [['height', 'weight'], 'string', 'max' => 25],
             [['good_at_job', 'speciality', 'usingtime'], 'string', 'max' => 128],
             [['remark'], 'string', 'max' => 255],
+            [['city', 'county', 'country'], 'default', 'value' => 0],
         ];
     }
 
