@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '作品',
                 'format' => 'raw',
                 'value' => function($data){
-                    return Html::a(Html::img(CommonUtil::cropImgLink($data->logo, 240,150),['class'=>'thumbnail']))."<p>  ".Html::a($data->title,['video/view','id'=>$data->id])."</p>";                    
+                    return Html::a(Html::img(CommonUtil::cropImgLink($data->logo, 240,150),['class'=>'thumbnail']))."<p>".Html::a($data->title,['video/view','id'=>$data->id])."</p>";                    
                 },
                 'options' => ['style'=>'width:20%;'],
             ],
