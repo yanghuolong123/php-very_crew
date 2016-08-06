@@ -49,11 +49,15 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-    <?php echo  $form->field($model, 'logo')->uploadImg() ?>
+    <?php echo  $form->field($model, 'logo',[
+        'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">请上传宽高比近似为1.6比1的封面以获得最佳显示效果。参考像素比（480，300）（560，350）（640，400）（720，450）（800，500）（880，550）（960，600）<p>{error}</p></div>",
+    ])->uploadImg() ?>
     <?php //app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'作品封面', 'attribute'=>'logo','options'=>['style'=>'height:220px;'], 'defaultVal'=>'./image/blank_img.jpg']) ?>
 
     <p></p><p></p><br>
-    <?= $form->field($model, 'file')->uploadifyInput() ?>    
+    <?= $form->field($model, 'file',[
+        'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">非常剧组不会对您的视频进行压缩，所以上传前请务必转码，通过降低比特率（码率）等参数来降低原始视频的大小，以保证在线播放的流程。推荐上传格式：MP4。推荐转码软件：狸窝。推荐比特率：1000-1500kbps。<p>{error}</p></div>",
+    ])->uploadifyInput() ?>    
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2">
