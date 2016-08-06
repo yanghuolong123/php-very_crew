@@ -31,6 +31,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
         foreach ($models as $model) {
             $videoUser = new \app\models\extend\VideoUser();
             $videoUser->uid = $model->uid;
+            $videoUser->type = 1;
             $videoUser->video_id = $videoId;
             $videoUser->role = $model->role;
             $videoUser->role_name = $model->role_name; // MetaData::getVal($model->role);

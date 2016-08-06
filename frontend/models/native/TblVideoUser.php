@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $uid
+ * @property integer $type
  * @property integer $video_id
  * @property integer $role
  * @property string $role_name
@@ -33,8 +34,8 @@ class TblVideoUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'video_id', 'role', 'role_name', 'is_star', 'status', 'desc', 'createtime'], 'required'],
-            [['uid', 'video_id', 'role', 'is_star', 'status', 'createtime'], 'integer'],
+            [['uid', 'type', 'video_id', 'role', 'role_name', 'is_star', 'status', 'desc', 'createtime'], 'required'],
+            [['uid', 'type', 'video_id', 'role', 'is_star', 'status', 'createtime'], 'integer'],
             [['role_name'], 'string', 'max' => 128],
             [['desc'], 'string', 'max' => 255],
         ];
@@ -48,6 +49,7 @@ class TblVideoUser extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'uid' => '加入人员',
+            'type' => '0发起人，1一般成员',
             'video_id' => '视频id',
             'role' => '角色',
             'role_name' => '角色名称',
