@@ -9,9 +9,18 @@ $this->registerJsFile('@web/js/upload.js', ['depends' => ['app\assets\AppAsset']
 ?>
 
 <style>
+    .thumbnail {
+        min-height:220px;
+    }
     .thumbnail img {
         height: 220px;
         width: 220px;
+    }
+    .plan_tips {
+        color: #aaa;
+    }
+    .imgbox {
+        width: 260px;
     }
 </style>
 
@@ -43,7 +52,7 @@ $this->registerJsFile('@web/js/upload.js', ['depends' => ['app\assets\AppAsset']
 -->
     <?php // app\components\crop\CropWidget::widget(['form' => $form, 'model' => $userModel, 'title' => '头像', 'attribute' => 'avatar']) ?>
     <?php echo  $form->field($userModel, 'avatar', [
-        'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
+        'template' => "{label}\n<div class=\"col-lg-3 imgbox\">{input}</div>\n<div class=\"col-lg-5 plan_tips \">*请上传宽高比近似为1比1的头像以获得最佳显示效果。<p>{error}</p></div>",
     ])->uploadImg() ?>
     
     <?= $form->field($model, 'gender')->radioList(MetaData::getGroupList('gender')) ?>   

@@ -13,6 +13,9 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     .plan_tips {
         color: #aaa;
     }
+    .thumbnail {
+        min-height:220px;
+    }
     .thumbnail img {
         height: 220px;
         width: 350px;
