@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <div class="thumbnail">
             <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
             <div class="caption">
-              <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
+              <h4><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h4>
               <p><?= empty($user->profile['province']) ? "<br>" : CommonUtil::cutstr(implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])), 18) ?></p>              
               <?php if(!Yii::$app->user->isGuest): ?>
               <p><a class="" href="<?= Url::to(['plan/invitation', 'uid'=>$user->id]) ?>">将其添加到我的计划备选人员 &raquo;</a></p>

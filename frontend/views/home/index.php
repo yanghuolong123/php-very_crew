@@ -47,7 +47,7 @@ $this->title = '非常剧组';
       <div class="thumbnail">
           <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"></a>
         <div class="caption">
-          <h3><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,16) ?></a></h3>
+          <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
           <p><?= MetaData::getVal($video->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))), 26) ?></p>  
           <p><?= $video->views ?>人气/ <?= $video->comments ?>点评/ <?= $video->support ?>赞</p>
         </div>
@@ -62,7 +62,7 @@ $this->title = '非常剧组';
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail" style="height:272px;">        
         <div class="caption">
-          <h3><a data-toggle="tooltip" data-placement="bottom" title="<?= $plan->title ?>" href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= CommonUtil::cutstr($plan->title,24) ?></a></h3>
+          <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $plan->title ?>" href="<?= Url::to(['plan/view', 'id'=>$plan->id]) ?>"><?= CommonUtil::cutstr($plan->title,30) ?></a></h4>
           <p><?= MetaData::getVal($plan->type) ?>  - <?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->tag)))),40) ?></p>  
           <p>拍摄地区：<?= implode(' ',Distrinct::getArrDistrict([$plan->province, $plan->city, $plan->county])) ?></p>
           <p>所需角色：<?= CommonUtil::cutstr(implode(', ',MetaData::getArrVal(explode(',', trim($plan->plan_role)))), 40) ?></p>
@@ -81,7 +81,7 @@ $this->title = '非常剧组';
       <div class="thumbnail">
          <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
         <div class="caption">
-          <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h3>
+          <h4><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h4>
           <p><?php // implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
         </div>
       </div>

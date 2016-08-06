@@ -86,7 +86,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
               <div class="thumbnail">
                   <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"></a>
                 <div class="caption">
-                    <h3><a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= $video->title ?></a></h3>
+                    <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
                   <p><?= MetaData::getVal($video->type) ?>  - <?= implode(', ',MetaData::getArrVal(explode(',', trim($video->tag)))) ?></p>  
                   <p><?= $video->views ?>人气/ <?= $video->comments ?>点评/ <?= $video->support ?>赞</p>
                 </div>
