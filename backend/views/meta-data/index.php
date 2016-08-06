@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'key',
             'value',
             'sort',
-            // 'status',
+            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
