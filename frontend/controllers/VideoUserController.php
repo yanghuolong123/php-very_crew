@@ -50,6 +50,7 @@ class VideoUserController extends \app\util\BaseController {
         $model = new VideoUser();
         $model->uid = $uid;
         $model->video_id = $video_id;
+        $model->type = 1;
 
         if (VideoUser::find()->where(['uid' => $uid, 'video_id' => $model->video_id])->exists()) {
             return $this->redirect(['site/info', 'msg' => '该用户已经是此作品成员']);

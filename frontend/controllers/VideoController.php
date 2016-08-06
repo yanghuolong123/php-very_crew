@@ -7,6 +7,8 @@ use app\models\extend\Video;
 use app\models\search\VideoSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\extend\User;
+use app\models\extend\VideoUser;
 
 class VideoController extends \app\util\BaseController {
 
@@ -51,8 +53,13 @@ class VideoController extends \app\util\BaseController {
         $model = $this->findModel($id);
         $model->updateCounters(['views' => 1]);
 
+        $otherWorks = Video::find()->where(['uid' => $model->uid, 'status' => 1])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
+        $members = VideoUser::findAll(['video_id' => $id, 'status' => 0]);
+
         return $this->render('view', [
                     'model' => $model,
+                    'otherWorks' => $otherWorks,
+                    'members' => $members,
         ]);
     }
 

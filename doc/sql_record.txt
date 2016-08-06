@@ -9,3 +9,6 @@ ALTER TABLE  `tbl_video` ADD  `province` INT NOT NULL COMMENT  '省' AFTER  `typ
 ALTER TABLE  `tbl_video` ADD  `city` INT NOT NULL COMMENT  '市' AFTER  `province` ;
 ALTER TABLE  `tbl_video` ADD  `county` INT NOT NULL COMMENT  '县' AFTER  `city` ;
 ALTER TABLE  `tbl_video` ADD  `country` INT NOT NULL COMMENT  '乡' AFTER  `county` ;
+
+/* done */
+ALTER TABLE  `tbl_video_user` ADD  `type` TINYINT( 1 ) NOT NULL COMMENT  '0发起人，1一般成员' AFTER  `uid` ;

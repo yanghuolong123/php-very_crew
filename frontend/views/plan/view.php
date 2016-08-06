@@ -5,7 +5,7 @@ use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 use app\models\extend\User;
 use yii\helpers\Url;
-//use app\models\extend\Plan;
+use app\util\CommonUtil;
 
 $this->title = $model->title;
 //$this->params['breadcrumbs'][] = ['label' => '我的计划', 'url' => ['index']];
@@ -40,12 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="container"><h3>参与成员</h3></div>
         <?php foreach ($planUsers as $user): ?>
-        <div class="col-sm-5 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <div class="thumbnail">
-            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img style="height:250px;" src="<?= User::getInfo($user->uid)->avatar ?>" alt="<?= User::getInfo($user->uid)->nickname ?>"></a>
+            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
             <div class="caption">
-                <h3><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->uid)->nickname ?></a></h3>
-              <p>角色：<?php if(empty($user->type)): ?>发起人 <?php endif; ?><?= MetaData::getVal($user->role) ?></p>              
+              <h4><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->uid)->nickname ?></a></h4>
+              <p>角色：<?php if(empty($user->type)): ?>发起人 <?php endif; ?><?= CommonUtil::cutstr($user->role_name, 5) ?></p>              
             </div>
           </div>
         </div>

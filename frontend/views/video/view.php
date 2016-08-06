@@ -1,9 +1,9 @@
 <?php
 
-use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\extend\MetaData;
 use app\util\CommonUtil;
+use app\models\extend\User;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
@@ -43,6 +43,7 @@ if (!CommonUtil::isMobile()) {
                 <a href="javascript:video_ding(<?= $model->id ?>);" id="video_ding_<?= $model->id ?>" class="abtn abtn-digg"><?= $model->support ?></a>
                 <a href="javascript:video_cai(<?= $model->id ?>);" id="video_cai_<?= $model->id ?>" class="abtn abtn-bury"><?= $model->oppose ?></a>
             </p>
+            
             <p>
             <ul class="list-group">
                 <li class="list-group-item"><label>作品名称：</label> <?= $model->title ?></li>
@@ -53,6 +54,52 @@ if (!CommonUtil::isMobile()) {
                 <li class="list-group-item"><label>剧情介绍：</label> <?= $model->content ?></li>
             </ul>
             </p>
+            
+            <p>                
+                <div class="row">
+                    <div class="container"><h3>他的其他作品</h3></div>
+                    <?php if(!empty($otherWorks)): ?>                     
+                     <?php foreach ($otherWorks as $video): ?>
+                     <div class="col-sm-6 col-md-3">
+                       <div class="thumbnail">
+                         <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"></a>
+                         <div class="caption">
+                           <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,16) ?></a></h4>                               
+                         </div>
+                       </div>
+                     </div>
+                     <?php endforeach; ?>
+                     <?php else: ?>
+                    <div class="alert alert-info" style="margin-left:15px; margin-right:15px;">
+                         <p class="text-info">暂无其他作品 ...</p>
+                     </div>
+                     <?php endif; ?>
+                </div>
+            </p> 
+            
+            <p>                
+                <div class="row">
+                    <div class="container"><h3>剧组成员</h3></div>
+                    <?php if(!empty($members)): ?>
+                    <?php foreach ($members as $user): ?>
+                    <div class="col-sm-6 col-md-2">
+                      <div class="thumbnail">
+                        <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
+                        <div class="caption">
+                          <h4><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->uid)->nickname ?></a></h4>
+                          <p>角色：<?php if(empty($user->type)): ?>发起人 <?php endif; ?><?= CommonUtil::cutstr($user->role_name, 5) ?></p>              
+                        </div>
+                      </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <div class="alert alert-info" style="margin-left:15px; margin-right:15px;">
+                        <h3>暂无剧组成员 ...</h3>
+                    </div>
+                <?php endif; ?>
+                </div>  
+            </p>
+            
             <div class="comment">
                 <?= app\components\comment\CommentWidget::widget(['type' => 1, 'vid' => $model->id, 'title' => '作品大家聊']) ?>
             </div>
