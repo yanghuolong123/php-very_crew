@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //$this->registerCssFile('http://vjs.zencdn.net/5.4.6/video-js.min.css', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCssFile('@web/plugin/video.js/video-js.min.css', ['depends' => ['app\assets\AppAsset']]);
+$this->registerJsFile('@web/plugin/video.js/ie8/videojs-ie8.min.js', ['depends' => ['app\assets\AppAsset']]);
 //$this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerJsFile('@web/plugin/video.js/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCss('#payer {
@@ -36,6 +37,7 @@ if (!CommonUtil::isMobile()) {
                        poster="<?= $model->logo; ?>"
                        data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>           
                     <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
+                    
                     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                 </video>      
 
