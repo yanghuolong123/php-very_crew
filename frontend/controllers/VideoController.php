@@ -7,8 +7,8 @@ use app\models\extend\Video;
 use app\models\search\VideoSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\extend\User;
 use app\models\extend\VideoUser;
+use app\util\CommonUtil;
 
 class VideoController extends \app\util\BaseController {
 
@@ -86,6 +86,7 @@ class VideoController extends \app\util\BaseController {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             $model->tag = explode(',', trim($model->tag, ','));
+            $model->logo = CommonUtil::cropImgLink($model->logo, 350, 220);
 
             return $this->render('update', [
                         'model' => $model,
