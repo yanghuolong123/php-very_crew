@@ -94,7 +94,7 @@ if (!CommonUtil::isMobile()) {
                     <?php endforeach; ?>
                     <?php else: ?>
                     <div class="alert alert-info" style="margin-left:15px; margin-right:15px;">
-                        <h3>暂无剧组成员 ...</h3>
+                        <p class="text-info">暂无剧组成员 ...</p>
                     </div>
                 <?php endif; ?>
                 </div>  

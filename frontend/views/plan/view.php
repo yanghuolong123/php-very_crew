@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="container"><h3>参与成员</h3></div>
+        <?php if(!empty($planUsers)): ?>
         <?php foreach ($planUsers as $user): ?>
         <div class="col-sm-6 col-md-2">
           <div class="thumbnail">
@@ -50,6 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
           </div>
         </div>
         <?php endforeach; ?>
+        <?php else: ?>
+            <div class="alert alert-info" style="margin-left:15px; margin-right:15px;">
+                <p class="text-info">暂无加入成员 ...</p>
+            </div>
+        <?php endif; ?>
     </div>
 
 </div>
