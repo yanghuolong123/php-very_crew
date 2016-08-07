@@ -59,7 +59,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 
     <p></p><p></p><br>
     <?= $form->field($model, 'file',[
-        'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">非常剧组不会对您的视频进行压缩，所以上传前请务必转码，通过降低比特率（码率）等参数来降低原始视频的大小，以保证在线播放的流程。推荐上传格式：MP4。推荐转码软件：QQ影音(不推荐狸窝)。推荐比特率:1000-1500kbps。<p>{error}</p></div>",
+        'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">非常剧组不会对您的视频进行压缩，所以上传前请务必转码，通过降低比特率（码率）等参数来降低原始视频的大小，以保证在线播放的流程。推荐上传格式：MP4。推荐转码软件：QQ影音(如果使用狸窝转码，请选择 MPEG-4 AVC Video 类型)。推荐比特率:1000-1500kbps。<p>{error}</p></div>",
     ])->uploadifyInput() ?>    
 
     <div class="form-group">
