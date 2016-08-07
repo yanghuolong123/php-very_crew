@@ -20,7 +20,7 @@ class ExtActiveField extends \yii\widgets\ActiveField {
 
         return $this;
     }
-    
+
     public function uploadImg($options = []) {
         // https://github.com/yiisoft/yii2/pull/795
         if ($this->inputOptions !== ['class' => 'form-control']) {
@@ -31,8 +31,9 @@ class ExtActiveField extends \yii\widgets\ActiveField {
             $this->form->options['enctype'] = 'multipart/form-data';
         }
         $this->adjustLabelFor($options);
+        $src = isset($options['width']) && isset($options['height']) ? CommonUtil::cropImgLink($this->model->{$this->attribute}, $options['width'], $options['height']) : $this->model->{$this->attribute};
         $style = $this->model->{$this->attribute} ? '' : ' style="display:none;" ';
-        $this->parts['{input}'] = '<div class="thumbnail"><img src="' . $this->model->{$this->attribute} . '"'.$style.' ></div>';
+        $this->parts['{input}'] = '<div class="thumbnail"><img src="' . $src . '"' . $style . ' ></div>';
         $this->parts['{input}'] .= '<button type="button" class="btn btn-primary upload_img">上传图像</button> ';
         $this->parts['{input}'] .= Html::activeHiddenInput($this->model, $this->attribute, $options);
         return $this;
@@ -63,7 +64,7 @@ class ExtActiveField extends \yii\widgets\ActiveField {
             $this->form->options['enctype'] = 'multipart/form-data';
         }
         $this->adjustLabelFor($options);
-        
+
         $this->parts['{input}'] = '<a href="#" class="crop_thumbnail" title="请先上传图像"><img class="cropbox" src="' . $this->model->{$this->attribute} . '" alt="请先上传图像"></a>';
         $this->parts['{input}'] .= '<input type="hidden" id="x" name="x" /><input type="hidden" id="y" name="y" /><input type="hidden" id="w" name="w" /><input type="hidden" id="h" name="h" />';
         $this->parts['{input}'] .= '<button type="button" class="btn btn-primary upload_img">上传图像</button> ';

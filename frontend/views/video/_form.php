@@ -54,7 +54,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 
     <?php echo  $form->field($model, 'logo',[
         'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">请上传宽高比近似为1.6比1的封面以获得最佳显示效果。参考像素比（480，300）（560，350）（640，400）（720，450）（800，500）（880，550）（960，600）<p>{error}</p></div>",
-    ])->uploadImg() ?>
+    ])->uploadImg(['width'=>350, 'height'=>220]) ?>
     <?php //app\components\crop\CropWidget::widget(['form'=>$form, 'model'=>$model, 'title'=>'作品封面', 'attribute'=>'logo','options'=>['style'=>'height:220px;'], 'defaultVal'=>'./image/blank_img.jpg']) ?>
 
     <p></p><p></p><br>
