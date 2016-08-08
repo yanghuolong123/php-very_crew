@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use app\util\CommonUtil;
 
 $this->title = '我的照片';
 $this->params['breadcrumbs'][] = $this->title;
@@ -24,7 +24,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
             <?php foreach ($dataProvider->models as $album): ?>
             <div class="col-xs-6 col-md-3">
                 <div class="thumbnail">
-                  <a href="<?= $album->url ?>"><img src="<?= $album->url ?>" alt="<?= $album->title ?>"></a>
+                  <a href="<?= $album->url ?>"><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" alt="<?= $album->title ?>"></a>
                   <div class="caption">
                     <h3><?= $album->title ?></h3>
                     <p><?= $album->desc ?></p>
