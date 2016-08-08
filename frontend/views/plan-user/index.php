@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $user = User::getInfo($data->uid);
                     $content = '<div class="row">';
                     $content .= '<div class="col-md-4">';
-                    $content .= Html::a(Html::img(CommonUtil::cropImgLink($user->avatar, 150,150), ['style' => 'width:130px;height:130px;', 'class'=>'thumbnail']), ['user/view', 'id' => $user->id]);
+                    $content .= Html::a(Html::img(CommonUtil::cropImgLink($user->avatar, 130,130), ['class'=>'thumbnail']), ['user/view', 'id' => $user->id]);
                     $content .= '</div>';
                     $content .= '<div class="col-md-8">';
                     $content .= '<p>'.Html::a($user->nickname,['user/view', 'id' => $user->id]).'</p>' ;
