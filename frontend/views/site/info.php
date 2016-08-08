@@ -1,5 +1,5 @@
 <?php
-use Yii;
+//use Yii;
 
 $this->title = '消息提醒';
 $this->params['breadcrumbs'][] = $this->title;
