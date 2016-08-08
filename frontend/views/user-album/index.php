@@ -27,7 +27,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
                   <a href="<?= $album->url ?>"><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" alt="<?= $album->title ?>"></a>
                   <div class="caption">
                     <h4><?= $album->title ?></h4>
-                    <p style="height: 40px;"><?= $album->desc ?></p>
+                    <p style="height: 40px;"><?= CommonUtil::cutstr($album->desc,45) ?></p>
                   </div>
                 </div>
             </div>
