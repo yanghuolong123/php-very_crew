@@ -67,7 +67,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                     <?php if(!empty($albums)): ?>
                     <ul class="slides">
                       <?php foreach ($albums as $album): ?>
-                      <li><img src="<?= $album->url ?>" /></li>
+                      <li><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" /></li>
                       <?php endforeach; ?>
                     </ul>
                     <?php else: ?>
