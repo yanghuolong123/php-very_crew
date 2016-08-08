@@ -26,7 +26,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
                 <div class="thumbnail">
                   <a href="<?= $album->url ?>"><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" alt="<?= $album->title ?>"></a>
                   <div class="caption">
-                    <h3><?= $album->title ?></h3>
+                    <h4><?= $album->title ?></h4>
                     <p style="height: 40px;"><?= $album->desc ?></p>
                   </div>
                 </div>
@@ -35,7 +35,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
         </div>
     <?php else: ?>
         <div class="alert alert-info">
-            <h3>暂时没有我的照片</h3>
+            <h4>暂时没有我的照片</h4>
         </div>
     <?php endif; ?>
     
