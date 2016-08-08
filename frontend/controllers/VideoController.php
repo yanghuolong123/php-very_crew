@@ -68,7 +68,7 @@ class VideoController extends \app\util\BaseController {
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             \app\models\extend\PlanUser::turnToVideoUser($model->plan_id, $model->id);
-            Yii::$app->db->createCommand('insert into tbl_video_user (uid, video_id, createtime) values (:uid, :video_id, :createtime)', [':uid' => $model->uid, ':video_id' => $model->id, ':createtime' => time()])->execute();
+            //Yii::$app->db->createCommand('insert into tbl_video_user (uid, video_id, createtime) values (:uid, :video_id, :createtime)', [':uid' => $model->uid, ':video_id' => $model->id, ':createtime' => time()])->execute();
             //return $this->redirect(['view', 'id' => $model->id]);
             return $this->redirect(['video-user/index', 'video_id' => $model->id]);
         } else {

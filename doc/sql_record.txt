@@ -12,3 +12,6 @@ ALTER TABLE  `tbl_video` ADD  `country` INT NOT NULL COMMENT  '乡' AFTER  `coun
 
 /* done */
 ALTER TABLE  `tbl_video_user` ADD  `type` TINYINT( 1 ) NOT NULL COMMENT  '0发起人，1一般成员' AFTER  `uid` ;
+
+/* done */
+ALTER TABLE  `tbl_plan_user` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMENT  '状态：-1删除，0正常';

@@ -3,7 +3,7 @@
 namespace app\models\extend;
 
 use Yii;
-use app\models\extend\MetaData;
+use \app\models\extend\VideoUser;
 
 class PlanUser extends \app\models\native\TblPlanUser {
 
@@ -26,10 +26,10 @@ class PlanUser extends \app\models\native\TblPlanUser {
     }
 
     public static function turnToVideoUser($planId, $videoId) {
-        $models = self::findAll(['plan_id' => $planId, 'status' => 1]);
+        $models = self::findAll(['plan_id' => $planId, 'status' => 0]);
 
         foreach ($models as $model) {
-            $videoUser = new \app\models\extend\VideoUser();
+            $videoUser = new VideoUser();
             $videoUser->uid = $model->uid;
             $videoUser->type = 1;
             $videoUser->video_id = $videoId;
@@ -38,6 +38,16 @@ class PlanUser extends \app\models\native\TblPlanUser {
             $videoUser->status = 0;
             $videoUser->save(false);
         }
+
+        $creator = VideoUser::findOne(['uid' => Yii::$app->user->id, 'video_id' => $videoId]);
+        if (!empty($creator)) {
+            $creator->type = 0;
+        } else {
+            $creator = new self();
+            $creator->uid = Yii::$app->user->id;
+            $creator->video_id = $videoId;
+        }
+        $creator->save();
     }
 
 }
