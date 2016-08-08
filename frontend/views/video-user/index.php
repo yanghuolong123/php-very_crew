@@ -32,11 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data) {
                     $user = User::getInfo($data->uid);
                     $content = '<div class="row">';
-                    $content .= '<div class="col-md-3">';
-                    $content .= Html::a(Html::img(CommonUtil::cropImgLink($user->avatar, 150, 150), ['style' => 'width:150px;height:150px;']), ['user-profile/view', 'uid' => $user->id]);
+                    $content .= '<div class="col-md-4">';
+                    $content .= Html::a(Html::img(CommonUtil::cropImgLink($user->avatar, 130,130), ['class'=>'thumbnail']), ['user/view', 'id' => $user->id]);
                     $content .= '</div>';
-                    $content .= '<div class="col-md-6">';
-                    $content .= '<p>'.Html::a($user->nickname,['user-profile/view', 'uid' => $user->id]).'</p>' ;
+                    $content .= '<div class="col-md-8">';
+                    $content .= '<p>'.Html::a($user->nickname,['user/view', 'id' => $user->id]).'</p>' ;
                     $content .= '<p>';
                     $content .= '性别：'.MetaData::getVal($user->profile->gender);
                     $content .= '</p>';
@@ -51,6 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                    
                     return $content;
                 },
+                'options' => ['style'=>'width:40%;'],
             ],
             [
                 'label' => '角色',
@@ -67,6 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => '备注',
                 'attribute' => 'desc',
+                'options' => ['style'=>'width:40%;'],
             ],   
             //'desc',
             // 'createtime:datetime',
