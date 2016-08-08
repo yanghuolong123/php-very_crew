@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\extend\User;
-use app\models\extend\Video;
+use app\util\CommonUtil;
 use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $user = User::getInfo($data->uid);
                     $content = '<div class="row">';
                     $content .= '<div class="col-md-4">';
-                    $content .= Html::a(Html::img($user->avatar.'!150!150', ['style' => 'width:130px;height:130px;', 'class'=>'thumbnail']), ['user/view', 'id' => $user->id]);
+                    $content .= Html::a(Html::img(CommonUtil::cropImgLink($user->avatar, 150,150), ['style' => 'width:130px;height:130px;', 'class'=>'thumbnail']), ['user/view', 'id' => $user->id]);
                     $content .= '</div>';
                     $content .= '<div class="col-md-8">';
                     $content .= '<p>'.Html::a($user->nickname,['user/view', 'id' => $user->id]).'</p>' ;
