@@ -10,9 +10,9 @@ use app\util\CommonUtil;
 <div class="row">
     <div class="container"><h3>搜索到的成员</h3></div>
     <?php foreach ($userModel as $user): ?>
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-2">
       <div class="thumbnail">
-          <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar,250,250) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
+          <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar,160,160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
         <div class="caption">
           <h4><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h4>
           <p><?= implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])) ?></p>              
