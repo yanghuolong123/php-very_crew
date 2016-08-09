@@ -34,7 +34,7 @@ and open the template in the editor.
 }
 
 .wrap > .container {
-    padding: 100px 15px 20px;
+    /*padding: 100px 15px 20px;*/
 }
 
 .navbar-inverse .navbar-right .btn-link {
