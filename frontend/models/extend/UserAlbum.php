@@ -8,7 +8,7 @@ class UserAlbum extends \app\models\native\TblUserAlbum {
 
     public function rules() {
         return [
-            [['title', 'url', 'desc'], 'required'],
+            [['url'], 'required'],
             [['uid', 'status', 'createtime'], 'integer'],
             [['title', 'url'], 'string', 'max' => 128],
             [['desc'], 'string', 'max' => 255],
