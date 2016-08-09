@@ -35,8 +35,8 @@ app\components\comment\CommentAsset::register($this);
                 <?php foreach ($commentList as $list): ?>
                     <li class="media">
                         <div class="media-left">
-                            <a class="thumbnail" href="<?= Url::to(['user/view', 'id'=>$list['uid']]) ?>">
-                                <img class="media-object" src="<?= CommonUtil::cropImgLink(User::getInfo($list['uid'])->avatar, 50,50) ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
+                            <a href="<?= Url::to(['user/view', 'id'=>$list['uid']]) ?>">
+                                <img class="media-object thumbnail" src="<?= CommonUtil::cropImgLink(User::getInfo($list['uid'])->avatar, 50,50) ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
                             </a>
                         </div>
                         <div class="media-body">
