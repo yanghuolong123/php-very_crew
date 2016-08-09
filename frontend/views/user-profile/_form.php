@@ -96,6 +96,10 @@ $this->registerJsFile('@web/js/upload.js', ['depends' => ['app\assets\AppAsset']
 //    ])->radioList(MetaData::getGroupList('usingTime')) 
     ?>
 
+    <div class="form-group">
+    <div class="col-md-offset-2 col-lg-4 text-warning">联系方式(*建议填写您最常用的联系方式，以便有合作意向的拍摄者能够及时联系到您。)</div>    
+    </div>
+
     <?= $form->field($model, 'weixin')->textInput(['maxlength' => true]) ?>    
 
     <?= $form->field($userModel, 'mobile')->textInput(['maxlength' => true]) ?>
