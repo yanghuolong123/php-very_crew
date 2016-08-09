@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\extend\MetaData;
-use app\models\extend\Distrinct;
 
 ?>
 
@@ -21,6 +20,10 @@ use app\models\extend\Distrinct;
     ]); ?>
     
     <?= $form->field($model, 'title')->label('计划名称/ID') ?>
+    
+    <?= $form->field($model, 'tag',[
+        'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-2\">{error}</div>",
+    ])->checkboxList(MetaData::getGroupList('videoTag')) ?>
 
     <?= $form->field($model, 'type')->dropDownList(MetaData::getGroupList('videoType'),['prompt'=>'请选择'])->label('视频类型') ?>
     
