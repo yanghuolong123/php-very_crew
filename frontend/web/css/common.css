@@ -30,6 +30,7 @@ img.avatar {
 
 .navbar-nav > li > a.avatar {
     padding-top: 3px;
+    height: 50px;
 }
 
 .abtn {
