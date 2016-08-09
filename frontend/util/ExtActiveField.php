@@ -31,7 +31,7 @@ class ExtActiveField extends \yii\widgets\ActiveField {
             $this->form->options['enctype'] = 'multipart/form-data';
         }
         $this->adjustLabelFor($options);
-        $src = isset($options['width']) && isset($options['height']) ? CommonUtil::cropImgLink($this->model->{$this->attribute}, $options['width'], $options['height']) : $this->model->{$this->attribute};
+        $src = isset($options['width']) && isset($options['height']) && !empty($this->model->{$this->attribute}) ? CommonUtil::cropImgLink($this->model->{$this->attribute}, $options['width'], $options['height']) : $this->model->{$this->attribute};
         $style = $this->model->{$this->attribute} ? '' : ' style="display:none;" ';
         $this->parts['{input}'] = '<div class="thumbnail"><img src="' . $src . '"' . $style . ' ></div>';
         $this->parts['{input}'] .= '<button type="button" class="btn btn-primary upload_img">上传图像</button> ';
