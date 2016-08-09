@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use app\util\CommonUtil;
 use yii\helpers\Url;
 use yii\widgets\Menu;
 use app\models\extend\User;
@@ -36,7 +36,7 @@ app\components\comment\CommentAsset::register($this);
                     <li class="media">
                         <div class="media-left">
                             <a class="thumbnail" href="<?= Url::to(['user/view', 'id'=>$list['uid']]) ?>">
-                                <img class="media-object" src="<?= User::getInfo($list['uid'])->avatar ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
+                                <img class="media-object" src="<?= CommonUtil::cropImgLink(User::getInfo($list['uid'])->avatar, 50,50) ?>" alt="<?= User::getInfo($list['uid'])->nickname ?>">
                             </a>
                         </div>
                         <div class="media-body">
