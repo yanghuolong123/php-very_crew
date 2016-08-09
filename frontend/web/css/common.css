@@ -75,3 +75,13 @@ img.avatar {
 .thumbnail a img {
     height: 162px;
 }
+
+.footer_top {
+    text-align: center;
+}
+
+.footer_top a {
+    color: #666666;
+    font-size: 14px;
+    margin: 0 25px;
+}

@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\util\CommonUtil;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -107,9 +108,11 @@ $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon g
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; 非常剧组 <?= date('Y') ?></p>
-
-        <p class="pull-right">Powered by <a href="http://www.womem.cn/" rel="external">远古神龙</a></p>
+        <div class="footer_top">
+            <a href="<?= Url::to(['site/tips','tips_view'=>'about']) ?>">关于我们</a>
+            <a href="<?= Url::to(['site/tips','tips_view'=>'question']) ?>">常见问题</a>
+            <a href="<?= Url::to(['site/tips','tips_view'=>'contact']) ?>">联系我们</a>
+        </div>
     </div>
 </footer>
 
