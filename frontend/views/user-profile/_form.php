@@ -72,7 +72,7 @@ $this->registerJsFile('@web/js/upload.js', ['depends' => ['app\assets\AppAsset']
     ]);
     ?>
 
-    <?= app\components\district\DistrictWidget::widget(['form' => $form, 'model' => $model, 'title' => '所在地区', 'level' => 4]) ?>   
+    <?= app\components\district\DistrictWidget::widget(['form' => $form, 'model' => $model, 'title' => '所在地区', 'level' => 3]) ?>   
 
     <?= $form->field($model, 'height')->textInput(['maxlength' => true]) ?>
 
