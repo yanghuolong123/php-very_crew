@@ -36,7 +36,7 @@ class Comment extends \app\models\native\TblComment {
         Yii::$app->redis->incr('user_news_' . $toUid);
     }
 
-    public static function getTypeArr($type = 0) {
+    public static function getTypeArr($returnArr = true, $type = 1) {
         $arr = [
             1 => '评论',
             2 => '留言',
@@ -44,7 +44,7 @@ class Comment extends \app\models\native\TblComment {
             4 => '消息',
         ];
 
-        return empty($type) ? $arr : $arr[$type];
+        return $returnArr ? $arr : (isset($arr[$type]) ? $arr[$type] : '');
     }
 
 }
