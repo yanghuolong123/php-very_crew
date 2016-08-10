@@ -151,6 +151,7 @@ class PlanController extends \app\util\BaseController {
         $searchModel->id = array_unique($addPlanIdArr);
         $searchModel->uid = null;
         $joinDataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $joinDataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
 
         return $this->render('my', [
                     'searchModel' => $searchModel,
