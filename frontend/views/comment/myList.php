@@ -6,7 +6,7 @@ use yii\widgets\Menu;
 use app\models\extend\User;
 use app\models\extend\Comment;
 
-$this->title = '我的留言';
+$this->title = '我的'.Comment::getTypeArr($_GET['type']);
 $this->params['breadcrumbs'][] = '消息中心';//['label' => '消息中心', 'url' => ['']];
 $this->params['breadcrumbs'][] = $this->title;
 
