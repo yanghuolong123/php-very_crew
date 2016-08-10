@@ -59,6 +59,7 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\classes\AccessControl',
         'allowActions' => [
+            '*',
             'admin/*', // add or remove allowed actions to this list
             'site/login',
             'site/error',
