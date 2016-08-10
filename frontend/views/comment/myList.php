@@ -59,7 +59,7 @@ app\components\comment\CommentAsset::register($this);
             </ul> 
             <?php else: ?>
             <div class="alert alert-info">
-                <h3>暂时没有留言...</h3>
+                <h3>暂时没有 <?= $this->title ?> 信息...</h3>
             </div>
             <?php endif; ?>
         </div>
