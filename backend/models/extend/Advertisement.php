@@ -6,9 +6,9 @@ class Advertisement extends \app\models\native\TblAdvertisement {
 
     public function rules() {
         return [
-            [['name', 'postion', 'url', 'sort', 'status'], 'required'],
+            [['name', 'position', 'url', 'sort', 'status'], 'required'],
             [['sort', 'status', 'createtime'], 'integer'],
-            [['name', 'postion', 'url'], 'string', 'max' => 128],
+            [['name', 'position', 'url'], 'string', 'max' => 128],
         ];
     }
 
