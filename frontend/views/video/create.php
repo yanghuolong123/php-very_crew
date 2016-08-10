@@ -1,7 +1,7 @@
 <?php
 
 $this->title = '作品上传';
-$this->params['breadcrumbs'][] = ['label' => '我的作品', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '搜作品', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-create">
