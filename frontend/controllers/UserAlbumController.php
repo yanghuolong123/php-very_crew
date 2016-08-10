@@ -36,8 +36,8 @@ class UserAlbumController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserAlbumSearch();
-        $searchModel->status = 1;
-        $searchModel->uid = Yii::$app->user->id;
+        $searchModel->status = 0;
+        $searchModel->uid = Yii::$app->request->get('uid') ? Yii::$app->request->get('uid') : Yii::$app->user->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //$dataProvider->pagination->pageSize = 1;
 
@@ -89,7 +89,8 @@ class UserAlbumController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -106,7 +107,7 @@ class UserAlbumController extends Controller
     public function actionDelete($id)
     {
         //$this->findModel($id)->delete();
-        $this->findModel($id)->updateAttributes(['status'=>0]);
+        $this->findModel($id)->updateAttributes(['status'=>-1]);
 
         return $this->redirect(['index']);
     }

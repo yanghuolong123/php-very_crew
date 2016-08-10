@@ -79,7 +79,7 @@
 		if (prev.length != 1) {
 			prev = $('.gallery div.col-xs-6:last-child');
 		}
-		prev.find('a').trigger('click');
+		prev.find('a.album-img').trigger('click');
 	}
 	
 	function openNext() {
@@ -88,7 +88,7 @@
 			next = $('.gallery div.col-xs-6:first-child');
 		}
 		//next.children('a').trigger('click');
-                next.find('a').trigger('click');
+                next.find('a.album-img').trigger('click');
 	}
 		
 	function close(event) {
@@ -137,9 +137,9 @@
 		});
 
 		if ($('.gallery a').length == 1) {
-			$('.gallery a')[0].addClass('zoom');
+			$('.gallery a.album-img')[0].addClass('zoom');
 		}
-		$('.zoom, .gallery a').on('click', open);
+		$('.zoom, .gallery a.album-img').on('click', open);
 	})();
 
 	(function bindChangeImageDimensions() {

@@ -59,7 +59,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                 <h3>个人照片</h3>
                 <?php if($model->id == Yii::$app->user->id): ?>
                 <p>
-                    <?= Html::a('上传我的照片', ['user-album/index'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('上传我的照片', ['user-album/create'], ['class' => 'btn btn-success']) ?>
                 </p>
                 <?php endif; ?>
                 
@@ -67,7 +67,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                     <?php if(!empty($albums)): ?>
                     <ul class="slides">
                       <?php foreach ($albums as $album): ?>
-                      <li><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" /></li>
+                        <li><a href="<?= Url::to(['user-album/index','uid'=>$album->uid]) ?>"><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" /></a></li>
                       <?php endforeach; ?>
                     </ul>
                     <?php else: ?>

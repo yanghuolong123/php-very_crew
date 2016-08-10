@@ -18,7 +18,6 @@ class UserAlbum extends \app\models\native\TblUserAlbum {
     public function beforeSave($insert) {
         if ($this->isNewRecord) {
             $this->uid = Yii::$app->user->id;
-            $this->status = 1;
             $this->createtime = time();
         }
 
