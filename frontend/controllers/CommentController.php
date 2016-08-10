@@ -73,6 +73,7 @@ class CommentController extends \app\util\BaseController {
         return $this->render('myList', [
                     'commentList' => $models,
                     'pages' => $pages,
+                    'type' => $type,
         ]);
     }
 
