@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\util\CommonUtil;
 use yii\helpers\Url;
+use app\models\extend\Article;
 
 AppAsset::register($this);
 
@@ -18,7 +19,7 @@ $user_msg = $redis->get('user_msg_'.Yii::$app->user->id);
 $user_private_msg = $redis->get('user_private_msg_'.Yii::$app->user->id);
 $user_news = $redis->get('user_news_'.Yii::$app->user->id);
 $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon glyphicon-volume-up" style="color:red;"></span>' : '';
-
+$footerNav = Article::getByGroopKey('footer_nav');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -109,9 +110,9 @@ $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon g
 <footer class="footer">
     <div class="container">
         <div class="footer_top">
-            <a href="<?= Url::to(['article/view','id'=>1]) ?>">关于我们</a>
-            <a href="<?= Url::to(['article/view','id'=>2]) ?>">常见问题</a>
-            <a href="<?= Url::to(['article/view','id'=>3]) ?>">联系我们</a>
+            <?php foreach ($footerNav as $article): ?>
+            <a href="<?= Url::to(['article/view','id'=>$article->id]) ?>"><?= $article->title ?></a>
+            <?php endforeach; ?>
         </div>
     </div>
 </footer>
