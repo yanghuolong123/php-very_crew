@@ -8,10 +8,13 @@ use Yii;
  * This is the model class for table "tbl_comment".
  *
  * @property integer $id
+ * @property integer $type
  * @property integer $uid
  * @property integer $vid
  * @property integer $parent_id
  * @property string $content
+ * @property integer $support
+ * @property integer $oppose
  * @property integer $status
  * @property integer $createtime
  */
@@ -31,8 +34,8 @@ class TblComment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'vid', 'parent_id', 'content', 'status', 'createtime'], 'required'],
-            [['uid', 'vid', 'parent_id', 'status', 'createtime'], 'integer'],
+            [['type', 'uid', 'vid', 'parent_id', 'content', 'support', 'oppose', 'status', 'createtime'], 'required'],
+            [['type', 'uid', 'vid', 'parent_id', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['content'], 'string', 'max' => 255],
         ];
     }
@@ -44,10 +47,13 @@ class TblComment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'type' => '类型:1评论，2留言，3私信，4消息',
             'uid' => '用户id',
-            'vid' => '视频id',
+            'vid' => '对象id',
             'parent_id' => '父级id',
             'content' => '内容',
+            'support' => '顶',
+            'oppose' => '踩',
             'status' => '状态',
             'createtime' => '创建时间',
         ];

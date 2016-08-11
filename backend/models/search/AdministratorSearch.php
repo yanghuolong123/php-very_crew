@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models\native;
+namespace app\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\extend\Advertisement;
+use app\models\extend\Administrator;
 
 /**
- * AdvertisementSearch represents the model behind the search form about `app\models\extend\Advertisement`.
+ * AdministratorSearch represents the model behind the search form about `app\models\extend\Administrator`.
  */
-class AdvertisementSearch extends Advertisement
+class AdministratorSearch extends Administrator
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class AdvertisementSearch extends Advertisement
     public function rules()
     {
         return [
-            [['id', 'sort', 'status', 'createtime'], 'integer'],
-            [['name', 'position', 'url'], 'safe'],
+            [['id'], 'integer'],
+            [['username', 'password'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class AdvertisementSearch extends Advertisement
      */
     public function search($params)
     {
-        $query = Advertisement::find();
+        $query = Administrator::find();
 
         // add conditions that should always apply here
 
@@ -60,14 +60,10 @@ class AdvertisementSearch extends Advertisement
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'sort' => $this->sort,
-            'status' => $this->status,
-            'createtime' => $this->createtime,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'position', $this->position])
-            ->andFilterWhere(['like', 'url', $this->url]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'password', $this->password]);
 
         return $dataProvider;
     }

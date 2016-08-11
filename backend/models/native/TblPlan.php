@@ -11,7 +11,6 @@ use Yii;
  * @property integer $uid
  * @property string $title
  * @property string $content
- * @property string $video_ids
  * @property integer $type
  * @property string $tag
  * @property integer $province
@@ -41,10 +40,10 @@ class TblPlan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'title', 'content', 'video_ids', 'type', 'tag', 'province', 'city', 'county', 'country', 'address', 'plan_role', 'plan_skill', 'remark', 'status', 'createtime'], 'required'],
+            [['uid', 'title', 'content', 'type', 'tag', 'province', 'city', 'county', 'country', 'address', 'plan_role', 'plan_skill', 'remark', 'status', 'createtime'], 'required'],
             [['uid', 'type', 'province', 'city', 'county', 'country', 'status', 'createtime'], 'integer'],
             [['content'], 'string'],
-            [['title', 'video_ids', 'address', 'remark'], 'string', 'max' => 255],
+            [['title', 'address', 'remark'], 'string', 'max' => 255],
             [['tag', 'plan_role', 'plan_skill'], 'string', 'max' => 128],
         ];
     }
@@ -59,7 +58,6 @@ class TblPlan extends \yii\db\ActiveRecord
             'uid' => '用户ID',
             'title' => '拍摄计划',
             'content' => '剧情说明',
-            'video_ids' => '相关作品',
             'type' => '拍摄类型',
             'tag' => '标签',
             'province' => '拍摄省份',
