@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'groop_key',
             'title',
-            'content:ntext',
+            'content:raw',
             'sort',
             // 'status',
             // 'createtime:datetime',
