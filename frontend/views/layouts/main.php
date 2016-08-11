@@ -109,9 +109,9 @@ $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon g
 <footer class="footer">
     <div class="container">
         <div class="footer_top">
-            <a href="<?= Url::to(['site/tips','tips_view'=>'about']) ?>">关于我们</a>
-            <a href="<?= Url::to(['site/tips','tips_view'=>'question']) ?>">常见问题</a>
-            <a href="<?= Url::to(['site/tips','tips_view'=>'contact']) ?>">联系我们</a>
+            <a href="<?= Url::to(['article/view','id'=>1]) ?>">关于我们</a>
+            <a href="<?= Url::to(['article/view','id'=>2]) ?>">常见问题</a>
+            <a href="<?= Url::to(['article/view','id'=>3]) ?>">联系我们</a>
         </div>
     </div>
 </footer>
