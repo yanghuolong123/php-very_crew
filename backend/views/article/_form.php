@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\extend\Article;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\extend\Article */
@@ -12,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'groop_key')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'groop_key')->dropDownList(Article::getGroopKeyArr()) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -20,9 +21,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sort')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(Article::getStatusArr()) ?>
 
-    <?= $form->field($model, 'createtime')->textInput() ?>
+    <?php // $form->field($model, 'createtime')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

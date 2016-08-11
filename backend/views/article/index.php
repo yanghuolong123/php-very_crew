@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\extend\Article;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\ArticleSearch */
@@ -25,7 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'groop_key',
+            [
+                'attribute' => 'groop_key',
+                'filter' => Article::getGroopKeyArr(),
+                'value' => function ($data) {
+                    return Article::getGroopKeyArr(false, $data->groop_key);
+                },
+            ],
+            //'groop_key',
             'title',
             'content:ntext',
             'sort',
