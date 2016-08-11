@@ -53,7 +53,7 @@ class TblPlanUser extends \yii\db\ActiveRecord
             'plan_id' => '计划',
             'role' => '申请角色',
             'role_name' => '角色名称',
-            'status' => '状态：-1不通过，0等待审核，1通过审核',
+            'status' => '状态：-1删除，0正常',
             'desc' => '申请说明',
             'createtime' => '申请时间',
             'updatetime' => '审核时间',
