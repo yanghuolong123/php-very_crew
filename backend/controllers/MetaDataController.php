@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\extend\MetaData;
-use app\models\native\MetaDataSearch;
+use app\models\search\MetaDataSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
