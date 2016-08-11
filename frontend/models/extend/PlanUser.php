@@ -43,7 +43,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
         if (!empty($creator)) {
             $creator->type = 0;
         } else {
-            $creator = new self();
+            $creator = new VideoUser();
             $creator->uid = Yii::$app->user->id;
             $creator->video_id = $videoId;
         }
