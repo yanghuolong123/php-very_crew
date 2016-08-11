@@ -17,7 +17,28 @@ use app\models\extend\Article;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?php // $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    
+    <?= $form->field($model,'content')->widget('kucha\ueditor\UEditor',[
+            'clientOptions' => [
+                //编辑区域大小
+                'initialFrameHeight' => '200',
+                //设置语言
+                'lang' =>'zh-cn', //中文为 zh-cn
+                //定制菜单
+//                'toolbars' => [
+//                    [
+//                        'fullscreen', 'source', 'undo', 'redo', '|',
+//                        'fontsize',
+//                        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat',
+//                        'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|',
+//                        'forecolor', 'backcolor', '|',
+//                        'lineheight', '|',
+//                        'indent', '|'
+//                    ],
+//                ],
+            ]
+    ]); ?>
 
     <?= $form->field($model, 'sort')->textInput() ?>
 

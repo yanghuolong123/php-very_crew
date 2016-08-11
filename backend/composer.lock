@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "deca905373c189370301970341f0b1d0",
-    "content-hash": "3c02a24bb8f4248ee03b7233f94910ec",
+    "hash": "80a2c68bc4726fb586527081aa2532a0",
+    "content-hash": "8fc2b273b7bdfec3ef088ff6f1346b4a",
     "packages": [
         {
             "name": "bower-asset/adminlte",
@@ -591,6 +591,39 @@
                 "html"
             ],
             "time": "2015-08-05 01:03:42"
+        },
+        {
+            "name": "kucha/ueditor",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BigKuCha/yii2-ueditor-widget.git",
+                "reference": "b41439ee0c69efc800a53087c20d8bfcea0f9507"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/BigKuCha/yii2-ueditor-widget/b41439ee0c69efc800a53087c20d8bfcea0f9507.zip",
+                "reference": "b41439ee0c69efc800a53087c20d8bfcea0f9507",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "kucha\\ueditor\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "null"
+            ],
+            "authors": [
+                {
+                    "name": "BigKuCha",
+                    "email": "nevermore1989@vip.qq.com"
+                }
+            ],
+            "description": "desc",
+            "time": "2015-02-06 02:01:30"
         },
         {
             "name": "mdmsoft/yii2-admin",

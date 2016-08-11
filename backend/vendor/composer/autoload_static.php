@@ -31,6 +31,10 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         array (
             'mdm\\admin\\' => 10,
         ),
+        'k' => 
+        array (
+            'kucha\\ueditor\\' => 14,
+        ),
         'd' => 
         array (
             'dee\\angular\\' => 12,
@@ -86,6 +90,10 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         'mdm\\admin\\' => 
         array (
             0 => __DIR__ . '/..' . '/mdmsoft/yii2-admin',
+        ),
+        'kucha\\ueditor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kucha/ueditor',
         ),
         'dee\\angular\\' => 
         array (
