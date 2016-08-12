@@ -56,6 +56,7 @@ if (!CommonUtil::isMobile()) {
                 <li class="list-group-item"><label>发布时间：</label> <?= date('Y-m-d H:i:s', $model->createtime) ?></li>
                 <li class="list-group-item"><label>标签：</label> <?= implode(', ', MetaData::getArrVal(explode(',', trim($model->tag)))) ?></li>
                 <li class="list-group-item"><label>剧情介绍：</label> <?= $model->content ?></li>
+                <li class="list-group-item"><label>备注说明：</label> <?= $model->remark ?></li>
             </ul>
             </p>
             

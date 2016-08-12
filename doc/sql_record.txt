@@ -15,3 +15,6 @@ ALTER TABLE  `tbl_video_user` ADD  `type` TINYINT( 1 ) NOT NULL COMMENT  '0发�
 
 /* done */
 ALTER TABLE  `tbl_plan_user` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMENT  '状态：-1删除，0正常';
+
+ALTER TABLE  `tbl_video` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMENT '状态';
+ALTER TABLE  `tbl_video` ADD  `remark` VARCHAR( 255 ) NOT NULL COMMENT '备注说明' AFTER  `oppose` ;
