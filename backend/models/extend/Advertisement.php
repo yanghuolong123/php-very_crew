@@ -21,4 +21,21 @@ class Advertisement extends \app\models\native\TblAdvertisement {
         return parent::beforeSave($insert);
     }
 
+    public static function getPostionArr($isArr = true, $pos = '') {
+        $arr = [
+            'banner' => 'banner',
+        ];
+
+        return $isArr ? $arr : (isset($arr[$pos]) ? $arr[$pos] : '');
+    }
+
+    public static function getStatusArr($isArr = true, $status = 0) {
+        $arr = [
+            0 => '启用',
+            -1 => '禁用',
+        ];
+
+        return $isArr ? $arr : (isset($arr[$status]) ? $arr[$status] : '');
+    }
+
 }

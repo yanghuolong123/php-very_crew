@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\extend\Advertisement;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\native\AdvertisementSearch */
@@ -26,10 +27,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'position',
+            //'position',
+            [
+                'attribute' => 'position',
+                'filter' => Advertisement::getPostionArr(),
+                'value' => function($data){
+                    return Advertisement::getPostionArr(false, $data->position);
+                },
+            ],
             'url:url',
             'sort',
-            // 'status',
+            [
+                'attribute' => 'status',
+                'value' => function($data){
+                    return Advertisement::getStatusArr(false, $data->status);
+                },
+            ],
+            //'status',
             // 'createtime:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],
