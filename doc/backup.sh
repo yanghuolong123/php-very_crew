@@ -8,11 +8,10 @@ USER="feichangjuzu"
 PASS="yhl-feichangjuzu"
 
 mysql -u $USER -p$PASS <<EOF 2> /dev/null
-DROP DATABASE zd_very_crew-test;
-#create database zd_very_crew-test default character set utf8;
+DROP DATABASE \`zd_very_crew-test\`;
+create database \`zd_very_crew-test\` default character set utf8;
 EOF
 
 #mysql -u $USER -p$PASS zd_very_crew-test <<EOF 2> /dev/null
-#DROP DATABASE zd_very_crew-test;
 #source zd_very_crew_"$subfix".sql
 #EOF
