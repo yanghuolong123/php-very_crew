@@ -17,6 +17,7 @@ mysql -u $USER -p$PASS zd_very_crew-test <<EOF 2> /dev/null
 source zd_very_crew.sql
 EOF
 
+rm -rf /home/work/www/very_crew-test/
 cp -r -f /home/work/www/very_crew/ /home/work/www/very_crew-test/
 
 cd /home/work/www/very_crew-test/frontend
