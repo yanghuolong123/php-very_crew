@@ -12,6 +12,6 @@ DROP DATABASE \`zd_very_crew-test\`;
 create database \`zd_very_crew-test\` default character set utf8;
 EOF
 
-#mysql -u $USER -p$PASS zd_very_crew-test <<EOF 2> /dev/null
-#source zd_very_crew_"$subfix".sql
-#EOF
+mysql -u $USER -p$PASS zd_very_crew-test <<EOF 2> /dev/null
+source zd_very_crew_"$subfix".sql
+EOF
