@@ -8,7 +8,7 @@ use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
 
 $this->title = '关联作品成员';
-//$this->params['breadcrumbs'][] = ['label' => '作品修改', 'url' => ['video/update', 'id' => $searchModel->video_id]];
+$this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['video/view', 'id' => $searchModel->video_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-user-index">

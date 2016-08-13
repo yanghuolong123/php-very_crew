@@ -6,7 +6,7 @@ use app\util\CommonUtil;
 use app\models\extend\User;
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '作品搜索', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 //$this->registerCssFile('http://vjs.zencdn.net/5.4.6/video-js.min.css', ['depends' => ['app\assets\AppAsset']]);

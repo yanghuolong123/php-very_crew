@@ -20,22 +20,22 @@ class Video extends \app\models\native\TblVideo {
 
     public function beforeSave($insert) {
         if ($this->getIsNewRecord()) {
-            $this->status = 1;
+            //$this->status = 1;
             $this->uid = Yii::$app->user->id;
             $this->createtime = time();
         }
 
-        if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
-            $this->status = 0;
-        }
+//        if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
+//            $this->status = 0;
+//        }
 
         return parent::beforeSave($insert);
     }
 
     public function afterSave($insert, $changedAttributes) {
-        if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
-            Yii::$app->redis->LPUSH("convert_video_list", $this->id);
-        }
+        //if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
+        Yii::$app->redis->LPUSH("convert_video_list", $this->id);
+        //}
         parent::afterSave($insert, $changedAttributes);
     }
 
