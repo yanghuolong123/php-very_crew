@@ -27,6 +27,6 @@ class HelloController extends Controller
     public function actionIndex($message = 'hello world')
     {
         //echo $message . "\n";
-        print_r(CommonUtil::video_info('/home/work/www/very_crew/frontend/web/uploads/2016/08/11/147092558685586.mp4', '/var/work/tool/ffmpeg/ffmpeg'));
+        print_r(CommonUtil::video_info('/home/work/tmp/flv.flv'));
     }
 }
