@@ -27,6 +27,7 @@ use Yii;
  * @property integer $oppose
  * @property string $remark
  * @property integer $status
+ * @property string $duration
  * @property integer $createtime
  */
 class TblVideo extends \yii\db\ActiveRecord
@@ -45,11 +46,12 @@ class TblVideo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'plan_id', 'title', 'content', 'logo', 'thumb_logo', 'file', 'type', 'province', 'city', 'county', 'country', 'tag', 'views', 'comments', 'support', 'oppose', 'remark', 'status', 'createtime'], 'required'],
+            [['uid', 'plan_id', 'title', 'content', 'logo', 'thumb_logo', 'file', 'type', 'province', 'city', 'county', 'country', 'tag', 'views', 'comments', 'support', 'oppose', 'remark', 'status', 'duration', 'createtime'], 'required'],
             [['uid', 'plan_id', 'type', 'province', 'city', 'county', 'country', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['content'], 'string'],
             [['title', 'logo', 'thumb_logo', 'file', 'tag'], 'string', 'max' => 128],
             [['remark'], 'string', 'max' => 255],
+            [['duration'], 'string', 'max' => 60],
         ];
     }
 
@@ -79,6 +81,7 @@ class TblVideo extends \yii\db\ActiveRecord
             'oppose' => '反对',
             'remark' => '备注说明',
             'status' => '状态',
+            'duration' => '视频时常',
             'createtime' => '创建时间',
         ];
     }

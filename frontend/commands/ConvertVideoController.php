@@ -5,6 +5,7 @@ namespace app\commands;
 use Yii;
 use yii\console\Controller;
 use app\models\extend\Video;
+use app\util\CommonUtil;
 
 /**
  * php yii convert-video/index
@@ -32,6 +33,12 @@ class ConvertVideoController extends Controller {
             //echo "$cmd\n";
             echo "\n===========================================\n";
             $model->updateAttributes(['status' => 1, 'file' => $newFile]);
+
+            $videoInfo = CommonUtil::video_info($newFilePath);
+            //print_r($videoInfo);
+            if (isset($videoInfo['duration'])) {
+                $model->updateAttributes(['duration' => strstr($videoInfo['duration'], '.', true)]);
+            }
         }
     }
 

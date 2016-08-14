@@ -15,6 +15,7 @@ class Video extends \app\models\native\TblVideo {
             [['title', 'logo', 'thumb_logo', 'tag', 'file'], 'string', 'max' => 128],
             [['plan_id'], 'default', 'value' => 0],
             [['remark'], 'string', 'max' => 255],
+            [['duration'], 'string', 'max' => 60],
         ];
     }
 
