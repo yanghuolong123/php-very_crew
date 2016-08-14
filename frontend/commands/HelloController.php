@@ -8,6 +8,7 @@
 namespace app\commands;
 
 use yii\console\Controller;
+use app\util\CommonUtil;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -25,6 +26,7 @@ class HelloController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
-        echo $message . "\n";
+        //echo $message . "\n";
+        print_r(CommonUtil::video_info('/home/work/www/very_crew/frontend/web/uploads/2016/08/12/147101342355778.mp4', '/var/work/tool/ffmpeg/ffmpeg'));
     }
 }
