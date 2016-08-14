@@ -19,3 +19,6 @@ ALTER TABLE  `tbl_plan_user` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL CO
 /* done */
 ALTER TABLE  `tbl_video` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMENT '状态';
 ALTER TABLE  `tbl_video` ADD  `remark` VARCHAR( 255 ) NOT NULL COMMENT '备注说明' AFTER  `oppose` ;
+
+/* done */
+ALTER TABLE `tbl_video` ADD `duration` VARCHAR( 60 ) NOT NULL COMMENT '视频时常' AFTER `status` ;
