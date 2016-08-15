@@ -35,7 +35,7 @@ if (!CommonUtil::isMobile()) {
                 <video id="payer" class="video-js vjs-default-skin"
                        controls preload="auto"
                        poster="<?= $model->logo; ?>"
-                       data-setup='{"autoplay": false}'>           
+                       data-setup='{"autoplay": false,"loop": true}'>           
                     <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
                     
                     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
