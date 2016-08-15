@@ -86,3 +86,21 @@ img.avatar {
     font-size: 14px;
     margin: 0 25px;
 }
+
+.duration {
+    cursor: pointer;
+    margin-top: -24px;
+    position: relative;
+    color: #fff;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+    border-radius: 3px;
+    float: right;
+    font: 12px/15px Tahoma,Helvetica,Arial,"微软雅黑",sans-serif;
+    height: 16px;
+    margin-right: 4px;
+    overflow: hidden;
+    padding: 0 5px;
+}
