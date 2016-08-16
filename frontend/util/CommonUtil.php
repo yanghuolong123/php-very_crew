@@ -152,7 +152,7 @@ class CommonUtil {
         $ic->destory();
     }
 
-    public static function cropImgLink($src = '', $width = 255, $height = 162, $mode = 1) {
+    public static function cropImgLink($src = '', $width = 330, $height = 220, $mode = 1) {
         return Url::to(['home/crop-img', 'src' => base64_encode($src), 'width' => $width, 'height' => $height, 'mode' => $mode]);
     }
 
