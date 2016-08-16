@@ -23,7 +23,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?php endif; ?>
 <?php else: ?>
 
-<div class="plan-form">
+<div class="plan-form row">
 
     <?php $form = ActiveForm::begin([
         'id' => 'plan-user-form',
