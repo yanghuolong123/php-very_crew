@@ -23,14 +23,14 @@ class HomeController extends \app\util\BaseController {
     public function actionCropImg() {
         $width = Yii::$app->request->get('width');
         $height = Yii::$app->request->get('height');
-        $model = Yii::$app->request->get('mode');
+        $mode = Yii::$app->request->get('mode');
         $src = Yii::$app->request->get('src');
-        if (empty($src) || empty($width) || empty($height) || empty($model)) {
+        if (empty($src) || empty($width) || empty($height) || empty($mode)) {
             throw new \yii\web\NotFoundHttpException('not found the correct param.');
         }
 
         $src = Yii::$app->basePath . '/web' . base64_decode($src);
-        $etag = md5($src . $width . $height . $model);
+        $etag = md5($src . $width . $height . $mode);
         $pathInfo = pathinfo($src);
         $dst = Yii::$app->basePath . '/web/assets/' . $etag . '.' . $pathInfo['extension'];
 
@@ -48,7 +48,7 @@ class HomeController extends \app\util\BaseController {
 
         if (!file_exists($dst)) {
             ini_set('memory_limit', '256M');
-            \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $model);
+            \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $mode);
         }
 
         header('Last Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
