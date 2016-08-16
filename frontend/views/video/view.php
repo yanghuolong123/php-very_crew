@@ -34,7 +34,7 @@ if (!CommonUtil::isMobile()) {
                             
                 <video id="payer" class="video-js vjs-default-skin"
                        controls preload="auto"
-                       poster="<?= $model->logo; ?>"
+                       poster="<?= CommonUtil::cropImgLink($model->logo,600,350); ?>"
                        data-setup='{"autoplay": false,"loop": true,"width": 640,"height": 200}'>           
                     <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
                     
