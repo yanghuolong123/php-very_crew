@@ -137,7 +137,7 @@
 		});
 
 		if ($('.gallery a').length == 1) {
-			$('.gallery a.album-img')[0].addClass('zoom');
+			$('.gallery a.album-img').addClass('zoom');
 		}
 		$('.zoom, .gallery a.album-img').on('click', open);
 	})();
