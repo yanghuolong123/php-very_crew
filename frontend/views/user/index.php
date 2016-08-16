@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($dataProvider->models as $user): ?>
         <div class="col-sm-6 col-md-2">
           <div class="thumbnail">
-            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
+            <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 320, 320) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
             <div class="caption">
               <h4><a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><?= User::getInfo($user->id)->nickname ?></a></h4>
               <p><?= empty($user->profile['province']) ? "<br>" : CommonUtil::cutstr(implode(' ',Distrinct::getArrDistrict([$user->profile['province'], $user->profile['city'], $user->profile['county'], $user->profile['country']])), 18) ?></p>              
