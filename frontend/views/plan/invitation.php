@@ -35,7 +35,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     ]); ?>
     
     <div class="form-group">
-        <div class="col-sm-offset-2">  
+        <div class="col-sm-offset-2 col-lg-6">  
         <p class="text-warning">添加后建议您主动联系对方沟通合作,并在"我的计划"中对人员进行备注</p>
         </div>
     </div>
