@@ -75,17 +75,17 @@
 	}
 	
 	function openPrevious() {
-		var prev = openedImage.parents('div.col-xs-6').prev();
+		var prev = openedImage.parents('div.col-sm-6').prev();
 		if (prev.length != 1) {
-			prev = $('.gallery div.col-xs-6:last-child');
+			prev = $('.gallery div.col-sm-6:last-child');
 		}
 		prev.find('a.album-img').trigger('click');
 	}
 	
 	function openNext() {
-		var next = openedImage.parents('div.col-xs-6').next();
+		var next = openedImage.parents('div.col-sm-6').next();
 		if (next.length != 1) {
-			next = $('.gallery div.col-xs-6:first-child');
+			next = $('.gallery div.col-sm-6:first-child');
 		}
 		//next.children('a').trigger('click');
                 next.find('a.album-img').trigger('click');
