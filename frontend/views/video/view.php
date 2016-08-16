@@ -89,7 +89,7 @@ if (!CommonUtil::isMobile()) {
                     <?php foreach ($members as $user): ?>
                     <div class="col-sm-6 col-md-2">
                       <div class="thumbnail">
-                        <a href="<?= Url::to(['user/view', 'id'=>$user->uid]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->uid)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->uid)->nickname ?>"></a>
+                        <a href="<?= Url::to(['user/view', 'id'=>$user->uid]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->uid)->avatar, 320, 320) ?>" alt="<?= User::getInfo($user->uid)->nickname ?>"></a>
                         <div class="caption">
                           <h4><a href="<?= Url::to(['user/view', 'id'=>$user->uid]) ?>"><?= User::getInfo($user->uid)->nickname ?></a></h4>
                           <p>角色：<?php if(empty($user->type)): ?>发起人 <?php endif; ?><?= CommonUtil::cutstr($user->role_name, 5) ?></p>              
