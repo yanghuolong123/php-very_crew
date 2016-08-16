@@ -153,7 +153,10 @@ class CommonUtil {
     }
 
     public static function cropImgLink($src = '', $width = 330, $height = 220, $mode = 1) {
-        return Url::to(['home/crop-img', 'src' => base64_encode($src), 'width' => $width, 'height' => $height, 'mode' => $mode]);
+        $pathInfo = pathinfo($src);
+        $file = md5(base64_encode($src) . $width . $height . $mode) . '.' . $pathInfo['extension'];
+        return '/assets/'.$file;
+        //return Url::to(['home/crop-img', 'src' => base64_encode($src), 'width' => $width, 'height' => $height, 'mode' => $mode]);
     }
 
     public static function video_info($file, $ffmpeg = '/home/work/tool/ffmpeg/ffmpeg') {
