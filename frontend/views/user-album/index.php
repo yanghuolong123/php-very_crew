@@ -25,7 +25,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
     <?php if(!empty($dataProvider->models)): ?>
         <div class="row gallery">
             <?php foreach ($dataProvider->models as $album): ?>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-sm-6 col-md-3">
                 <div class="thumbnail">
                   <a class="album-img" href="<?= $album->url ?>"><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" alt="<?= $album->title ?>"></a>
                   <div class="caption">
