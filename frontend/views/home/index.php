@@ -77,7 +77,7 @@ $this->title = '非常剧组';
 <div class="row">
     <div class="container"><h3>搭档推荐</h3></div>
     <?php foreach ($recomUsers as $user): ?>
-    <div class="col-sm-3 col-md-2">
+    <div class="col-sm-2 col-md-2">
       <div class="thumbnail">
          <a href="<?= Url::to(['user/view', 'id'=>$user->id]) ?>"><img src="<?= CommonUtil::cropImgLink(User::getInfo($user->id)->avatar, 160, 160) ?>" alt="<?= User::getInfo($user->id)->nickname ?>"></a>
         <div class="caption">
