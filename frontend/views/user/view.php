@@ -43,7 +43,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                             <li class="list-group-item"><label>出生日期：</label> <?= $profile->birthday ?></li>
                             <li class="list-group-item"><label>身高：</label> <?= $profile->height ?></li>
                             <li class="list-group-item"><label>体重：</label> <?= $profile->weight ?></li>
-                            <li class="list-group-item"><label>可用于拍摄的时间：</label> <?= MetaData::getVal($profile->usingtime) ?></li>
+                            <!--li class="list-group-item"><label>可用于拍摄的时间：</label> <?= MetaData::getVal($profile->usingtime) ?></li-->
                             <li class="list-group-item"><label>擅长角色：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->good_at_job)))) ?></li>
                             <li class="list-group-item"><label>表演特长：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->speciality)))) ?></li>                            
                             <li class="list-group-item"><label>其它个人说明：</label> <?= $profile->remark ?></li>
