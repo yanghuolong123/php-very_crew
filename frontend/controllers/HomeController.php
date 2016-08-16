@@ -29,8 +29,8 @@ class HomeController extends \app\util\BaseController {
             throw new \yii\web\NotFoundHttpException('not found the correct param.');
         }
 
-        $src = Yii::$app->basePath . '/web' . base64_decode($src);
         $etag = md5($src . $width . $height . $mode);
+        $src = Yii::$app->basePath . '/web' . base64_decode($src);        
         $pathInfo = pathinfo($src);
         $dst = Yii::$app->basePath . '/web/assets/' . $etag . '.' . $pathInfo['extension'];
 
