@@ -51,6 +51,9 @@ class VideoController extends \app\util\BaseController {
 
     public function actionView($id) {
         $model = $this->findModel($id);
+        if($model->status<0) {
+            throw new NotFoundHttpException('该作品已被删除');
+        }
         $model->updateCounters(['views' => 1]);
 
         $otherWorks = Video::find()->where(['uid' => $model->uid, 'status' => 1])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
@@ -94,7 +97,7 @@ class VideoController extends \app\util\BaseController {
     }
 
     public function actionDelete($id) {
-        $this->findModel($id)->updateAttributes(['status' => 0]);
+        $this->findModel($id)->updateAttributes(['status' => -1]);
 
         return $this->redirect(['index']);
     }
