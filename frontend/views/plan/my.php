@@ -117,7 +117,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{remove}',
-                'header' => '操作',
+                //'header' => '操作',
                 'buttons' => [
                     'remove' => function ($url, $model, $key) {
                         $options = [
