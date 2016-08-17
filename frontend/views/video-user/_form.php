@@ -31,7 +31,7 @@ use app\models\extend\MetaData;
 
 
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-1 col-md-offset-2">
             <?= Html::submitButton('确定', ['class' => 'btn btn-success']) ?>
         </div>
     </div>
