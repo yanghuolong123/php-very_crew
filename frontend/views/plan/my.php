@@ -91,6 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ], 
             [
                 'attribute' => 'title',
+                'label' => '计划',
                 'format' => 'raw',
                 'options' => ['style'=>'width:15%;'],
                 'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
