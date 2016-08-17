@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'plan_id', ['template' => "{input}"])->hiddenInput(['value'=>$plan_id]) ?>
    
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-1 col-md-offset-2">
         <?= Html::submitButton('确定', ['class' => 'btn btn-success']) ?>
         </div>
     </div>
