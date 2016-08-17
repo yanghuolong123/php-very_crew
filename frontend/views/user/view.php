@@ -47,6 +47,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
                             <li class="list-group-item"><label>擅长角色：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->good_at_job)))) ?></li>
                             <li class="list-group-item"><label>表演特长：</label> <?= implode(', ',MetaData::getArrVal(explode(',', trim($profile->speciality)))) ?></li>                            
                             <li class="list-group-item"><label>其它个人说明：</label> <?= $profile->remark ?></li>
+                            <li class="list-group-item"><label>注册时间：</label> <?= date('Y-m-d H:i:s',$model->createtime) ?></li>
                         </ul>
                 </div>
 
