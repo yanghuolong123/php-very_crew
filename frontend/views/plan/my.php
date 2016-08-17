@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'uid',
             [
                 'attribute' => 'title',
+                'label' => '名称',
                 'format' => 'raw',
                 'options' => ['style'=>'width:15%;'],
                 'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
