@@ -27,10 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function($data){
                     $content = '<div class="row">';
-                    $content .= '<div class="col-md-4">';
+                    $content .= '<div class="col-md-8">';
                     $content .= Html::a(Html::img(CommonUtil::cropImgLink($data->logo, 240,150),['class'=>'thumbnail']),['video/view','id'=>$data->id]);
                     $content .= '</div>';
-                    $content .= '<div class="col-md-8">';
+                    $content .= '<div class="col-md-4">';
                     $content .= "<p>".Html::a($data->title,['video/view','id'=>$data->id])."</p>";
                     $content .= '</div>';
                     $content .= '</div>';
