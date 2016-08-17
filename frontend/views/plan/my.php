@@ -42,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'content:ntext',
             [
                 'attribute' => 'type',
+                'label' => '类型',
                 'options' => ['style'=>'width:5%;'],
                 'value' => function($data){ return MetaData::getVal($data->type);},
             ],
