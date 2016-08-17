@@ -53,8 +53,12 @@ class PlanController extends \app\util\BaseController {
     }
 
     public function actionView($id) {
+        $model = $this->findModel($id);
+        if ($model->status < 0) {
+            throw new NotFoundHttpException('该计划已被删除.');
+        }
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
                     'planUsers' => PlanUser::findAll(['plan_id' => $id, 'status' => 0]),
         ]);
     }
@@ -91,7 +95,7 @@ class PlanController extends \app\util\BaseController {
     }
 
     public function actionDelete($id) {
-        $this->findModel($id)->updateAttributes(['status' => 0]);
+        $this->findModel($id)->updateAttributes(['status' => -1]);
 
         return $this->redirect(['index']);
     }
@@ -188,12 +192,12 @@ class PlanController extends \app\util\BaseController {
 
     public function actionAjaxGetSel() {
         $plan_id = Yii::$app->request->post('plan_id');
-        if(empty($plan_id)) {
+        if (empty($plan_id)) {
             $this->sendRes(false);
         }
-        
+
         $model = Plan::findOne($plan_id);
-        
+
         $this->sendRes(TRUE, 'success', $model->toArray());
     }
 
