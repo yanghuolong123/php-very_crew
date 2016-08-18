@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('上传我的作品', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <div class="table-responsive">
     <?= GridView::widget([
         'layout' => "{items}\n{pager}",
         'dataProvider' => $dataProvider,
@@ -54,4 +55,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    </div>
 </div>
