@@ -25,7 +25,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
     <?= $form->field($model, 'desc')->textarea() ?>
 
     <div class="form-group">
-        <div class="col-sm-offset-2">
+        <div class="col-sm-1 col-md-offset-2">
         <?= Html::submitButton($model->isNewRecord ? '上传' : '保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>
     </div>
