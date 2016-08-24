@@ -97,7 +97,7 @@ class PlanController extends \app\util\BaseController {
     public function actionDelete($id) {
         $this->findModel($id)->updateAttributes(['status' => -1]);
 
-        return $this->redirect(['index']);
+        return $this->redirect(['plan/my']);
     }
 
     protected function findModel($id) {

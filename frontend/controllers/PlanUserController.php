@@ -24,6 +24,7 @@ class PlanUserController extends Controller {
 
     public function actionIndex($plan_id) {
         $searchModel = new PlanUserSearch();
+        $searchModel->status = 0;
         $searchModel->plan_id = $plan_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

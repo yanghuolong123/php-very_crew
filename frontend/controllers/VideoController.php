@@ -99,7 +99,7 @@ class VideoController extends \app\util\BaseController {
     public function actionDelete($id) {
         $this->findModel($id)->updateAttributes(['status' => -1]);
 
-        return $this->redirect(['index']);
+        return $this->redirect(['video/my']);
     }
 
     protected function findModel($id) {

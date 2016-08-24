@@ -76,7 +76,7 @@ class PlanSearch extends Plan
         ]);
         
         if(is_array($this->id)) {
-            $query->andFilterWhere(['in', 'id', $this->id]);
+            $query->andFilterWhere(['in', 'id', empty($this->id) ? [-1] : $this->id]);
         } else {
             $query->andFilterWhere(['id' => $this->id]);
         }

@@ -130,7 +130,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data-method' => 'post',
                             'data-pjax' => '0',
                         ];
-                        $url = Url::to(['plan-user/remove','plan_id'=>$model->id,'uid'=>$model->uid]);
+                        $url = Url::to(['plan-user/remove','plan_id'=>$model->id,'uid'=>Yii::$app->user->id]);
                         return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
                     },
                 ],
