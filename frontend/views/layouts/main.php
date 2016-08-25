@@ -66,8 +66,8 @@ $footerNav = Article::getByGroopKey('footer_nav');
                 'linkOptions' => ['class'=>'avatar'],
                 'items' => [
                      ['label' => '<span class="glyphicon glyphicon-user"></span> 我的主页', 'url' => ['user/view', 'id'=>Yii::$app->user->id],'encode' => false],
-                     ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">'.($user_private_msg ? '('.$user_private_msg.')' : '').'</span>', 'url' => ['comment/my-list','type'=>2],'encode' => false],
-                     ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">'.($user_msg ? '('.$user_msg.')' : '').'</span>', 'url' => ['comment/my-list', 'type'=>3],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">'.($user_msg ? '('.$user_msg.')' : '').'</span>', 'url' => ['comment/my-list', 'type'=>2],'encode' => false],
+                     ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">'.($user_private_msg ? '('.$user_private_msg.')' : '').'</span>', 'url' => ['comment/my-list','type'=>3],'encode' => false],                     
                      ['label' => '<span class="glyphicon glyphicon-bell"></span> 我的消息 <span class="tip_num">'.($user_news ? '('.$user_news.')' : '').'</span>', 'url' => ['comment/my-list', 'type'=>4],'encode' => false],                     
                      '<li class="divider"></li>',
                      ['label' => '我的计划', 'url' => ['plan/my']],

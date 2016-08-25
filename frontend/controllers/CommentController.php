@@ -37,10 +37,10 @@ class CommentController extends \app\util\BaseController {
                     }
                     break;
                 case 2:
-                    Yii::$app->redis->incr('user_msg_' . $model->vid);
+                    Yii::$app->redis->INCR('user_msg_' . $model->vid);
                     break;
                 case 3:
-                    Yii::$app->redis->incr('user_private_msg_' . $model->vid);
+                    Yii::$app->redis->INCR('user_private_msg_' . $model->vid);
                     break;
             }
 
