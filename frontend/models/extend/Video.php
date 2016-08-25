@@ -4,6 +4,7 @@ namespace app\models\extend;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use app\util\Constant;
 
 class Video extends \app\models\native\TblVideo {
 
@@ -35,7 +36,7 @@ class Video extends \app\models\native\TblVideo {
 
     public function afterSave($insert, $changedAttributes) {
         //if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
-        Yii::$app->redis->LPUSH("convert_video_list", $this->id);
+        Yii::$app->redis->LPUSH(Constant::ConvertVideoList, $this->id);
         //}
         parent::afterSave($insert, $changedAttributes);
     }

@@ -7,6 +7,7 @@ use app\models\extend\Comment;
 use app\models\extend\User;
 use app\models\extend\Video;
 use \yii\data\Pagination;
+use app\util\Constant;
 
 class CommentController extends \app\util\BaseController {
 
@@ -37,10 +38,10 @@ class CommentController extends \app\util\BaseController {
                     }
                     break;
                 case 2:
-                    Yii::$app->redis->INCR('user_msg_' . $model->vid);
+                    Yii::$app->redis->INCR(Constant::UserMsg . $model->vid);
                     break;
                 case 3:
-                    Yii::$app->redis->INCR('user_private_msg_' . $model->vid);
+                    Yii::$app->redis->INCR(Constant::UserPrivateMsg . $model->vid);
                     break;
             }
 
@@ -53,16 +54,16 @@ class CommentController extends \app\util\BaseController {
     public function actionMyList($type) {
         switch ($type) {
             case 2:
-                Yii::$app->redis->del('user_msg_' . Yii::$app->user->id);
+                Yii::$app->redis->del(Constant::UserMsg . Yii::$app->user->id);
                 break;
             case 3:
-                Yii::$app->redis->del('user_private_msg_' . Yii::$app->user->id);
+                Yii::$app->redis->del(Constant::UserPrivateMsg . Yii::$app->user->id);
                 break;
             case 4:
-                Yii::$app->redis->del('user_news_' . Yii::$app->user->id);
+                Yii::$app->redis->del(Constant::UserNews . Yii::$app->user->id);
                 break;
         }
-        
+
 
         $query = Comment::find()->where(['type' => $type, 'vid' => Yii::$app->user->id]);
         $countQuery = clone $query;

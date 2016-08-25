@@ -6,13 +6,14 @@ use Yii;
 use yii\console\Controller;
 use app\models\extend\Video;
 use app\util\CommonUtil;
+use app\util\Constant;
 
 /**
  * php yii convert-video/index
  */
 class ConvertVideoController extends Controller {
 
-    public $list_key = 'convert_video_list';
+    public $list_key = Constant::ConvertVideoList;
 
     public function actionIndex() {
         //var_dump(Yii::$app->redis->LRANGE($this->list_key, 0, 10));

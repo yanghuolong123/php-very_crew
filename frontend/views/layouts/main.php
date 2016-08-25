@@ -11,13 +11,14 @@ use app\assets\AppAsset;
 use app\util\CommonUtil;
 use yii\helpers\Url;
 use app\models\extend\Article;
+use app\util\Constant;
 
 AppAsset::register($this);
 
 $redis = Yii::$app->redis;
-$user_msg = $redis->get('user_msg_'.Yii::$app->user->id);
-$user_private_msg = $redis->get('user_private_msg_'.Yii::$app->user->id);
-$user_news = $redis->get('user_news_'.Yii::$app->user->id);
+$user_msg = $redis->get(Constant::UserMsg.Yii::$app->user->id);
+$user_private_msg = $redis->get(Constant::UserPrivateMsg.Yii::$app->user->id);
+$user_news = $redis->get(Constant::UserNews.Yii::$app->user->id);
 $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon glyphicon-volume-up" style="color:red;"></span>' : '';
 $footerNav = Article::getByGroopKey('footer_nav');
 ?>

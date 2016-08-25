@@ -3,6 +3,7 @@
 namespace app\models\extend;
 
 use Yii;
+use app\util\Constant;
 
 class Comment extends \app\models\native\TblComment {
 
@@ -33,7 +34,7 @@ class Comment extends \app\models\native\TblComment {
         $comment->content = $content;
         $comment->save();
 
-        Yii::$app->redis->incr('user_news_' . $toUid);
+        Yii::$app->redis->incr(Constant::UserNews . $toUid);
     }
 
     public static function getTypeArr($returnArr = true, $type = 1) {
