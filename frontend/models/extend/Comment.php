@@ -10,7 +10,7 @@ class Comment extends \app\models\native\TblComment {
     public function rules() {
         return [
             [['uid', 'type', 'content'], 'required'],
-            [['uid', 'type', 'vid', 'parent_id', 'status', 'createtime'], 'integer'],
+            [['uid', 'type', 'vid', 'reply_id', 'parent_id', 'status', 'createtime'], 'integer'],
             [['content'], 'string', 'max' => 255],
         ];
     }

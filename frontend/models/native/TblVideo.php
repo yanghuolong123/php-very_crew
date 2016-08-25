@@ -80,7 +80,7 @@ class TblVideo extends \yii\db\ActiveRecord
             'support' => '支持',
             'oppose' => '反对',
             'remark' => '备注说明',
-            'status' => '状态',
+            'status' => '状态:-1删除，0等待转码，1正常',
             'duration' => '视频时常',
             'createtime' => '创建时间',
         ];

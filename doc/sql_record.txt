@@ -22,3 +22,7 @@ ALTER TABLE  `tbl_video` ADD  `remark` VARCHAR( 255 ) NOT NULL COMMENT '备注�
 
 /* done */
 ALTER TABLE `tbl_video` ADD `duration` VARCHAR( 60 ) NOT NULL COMMENT '视频时常' AFTER `status` ;
+
+
+ALTER TABLE  `tbl_comment` ADD  `reply_id` INT NOT NULL COMMENT  '回复人uid' AFTER `vid` ;
+

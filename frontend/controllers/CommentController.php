@@ -28,6 +28,7 @@ class CommentController extends \app\util\BaseController {
                 $parent->createtime = date('Y-m-d H:i:s', $parent->createtime);
                 $arr['parent'] = $parent->toArray();
                 $arr['parent_nickname'] = User::getInfo($parent['uid'])->nickname;
+                Yii::$app->db->createCommand('update tbl_comment set reply_id=:reply_id where id=' . $model->id, [':reply_id' => $parent->uid])->execute();
             }
 
             switch ($model->type) {
@@ -38,10 +39,10 @@ class CommentController extends \app\util\BaseController {
                     }
                     break;
                 case 2:
-                    Yii::$app->redis->INCR(Constant::UserMsg . $model->vid);
+                    Yii::$app->redis->INCR(Constant::UserMsg . (empty($parent->id) ? $model->vid : $parent->uid));
                     break;
                 case 3:
-                    Yii::$app->redis->INCR(Constant::UserPrivateMsg . $model->vid);
+                    Yii::$app->redis->INCR(Constant::UserPrivateMsg . (empty($parent->id) ? $model->vid : $parent->uid));
                     break;
             }
 
@@ -65,7 +66,7 @@ class CommentController extends \app\util\BaseController {
         }
 
 
-        $query = Comment::find()->where(['type' => $type, 'vid' => Yii::$app->user->id]);
+        $query = Comment::find()->where(['or',['type' => $type, 'vid' => Yii::$app->user->id],['type' => $type, 'reply_id' => Yii::$app->user->id]]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->defaultPageSize = 5;

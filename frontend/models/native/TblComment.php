@@ -11,6 +11,7 @@ use Yii;
  * @property integer $type
  * @property integer $uid
  * @property integer $vid
+ * @property integer $reply_id
  * @property integer $parent_id
  * @property string $content
  * @property integer $support
@@ -34,8 +35,8 @@ class TblComment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'uid', 'vid', 'parent_id', 'content', 'support', 'oppose', 'status', 'createtime'], 'required'],
-            [['type', 'uid', 'vid', 'parent_id', 'support', 'oppose', 'status', 'createtime'], 'integer'],
+            [['type', 'uid', 'vid', 'reply_id', 'parent_id', 'content', 'support', 'oppose', 'status', 'createtime'], 'required'],
+            [['type', 'uid', 'vid', 'reply_id', 'parent_id', 'support', 'oppose', 'status', 'createtime'], 'integer'],
             [['content'], 'string', 'max' => 255],
         ];
     }
@@ -50,6 +51,7 @@ class TblComment extends \yii\db\ActiveRecord
             'type' => '类型:1评论，2留言，3私信，4消息',
             'uid' => '用户id',
             'vid' => '对象id',
+            'reply_id' => '回复人uid',
             'parent_id' => '父级id',
             'content' => '内容',
             'support' => '顶',
