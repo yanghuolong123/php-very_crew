@@ -8,6 +8,9 @@ $m = strtolower(substr(strrchr(get_class($model), '\\'), 1));
     .district-label{
         padding-right: 25px;
     }
+    .field-video-city, .field-video-province {
+        margin-bottom: 5px;
+    }
 </style>
 <?=
 
