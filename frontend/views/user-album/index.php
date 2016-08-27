@@ -5,6 +5,7 @@ use app\util\CommonUtil;
 use yii\helpers\Url;
 
 $this->title = '个人的照片';
+$this->params['breadcrumbs'][] = ['label'=>'个人主页','url'=>['user/view','id'=>$searchModel->uid]];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCssFile('@web/plugin/zoom/css/zoom.css',['depends'=>['app\assets\AppAsset'], 'media'=>'all']);
