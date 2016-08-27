@@ -72,6 +72,7 @@ class PlanController extends \app\util\BaseController {
             //return $this->redirect(['join', 'plan_id' => $model->id]);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->begin_time = date('Y-m-d');
             return $this->render('create', [
                         'model' => $model,
             ]);
@@ -87,6 +88,8 @@ class PlanController extends \app\util\BaseController {
             $model->tag = explode(',', trim($model->tag, ','));
             $model->plan_role = explode(',', trim($model->plan_role, ','));
             $model->plan_skill = explode(',', trim($model->plan_skill, ','));
+            $model->begin_time = date('Y-m-d', $model->begin_time);
+            $model->end_time = date('Y-m-d', $model->end_time);
 
             return $this->render('update', [
                         'model' => $model,

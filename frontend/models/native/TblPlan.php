@@ -22,6 +22,8 @@ use Yii;
  * @property string $plan_skill
  * @property string $remark
  * @property integer $status
+ * @property integer $begin_time
+ * @property integer $end_time
  * @property integer $createtime
  */
 class TblPlan extends \yii\db\ActiveRecord
@@ -40,8 +42,8 @@ class TblPlan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'title', 'content', 'type', 'tag', 'province', 'city', 'county', 'country', 'address', 'plan_role', 'plan_skill', 'remark', 'status', 'createtime'], 'required'],
-            [['uid', 'type', 'province', 'city', 'county', 'country', 'status', 'createtime'], 'integer'],
+            [['uid', 'title', 'content', 'type', 'tag', 'province', 'city', 'county', 'country', 'address', 'plan_role', 'plan_skill', 'remark', 'status', 'begin_time', 'end_time', 'createtime'], 'required'],
+            [['uid', 'type', 'province', 'city', 'county', 'country', 'status', 'begin_time', 'end_time', 'createtime'], 'integer'],
             [['content'], 'string'],
             [['title', 'address', 'remark'], 'string', 'max' => 255],
             [['tag', 'plan_role', 'plan_skill'], 'string', 'max' => 128],
@@ -69,6 +71,8 @@ class TblPlan extends \yii\db\ActiveRecord
             'plan_skill' => '所需技能',
             'remark' => '备注信息',
             'status' => '状态',
+            'begin_time' => '开始时间',
+            'end_time' => '结束时间',
             'createtime' => '创建时间',
         ];
     }
