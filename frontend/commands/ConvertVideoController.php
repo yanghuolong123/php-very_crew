@@ -28,8 +28,8 @@ class ConvertVideoController extends Controller {
             $newFile = strstr($model->file, '.', true) . '.mp4';
             $newFile = dirname($newFile) . '/code_' . basename($newFile);
             $newFilePath = Yii::getAlias("@app/web") . $newFile;
-            $cmd = 'ffmpeg -i ' . $filePath . ' -y -vcodec libx264 -ar 22050 ' . $newFilePath;
-            //$cmd = 'ffmpeg -i ' . $filePath . ' -vf "movie='.Yii::getAlias("@app/web").'/image/logo.png [logo]; [in][logo] overlay=10:10 [out]" -y -vcodec libx264 -ar 22050 ' . $newFilePath;
+            //$cmd = 'ffmpeg -i ' . $filePath . ' -y -vcodec libx264 -ar 22050 ' . $newFilePath;
+            $cmd = 'ffmpeg -i ' . $filePath . ' -vf "movie='.Yii::getAlias("@app/web").'/image/logo.png,scale= 50:25 [logo]; [in][logo] overlay=10:10 [out]" -y -vcodec libx264 -ar 22050 ' . $newFilePath;
             echo "\n===========================================\n";
             echo exec($cmd);
             //echo "$cmd\n";
