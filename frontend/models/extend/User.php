@@ -17,7 +17,7 @@ class User extends \app\models\native\TblUser {
             [['username', 'nickname'], 'required'],
             [['password', 'verifyPassword'], 'required', 'on' => 'register'],
             //[['avatar', 'mobile'], 'required', 'on' => 'perfect'],
-            ['username', 'unique'],
+            [['username', 'mobile', 'email'], 'unique'],
             [['username', 'email'], 'email'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
             [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
