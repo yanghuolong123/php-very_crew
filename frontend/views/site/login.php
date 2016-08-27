@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true,'placeholder'=>'邮箱或电话']) ?>
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
