@@ -8,14 +8,11 @@ $m = strtolower(substr(strrchr(get_class($model), '\\'), 1));
     .district-label{
         padding-right: 25px;
     }
-    .field-video-city, .field-video-province {
-        margin-bottom: 5px;
-    }
 </style>
 <?=
 
 $form->field($model, 'province', [
-    'template' => "{label}\n<div class=\"col-lg-2\" style=\"padding-left: 5px;\">{input}</div>\n",
+    'template' => "{label}\n<div class=\"col-lg-2\" style=\"padding-left: 5px;margin-bottom: 5px;\">{input}</div>\n",
     'options' => ['class' => 'form-horizontal'],
     'labelOptions' => ['class' => 'col-lg-2 control-label district-label'],
 ])->dropDownList(Distrinct::getDistrictList(0), [
@@ -33,7 +30,7 @@ $form->field($model, 'province', [
 <?=
 
 $form->field($model, 'city', [
-    'template' => "<div class=\"col-lg-2\">{input}</div>\n",
+    'template' => "<div class=\"col-lg-2\" style=\"margin-bottom: 5px;\">{input}</div>\n",
     'options' => ['class' => 'form-horizontal'],
 ])->dropDownList(Distrinct::getDistrictList($model->province), [
     'prompt' => '请选择城市',
