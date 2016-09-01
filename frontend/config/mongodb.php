@@ -2,5 +2,5 @@
 
 return [
     'class' => '\yii\mongodb\Connection',
-    'dsn' => 'mongodb://127.0.0.1:27017/yhltest',
+    'dsn' => 'mongodb://127.0.0.1:27017/very_crew',
 ];
