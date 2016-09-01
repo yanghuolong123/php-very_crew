@@ -16,6 +16,7 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         array (
             'yii\\swiftmailer\\' => 16,
             'yii\\redis\\' => 10,
+            'yii\\mongodb\\' => 12,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -46,6 +47,10 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         'yii\\redis\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-redis',
+        ),
+        'yii\\mongodb\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-mongodb',
         ),
         'yii\\gii\\' => 
         array (

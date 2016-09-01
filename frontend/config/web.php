@@ -43,6 +43,7 @@ $config = [
         ],
         'cache' => require(__DIR__.'/memcache.php'),
         'db' => require(__DIR__ . '/db.php'),
+        'mongodb' => require(__DIR__.'/mongodb.php'),
         'redis' => require(__DIR__ . '/redis.php'),
         /*
         'urlManager' => [

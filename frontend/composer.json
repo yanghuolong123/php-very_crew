@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "2amigos/yii2-date-picker-widget" : "*",
-        "yiisoft/yii2-redis": "^2.0"
+        "yiisoft/yii2-redis": "^2.0",
+        "yiisoft/yii2-mongodb": "^2.1"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
