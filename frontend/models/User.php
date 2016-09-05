@@ -25,9 +25,9 @@ class User extends \app\models\extend\User implements \yii\web\IdentityInterface
      * @return static|null
      */
     public static function findByUsername($username) {
-        if(is_numeric($username)) {
-            return static::findOne(['mobile' => $username]);
-        }
+//        if(is_numeric($username)) {
+//            return static::findOne(['mobile' => $username]);
+//        }
         return static::findOne(['username' => $username]);
     }
 

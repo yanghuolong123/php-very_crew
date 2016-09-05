@@ -37,7 +37,11 @@ class User extends \app\models\native\TblUser {
     public function register() {
         $this->password = md5($this->password);
         $this->status = 1;
-        $this->email = $this->username;
+        if (is_numeric($this->username)) {
+            $this->mobile = $this->username;
+        } else {
+            $this->email = $this->username;
+        }
         $this->createtime = time();
 
         return $this->insert(false);
@@ -82,13 +86,13 @@ class User extends \app\models\native\TblUser {
                 $this->addError($attribute, '请使用手机号或邮箱注册.');
             }
 
-            if (preg_match("/^1[34578]\d{9}$/", $this->username) && self::find()->where(['mobile' => $this->username, 'status' => 1])->exists()) {
-                $this->addError($attribute, '该手机号已被注册.');
-            }
-
-            if (preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $this->username) && self::find()->where(['email' => $this->username, 'status' => 1])->exists()) {
-                $this->addError($attribute, '该邮箱已被注册.');
-            }
+//            if (preg_match("/^1[34578]\d{9}$/", $this->username) && self::find()->where(['mobile' => $this->username, 'status' => 1])->exists()) {
+//                $this->addError($attribute, '该手机号已被注册.');
+//            }
+//
+//            if (preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $this->username) && self::find()->where(['email' => $this->username, 'status' => 1])->exists()) {
+//                $this->addError($attribute, '该邮箱已被注册.');
+//            }
         }
     }
 
