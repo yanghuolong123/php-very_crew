@@ -18,11 +18,12 @@ class User extends \app\models\native\TblUser {
             [['password', 'verifyPassword'], 'required', 'on' => 'register'],
             //[['avatar', 'mobile'], 'required', 'on' => 'perfect'],
             [['username', 'mobile', 'email'], 'unique'],
-            [['username', 'email'], 'email'],
+            //[['username', 'email'], 'email'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
             [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
             ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => 'register'],
             ['verifyCode', 'captcha', 'on' => 'register'],
+            ['username', 'validRegister', 'on' => 'register'],
         ];
     }
 
@@ -72,6 +73,23 @@ class User extends \app\models\native\TblUser {
         //$this->profile = UserProfile::findOne(['uid' => $this->id]);
 
         parent::afterFind();
+    }
+
+    public function validRegister($attribute, $params) {
+        if (!$this->hasErrors()) {
+
+            if (!preg_match("/^1[34578]\d{9}$/", $this->username) && !preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $this->username)) {
+                $this->addError($attribute, '请使用手机号或邮箱注册.');
+            }
+
+            if (preg_match("/^1[34578]\d{9}$/", $this->username) && self::find()->where(['mobile' => $this->username, 'status' => 1])->exists()) {
+                $this->addError($attribute, '该手机号已被注册.');
+            }
+
+            if (preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $this->username) && self::find()->where(['email' => $this->username, 'status' => 1])->exists()) {
+                $this->addError($attribute, '该邮箱已被注册.');
+            }
+        }
     }
 
 }

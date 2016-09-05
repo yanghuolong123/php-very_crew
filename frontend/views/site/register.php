@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
         ]);
         ?>
-        <?= $form->field($model, 'username') ?>
+        <?= $form->field($model, 'username')->label('用户名(邮箱/手机号)') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
         <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
         <?= $form->field($model, 'nickname')->label('姓名') ?>
