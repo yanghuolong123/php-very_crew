@@ -38,7 +38,9 @@ $this->registerJsFile('@web/js/upload.js', ['depends' => ['app\assets\AppAsset']
     ]);
     ?>  
 
-    <?= $form->field($userModel, 'username')->textInput(['maxlength' => true]) ?>
+    <?php // $form->field($userModel, 'username')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($userModel, 'nickname')->textInput(['maxlength' => true])->label('姓名') ?>
 <!--
     <?php if (!empty($userModel->thumb_avatar)): ?>
         <div class="form-group field-user-thumb_avatar">
