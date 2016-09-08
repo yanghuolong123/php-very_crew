@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\extend\MetaData;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\native\MetaDataSearch */
@@ -26,7 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             //'parent_id',
-            'group_key',
+            //'group_key',
+            [
+                'attribute' => 'group_key',
+                'filter' => MetaData::getGroupKeyArr(),
+                'value' => function ($data) {
+                    return MetaData::getGroupKeyArr(false, $data->group_key);
+                },
+            ],
             'key',
             'value',
             'sort',

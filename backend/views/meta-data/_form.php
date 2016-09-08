@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\extend\MetaData;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\extend\MetaData */
@@ -12,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'group_key')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'group_key')->dropDownList(MetaData::getGroupKeyArr()) ?>
 
     <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
 

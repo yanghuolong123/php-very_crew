@@ -21,4 +21,17 @@ class MetaData extends \app\models\native\TblMetaData {
         return parent::beforeSave($insert);
     }
 
+    public static function getGroupKeyArr($isArr = true, $key = '') {
+        $arr = [
+            'gender' => '性别',
+            'videoType' => '视频类型',
+            'planRole' => '角色',
+            'planSkill' => '特长及形象',
+            'videoTag' => '标签',
+            'usingTime' => '可用时间',
+        ];
+
+        return $isArr ? $arr : (isset($arr[$key]) ? $arr[$key] : '');
+    }
+
 }
