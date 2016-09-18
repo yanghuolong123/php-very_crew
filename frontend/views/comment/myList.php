@@ -63,6 +63,7 @@ $model = new Comment();
                                     </div>
                                 <?php endif; ?>
                                 <p class="comment_content"><?= $list['content']; ?></p>
+                                <?php if($type !=4): ?>
                                 <div class="reply">
                                     <a href="javascript:;" class="reply_btn_msg">回复</a>
                                     <?php $form = ActiveForm::begin([
@@ -83,6 +84,7 @@ $model = new Comment();
                                               
                                         <?php ActiveForm::end(); ?>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </li>
