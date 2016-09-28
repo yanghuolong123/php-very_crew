@@ -16,7 +16,12 @@ return array(
     'yii\\codeception\\' => array($vendorDir . '/yiisoft/yii2-codeception'),
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
+    'rmrevin\\yii\\fontawesome\\' => array($vendorDir . '/rmrevin/yii2-fontawesome'),
+    'mdm\\admin\\' => array($vendorDir . '/mdmsoft/yii2-admin'),
+    'kucha\\ueditor\\' => array($vendorDir . '/kucha/ueditor'),
     'dosamigos\\datepicker\\' => array($vendorDir . '/2amigos/yii2-date-picker-widget'),
+    'dee\\angular\\' => array($vendorDir . '/deesoft/yii2-angular'),
+    'dee\\adminlte\\' => array($vendorDir . '/deesoft/yii2-adminlte'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

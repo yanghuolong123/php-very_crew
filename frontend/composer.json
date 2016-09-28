@@ -20,7 +20,9 @@
         "yiisoft/yii2-swiftmailer": "*",
         "2amigos/yii2-date-picker-widget" : "*",
         "yiisoft/yii2-redis": "^2.0",
-        "yiisoft/yii2-mongodb": "^2.1"
+        "yiisoft/yii2-mongodb": "^2.1",
+        "kucha/ueditor": "*",
+        "mdmsoft/yii2-admin": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -25,9 +25,23 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'r' => 
+        array (
+            'rmrevin\\yii\\fontawesome\\' => 24,
+        ),
+        'm' => 
+        array (
+            'mdm\\admin\\' => 10,
+        ),
+        'k' => 
+        array (
+            'kucha\\ueditor\\' => 14,
+        ),
         'd' => 
         array (
             'dosamigos\\datepicker\\' => 21,
+            'dee\\angular\\' => 12,
+            'dee\\adminlte\\' => 13,
         ),
         'c' => 
         array (
@@ -80,9 +94,29 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'rmrevin\\yii\\fontawesome\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
+        ),
+        'mdm\\admin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mdmsoft/yii2-admin',
+        ),
+        'kucha\\ueditor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kucha/ueditor',
+        ),
         'dosamigos\\datepicker\\' => 
         array (
             0 => __DIR__ . '/..' . '/2amigos/yii2-date-picker-widget',
+        ),
+        'dee\\angular\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/deesoft/yii2-angular',
+        ),
+        'dee\\adminlte\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/deesoft/yii2-adminlte',
         ),
         'cebe\\markdown\\' => 
         array (
