@@ -14,7 +14,7 @@ class Advertisement extends \app\models\native\TblAdvertisement {
 
     public function beforeSave($insert) {
         if ($this->isNewRecord) {
-            $this->status = 1;
+            //$this->status = 1;
             $this->createtime = time();
         }
 
