@@ -3,8 +3,28 @@
 namespace app\util;
 
 use Yii;
+use yii\web\UploadedFile;
 
 class BaseController extends \yii\web\Controller {
+
+    public $enableCsrfValidation = false;
+
+    public function actionUploadFile() {
+        $file = UploadedFile::getInstanceByName('file');
+        $relatePath = '/uploads/' . date('Y') . '/' . date('m') . '/' . date('d') . '/';
+        $filePath = Yii::$app->basePath . '/web' . $relatePath;
+        $fileName = time() . mt_rand(10000, 99999);
+        if (!is_dir($filePath)) {
+            mkdir($filePath, 0777, true);
+        }
+
+        if ($file) {
+            $file->saveAs($filePath . $fileName . '.' . $file->extension);
+            $this->sendRes(true, '', $relatePath . $fileName . '.' . $file->extension);
+        } else {
+            $this->sendRes(false);
+        }
+    }
 
     protected function sendRes($success = true, $msg = '', $data = '', $code = '') {
         $arr['success'] = $success;
