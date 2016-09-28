@@ -49,7 +49,7 @@ class TblUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => '自增id',
-            'username' => '用户名(邮箱)',
+            'username' => '用户名(邮箱/手机号)',
             'password' => '密码',
             'nickname' => '昵称',
             'mobile' => '电话',
