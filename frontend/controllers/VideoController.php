@@ -51,7 +51,7 @@ class VideoController extends \app\util\BaseController {
 
     public function actionView($id) {
         $model = $this->findModel($id);
-        if($model->status<0) {
+        if ($model->status < 0) {
             throw new NotFoundHttpException('该作品已被删除');
         }
         $model->updateCounters(['views' => 1]);
@@ -71,8 +71,10 @@ class VideoController extends \app\util\BaseController {
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             \app\models\extend\PlanUser::turnToVideoUser($model->plan_id, $model->id);
-            //Yii::$app->db->createCommand('insert into tbl_video_user (uid, video_id, createtime) values (:uid, :video_id, :createtime)', [':uid' => $model->uid, ':video_id' => $model->id, ':createtime' => time()])->execute();
-            //return $this->redirect(['view', 'id' => $model->id]);
+            $gameId = Yii::$app->request->post('game_id');
+            if (!empty($gameId)) {
+                Yii::$app->db->createCommand('insert into tbl_game_video (game_id, video_id, createtime) values (:game_id, :video_id, :createtime)', [':game_id' => $gameId, ':video_id' => $model->id, ':createtime' => time()])->execute();
+            }
             return $this->redirect(['video-user/index', 'video_id' => $model->id]);
         } else {
             //$model->logo = './image/blank_img.jpg';
