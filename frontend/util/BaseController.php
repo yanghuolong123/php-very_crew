@@ -16,10 +16,12 @@ class BaseController extends \yii\web\Controller {
         $fileName = time() . mt_rand(10000, 99999);
         if (!is_dir($filePath)) {
             mkdir($filePath, 0777, true);
+            chmod($filePath, 0777);
         }
 
         if ($file) {
             $file->saveAs($filePath . $fileName . '.' . $file->extension);
+            chmod($filePath . $fileName . '.' . $file->extension, 0777);
             $this->sendRes(true, '', $relatePath . $fileName . '.' . $file->extension);
         } else {
             $this->sendRes(false);
