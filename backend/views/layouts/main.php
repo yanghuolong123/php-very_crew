@@ -39,6 +39,7 @@ AppAsset::register($this);
             ['label' => '数据字典', 'url' => ['/meta-data/index']],
             ['label' => '广告管理', 'url' => ['/advertisement/index']],
             ['label' => '文章管理', 'url' => ['/article/index']],
+            ['label' => '大赛管理', 'url' => ['/games/index']],
             //['label' => '关于我们', 'url' => ['/site/about']],
             //['label' => '联系我们', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
