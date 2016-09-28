@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\extend\Games;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\GamesSearch */
@@ -22,18 +23,32 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'type',
+            //'type',
             'name',
             'logo',
-            'content:ntext',
+            'content:raw',
             // 'order',
-            // 'status',
-            // 'begin_time:datetime',
-            // 'end_time:datetime',
-            // 'number',
+            [
+                'attribute' => 'status',
+                'filter' => Games::getStatusArr(),
+                'value' => function($data){
+                    return Games::getStatusArr(false, $data->status);
+                },
+            ],
+            [
+                'attribute'=>'begin_time',
+                'filter' => false,
+                'format' => ['date', 'Y-M-d'],
+            ],
+                        [
+                'attribute'=>'end_time',
+                'filter' => false,
+                'format' => ['date', 'Y-M-d'],
+            ],
+           'number',
             // 'create_time:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],

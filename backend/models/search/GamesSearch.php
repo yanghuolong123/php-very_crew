@@ -42,6 +42,7 @@ class GamesSearch extends Games
     public function search($params)
     {
         $query = Games::find();
+        $query->andWhere(['<>','status',-1]);
 
         // add conditions that should always apply here
 
@@ -71,7 +72,8 @@ class GamesSearch extends Games
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'logo', $this->logo])
-            ->andFilterWhere(['like', 'content', $this->content]);
+            ->andFilterWhere(['like', 'content', $this->content]);       
+        
 
         return $dataProvider;
     }

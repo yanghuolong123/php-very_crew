@@ -80,7 +80,7 @@ class GamesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            var_dump($model->getErrors());
+            $model->begin_time = date('Y-m-d');
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -100,6 +100,8 @@ class GamesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->begin_time = date('Y-m-d', $model->begin_time);
+            $model->end_time = date('Y-m-d', $model->end_time);
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -114,7 +116,9 @@ class GamesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        //$this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->updateAttributes(['status'=>-1]);
 
         return $this->redirect(['index']);
     }

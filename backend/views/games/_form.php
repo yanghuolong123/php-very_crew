@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
+use app\models\extend\Games;
 
 
 $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
@@ -15,7 +16,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         'fieldClass' => 'app\util\ExtActiveField',
     ]); ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
+    <?php // $form->field($model, 'type')->textInput() ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -42,9 +43,9 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
             ]
     ]); ?>
 
-    <?= $form->field($model, 'order')->textInput() ?>
+    <?= $form->field($model, 'order')->textInput(['value'=>0]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(Games::getStatusArr()) ?>
     
     <?=
     $form->field($model, 'begin_time')->widget(

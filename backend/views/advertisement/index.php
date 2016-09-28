@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'sort',
             [
                 'attribute' => 'status',
+                'filter' => Advertisement::getStatusArr(),
                 'value' => function($data){
                     return Advertisement::getStatusArr(false, $data->status);
                 },
