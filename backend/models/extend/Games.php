@@ -10,6 +10,7 @@ class Games extends \app\models\native\TblGames {
             [['type', 'order', 'status', 'number', 'createtime'], 'integer'],
             [['content'], 'string'],
             [['name', 'logo'], 'string', 'max' => 128],
+            [['result'], 'string', 'max' => 255],
             ['end_time', 'compare', 'compareAttribute' => 'begin_time', 'operator' => '>', 'message' => '结束时间需大于开始时间'],
         ];
     }
