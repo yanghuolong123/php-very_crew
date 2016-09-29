@@ -20,7 +20,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'logo')->imgInput() ?>
+    <?php // $form->field($model, 'logo')->imgInput() ?>
 
     <?= $form->field($model,'content')->widget('kucha\ueditor\UEditor',[
             'clientOptions' => [

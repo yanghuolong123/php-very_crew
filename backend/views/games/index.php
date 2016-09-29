@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             //'type',
             'name',
-            'logo',
+            //'logo',
             'content:raw',
             // 'order',
             [
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['date', 'Y-M-d'],
             ],
            'number',
-            // 'create_time:datetime',
+            // 'createtime:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
