@@ -6,7 +6,7 @@ class Games extends \app\models\native\TblGames {
 
     public function rules() {
         return [
-            [['name', 'logo', 'content', 'order', 'status', 'begin_time', 'end_time'], 'required'],
+            [['name', 'content', 'order', 'status', 'begin_time', 'end_time'], 'required'],
             [['type', 'order', 'status', 'number', 'createtime'], 'integer'],
             [['content'], 'string'],
             [['name', 'logo'], 'string', 'max' => 128],
