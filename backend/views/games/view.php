@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'begin_time:datetime',
             'end_time:datetime',
             'number',
+            'result',
             'createtime:datetime',
         ],
     ]) ?>

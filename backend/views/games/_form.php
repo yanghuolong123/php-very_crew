@@ -75,7 +75,9 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
             'format' => 'yyyy-mm-dd'
         ]
     ]);
-    ?>   
+    ?>  
+    
+    <?= $form->field($model, 'result')->textarea() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
