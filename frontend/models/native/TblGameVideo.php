@@ -12,6 +12,8 @@ use Yii;
  * @property integer $video_id
  * @property integer $user_id
  * @property integer $votes
+ * @property integer $score
+ * @property string $remark
  * @property integer $createtime
  */
 class TblGameVideo extends \yii\db\ActiveRecord
@@ -30,8 +32,9 @@ class TblGameVideo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['game_id', 'video_id', 'user_id', 'votes', 'createtime'], 'required'],
-            [['game_id', 'video_id', 'user_id', 'votes', 'createtime'], 'integer'],
+            [['game_id', 'video_id', 'user_id', 'votes', 'score', 'remark', 'createtime'], 'required'],
+            [['game_id', 'video_id', 'user_id', 'votes', 'score', 'createtime'], 'integer'],
+            [['remark'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,6 +49,8 @@ class TblGameVideo extends \yii\db\ActiveRecord
             'video_id' => '作品id',
             'user_id' => '参与人id',
             'votes' => '投票数',
+            'score' => '分数',
+            'remark' => '点评',
             'createtime' => '创建时间',
         ];
     }
