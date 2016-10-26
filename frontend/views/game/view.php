@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 use app\models\extend\Video;
 use app\util\CommonUtil;
+use app\models\extend\Games;
 use yii\helpers\Html;
 
 $this->title = $model->name;
@@ -17,16 +18,33 @@ $this->params['breadcrumbs'][] = $this->title;
     .game_menu{
         padding-right: 150px;
     }
+    .game-tips{
+        font-size: 14px;
+    }
+    .gamestatus,.gamenum{
+        color:red; 
+        font-weight: bold;
+        font-style: italic;
+        font-family: fantasy;
+    }
+    .gametime{
+        color: #00c66b;
+    }
 </style>
 
 <div class="games-view container">     
     <h2 style="color: #00c66b;"><?= $model->name ?></h2>
     <div class="row">
-        <div class="col-md-8 game_content"><p><?= $model->content ?></p></div>
+        <div class="col-md-8 game_content">
+            <blockquote>
+                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....</span>, 开始时间: <span class="gametime"><?= date('Y-m-d', $model->begin_time) ?></span> 结束时间: <span class="gametime"><?= date('Y-m-d', $model->end_time) ?></span>, 参与作品数: <span class="gamenum"><?= $model->number ?></span></p>
+            </blockquote>
+            <p><?= $model->content ?></p>
+        </div>
         <div class="col-md-4 game_menu">
-            <p class="text-right"><a class="btn btn-success btn-small" href="<?= Url::toRoute(['video/create', 'game_id'=>$model->id]) ?>" role="button">上传参赛作品 &raquo;</a></p>
-            <p class="text-right"><a class="btn btn-success btn-small" href="#vote" role="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群众投票 &raquo;</a></p>
-            <p class="text-right"><a class="btn btn-success btn-small" href="<?= Url::toRoute(['game/result', 'id'=>$model->id]) ?>" role="button">名次奖项公布 &raquo;</a></p>
+            <p class="text-right"><a <?php if($model->status!=0): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if($model->status==0): ?><?= Url::toRoute(['video/create', 'game_id'=>$model->id]) ?><?php else: ?>javascript:;<?php endif;?>" role="button">上传参赛作品 &raquo;</a></p>
+            <p class="text-right"><a <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if($model->status==1): ?>#vote<?php else: ?>javascript:;<?php endif;?>" role="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群众投票 &raquo;</a></p>
+            <p class="text-right"><a <?php if($model->status!=3): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if($model->status==3): ?><?= Url::toRoute(['game/result', 'id'=>$model->id]) ?><?php else: ?>javascript:;<?php endif;?>" role="button">名次奖项公布 &raquo;</a></p>
         </div>
     </div>
     
