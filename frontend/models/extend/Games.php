@@ -9,7 +9,7 @@ class Games extends \app\models\native\TblGames {
             0 => '作品上传进行中',
             1 => '投票进行中',
             2 => '大赛结果评比中',
-            2 => '大赛已结束',
+            3 => '大赛已结束',
         ];
 
         return $isArr ? $arr : (isset($arr[$status]) ? $arr[$status] : '');
