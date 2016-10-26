@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>
     .game_content{
         min-height: 220px;
-        margin-bottom: 30px;
     }
     .game_menu{
         padding-right: 150px;
