@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
               <p>ID：<?= $gameVideo->id ?></p>  
               <p>当前票数：<span id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>
-              <p class="text-left"><button type="button" onclick="gameVote(<?= $gameVideo->id ?>)" class="btn btn-primary btn-small game_vote">投一票</button></p>
+              <p class="text-left"><button <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> type="button" onclick="gameVote(<?= $gameVideo->id ?>)" class="btn btn-primary btn-small game_vote">投一票</button></p>
             </div>
           </div>
         </div>
