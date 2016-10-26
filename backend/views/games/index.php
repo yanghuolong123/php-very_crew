@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['date', 'Y-M-d'],
             ],
            'number',
-           'result',
+           'result:raw',
             // 'createtime:datetime',
 
             [
