@@ -70,4 +70,12 @@ class GameController extends \app\util\BaseController {
         $this->sendRes(true, '', $model->votes);
     }
 
+    public function actionResult($id) {
+        $model = $this->findModel($id);
+
+        return $this->render('result', [
+                    'model' => $model,
+        ]);
+    }
+
 }

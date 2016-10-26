@@ -38,9 +38,8 @@ class TblGames extends \yii\db\ActiveRecord
         return [
             [['type', 'name', 'logo', 'content', 'order', 'status', 'begin_time', 'end_time', 'number', 'result', 'createtime'], 'required'],
             [['type', 'order', 'status', 'begin_time', 'end_time', 'number', 'createtime'], 'integer'],
-            [['content'], 'string'],
+            [['content', 'result'], 'string'],
             [['name', 'logo'], 'string', 'max' => 128],
-            [['result'], 'string', 'max' => 255],
         ];
     }
 

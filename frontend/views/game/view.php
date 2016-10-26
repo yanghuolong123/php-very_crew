@@ -10,14 +10,32 @@ $this->params['breadcrumbs'][] = ['label' => '参与比赛', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<style>
+    .game_content{
+        min-height: 220px;
+        margin-bottom: 30px;
+    }
+    .game_menu{
+        padding-right: 150px;
+    }
+</style>
+
 <div class="games-view container">     
-    <h4 style="color: #00c66b;"><?= $model->name ?></h4>
-    <p><?= $model->content ?></p>
-    <p><a class="btn btn-success btn-small" href="<?= Url::toRoute(['video/create', 'game_id'=>$model->id]) ?>" role="button">我要参加 &raquo;</a></p>
+    <h2 style="color: #00c66b;"><?= $model->name ?></h2>
+    <div class="row">
+        <div class="col-md-8 game_content"><p><?= $model->content ?></p></div>
+        <div class="col-md-4 game_menu">
+            <p class="text-right"><a class="btn btn-success btn-small" href="<?= Url::toRoute(['video/create', 'game_id'=>$model->id]) ?>" role="button">上传参赛作品 &raquo;</a></p>
+            <p class="text-right"><a class="btn btn-success btn-small" href="#vote" role="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群众投票 &raquo;</a></p>
+            <p class="text-right"><a class="btn btn-success btn-small" href="<?= Url::toRoute(['game/result', 'id'=>$model->id]) ?>" role="button">名次奖项公布 &raquo;</a></p>
+        </div>
+    </div>
     
+    
+    <a name="vote"></a>
     <?php if(!empty($dataProvider->models)): ?>
    <div class="row">
-        <div class="container"><h4 style="color: #00c66b;">当前参赛作品</h4></div>
+        <div class="container"><h3 style="color: #00c66b;">当前参赛作品</h3></div>
         <?php foreach ($dataProvider->models as $gameVideo): ?>
         <?php $video = Video::findOne($gameVideo->video_id)  ?>
         <div class="col-sm-6 col-md-3">

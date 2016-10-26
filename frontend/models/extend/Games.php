@@ -6,8 +6,8 @@ class Games extends \app\models\native\TblGames {
 
     public static function getStatusArr($isArr = true, $status = 0) {
         $arr = [
-            1 => '报名进行中',
-            0 => '报名已截止',
+            0 => '作品上传进行中',
+            1 => '投票进行中',
         ];
 
         return $isArr ? $arr : (isset($arr[$status]) ? $arr[$status] : '');

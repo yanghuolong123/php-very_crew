@@ -26,7 +26,10 @@ ALTER TABLE `tbl_video` ADD `duration` VARCHAR( 60 ) NOT NULL COMMENT '视频时
 /* done */
 ALTER TABLE  `tbl_comment` ADD  `reply_id` INT NOT NULL COMMENT  '回复人uid' AFTER `vid` ;
 
-
+/* done */
 ALTER TABLE `tbl_plan` ADD `begintime` INT NOT NULL COMMENT '开始时间' AFTER `status` ;
 ALTER TABLE `tbl_plan` CHANGE `begintime` `begin_time` INT( 11 ) NOT NULL COMMENT '开始时间';
 ALTER TABLE `tbl_plan` ADD `end_time` INT NOT NULL COMMENT '结束时间' AFTER `begin_time` ;
+
+/* done */
+ALTER TABLE  `tbl_games` CHANGE  `result`  `result` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT  '大赛结果';

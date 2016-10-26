@@ -50,7 +50,7 @@ $footerNav = Article::getByGroopKey('footer_nav');
             ['label' => '首页', 'url' => ['/home/index']],
             ['label' => '上传作品', 'url' => ['/video/create']], 
             ['label' => '发布计划', 'url' => ['/plan/create']],
-            ['label' => '参与比赛', 'url' => ['/game']],
+            ['label' => '参与比赛', 'url' => ['/game/view','id'=>1]],
             ['label' => '搜作品', 'url' => ['/video/index']],
             ['label' => '搜人员', 'url' => ['/user/index']],
             ['label' => '搜计划', 'url' => ['/plan/index']],
