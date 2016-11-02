@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\extend\Article;
+use yii\web\NotFoundHttpException;
 
 class ArticleController extends \app\util\BaseController {
 

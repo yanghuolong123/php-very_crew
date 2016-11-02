@@ -8,6 +8,7 @@ use app\models\extend\GameVideo;
 use app\models\search\GamesSearch;
 use app\models\search\GameVideoSearch;
 use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 
 class GameController extends \app\util\BaseController {
 

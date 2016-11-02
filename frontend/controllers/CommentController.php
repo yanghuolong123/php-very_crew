@@ -8,6 +8,7 @@ use app\models\extend\User;
 use app\models\extend\Video;
 use \yii\data\Pagination;
 use app\util\Constant;
+use yii\web\NotFoundHttpException;
 
 class CommentController extends \app\util\BaseController {
 
