@@ -30,6 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
     .gametime{
         color: #00c66b;
     }
+    .title {
+        margin-top: 35px; 
+        margin-bottom: 20px;
+        line-height: 30px;
+    }
+    .list-titile{
+        color: #00c66b; 
+        font-weight: bold; 
+        font-size: 28px;   
+        margin-right: 20px;
+    }
 </style>
 
 <div class="games-view container">     
@@ -52,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <a name="vote"></a>
     <?php if(!empty($dataProvider->models)): ?>
    <div class="row">
-        <div class="container"><h3 style="color: #00c66b;">当前参赛作品</h3></div>
+       <div class="container title"><span class="list-titile">当前参赛作品</span><?= Html::dropDownList('sort', $sort, ['id'=>'按ID排序', 'score'=>'按得分排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success pull-right']) ?></div>
         <?php foreach ($dataProvider->models as $gameVideo): ?>
         <?php $video = Video::findOne($gameVideo->video_id)  ?>
         <div class="col-sm-6 col-md-3">
@@ -88,6 +99,14 @@ function gameVote(id) {
         $("#votes_"+id).html(e.data);
     });
 }
+
+$(function(){
+    $("#list-sort").change(function(){
+        var val = $(this).val();
+        var url = "<?= Url::to(['game/view','id'=>$model->id]) ?>&sorting="+val + "#vote";
+        location.href = url;
+    });
+});
 
 <?php $this->endBlock() ?> 
 <?php $this->registerJs($this->blocks['game-video-vote-Js'], \yii\web\View::POS_END); ?>

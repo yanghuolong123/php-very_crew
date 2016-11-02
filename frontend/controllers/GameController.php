@@ -6,6 +6,7 @@ use Yii;
 use app\models\extend\Games;
 use app\models\extend\GameVideo;
 use app\models\search\GamesSearch;
+use app\models\search\GameVideoSearch;
 use yii\data\ActiveDataProvider;
 
 class GameController extends \app\util\BaseController {
@@ -44,19 +45,20 @@ class GameController extends \app\util\BaseController {
         ]);
     }
 
-    public function actionView($id) {
+    public function actionView($id, $sorting='id') {
         $model = $this->findModel($id);
-        $query = GameVideo::find();
+        $query = GameVideoSearch::find();
         $query->andWhere(['game_id' => $id]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
         $dataProvider->pagination->pageSize = 12;
-        $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
+        $dataProvider->sort = ['defaultOrder' => [$sorting => SORT_DESC]];
 
         return $this->render('view', [
                     'model' => $model,
                     'dataProvider' => $dataProvider,
+                    'sort' => $sorting,
         ]);
     }
 
