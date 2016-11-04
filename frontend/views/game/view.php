@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-8 game_content">
             <blockquote>
-                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....</span>, 开始时间: <span class="gametime"><?= date('Y-m-d', $model->begin_time) ?></span> 结束时间: <span class="gametime"><?= date('Y-m-d', $model->end_time) ?></span>, 参与作品数: <span class="gamenum"><?= $model->number ?></span></p>
+                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....</span>,  截止时间: <span class="gametime"><?= date('Y-m-d', $model->end_time) ?></span>, 参与作品数: <span class="gamenum"><?= $model->number ?></span></p>
             </blockquote>
             <p><?= $model->content ?></p>
         </div>
