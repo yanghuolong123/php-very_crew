@@ -65,13 +65,13 @@ class GameController extends \app\util\BaseController {
     }
 
     public function actionAjaxVote() {
-        $id = Yii::$app->request->post('id');
+        $id = intval(Yii::$app->request->post('id'));
         if (Yii::$app->user->isGuest) {
             $this->sendRes(false, '', $id);
         }
 
         $collection = Yii::$app->mongodb->getCollection('game_vote_record');
-        if (!empty($collection->findOne(['game_video_id' => intval($id), 'uid' => Yii::$app->user->id]))) {
+        if (!empty($collection->findOne(['game_video_id' => $id, 'uid' => Yii::$app->user->id]))) {
             $this->sendRes(true, '', 0);
         }
 
