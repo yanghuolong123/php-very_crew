@@ -22,7 +22,7 @@ class GameController extends \app\util\BaseController {
                     [
                         //'actions' => ['index', 'view', 'ajax-vote'],
                         'allow' => true,
-                        //'roles' => ['?'],
+                    //'roles' => ['?'],
                     ],
                 ],
             ],
@@ -94,13 +94,22 @@ class GameController extends \app\util\BaseController {
     }
 
     public function actionEmailVote($email, $gameVideoId) {
-        $model = GameVideo::findOne($gameVideoId);
-        $model->updateCounters(['votes' => 1]);
         $collection = Yii::$app->mongodb->getCollection('game_vote_record');
-        $collection->insert(['game_video_id' => $model->id, 'email' => $email]);
+        $resutl = 0;
+        if (empty($collection->findOne(['game_video_id' => intval($gameVideoId), 'email' => $email]))) {
+            $model = GameVideo::findOne($gameVideoId);
+            if (empty($model)) {
+                throw new NotFoundHttpException("没有此参赛作品");
+            }
+            $model->updateCounters(['votes' => 1]);
+            $collection = Yii::$app->mongodb->getCollection('game_vote_record');
+            $collection->insert(['game_video_id' => $model->id, 'email' => $email]);
+            $resutl = 1;
+        }
+
 
         return $this->render('emailVote', [
-                    'model' => $model,
+                    'resutl' => $resutl,
         ]);
     }
 
