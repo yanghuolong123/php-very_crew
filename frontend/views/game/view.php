@@ -113,7 +113,12 @@ function gameVote(id) {
             greeting({title:"消息提示",msg:msg});
             return;
         }
-        $("#votes_"+id).html(e.data);
+        if(e.data>0) {
+            $("#votes_"+id).html(e.data);
+            greeting({msg:"投票成功，感谢您的参与"});
+        } else {
+            alerting({msg:"亲，您已对此参赛作品投过票了，感谢您的参与"});
+        }
     });
 }
 

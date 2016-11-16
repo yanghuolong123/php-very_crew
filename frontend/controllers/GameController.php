@@ -17,12 +17,12 @@ class GameController extends \app\util\BaseController {
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['view', 'index', 'ajax-vote'],
+                'only' => ['email-vote'],
                 'rules' => [
                     [
-                        //'actions' => ['index', 'view', 'ajax-vote'],
+                        'actions' => ['email-vote'],
                         'allow' => true,
-                    //'roles' => ['?'],
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -70,9 +70,14 @@ class GameController extends \app\util\BaseController {
             $this->sendRes(false, '', $id);
         }
 
+        $collection = Yii::$app->mongodb->getCollection('game_vote_record');
+        if (!empty($collection->findOne(['game_video_id' => intval($id), 'uid' => Yii::$app->user->id]))) {
+            $this->sendRes(true, '', 0);
+        }
+
         $model = GameVideo::findOne($id);
         $model->updateCounters(['votes' => 1]);
-        $collection = Yii::$app->mongodb->getCollection('game_vote_record');
+        //$collection = Yii::$app->mongodb->getCollection('game_vote_record');
         $collection->insert(['game_video_id' => $model->id, 'uid' => Yii::$app->user->id]);
 
         $this->sendRes(true, '', $model->votes);
