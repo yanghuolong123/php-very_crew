@@ -9,6 +9,7 @@ use app\models\search\GamesSearch;
 use app\models\search\GameVideoSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use app\util\Constant;
 
 class GameController extends \app\util\BaseController {
 
@@ -19,9 +20,9 @@ class GameController extends \app\util\BaseController {
                 'only' => ['view', 'index', 'ajax-vote'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'ajax-vote'],
+                        //'actions' => ['index', 'view', 'ajax-vote'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        //'roles' => ['?'],
                     ],
                 ],
             ],
@@ -46,7 +47,7 @@ class GameController extends \app\util\BaseController {
         ]);
     }
 
-    public function actionView($id, $sorting='id') {
+    public function actionView($id, $sorting = 'id') {
         $model = $this->findModel($id);
         $query = GameVideoSearch::find();
         $query->andWhere(['game_id' => $id]);
@@ -65,6 +66,10 @@ class GameController extends \app\util\BaseController {
 
     public function actionAjaxVote() {
         $id = Yii::$app->request->post('id');
+        if (Yii::$app->user->isGuest) {
+            $this->sendRes(false, '', $id);
+        }
+
         $model = GameVideo::findOne($id);
         $model->updateCounters(['votes' => 1]);
         $collection = Yii::$app->mongodb->getCollection('game_vote_record');
@@ -77,6 +82,24 @@ class GameController extends \app\util\BaseController {
         $model = $this->findModel($id);
 
         return $this->render('result', [
+                    'model' => $model,
+        ]);
+    }
+
+    public function actionAjaxMail() {
+        $email = Yii::$app->request->post('email');
+        $voteId = Yii::$app->request->post('voteId');
+        Yii::$app->redis->LPUSH(Constant::VoteEmailList, json_encode(['email' => $email, 'voteId' => $voteId]));
+        $this->sendRes();
+    }
+
+    public function actionEmailVote($email, $gameVideoId) {
+        $model = GameVideo::findOne($gameVideoId);
+        $model->updateCounters(['votes' => 1]);
+        $collection = Yii::$app->mongodb->getCollection('game_vote_record');
+        $collection->insert(['game_video_id' => $model->id, 'email' => $email]);
+
+        return $this->render('emailVote', [
                     'model' => $model,
         ]);
     }
