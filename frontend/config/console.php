@@ -35,7 +35,7 @@ $config = [
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
-            'scriptUrl' => 'http://my.feichangjuzu.com/index.php',
+            'scriptUrl' => 'http://www.feichangjuzu.com/index.php',
         ],
         'db' => $db,
         'redis' => require(__DIR__ . '/redis.php'),
