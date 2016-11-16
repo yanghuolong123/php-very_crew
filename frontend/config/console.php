@@ -22,6 +22,21 @@ $config = [
                 ],
             ],
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',            
+            'transport' => [
+              'class' => 'Swift_SmtpTransport',
+              'host' => 'smtp.163.com',
+              'username' => 'yhl27ml@163.com',
+              'password' => 'yanghuolong123',
+              'port' => '465',
+              'encryption' => 'ssl',
+            ],
+        ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'scriptUrl' => 'http://my.feichangjuzu.com/index.php',
+        ],
         'db' => $db,
         'redis' => require(__DIR__ . '/redis.php'),
     ],
