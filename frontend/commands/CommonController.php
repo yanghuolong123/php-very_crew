@@ -41,7 +41,7 @@ class CommonController extends Controller {
             $json = json_decode(Yii::$app->redis->RPOP(Constant::VoteEmailList));
             Yii::$app->mailer->compose()
                     ->setTo($json->email)
-                    ->setFrom(['yhl27ml@163.com' => 'jason'])
+                    ->setFrom(['yhl27ml@163.com' => '非常剧组'])
                     ->setSubject("非常剧组大赛投票")
                     ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email'=>$json->email, 'gameVideoId' => $json->voteId])))
                     ->send();
