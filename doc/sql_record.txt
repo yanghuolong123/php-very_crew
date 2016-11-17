@@ -33,3 +33,6 @@ ALTER TABLE `tbl_plan` ADD `end_time` INT NOT NULL COMMENT '结束时间' AFTER 
 
 /* done */
 ALTER TABLE  `tbl_games` CHANGE  `result`  `result` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT  '大赛结果';
+
+/* done */
+ALTER TABLE  `tbl_video` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMENT '状态:-1删除，0等待转码，1正常,2不公开';
