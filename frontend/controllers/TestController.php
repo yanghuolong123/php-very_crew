@@ -27,12 +27,12 @@ class TestController extends \app\util\BaseController {
 //                ->setTextBody('Hello World!')
 //                ->send();
         
-        Yii::$app->mailer->compose()
-                    ->setTo('yanghuolong@zhisland.com')
-                    ->setFrom(['yhl27ml@163.com' => '非常剧组'])
-                    ->setSubject("非常剧组大赛投票")
-                    ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email'=>'yanghuolong@zhisland.com', 'gameVideoId' => 1])))
-                    ->send();
+//        Yii::$app->mailer->compose()
+//                    ->setTo('yanghuolong@zhisland.com')
+//                    ->setFrom(['yhl27ml@163.com' => '非常剧组'])
+//                    ->setSubject("非常剧组大赛投票")
+//                    ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email'=>'yanghuolong@zhisland.com', 'gameVideoId' => 1])))
+//                    ->send();
     }
 
 }
