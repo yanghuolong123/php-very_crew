@@ -75,6 +75,8 @@ class VideoSearch extends Video {
             'country' => $this->country,
         ]);
 
+        $query->andFilterWhere(is_array($this->status) ? ['in', 'status', $this->status] : ['status' => $this->status]);
+
         $query->andFilterWhere(['like', 'content', $this->content])
                 ->andFilterWhere(['like', 'logo', $this->logo])
                 ->andFilterWhere(['like', 'file', $this->file])
