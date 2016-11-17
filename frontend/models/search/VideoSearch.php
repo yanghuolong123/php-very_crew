@@ -17,8 +17,8 @@ class VideoSearch extends Video {
      */
     public function rules() {
         return [
-            [['id', 'uid', 'type', 'province', 'city', 'county', 'country', 'views', 'comments', 'support', 'oppose', 'status', 'createtime'], 'integer'],
-            [['title', 'content', 'logo', 'file', 'tag'], 'safe'],
+            [['id', 'uid', 'type', 'province', 'city', 'county', 'country', 'views', 'comments', 'support', 'oppose', 'createtime'], 'integer'],
+            [['title', 'content', 'logo', 'file', 'tag', 'status'], 'safe'],
         ];
     }
 
