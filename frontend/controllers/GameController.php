@@ -77,7 +77,7 @@ class GameController extends \app\util\BaseController {
 
         $model = GameVideo::findOne($id);
         $model->updateCounters(['votes' => 1]);
-        $collection->insert(['game_video_id' => $model->id, 'uid' => Yii::$app->user->id]);
+        $collection->insert(['game_video_id' => $model->id, 'uid' => Yii::$app->user->id, 'time' => DATETIME]);
 
         $this->sendRes(true, '', $model->votes);
     }
@@ -107,7 +107,7 @@ class GameController extends \app\util\BaseController {
             }
             $model->updateCounters(['votes' => 1]);
             $collection = Yii::$app->mongodb->getCollection('game_vote_record');
-            $collection->insert(['game_video_id' => $model->id, 'email' => $email]);
+            $collection->insert(['game_video_id' => $model->id, 'email' => $email, 'time' => DATETIME]);
             $resutl = 1;
         }
 
