@@ -7,13 +7,16 @@ use Yii;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
+        logs('test', "dsdsdssd");
+//        echo TIMESTAMP;
+//        echo "\n";
+//        echo DATETIME;
+//        echo "\n";
+//        echo BASE_PATH;
         //echo phpinfo();
-        $collection = Yii::$app->mongodb->getCollection('customer');
-        //$collection->insert(['name' => 'John Smith', 'status' => 1]);
-        $data = $collection->findOne(['name' => 'John Smith', 'status' => 1]);
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
+//        $collection = Yii::$app->mongodb->getCollection('customer');
+//        //$collection->insert(['name' => 'John Smith', 'status' => 1]);
+//        $data = $collection->findOne(['name' => 'John Smith', 'status' => 1]); 
         
 //        Yii::$app->mailer->compose()
 //                ->setTo('yanghuolong@zhisland.com')
