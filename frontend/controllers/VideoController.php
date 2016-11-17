@@ -132,7 +132,7 @@ class VideoController extends \app\util\BaseController {
     public function actionMy() {
         $searchModel = new VideoSearch();
         $searchModel->uid = Yii::$app->user->id;
-        $searchModel->status = [1,2];
+        $searchModel->status = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
 
