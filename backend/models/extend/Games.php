@@ -2,13 +2,16 @@
 
 namespace app\models\extend;
 
+use Yii;
+use app\models\extend\Video;
+
 class Games extends \app\models\native\TblGames {
 
     public function rules() {
         return [
             [['name', 'content', 'order', 'status', 'begin_time', 'end_time'], 'required'],
             [['type', 'order', 'status', 'number', 'createtime'], 'integer'],
-            [['content','result'], 'string'],
+            [['content', 'result'], 'string'],
             [['name', 'logo'], 'string', 'max' => 128],
             ['end_time', 'compare', 'compareAttribute' => 'begin_time', 'operator' => '>', 'message' => '结束时间需大于开始时间'],
         ];
@@ -25,6 +28,13 @@ class Games extends \app\models\native\TblGames {
         if ($this->isNewRecord) {
             $this->createtime = time();
         }
+
+        $videoArr = Yii::$app->db->createCommand('select video_id from tbl_game_video where game_id=' . $this->id)->queryColumn();
+        if (!empty($videoArr)) {
+            Video::updateAll(['status' => (empty($this->status) ? 2 : 1)], ['in', 'id', $videoArr]);
+        }
+
+
         return parent::beforeSave($insert);
     }
 
