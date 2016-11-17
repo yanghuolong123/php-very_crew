@@ -67,7 +67,7 @@ class VideoSearch extends Video {
             'comments' => $this->comments,
             'support' => $this->support,
             'oppose' => $this->oppose,
-            'status' => $this->status,
+            //'status' => $this->status,
             'createtime' => $this->createtime,
             'province' => $this->province,
             'city' => $this->city,
