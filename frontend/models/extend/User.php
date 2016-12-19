@@ -57,7 +57,7 @@ class User extends \app\models\native\TblUser {
 //
 //        return self::$_user[$id];
         $user = self::findOne($id);
-        $user->profile = UserProfile::findOne(['uid'=>$id]);
+        $user['profile'] = UserProfile::findOne(['uid'=>$id]);
         return $user;
     }
 
