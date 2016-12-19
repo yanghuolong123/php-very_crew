@@ -49,7 +49,9 @@ class User extends \app\models\native\TblUser {
 
     public static function getInfo($id) {
         if (empty(self::$_user[$id])) {
-            self::$_user[$id] = self::findOne($id);
+            $user = self::findOne($id);
+            $user->setProfile(new UserProfile());
+            self::$_user[$id] = $user;
 //            if (empty(self::$_user[$id]->profile)) {
 //                self::$_user[$id]->profile = new UserProfile();
 //            }
