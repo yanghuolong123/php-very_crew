@@ -59,7 +59,7 @@ class User extends \app\models\native\TblUser {
     }
 
     public function getProfile() {
-        return $this->hasOne(UserProfile::className(), ['uid' => 'id']);
+        return new UserProfile();// $this->hasOne(UserProfile::className(), ['uid' => 'id']);
     }
 
     public function setProfile($profile) {
