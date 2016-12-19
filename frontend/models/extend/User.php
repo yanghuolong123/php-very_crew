@@ -56,16 +56,18 @@ class User extends \app\models\native\TblUser {
 //        }
 //
 //        return self::$_user[$id];
-        return self::findOne($id);
+        $user = self::findOne($id);
+        $user->profile = UserProfile::findOne(['uid'=>$id]);
+        return $user;
     }
 
-    public function getProfile() {
-        return $this->hasOne(UserProfile::className(), ['uid' => 'id']);
-    }
-
-    public function setProfile($profile) {
-        $this->profile = $profile;
-    }
+//    public function getProfile() {
+//        return $this->hasOne(UserProfile::className(), ['uid' => 'id']);
+//    }
+//
+//    public function setProfile($profile) {
+//        $this->profile = $profile;
+//    }
 
     public function afterFind() {
         if (empty($this->avatar)) {
