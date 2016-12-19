@@ -60,6 +60,8 @@ class User extends \app\models\native\TblUser {
 
     public function getProfile() {
         $porfile = $this->hasOne(UserProfile::className(), ['uid' => 'id']);
+        var_dump($porfile, "============");
+        
         return empty($porfile) ? new UserProfile() : $porfile;
     }
 
