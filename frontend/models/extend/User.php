@@ -49,21 +49,17 @@ class User extends \app\models\native\TblUser {
 
     public static function getInfo($id) {
         if (empty(self::$_user[$id])) {
-            $user = self::findOne($id);
-            var_dump($user);
-            die;
-            $user->setProfile(new UserProfile());
-            self::$_user[$id] = $user;
-//            if (empty(self::$_user[$id]->profile)) {
-//                self::$_user[$id]->profile = new UserProfile();
-//            }
+            self::$_user[$id] = self::findOne($id);
+            if (empty(self::$_user[$id]->profile)) {
+                self::$_user[$id]->profile = new UserProfile();
+            }
         }
 
         return self::$_user[$id];
     }
 
     public function getProfile() {
-        return new UserProfile();// $this->hasOne(UserProfile::className(), ['uid' => 'id']);
+        return $this->hasOne(UserProfile::className(), ['uid' => 'id']);
     }
 
     public function setProfile($profile) {
