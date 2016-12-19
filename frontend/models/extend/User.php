@@ -10,7 +10,7 @@ class User extends \app\models\native\TblUser {
     public $verifyCode;
     public $verifyPassword;
 
-    public $profile;
+    //public $profile;
 
     public function rules() {
         return [
@@ -50,10 +50,9 @@ class User extends \app\models\native\TblUser {
     public static function getInfo($id) {
         if (empty(self::$_user[$id])) {
             self::$_user[$id] = self::findOne($id);
-            self::$_user[$id]->profile= $this->hasOne(UserProfile::className(), ['uid' => 'id']);
-//            if (empty(self::$_user[$id]->profile)) {
-//                self::$_user[$id]->profile = new UserProfile();
-//            }
+            if (empty(self::$_user[$id]->profile)) {
+                self::$_user[$id]->profile = new UserProfile();
+            }
         }
 
         return self::$_user[$id];
