@@ -48,17 +48,15 @@ class User extends \app\models\native\TblUser {
     }
 
     public static function getInfo($id) {
-        if (empty(self::$_user[$id])) {
-            self::$_user[$id] = self::findOne($id);
-            if(!is_object(self::$_user[$id])) {
-                self::$_user[$id] = new \stdClass;
-            }
-            if (empty(self::$_user[$id]->profile)) {
-                self::$_user[$id]->profile = new UserProfile();
-            }
-        }
-
-        return self::$_user[$id];
+//        if (empty(self::$_user[$id])) {
+//            self::$_user[$id] = self::findOne($id);
+//            if (empty(self::$_user[$id]->profile)) {
+//                self::$_user[$id]->profile = new UserProfile();
+//            }
+//        }
+//
+//        return self::$_user[$id];
+        return self::findOne($id);
     }
 
     public function getProfile() {
