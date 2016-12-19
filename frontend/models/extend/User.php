@@ -10,7 +10,7 @@ class User extends \app\models\native\TblUser {
     public $verifyCode;
     public $verifyPassword;
 
-    //public $profile;
+    public $profile;
 
     public function rules() {
         return [
