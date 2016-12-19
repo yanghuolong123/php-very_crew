@@ -51,6 +51,7 @@ class User extends \app\models\native\TblUser {
         if (empty(self::$_user[$id])) {
             self::$_user[$id] = self::findOne($id);
             if (empty(self::$_user[$id]->profile)) {
+                self::$_user[$id]->profile = new stdClass();
                 self::$_user[$id]->profile = new UserProfile();
             }
         }
