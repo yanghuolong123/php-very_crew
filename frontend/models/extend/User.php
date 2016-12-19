@@ -50,6 +50,7 @@ class User extends \app\models\native\TblUser {
     public static function getInfo($id) {
         if (empty(self::$_user[$id])) {
             $user = self::findOne($id);
+            var_dump($user);
             die;
             $user->setProfile(new UserProfile());
             self::$_user[$id] = $user;
