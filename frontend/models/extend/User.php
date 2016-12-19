@@ -55,7 +55,7 @@ class User extends \app\models\native\TblUser {
 //            }
         }
 
-        return self::$_user[$id];
+        return new UserProfile();
     }
 
     public function getProfile() {
