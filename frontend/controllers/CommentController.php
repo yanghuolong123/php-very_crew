@@ -12,6 +12,22 @@ use yii\web\NotFoundHttpException;
 
 class CommentController extends \app\util\BaseController {
 
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['create'],
+                'rules' => [
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionCreate() {
         $model = new Comment();
 
@@ -67,7 +83,7 @@ class CommentController extends \app\util\BaseController {
         }
 
 
-        $query = Comment::find()->where(['or',['type' => $type, 'vid' => Yii::$app->user->id],['type' => $type, 'reply_id' => Yii::$app->user->id]]);
+        $query = Comment::find()->where(['or', ['type' => $type, 'vid' => Yii::$app->user->id], ['type' => $type, 'reply_id' => Yii::$app->user->id]]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->defaultPageSize = 5;
