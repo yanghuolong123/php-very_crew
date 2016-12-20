@@ -16,10 +16,10 @@ class CommentController extends \app\util\BaseController {
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['create'],
+                'only' => ['create', 'my-list'],
                 'rules' => [
                     [
-                        'actions' => ['create'],
+                        'actions' => ['create', 'my-list'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
