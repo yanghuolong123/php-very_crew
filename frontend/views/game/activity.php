@@ -7,7 +7,7 @@ use app\models\extend\Games;
 use yii\helpers\Html;
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => '参与比赛', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '参与活动', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
