@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <a name="vote"></a>
     <?php if (!empty($dataProvider->models)): ?>
         <div class="row">
-            <div class="container title"><span class="list-titile">已上传作品</span><?= Html::dropDownList('sort', $sort, ['id' => '按ID排序', 'score' => '按得分排序', 'votes' => '按投票排序'], ['id' => 'list-sort', 'class' => 'btn btn-success pull-right']) ?></div>
+            <div class="container title"><span class="list-titile">已上传作品</span></div>
             <?php foreach ($dataProvider->models as $gameVideo): ?>
                 <?php $video = Video::findOne($gameVideo->video_id) ?>
                 <div class="col-sm-6 col-md-3">
