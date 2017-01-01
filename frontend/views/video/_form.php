@@ -36,7 +36,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     
     <?php if(isset($_GET['game_id']) && !empty($_GET['game_id'])): ?>
     <div class="form-group ">
-        <label for="video-game" class="col-lg-2 control-label">所属大赛</label>
+        <label for="video-game" class="col-lg-2 control-label">所属活动</label>
         <div class="col-lg-4"><?= Html::hiddenInput('game_id', $_GET['game_id']) ?><input type="text" maxlength="128" name="game" value="<?= app\models\extend\Games::findOne($_GET['game_id'])->name ?>" disabled="true" class="form-control" id="video-game"></div>
         <div class="col-lg-5"><div class="help-block"></div></div>
     </div>
