@@ -48,6 +48,11 @@ class GameController extends \app\util\BaseController {
     }
 
     public function actionView($id, $sorting = 'id') {
+        $type = Yii::$app->request->get("type");
+        $view = "view";
+        if (!empty($type) && $type == "activity") {
+            $view = $type;
+        }
         $model = $this->findModel($id);
         $query = GameVideoSearch::find();
         $query->andWhere(['game_id' => $id]);
@@ -57,7 +62,7 @@ class GameController extends \app\util\BaseController {
         $dataProvider->pagination->pageSize = 12;
         $dataProvider->sort = ['defaultOrder' => [$sorting => SORT_DESC]];
 
-        return $this->render('view', [
+        return $this->render($view, [
                     'model' => $model,
                     'dataProvider' => $dataProvider,
                     'sort' => $sorting,
