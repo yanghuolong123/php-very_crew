@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p><?= $model->content ?></p>
         </div>
         <div class="col-md-4 game_menu">
-            <p class="text-right"><a <?php if ($model->status != 0): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if ($model->status == 0): ?><?= Url::toRoute(['video/create', 'game_id' => $model->id]) ?><?php else: ?>javascript:;<?php endif; ?>" role="button">上传作品 &raquo;</a></p>
+            <p class="text-right"><a <?php if ($model->status != 0): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if ($model->status == 0): ?><?= Url::toRoute(['video/create', 'game_id' => $model->id]) ?><?php else: ?>javascript:;<?php endif; ?>" role="button"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上传作品 &raquo;</a></p>
 
             <p class="text-right"><a <?php if ($model->status != 3): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if ($model->status == 3): ?><?= Url::toRoute(['game/result', 'id' => $model->id]) ?><?php else: ?>javascript:;<?php endif; ?>" role="button">名次奖项公布 &raquo;</a></p>
         </div>
