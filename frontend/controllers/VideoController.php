@@ -75,7 +75,7 @@ class VideoController extends \app\util\BaseController {
             if (!empty($gameId)) {
                 Yii::$app->db->createCommand('insert into tbl_game_video (game_id, video_id, user_id, createtime) values (:game_id, :video_id, :user_id, :createtime)', [':game_id' => $gameId, ':video_id' => $model->id, ':user_id'=>$model->uid, ':createtime' => time()])->execute();
                 Games::updateAllCounters(['number'=>1], ['id'=>$gameId]);
-                $model->updateAttributes(['status'=>2]);
+                //$model->updateAttributes(['status'=>2]);
             }
             return $this->redirect(['video-user/index', 'video_id' => $model->id]);
         } else {
