@@ -8,6 +8,8 @@ use app\util\Constant;
 
 class Video extends \app\models\native\TblVideo {
 
+    public $oldFile;
+
     public function rules() {
         return [
             [['title', 'content', 'logo', 'file', 'type', 'tag'], 'required'],
@@ -25,19 +27,21 @@ class Video extends \app\models\native\TblVideo {
             //$this->status = 1;
             $this->uid = Yii::$app->user->id;
             $this->createtime = time();
+        } else {
+            if (!empty($this->oldFile) && $this->oldFile != $this->file && $this->status == 1) {
+                $this->status = 0;
+            }
         }
 
-//        if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
-//            $this->status = 0;
-//        }
 
         return parent::beforeSave($insert);
     }
 
     public function afterSave($insert, $changedAttributes) {
-        //if (strtolower(pathinfo($this->file)['extension']) != "mp4") {
-        Yii::$app->redis->LPUSH(Constant::ConvertVideoList, $this->id);
-        //}
+        if (empty($this->oldFile) || (!empty($this->oldFile) && $this->oldFile != $this->file)) {
+            Yii::$app->redis->LPUSH(Constant::ConvertVideoList, $this->id);
+        }
+
         parent::afterSave($insert, $changedAttributes);
     }
 
@@ -48,6 +52,11 @@ class Video extends \app\models\native\TblVideo {
         $this->tag = is_array($this->tag) ? ',' . implode(',', $this->tag) . ',' : $this->tag;
 
         return parent::beforeValidate();
+    }
+
+    public function afterFind() {
+        $this->oldFile = $this->file;
+        parent::afterFind();
     }
 
     public static function getVideoList($uid) {
