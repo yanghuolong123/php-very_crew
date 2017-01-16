@@ -99,6 +99,7 @@ $(function() {
         swf           : '/plugin/uploadify/uploadify.swf',
         uploader      : 'index.php?r=upload/upload-file',
         width         : 120,
+        fileTypeExts  : '*.mp4; *.MP4; *.AVI; *.avi; *.mov; *.MOV; *.flv; *.FLV; *.mpg; *.MPG; *.3gp; *.3GP; *.wmv; *.WMV',
         onUploadSuccess : function(file, data, response) {
             var res = eval("("+data+")");
             $('#video-file').val(res['data']);
