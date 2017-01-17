@@ -113,7 +113,7 @@ class PlanController extends \app\util\BaseController {
 
     public function actionJoin($plan_id) {
 
-        $planUser = PlanUser::findOne(['plan_id' => $plan_id, 'uid' => Yii::$app->user->id]);
+        $planUser = PlanUser::findOne(['plan_id' => $plan_id, 'uid' => Yii::$app->user->id, 'status'=>0]);
         if (!empty($planUser)) {
             Yii::$app->session->setFlash('hasJoin', $planUser->status);
         }
