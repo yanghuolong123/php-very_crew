@@ -1,8 +1,15 @@
 <?php
 
 use app\models\extend\Distrinct;
+use app\util\CommonUtil;
 
 $m = strtolower(substr(strrchr(get_class($model), '\\'), 1));
+$ismobile = false;
+$optionClass = "form-horizontal";
+if (CommonUtil::isMobile()) {
+    $ismobile = true;
+    $optionClass = "form-control";
+}
 ?>
 <style>
     .district-label{
@@ -13,7 +20,7 @@ $m = strtolower(substr(strrchr(get_class($model), '\\'), 1));
 
 $form->field($model, 'province', [
     'template' => "{label}\n<div class=\"col-lg-2\" style=\"padding-left: 5px;margin-bottom: 5px;\">{input}</div>\n",
-    'options' => ['class' => 'form-horizontal'],
+    'options' => ['class' => $optionClass],
     'labelOptions' => ['class' => 'col-lg-2 control-label district-label'],
 ])->dropDownList(Distrinct::getDistrictList(0), [
     'prompt' => '请选择省',
@@ -31,7 +38,7 @@ $form->field($model, 'province', [
 
 $form->field($model, 'city', [
     'template' => "<div class=\"col-lg-2\" style=\"margin-bottom: 5px;\">{input}</div>\n",
-    'options' => ['class' => 'form-horizontal'],
+    'options' => ['class' => $optionClass],
 ])->dropDownList(Distrinct::getDistrictList($model->province), [
     'prompt' => '请选择城市',
     'onchange' => '
@@ -58,7 +65,7 @@ $form->field($model, 'city', [
 
     $form->field($model, 'county', [
         'template' => "<div class=\"col-lg-2\">{input}</div>\n",
-        'options' => ['class' => 'form-horizontal'],
+        'options' => ['class' => $optionClass],
     ])->dropDownList(Distrinct::getDistrictList($model->city), [
         'prompt' => '请选择县',
         'onchange' => '
