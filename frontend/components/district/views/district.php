@@ -20,7 +20,7 @@ if (CommonUtil::isMobile()) {
 
 $form->field($model, 'province', [
     'template' => "{label}\n<div class=\"col-lg-2\" style=\"padding-left: 5px;margin-bottom: 5px;\">{input}</div>\n",
-    'options' => ['class' => $optionClass],
+    'options' => ['class' => 'form-horizontal'],
     'labelOptions' => ['class' => 'col-lg-2 control-label district-label'],
 ])->dropDownList(Distrinct::getDistrictList(0), [
     'prompt' => '请选择省',
@@ -38,7 +38,7 @@ $form->field($model, 'province', [
 
 $form->field($model, 'city', [
     'template' => "<div class=\"col-lg-2\" style=\"margin-bottom: 5px;\">{input}</div>\n",
-    'options' => ['class' => $optionClass],
+    'options' => ['class' => 'form-horizontal'],
 ])->dropDownList(Distrinct::getDistrictList($model->province), [
     'prompt' => '请选择城市',
     'onchange' => '
@@ -65,7 +65,7 @@ $form->field($model, 'city', [
 
     $form->field($model, 'county', [
         'template' => "<div class=\"col-lg-2\">{input}</div>\n",
-        'options' => ['class' => $optionClass],
+        'options' => ['class' => 'form-horizontal'],
     ])->dropDownList(Distrinct::getDistrictList($model->city), [
         'prompt' => '请选择县',
         'onchange' => '
