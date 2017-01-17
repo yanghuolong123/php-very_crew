@@ -21,7 +21,7 @@ if (CommonUtil::isMobile()) {
 <?=
 
 $form->field($model, 'province', [
-    'template' => "{label}\n<div class=\"col-lg-2\" style=\"padding-left: 5px;margin-bottom: 5px;\">{input}</div>\n",
+    'template' => "{label}\n<div class=\"col-lg-2\" style=\"margin-bottom: 5px;\">{input}</div>\n",
     'options' => ['class' => $optionClass],
     'labelOptions' => ['class' => 'col-lg-2 control-label district-label'],
 ])->dropDownList(Distrinct::getDistrictList(0), [
