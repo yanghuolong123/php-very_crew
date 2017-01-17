@@ -84,7 +84,7 @@ class PlanUserController extends Controller {
         $plan_id = Yii::$app->request->get('plan_id');
         $uid = Yii::$app->request->get('uid');
 
-        $model = PlanUser::findOne(['plan_id' => $plan_id, 'uid' => $uid]);
+        $model = PlanUser::findOne(['plan_id' => $plan_id, 'uid' => $uid, 'status' => 0]);
         $model->updateAttributes(['status' => -1]);
 
         return $this->redirect(['plan/my', 'plan_id' => $model->plan_id]);
