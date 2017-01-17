@@ -16,8 +16,8 @@ if (CommonUtil::isMobile()) {
         .begin_time_label{
             padding-right: 25px;
         }
-        .tpl_begin{
-            
+        .tpl_time{
+            padding-left: 5px;margin-bottom: 5px;
         }
     </style>
 <?php endif; ?>
@@ -26,7 +26,7 @@ if (CommonUtil::isMobile()) {
 <?=
 
 $form->field($model, 'begin_time', [
-    'template' => "{label}\n<div class=\"col-lg-3\" style=\"padding-left: 5px;margin-bottom: 5px;\">{input}</div>\n",
+    'template' => "{label}\n<div class=\"col-lg-3 tpl_time\">{input}</div>\n",
     'options' => ['class' => $optionClass],
     'labelOptions' => ['class' => 'col-lg-2 control-label begin_time_label'],
 ])->widget(
@@ -46,7 +46,7 @@ $form->field($model, 'begin_time', [
 <?=
 
 $form->field($model, 'end_time', [
-    'template' => "{label}\n<div class=\"col-lg-3\" style=\"padding-left: 5px;margin-bottom: 5px;\">{input}</div><div class=\"col-lg-2\">{error}</div>\n",
+    'template' => "{label}\n<div class=\"col-lg-3 tpl_time\">{input}</div><div class=\"col-lg-2\">{error}</div>\n",
     //'options' => ['class' => 'form-horizontal'],
     'labelOptions' => ['class' => 'col-lg-1 control-label'],
 ])->widget(
