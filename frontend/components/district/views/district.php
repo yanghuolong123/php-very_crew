@@ -11,11 +11,13 @@ if (CommonUtil::isMobile()) {
     $optionClass = "form-group";
 }
 ?>
+<?php if(!$ismobile): ?>
 <style>
     .district-label{
         padding-right: 25px;
     }
 </style>
+<?php endif; ?>
 <?=
 
 $form->field($model, 'province', [
