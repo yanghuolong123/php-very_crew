@@ -16,12 +16,15 @@ if (CommonUtil::isMobile()) {
     .district-label{
         padding-right: 25px;
     }
+    .tpl_province {
+        padding-left: 5px;
+    }
 </style>
 <?php endif; ?>
 <?=
 
 $form->field($model, 'province', [
-    'template' => "{label}\n<div class=\"col-lg-2\" style=\"margin-bottom: 5px;\">{input}</div>\n",
+    'template' => "{label}\n<div class=\"col-lg-2 tpl_province\" style=\"margin-bottom: 5px;\">{input}</div>\n",
     'options' => ['class' => $optionClass],
     'labelOptions' => ['class' => 'col-lg-2 control-label district-label'],
 ])->dropDownList(Distrinct::getDistrictList(0), [
