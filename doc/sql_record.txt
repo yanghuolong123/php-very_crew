@@ -36,3 +36,6 @@ ALTER TABLE  `tbl_games` CHANGE  `result`  `result` TEXT CHARACTER SET utf8 COLL
 
 /* done */
 ALTER TABLE  `tbl_video` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMENT '状态:-1删除，0等待转码，1正常,2不公开';
+
+/* done */
+ALTER TABLE `tbl_user` CHANGE `nickname` `nickname` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '姓名';

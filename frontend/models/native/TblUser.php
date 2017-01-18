@@ -51,7 +51,7 @@ class TblUser extends \yii\db\ActiveRecord
             'id' => '自增id',
             'username' => '用户名(邮箱/手机号)',
             'password' => '密码',
-            'nickname' => '昵称',
+            'nickname' => '姓名',
             'mobile' => '电话',
             'email' => '邮箱',
             'avatar' => '头像',
