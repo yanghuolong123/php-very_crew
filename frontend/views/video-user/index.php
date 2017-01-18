@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-user-index">
     <div class="row">
-        <div class="col-md-offset-1 col-md-8"><p class="text-muted">作品已成功上传，您可以在72小时内对作品的视频部分进行更新，可以任何时候在“我的作品"中对其基本信息及作品成员进行编辑，请输入昵称或ID添加成会员</p></div>
+        <div class="col-md-offset-1 col-md-8"><p class="text-muted">作品已成功上传，您可以在72小时内对作品的视频部分进行更新，可以任何时候在“我的作品"中对其基本信息及作品成员进行编辑，请输入姓名或ID来匹配作品成员并添加进成员列表</p></div>
     </div>
 
     <?php  echo $this->render('_search_user', ['model' => $searchModel]); ?>
