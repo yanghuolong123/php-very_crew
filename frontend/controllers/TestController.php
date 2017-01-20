@@ -5,10 +5,12 @@ namespace app\controllers;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\util\CommonUtil;
 
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
+        echo CommonUtil::getFileExtension("11/111.mp4");
         //logs('test', "dsdsdssd");
 //        echo TIMESTAMP;
 //        echo "\n";

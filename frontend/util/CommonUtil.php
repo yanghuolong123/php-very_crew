@@ -204,4 +204,8 @@ class CommonUtil {
         return $ret;
     }
 
+    public static function getFileExtension($file) {
+        return pathinfo($file, PATHINFO_EXTENSION);
+    }
+
 }

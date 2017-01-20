@@ -20,13 +20,6 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
         height: 220px;
         width: 350px;
     }
-    .state{
-        color:#f71752;
-    }
-    span.text {
-        color: #008200;
-        font-family: fantasy;
-    }
 </style>
 
 <div class="video-form">
@@ -75,7 +68,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <p></p><p></p><br>
     <?= $form->field($model, 'file',[
         'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5 plan_tips\">非常剧组不会对您的视频进行压缩，所以上传前请务必转码，通过降低比特率（码率）等参数来降低原始视频的大小，以保证在线播放的流畅。<br>推荐转码软件：QQ影音、狸窝。<br>推荐比特率:1000-1500kbps。<br>推荐上传格式：MP4。<p>{error}</p></div>",
-    ])->webuploaderInput() ?>
+    ])->uploadifyInput() ?> 
     
     <?= $form->field($model, 'remark')->textarea() ?>
 
@@ -93,75 +86,26 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
 <?php $this->beginBlock('uploadVideoJs') ?> 
 
 $(function() {
-    
-    $list = $('#thelist'),
-    state = 'pending',
-    uploader;
-     
-    uploader = WebUploader.create({
-        // swf文件路径
-        swf: '/plugin/webuploader/Uploader.swf',
-        // 文件接收服务端。
-        //server: 'fileupload.php',
-        server: 'index.php?r=upload/webupload',
-        // 选择文件的按钮。可选。
-        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-        pick: '#picker',
-        // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
-        resize: false,
-        chunked: true,
-        chunkSize:2*1024*1024,
-        accept: {
-	    title: 'Videos',
-	    extensions: 'wmv,asf,asx,rm,rmvb,ram,avi,mpg,dat,mp4,mpeg,divx,m4v,mov,qt,flv,f4v,mp3,wav,aac,m4a,wma,ra,3gp,3g2,dv,vob,mkv,ts',
-	    mimeTypes: 'video/*,audio/*'
-	},
-        fileNumLimit: 1,
-        auto: true
-    });
-    
-    // 当有文件被添加进队列的时候
-    uploader.on( 'fileQueued', function( file ) {
-    $list.append( '<div id="' + file.id + '" class="item">' +
-      '<span class="info">' + file.name + ' </span>' +
-      '<span class="state"> 等待上传...</span>' +
-      '<span class="text">0%</span>' +
-    '</div>' );
-    });
-    
-    // 文件上传过程中创建进度条实时显示。
-    uploader.on( 'uploadProgress', function( file, percentage ) {
-        var $li = $( '#'+file.id ),
-          $percent = $li.find('.progress .progress-bar');
-          
-
-        // 避免重复创建
-        if ( !$percent.length ) {
-          $percent = $('<div class="progress progress-striped active">' +
-           '<div class="progress-bar" role="progressbar" style="width: 0%">' +
-           '</div>' +
-          '</div>').appendTo( $li ).find('.progress-bar');
+    $("#file_upload").uploadify({
+        //debug    : true,
+        multi    : false,
+        uploadLimit : 1,
+        queueSizeLimit : 1,
+        buttonText  : '上传视频',
+        removeCompleted : false,
+        fileObjName   : 'file',
+        fileSizeLimit : 0,
+        height        : 30,
+        swf           : '/plugin/uploadify/uploadify.swf',
+        uploader      : 'index.php?r=upload/upload-file',
+        width         : 120,
+        fileTypeExts  : '*.mp4; *.MP4; *.AVI; *.avi; *.mov; *.MOV; *.flv; *.FLV; *.mpg; *.MPG; *.3gp; *.3GP; *.wmv; *.WMV',
+        onUploadSuccess : function(file, data, response) {
+            var res = eval("("+data+")");
+            $('#video-file').val(res['data']);
         }
 
-        $li.find('span.state').text('上传中，请等候... ');
-        
-        $percent.css( 'width', percentage * 100 + '%' );
-        $li.find('span.text').text( Math.round( percentage * 100 ) + '%' );
     });
-    
-    uploader.on( 'uploadSuccess', function( file, obj ) {
-        $( '#'+file.id ).find('span.state').text('上传成功 ');
-        $('#video-file').val(obj.data);
-    });
-
-    uploader.on( 'uploadError', function( file ) {
-        $( '#'+file.id ).find('span.state').text('上传出错 ');
-    });
-
-    uploader.on( 'uploadComplete', function( file ) {
-        $( '#'+file.id ).find('.progress').fadeOut();
-    });
-    
     
     $(document).on('change', '#video-plan_id', function(){
         $('#video-tag input').attr("checked",false);
@@ -198,6 +142,6 @@ $(function() {
 });
 
 <?php $this->endBlock() ?>  
-<?php $this->registerJsFile('/plugin/webuploader/webuploader.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
+<?php $this->registerJsFile('/plugin/uploadify/jquery.uploadify.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
 <?php $this->registerJs($this->blocks['uploadVideoJs'], \yii\web\View::POS_END); ?>
-<?php $this->registerCssFile('/plugin/webuploader/webuploader.css',['depends'=>['app\assets\AppAsset']]); ?>
+<?php $this->registerCssFile('/plugin/uploadify/uploadify.css',['depends'=>['app\assets\AppAsset']]); ?>

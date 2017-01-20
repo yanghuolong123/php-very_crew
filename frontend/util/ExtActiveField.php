@@ -53,6 +53,21 @@ class ExtActiveField extends \yii\widgets\ActiveField {
 
         return $this;
     }
+    
+    public function webuploaderInput($options = []) {
+        // https://github.com/yiisoft/yii2/pull/795
+        if ($this->inputOptions !== ['class' => 'form-control']) {
+            $options = array_merge($this->inputOptions, $options);
+        }
+        // https://github.com/yiisoft/yii2/issues/8779
+        if (!isset($this->form->options['enctype'])) {
+            $this->form->options['enctype'] = 'multipart/form-data';
+        }
+        $this->adjustLabelFor($options);
+        $this->parts['{input}'] = '<div id="uploader"><div class="btns"><div id="picker">上传视频</div></div><div id="thelist" class="uploader-list"></div></div>' . Html::activeHiddenInput($this->model, $this->attribute, $options);
+
+        return $this;
+    }
 
     public function cropImgInput($options = []) {
         // https://github.com/yiisoft/yii2/pull/795

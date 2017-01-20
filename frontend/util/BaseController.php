@@ -47,4 +47,16 @@ class BaseController extends \yii\web\Controller {
         ]);
     }
 
+    protected function sendJsonRpc($success = true, $msg = '', $data = '', $code = '') {
+        $arr['jsonrpc'] = '2.0';
+        $arr['success'] = $success;
+        $arr['code'] = $code;
+        $arr['msg'] = $msg;
+        $arr['data'] = $data;
+
+        header('Content-type: application/json; charset=UTF-8');
+
+        die(json_encode($arr));
+    }
+
 }
