@@ -198,6 +198,6 @@ $(function() {
 });
 
 <?php $this->endBlock() ?>  
-<?php $this->registerJsFile('/plugin/webuploader/webuploader.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
+<?php $this->registerJsFile('/plugin/webuploader/webuploader.nolog.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]); ?>
 <?php $this->registerJs($this->blocks['uploadVideoJs'], \yii\web\View::POS_END); ?>
 <?php $this->registerCssFile('/plugin/webuploader/webuploader.css',['depends'=>['app\assets\AppAsset']]); ?>
