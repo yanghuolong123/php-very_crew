@@ -96,7 +96,7 @@ function PicUploader(settings) {
     var self = this;
     this.settings = settings;
     //this.$fileInput = $('<input type="file" accept=".jpg,.png,.jpeg,.gif" id="' + inputId + '" style="display:none;">');
-    this.$fileInput = $('<input type="file" accept="image/png,image/gif,image/jpg,image/jpeg" id="' + inputId + '" style="display:none;">');
+    this.$fileInput = $('<input type="file" accept="image/*" id="' + inputId + '" style="display:none;">');
     this.$fileInput.on('change', function() {
         self._onChange(self);
     });
