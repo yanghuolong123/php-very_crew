@@ -34,7 +34,7 @@ class Comment extends \app\models\native\TblComment {
         $comment->content = $content;
         $comment->save();
 
-        Yii::$app->redis->incr(Constant::UserNews . $toUid);
+        Yii::$app->redis->HINCRBY(Constant::UserNews, Constant::UserNews . $toUid, 1);
     }
 
     public static function getTypeArr($returnArr = true, $type = 1) {

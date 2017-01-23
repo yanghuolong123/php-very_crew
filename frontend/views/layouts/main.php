@@ -15,9 +15,9 @@ use app\util\Constant;
 AppAsset::register($this);
 
 $redis = Yii::$app->redis;
-$user_msg = $redis->get(Constant::UserMsg . Yii::$app->user->id);
-$user_private_msg = $redis->get(Constant::UserPrivateMsg . Yii::$app->user->id);
-$user_news = $redis->get(Constant::UserNews . Yii::$app->user->id);
+$user_msg = $redis->HGET(Constant::UserMsg, Constant::UserMsg.Yii::$app->user->id);
+$user_private_msg = $redis->HGET(Constant::UserPrivateMsg, Constant::UserPrivateMsg.Yii::$app->user->id);
+$user_news = $redis->HGET(Constant::UserNews, Constant::UserNews.Yii::$app->user->id);
 $tips = $user_msg || $user_private_msg || $user_news ? '<span class="glyphicon glyphicon-volume-up" style="color:red;"></span>' : '';
 $footerNav = Article::getByGroopKey('footer_nav');
 ?>

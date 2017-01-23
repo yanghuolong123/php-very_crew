@@ -56,10 +56,10 @@ class CommentController extends \app\util\BaseController {
                     }
                     break;
                 case 2:
-                    Yii::$app->redis->INCR(Constant::UserMsg . (empty($parent->id) ? $model->vid : $parent->uid));
+                    Yii::$app->redis->HINCRBY(Constant::UserMsg, Constant::UserMsg . (empty($parent->id) ? $model->vid : $parent->uid), 1);
                     break;
                 case 3:
-                    Yii::$app->redis->INCR(Constant::UserPrivateMsg . (empty($parent->id) ? $model->vid : $parent->uid));
+                    Yii::$app->redis->HINCRBY(Constant::UserPrivateMsg, Constant::UserPrivateMsg . (empty($parent->id) ? $model->vid : $parent->uid), 1);
                     break;
             }
 
@@ -72,13 +72,13 @@ class CommentController extends \app\util\BaseController {
     public function actionMyList($type) {
         switch ($type) {
             case 2:
-                Yii::$app->redis->del(Constant::UserMsg . Yii::$app->user->id);
+                Yii::$app->redis->HDEL(Constant::UserMsg, Constant::UserMsg . Yii::$app->user->id);
                 break;
             case 3:
-                Yii::$app->redis->del(Constant::UserPrivateMsg . Yii::$app->user->id);
+                Yii::$app->redis->HDEL(Constant::UserPrivateMsg, Constant::UserPrivateMsg . Yii::$app->user->id);
                 break;
             case 4:
-                Yii::$app->redis->del(Constant::UserNews . Yii::$app->user->id);
+                Yii::$app->redis->HDEL(Constant::UserNews, Constant::UserNews . Yii::$app->user->id);
                 break;
         }
 
