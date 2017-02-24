@@ -17,7 +17,7 @@
         "require": {
             "composer-plugin-api": "^1.0"
         },
-        "time": "2016-02-06 00:49:24",
+        "time": "2016-02-06T00:49:24+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "yii\\composer\\Plugin",
@@ -69,7 +69,7 @@
         "require-dev": {
             "mockery/mockery": "~0.9.1,<0.9.4"
         },
-        "time": "2016-05-01 08:45:47",
+        "time": "2016-05-01T08:45:47+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -127,7 +127,7 @@
             "facebook/xhprof": "*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2015-03-06 05:28:07",
+        "time": "2015-03-06T05:28:07+00:00",
         "bin": [
             "bin/markdown"
         ],
@@ -183,7 +183,7 @@
         "require": {
             "php": ">=5.2"
         },
-        "time": "2015-08-05 01:03:42",
+        "time": "2015-08-05T01:03:42+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -239,7 +239,7 @@
             "php": ">=5.4.0",
             "yiisoft/yii2-composer": "~2.0.4"
         },
-        "time": "2016-04-28 14:50:20",
+        "time": "2016-04-28T14:50:20+00:00",
         "bin": [
             "yii"
         ],
@@ -326,7 +326,7 @@
             "swiftmailer/swiftmailer": "~5.0",
             "yiisoft/yii2": ">=2.0.4"
         },
-        "time": "2016-03-17 03:58:49",
+        "time": "2016-03-17T03:58:49+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -377,7 +377,7 @@
         "require": {
             "yiisoft/yii2": ">=2.0.4"
         },
-        "time": "2016-03-17 03:41:26",
+        "time": "2016-03-17T03:41:26+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -404,7 +404,8 @@
         "keywords": [
             "codeception",
             "yii2"
-        ]
+        ],
+        "abandoned": "codeception/codeception"
     },
     {
         "name": "yiisoft/yii2-bootstrap",
@@ -425,7 +426,7 @@
             "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
             "yiisoft/yii2": ">=2.0.6"
         },
-        "time": "2016-03-17 03:29:28",
+        "time": "2016-03-17T03:29:28+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -477,7 +478,7 @@
             "yiisoft/yii2": ">=2.0.4",
             "yiisoft/yii2-bootstrap": "*"
         },
-        "time": "2016-03-17 03:50:19",
+        "time": "2016-03-17T03:50:19+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -522,7 +523,7 @@
             "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
             "shasum": ""
         },
-        "time": "2016-04-07 12:29:16",
+        "time": "2016-04-07T12:29:16+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -568,7 +569,7 @@
             "yiisoft/yii2": ">=2.0.4",
             "yiisoft/yii2-bootstrap": "~2.0"
         },
-        "time": "2016-03-18 14:09:46",
+        "time": "2016-03-18T14:09:46+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -625,7 +626,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~1.5"
         },
-        "time": "2016-04-29 12:21:54",
+        "time": "2016-04-29T12:21:54+00:00",
         "type": "library",
         "extra": {
             "branch-alias": []
@@ -671,7 +672,7 @@
             "fzaninotto/faker": "*",
             "yiisoft/yii2": "*"
         },
-        "time": "2015-03-01 06:22:44",
+        "time": "2015-03-01T06:22:44+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -946,7 +947,7 @@
         "require": {
             "yiisoft/yii2": "*"
         },
-        "time": "2014-04-03 15:47:15",
+        "time": "2014-04-03T15:47:15+00:00",
         "type": "yii2-extension",
         "installation-source": "dist",
         "autoload": {
@@ -991,7 +992,7 @@
         "require": {
             "yiisoft/yii2": ">=2.0.4"
         },
-        "time": "2016-03-17 04:11:03",
+        "time": "2016-03-17T04:11:03+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -1042,7 +1043,7 @@
             "ext-mongodb": ">=1.0.0",
             "yiisoft/yii2": ">=2.0.5"
         },
-        "time": "2016-08-29 09:40:20",
+        "time": "2016-08-29T09:40:20+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -1088,7 +1089,7 @@
             "reference": "b41439ee0c69efc800a53087c20d8bfcea0f9507",
             "shasum": ""
         },
-        "time": "2015-02-06 02:01:30",
+        "time": "2015-02-06T02:01:30+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1127,7 +1128,7 @@
             "php": ">=5.4.0",
             "yiisoft/yii2": "2.0.*"
         },
-        "time": "2016-08-31 12:41:25",
+        "time": "2016-08-31T12:41:25+00:00",
         "type": "yii2-extension",
         "extra": {
             "asset-installer-paths": {
@@ -1230,7 +1231,7 @@
             "yiisoft/yii2": "~2.0",
             "yiisoft/yii2-bootstrap": "~2.0"
         },
-        "time": "2015-07-27 12:27:04",
+        "time": "2015-07-27T12:27:04+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -1440,7 +1441,7 @@
             "bower-asset/angular-validation": "~1.3",
             "yiisoft/yii2": ">=2.0.4"
         },
-        "time": "2015-09-03 14:43:37",
+        "time": "2015-09-03T14:43:37+00:00",
         "type": "yii2-extension",
         "extra": {
             "bootstrap": "dee\\angular\\Bootstrap",
@@ -1490,7 +1491,7 @@
             "deesoft/yii2-angular": "~1.3",
             "yiisoft/yii2": ">=2.0.6"
         },
-        "time": "2015-09-05 07:07:03",
+        "time": "2015-09-05T07:07:03+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -1521,6 +1522,50 @@
             "rbac",
             "rest",
             "yii"
+        ]
+    },
+    {
+        "name": "cszchen/alte",
+        "version": "v2.0.2",
+        "version_normalized": "2.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cartmanchen/yii2-bootstrap-AdminLTE.git",
+            "reference": "b1a1071625884fa600101db80c26b688e28f4093"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/cartmanchen/yii2-bootstrap-AdminLTE/b1a1071625884fa600101db80c26b688e28f4093.zip",
+            "reference": "b1a1071625884fa600101db80c26b688e28f4093",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*",
+            "yiisoft/yii2-bootstrap": "*"
+        },
+        "time": "2016-11-17T09:55:18+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "cszchen\\alte\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "cartmanchen",
+                "email": "me@csz.link"
+            }
+        ],
+        "description": "Widgets for AdminLTE theme",
+        "keywords": [
+            "AdminLTE",
+            "widget",
+            "yii2"
         ]
     }
 ]

@@ -45,6 +45,7 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         ),
         'c' => 
         array (
+            'cszchen\\alte\\' => 13,
             'cebe\\markdown\\' => 14,
         ),
         'F' => 
@@ -117,6 +118,10 @@ class ComposerStaticInit91fa5ea55483ce0cdfb73d504d533815
         'dee\\adminlte\\' => 
         array (
             0 => __DIR__ . '/..' . '/deesoft/yii2-adminlte',
+        ),
+        'cszchen\\alte\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cszchen/alte',
         ),
         'cebe\\markdown\\' => 
         array (

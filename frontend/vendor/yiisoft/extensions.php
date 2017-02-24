@@ -121,4 +121,13 @@ return array (
       '@mdm/admin' => $vendorDir . '/mdmsoft/yii2-admin',
     ),
   ),
+  'cszchen/alte' => 
+  array (
+    'name' => 'cszchen/alte',
+    'version' => '2.0.2.0',
+    'alias' => 
+    array (
+      '@cszchen/alte' => $vendorDir . '/cszchen/alte',
+    ),
+  ),
 );

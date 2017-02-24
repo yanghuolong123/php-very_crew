@@ -22,7 +22,8 @@
         "yiisoft/yii2-redis": "^2.0",
         "yiisoft/yii2-mongodb": "^2.1",
         "kucha/ueditor": "*",
-        "mdmsoft/yii2-admin": "*"
+        "mdmsoft/yii2-admin": "*",
+        "cszchen/alte": "> 2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

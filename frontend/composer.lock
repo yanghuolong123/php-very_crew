@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "69e0c6682fbe1448a8f58881fcbd584f",
-    "content-hash": "765fdf96f5f7ccefc98729940ac7f733",
+    "content-hash": "df467250dc93be9c7fc1122dd65c4268",
     "packages": [
         {
             "name": "2amigos/yii2-date-picker-widget",
@@ -48,7 +47,7 @@
                 "widget",
                 "yii"
             ],
-            "time": "2014-04-03 15:47:15"
+            "time": "2014-04-03T15:47:15+00:00"
         },
         {
             "name": "bower-asset/adminlte",
@@ -489,7 +488,49 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2015-03-06 05:28:07"
+            "time": "2015-03-06T05:28:07+00:00"
+        },
+        {
+            "name": "cszchen/alte",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cartmanchen/yii2-bootstrap-AdminLTE.git",
+                "reference": "b1a1071625884fa600101db80c26b688e28f4093"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/cartmanchen/yii2-bootstrap-AdminLTE/b1a1071625884fa600101db80c26b688e28f4093.zip",
+                "reference": "b1a1071625884fa600101db80c26b688e28f4093",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "cszchen\\alte\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "cartmanchen",
+                    "email": "me@csz.link"
+                }
+            ],
+            "description": "Widgets for AdminLTE theme",
+            "keywords": [
+                "AdminLTE",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-11-17T09:55:18+00:00"
         },
         {
             "name": "deesoft/yii2-adminlte",
@@ -538,7 +579,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2015-07-27 12:27:04"
+            "time": "2015-07-27T12:27:04+00:00"
         },
         {
             "name": "deesoft/yii2-angular",
@@ -589,7 +630,7 @@
                 "angularjs",
                 "yii2"
             ],
-            "time": "2015-09-03 14:43:37"
+            "time": "2015-09-03T14:43:37+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -633,7 +674,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2015-08-05 01:03:42"
+            "time": "2015-08-05T01:03:42+00:00"
         },
         {
             "name": "kucha/ueditor",
@@ -666,7 +707,7 @@
                 }
             ],
             "description": "desc",
-            "time": "2015-02-06 02:01:30"
+            "time": "2015-02-06T02:01:30+00:00"
         },
         {
             "name": "mdmsoft/yii2-admin",
@@ -717,7 +758,7 @@
                 "rest",
                 "yii"
             ],
-            "time": "2015-09-05 07:07:03"
+            "time": "2015-09-05T07:07:03+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -768,7 +809,7 @@
                 "font",
                 "yii"
             ],
-            "time": "2016-08-31 12:41:25"
+            "time": "2016-08-31T12:41:25+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -821,7 +862,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-05-01 08:45:47"
+            "time": "2016-05-01T08:45:47+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -915,7 +956,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-04-28 14:50:20"
+            "time": "2016-04-28T14:50:20+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -965,7 +1006,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2016-03-17 03:29:28"
+            "time": "2016-03-17T03:29:28+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1012,7 +1053,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-02-06 00:49:24"
+            "time": "2016-02-06T00:49:24+00:00"
         },
         {
             "name": "yiisoft/yii2-mongodb",
@@ -1060,7 +1101,7 @@
                 "mongodb",
                 "yii2"
             ],
-            "time": "2016-08-29 09:40:20"
+            "time": "2016-08-29T09:40:20+00:00"
         },
         {
             "name": "yiisoft/yii2-redis",
@@ -1108,7 +1149,7 @@
                 "session",
                 "yii2"
             ],
-            "time": "2016-03-17 04:11:03"
+            "time": "2016-03-17T04:11:03+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -1158,7 +1199,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-03-17 03:58:49"
+            "time": "2016-03-17T03:58:49+00:00"
         }
     ],
     "packages-dev": [
@@ -1235,7 +1276,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29 12:21:54"
+            "time": "2016-04-29T12:21:54+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -1273,7 +1314,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
+            "time": "2016-04-07T12:29:16+00:00"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -1318,7 +1359,7 @@
                 "codeception",
                 "yii2"
             ],
-            "time": "2016-03-17 03:41:26"
+            "time": "2016-03-17T03:41:26+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -1365,7 +1406,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2016-03-17 03:50:19"
+            "time": "2016-03-17T03:50:19+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -1412,7 +1453,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-03-01T06:22:44+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -1465,7 +1506,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18 14:09:46"
+            "time": "2016-03-18T14:09:46+00:00"
         }
     ],
     "aliases": [],

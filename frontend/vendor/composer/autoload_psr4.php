@@ -22,6 +22,7 @@ return array(
     'dosamigos\\datepicker\\' => array($vendorDir . '/2amigos/yii2-date-picker-widget'),
     'dee\\angular\\' => array($vendorDir . '/deesoft/yii2-angular'),
     'dee\\adminlte\\' => array($vendorDir . '/deesoft/yii2-adminlte'),
+    'cszchen\\alte\\' => array($vendorDir . '/cszchen/alte'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );
