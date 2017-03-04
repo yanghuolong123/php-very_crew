@@ -104,3 +104,19 @@ img.avatar {
     overflow: hidden;
     padding: 0 5px;
 }
+
+.table-container {
+    margin-top: 15px;
+}
+
+h3.title{
+    color: #00c66b;
+}
+
+blockquote p {
+    font-size: 14px;
+}
+
+span.number {
+    color: red;
+}
