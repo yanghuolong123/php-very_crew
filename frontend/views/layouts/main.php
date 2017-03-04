@@ -53,6 +53,7 @@ $footerNav = Article::getByGroopKey('footer_nav');
                     ['label' => '搜作品', 'url' => ['/video/index']],
                     ['label' => '搜人员', 'url' => ['/user/index']],
                     ['label' => '搜计划', 'url' => ['/plan/index']],
+                    ['label' => '论坛', 'url' => ['/forum-forum/index']],
                 ],
             ]);
 

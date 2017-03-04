@@ -9,6 +9,7 @@ use app\models\extend\Video;
 use \yii\data\Pagination;
 use app\util\Constant;
 use yii\web\NotFoundHttpException;
+use app\models\extend\ForumThread;
 
 class CommentController extends \app\util\BaseController {
 
@@ -60,6 +61,14 @@ class CommentController extends \app\util\BaseController {
                     break;
                 case 3:
                     Yii::$app->redis->HINCRBY(Constant::UserPrivateMsg, Constant::UserPrivateMsg . (empty($parent->id) ? $model->vid : $parent->uid), 1);
+                    break;
+                case 5:
+                    $formThread = ForumThread::findOne($model->vid);
+                    if(!empty($formThread)) {
+                        $formThread->updateCounters(['posts'=>1]);
+                    }
+                    
+                    ForumThread::updateAllCounters(['posts'=>1], ['id'=>$model->vid]);
                     break;
             }
 
