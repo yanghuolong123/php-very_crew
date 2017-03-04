@@ -39,3 +39,8 @@ ALTER TABLE  `tbl_video` CHANGE  `status`  `status` TINYINT( 1 ) NOT NULL COMMEN
 
 /* done */
 ALTER TABLE `tbl_user` CHANGE `nickname` `nickname` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '姓名';
+
+
+
+ALTER TABLE `tbl_comment` CHANGE `type` `type` TINYINT( 1 ) NOT NULL COMMENT '类型:1评论，2留言，3私信，4消息，5帖子回复';
+
