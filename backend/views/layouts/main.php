@@ -40,7 +40,7 @@ AppAsset::register($this);
             ['label' => '广告管理', 'url' => ['/advertisement/index']],
             ['label' => '文章管理', 'url' => ['/article/index']],
             ['label' => '大赛管理', 'url' => ['/games/index']],
-            //['label' => '关于我们', 'url' => ['/site/about']],
+            ['label' => '论坛管理', 'url' => ['/forum-forum/index']],
             //['label' => '联系我们', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => '登陆', 'url' => ['/site/login']]
