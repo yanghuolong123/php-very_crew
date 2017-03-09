@@ -5,7 +5,8 @@ use yii\grid\GridView;
 use yii\helpers\Url;
 use app\models\extend\User;
 
-$this->title = '论坛版块';
+$this->title = $forum->name;
+$this->params['breadcrumbs'][] = ['label' => '论坛', 'url' => ['forum-forum/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="forum-thread-index">    
