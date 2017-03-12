@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'sort',
             'status',
-            'create_time:datetime',
-            'update_time:datetime',
+            'createtime:datetime',
+            'updatetime:datetime',
         ],
     ]) ?>
 
