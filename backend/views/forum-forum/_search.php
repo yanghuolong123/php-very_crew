@@ -23,9 +23,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status') ?>
 
-    <?= $form->field($model, 'create_time') ?>
+    <?= $form->field($model, 'createtime') ?>
 
-    <?php // echo $form->field($model, 'update_time') ?>
+    <?php // echo $form->field($model, 'updatetime') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
