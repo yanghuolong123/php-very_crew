@@ -63,12 +63,7 @@ class CommentController extends \app\util\BaseController {
                     Yii::$app->redis->HINCRBY(Constant::UserPrivateMsg, Constant::UserPrivateMsg . (empty($parent->id) ? $model->vid : $parent->uid), 1);
                     break;
                 case 5:
-                    $formThread = ForumThread::findOne($model->vid);
-                    if(!empty($formThread)) {
-                        $formThread->updateCounters(['posts'=>1]);
-                    }
-                    
-                    ForumThread::updateAllCounters(['posts'=>1], ['id'=>$model->vid]);
+                    ForumThread::updateAllCounters(['posts' => 1], ['id' => $model->vid]);
                     break;
             }
 
