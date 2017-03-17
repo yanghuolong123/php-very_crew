@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => '操作',
-                'template' => '{recommand}',
+                'template' => '{recommand} {delete}',
                 'buttons' => [
                     'recommand' => function ($url, $model, $key) {
                     $options = [

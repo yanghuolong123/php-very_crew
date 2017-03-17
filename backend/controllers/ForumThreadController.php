@@ -24,7 +24,7 @@ class ForumThreadController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    'delete' => ['recommend'],
+                    'recommend' => ['POST'],
                 ],
             ],
         ];
@@ -41,6 +41,7 @@ class ForumThreadController extends Controller
         if(!empty($fid)) {
             $searchModel->fid = $fid;
         }
+        $searchModel->status = 0;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
         return $this->render('index', [
