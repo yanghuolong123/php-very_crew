@@ -11,6 +11,7 @@ class ForumForumController extends \app\util\BaseController {
     public function actionIndex() {
         $forums = ForumForum::find()->where(['status' => 0])->orderBy('sort asc')->all();
         $searchModel = new ForumThreadSearch();
+        $searchModel->status = 0;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['recommand' => SORT_DESC, 'recommand_time'=>SORT_DESC]];
         $dataProvider->pagination->pageSize = 12;
