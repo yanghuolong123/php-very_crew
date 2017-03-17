@@ -106,7 +106,9 @@ class ForumThreadController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        //$this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->updateAttributes(['status'=>-1]);
 
         return $this->redirect(['index']);
     }
