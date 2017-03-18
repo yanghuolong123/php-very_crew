@@ -26,17 +26,17 @@ use app\models\extend\ForumForum;
                 //设置语言
                 'lang' =>'zh-cn', //中文为 zh-cn
                 //定制菜单
-//                'toolbars' => [
-//                    [
-//                        'fullscreen', 'source', 'undo', 'redo', '|',
-//                        'fontsize',
-//                        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat',
-//                        'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|',
-//                        'forecolor', 'backcolor', '|',
-//                        'lineheight', '|',
-//                        'indent', '|'
-//                    ],
-//                ],
+                'toolbars' => [
+                    [
+                        'fullscreen', 'source', 'undo', 'redo', '|',
+                        'fontsize',
+                        'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat',
+                        'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|',
+                        'forecolor', 'backcolor', '|',
+                        'lineheight', '|','emotion','simpleupload','insertimage',
+                        'indent', '|'
+                    ],
+                ],
             ]
     ]); ?>
 
