@@ -29,6 +29,7 @@ class ForumThreadController extends \app\util\BaseController {
 
         $searchModel = new ForumThreadSearch();
         $searchModel->fid = $fid;
+        $searchModel->status = 0;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 12;
         $dataProvider->sort = ['defaultOrder' => ['id' => SORT_DESC]];
