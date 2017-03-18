@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
             <div class="table-container"> 
-            <a class="" href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id, 'sort'=>'-create_time']) ?>">最新</a> / <a class="" href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id, 'sort'=>'-views']) ?>">最热</a>  
+            <a class="" href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id, 'sort'=>'-create_time']) ?>">最新</a> / <a class="" href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id, 'sort'=>'-posts']) ?>">最热</a>  
             <?= GridView::widget([
                 'summary' => '',
                 'tableOptions' => ['class' => 'table'],
