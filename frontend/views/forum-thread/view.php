@@ -54,7 +54,7 @@ $user = User::getInfo($model->user_id);
                 </div>
                 <div class="list-group">
                     <?php foreach ($forums as $forum): ?>
-                    <a href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id]) ?>" class="list-group-item"><?= $forum->name ?></a>
+                    <a href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id]) ?>" title="<?= $forum->desc ?>" data-toggle="tooltip" data-placement="top" class="list-group-item"><?= $forum->name ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>

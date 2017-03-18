@@ -141,3 +141,7 @@ PicUploader.prototype = {
         });
     }
 }
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
