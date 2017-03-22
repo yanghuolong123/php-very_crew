@@ -73,6 +73,7 @@ $footerNav = Article::getByGroopKey('footer_nav');
                             '<li class="divider"></li>',
                             ['label' => '我的计划', 'url' => ['plan/my']],
                             ['label' => '我的作品', 'url' => ['video/my']],
+                            ['label' => '我的帖子', 'url' => ['forum-thread/my']],
                             '<li class="divider"></li>',
                             '<li>'
                             . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])

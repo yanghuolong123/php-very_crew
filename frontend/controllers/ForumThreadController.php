@@ -104,5 +104,18 @@ class ForumThreadController extends \app\util\BaseController {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    public function actionMy() {
+        $searchModel = new ForumThreadSearch();
+        $searchModel->status = 0;
+        $searchModel->user_id = Yii::$app->user->id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = ['defaultOrder' => ['recommand' => SORT_DESC, 'recommand_time'=>SORT_DESC]];
+        $dataProvider->pagination->pageSize = 12;
+        
+        return $this->render('my', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
 }
