@@ -10,6 +10,7 @@ use \yii\data\Pagination;
 use app\util\Constant;
 use yii\web\NotFoundHttpException;
 use app\models\extend\ForumThread;
+use yii\helpers\Html;
 
 class CommentController extends \app\util\BaseController {
 
@@ -63,7 +64,10 @@ class CommentController extends \app\util\BaseController {
                     Yii::$app->redis->HINCRBY(Constant::UserPrivateMsg, Constant::UserPrivateMsg . (empty($parent->id) ? $model->vid : $parent->uid), 1);
                     break;
                 case 5:
-                    ForumThread::updateAllCounters(['posts' => 1], ['id' => $model->vid]);
+                    $forumThread = ForumThread::findOne($model->vid);
+                    $forumThread->updateCounters(['posts' => 1]);
+                    $content = Yii::$app->user->identity->nickname . ' 回复了您的帖子: ' . Html::a($forumThread->title, ['forum-thread/view', 'id' => $forumThread->id]) . ' 请你查看。';
+                    Comment::sendNews($forumThread->user_id, $content);
                     break;
             }
 
