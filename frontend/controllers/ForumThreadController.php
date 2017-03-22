@@ -7,8 +7,31 @@ use app\models\extend\ForumThread;
 use app\models\search\ForumThreadSearch;
 use yii\web\NotFoundHttpException;
 use app\models\extend\ForumForum;
+use yii\filters\VerbFilter;
 
 class ForumThreadController extends \app\util\BaseController {
+
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['my', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
 
     public function actions() {
         return [
@@ -104,17 +127,17 @@ class ForumThreadController extends \app\util\BaseController {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     public function actionMy() {
         $searchModel = new ForumThreadSearch();
         $searchModel->status = 0;
         $searchModel->user_id = Yii::$app->user->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['recommand' => SORT_DESC, 'recommand_time'=>SORT_DESC]];
+        $dataProvider->sort = ['defaultOrder' => ['recommand' => SORT_DESC, 'recommand_time' => SORT_DESC]];
         $dataProvider->pagination->pageSize = 12;
-        
+
         return $this->render('my', [
-            'dataProvider' => $dataProvider,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
