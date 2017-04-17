@@ -34,7 +34,7 @@ class ConvertVideoController extends Controller {
             echo exec($cmd);
             //echo "$cmd\n";
             echo "\n===========================================\n";
-            $model->updateAttributes(['status' => ($model->status == 2 ? 2 : 1), 'file' => $newFile]);
+            $model->updateAttributes(['status' => ($model->status == -2 ? 2 : 1), 'file' => $newFile]);
 
             $videoInfo = CommonUtil::video_info($newFilePath);
             //print_r($videoInfo);

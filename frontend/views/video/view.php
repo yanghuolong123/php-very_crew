@@ -27,7 +27,7 @@ if (!CommonUtil::isMobile()) {
 <div class="video-view">
 
 
-    <?php if ($model->status == 0): ?>
+    <?php if ($model->status <= 0): ?>
         <?= app\components\skip\SkipWidget::widget(['seconds' => 60, 'skipUrl' => Url::to(['view', 'id' => $model->id]), 'msg' => '视频转码中，稍候即可播放...']) ?>
     <?php else: ?>
         <div class="container">
