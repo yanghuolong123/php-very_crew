@@ -51,7 +51,7 @@ class VideoController extends \app\util\BaseController {
 
     public function actionView($id) {
         $model = $this->findModel($id);
-        if ($model->status < 0) {
+        if ($model->status == -1) {
             throw new NotFoundHttpException('该作品已被删除');
         }
         $model->updateCounters(['views' => 1]);
