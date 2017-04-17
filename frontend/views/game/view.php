@@ -71,9 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $video = Video::findOne($gameVideo->video_id)  ?>
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-            <a href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛进入投票阶段前只有发布者本人有权观看该视频。希望您在投票开始后来支持您喜欢的作品和团队。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"><div class="duration"><?= $video->duration ?></div></a>
+            <a href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛作品开始评比前只有此作品成员可以观看。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"><div class="duration"><?= $video->duration ?></div></a>
             <div class="caption">
-              <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛进入投票阶段前只有发布者本人有权观看该视频。希望您在投票开始后来支持您喜欢的作品和团队。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
+              <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛作品开始评比前只有此作品成员可以观看。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
               <p>ID：<?= $gameVideo->id ?></p> 
               <!--
               <p>评委评分：<span><?= empty($gameVideo->score) ? '--' : $gameVideo->score;  ?></span></p>
