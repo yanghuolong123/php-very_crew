@@ -103,8 +103,7 @@ $(function() {
         swf: '/plugin/webuploader/Uploader.swf',
         // 文件接收服务端。
         //server: 'fileupload.php',
-        //server: 'index.php?r=upload/webupload',
-        server: 'http://localhost:10000/webupload',
+        server: 'index.php?r=upload/webupload',
         // 选择文件的按钮。可选。
         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
         pick: '#picker',
