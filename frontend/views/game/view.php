@@ -74,10 +74,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛进入投票阶段前只有发布者本人有权观看该视频。希望您在投票开始后来支持您喜欢的作品和团队。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"><div class="duration"><?= $video->duration ?></div></a>
             <div class="caption">
               <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛进入投票阶段前只有发布者本人有权观看该视频。希望您在投票开始后来支持您喜欢的作品和团队。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
-              <p>ID：<?= $gameVideo->id ?></p>  
+              <p>ID：<?= $gameVideo->id ?></p> 
+              <!--
               <p>评委评分：<span><?= empty($gameVideo->score) ? '--' : $gameVideo->score;  ?></span></p>
               <p>群众投票：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>
               <p class="text-left"><button <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> type="button" onclick="gameVote(<?= $gameVideo->id ?>)" class="btn btn-primary btn-small game_vote">投一票</button></p>
+              -->
             </div>
           </div>
         </div>
