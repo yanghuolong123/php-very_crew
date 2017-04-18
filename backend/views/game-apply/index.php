@@ -22,24 +22,27 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'user_id',
-            'game_id',
+//            'user_id',
+//            'game_id',
             'username',
             'amount',
-            // 'summary',
-            // 'join_num',
+            'summary',
+            'join_num',
             // 'len_minute',
             // 'len_second',
             // 'condition',
             // 'ability',
             // 'advantage',
             // 'status',
-            // 'create_time:datetime',
+             'create_time:datetime',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+            ],
         ],
     ]); ?>
 </div>

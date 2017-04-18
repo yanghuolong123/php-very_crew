@@ -7,11 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\extend\GameApply */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Game Applies', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Game Applies', 'url' => ['index', 'game_id'=>$model->game_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="game-apply-view">
-
+<!--
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+    </p>-->
 
     <?= DetailView::widget([
         'model' => $model,
