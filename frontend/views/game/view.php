@@ -56,6 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p><?= $model->content ?></p>
         </div>
         <div class="col-md-4 game_menu">
+            <p class="text-right"><a <?php if($model->status!=0): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if($model->status==0): ?><?= Url::toRoute(['game/apply', 'game_id'=>$model->id]) ?><?php else: ?>javascript:;<?php endif;?>" role="button"> 申请资金资助 &raquo;</a></p>
             <p class="text-right"><a <?php if($model->status!=0): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if($model->status==0): ?><?= Url::toRoute(['video/create', 'game_id'=>$model->id]) ?><?php else: ?>javascript:;<?php endif;?>" role="button">上传参赛作品 &raquo;</a></p>
             <!--
             <p class="text-right"><a <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> class="btn btn-success btn-small" href="<?php if($model->status==1): ?>#vote<?php else: ?>javascript:;<?php endif;?>" role="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;群众投票 &raquo;</a></p>
@@ -76,8 +77,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛作品开始评比前只有此作品成员可以观看。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"><div class="duration"><?= $video->duration ?></div></a>
             <div class="caption">
               <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?php if($model->status==0 && $gameVideo->user_id!=Yii::$app->user->id): ?>javascript:greeting({title:'消息提示',msg: '在大赛作品开始评比前只有此作品成员可以观看。'});;<?php else: ?><?= Url::to(['video/view', 'id'=>$video->id]) ?><?php endif; ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
-              <p>ID：<?= $gameVideo->id ?></p> 
               <!--
+              <p>ID：<?= $gameVideo->id ?></p>               
               <p>评委评分：<span><?= empty($gameVideo->score) ? '--' : $gameVideo->score;  ?></span></p>
               <p>群众投票：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>
               <p class="text-left"><button <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> type="button" onclick="gameVote(<?= $gameVideo->id ?>)" class="btn btn-primary btn-small game_vote">投一票</button></p>

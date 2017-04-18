@@ -48,7 +48,7 @@ class TblComment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => '类型:1评论，2留言，3私信，4消息',
+            'type' => '类型:1评论，2留言，3私信，4消息，5帖子回复',
             'uid' => '用户id',
             'vid' => '对象id',
             'reply_id' => '回复人uid',

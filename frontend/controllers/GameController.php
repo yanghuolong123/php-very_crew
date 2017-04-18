@@ -10,6 +10,7 @@ use app\models\search\GameVideoSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use app\util\Constant;
+use app\models\extend\GameApply;
 
 class GameController extends \app\util\BaseController {
 
@@ -17,12 +18,17 @@ class GameController extends \app\util\BaseController {
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['email-vote'],
+                'only' => ['email-vote', 'apply'],
                 'rules' => [
                     [
                         'actions' => ['email-vote'],
                         'allow' => true,
                         'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['apply'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -120,6 +126,32 @@ class GameController extends \app\util\BaseController {
         return $this->render('emailVote', [
                     'resutl' => $resutl,
         ]);
+    }
+
+    public function actionApply($game_id) {
+        $apply = GameApply::findOne(['game_id' => $game_id, 'user_id' => Yii::$app->user->id]);
+        if (!empty($apply)) {
+            Yii::$app->session->setFlash('hasApply');
+        }
+
+        $game = Games::findOne($game_id);
+        if (empty($game)) {
+            throw new NotFoundHttpException('此大赛不存在');
+        }
+
+        $model = new GameApply();
+        $model->game_id = $game_id;
+        $model->user_id = Yii::$app->user->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $game_id]);
+        } else {
+            $model->username = Yii::$app->user->identity->nickname;
+            return $this->render('apply', [
+                        'model' => $model,
+                        'game' => $game,
+            ]);
+        }
     }
 
 }
