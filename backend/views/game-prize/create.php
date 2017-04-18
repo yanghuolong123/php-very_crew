@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\extend\GamePrize */
 
 $this->title = 'Create Game Prize';
-$this->params['breadcrumbs'][] = ['label' => 'Game Prizes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Game Prizes', 'url' => ['index', 'game_id'=>$model->game_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="game-prize-create">

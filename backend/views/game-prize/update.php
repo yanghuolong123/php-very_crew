@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\extend\GamePrize */
 
 $this->title = 'Update Game Prize: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Game Prizes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Game Prizes', 'url' => ['index', 'game_id'=>$model->game_id]];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
