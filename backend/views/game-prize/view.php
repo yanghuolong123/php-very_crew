@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\extend\GamePrize */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Game Prizes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Game Prizes', 'url' => ['index', 'game_id'=>$model->game_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="game-prize-view">
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'game_id',
             'name',
-            'desc',
+            'instruction',
             'win_ids',
             'status',
             'create_time:datetime',
