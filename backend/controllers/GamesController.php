@@ -108,7 +108,8 @@ class GamesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             $model->begin_time = date('Y-m-d', $model->begin_time);
             $model->end_time = date('Y-m-d', $model->end_time);
