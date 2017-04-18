@@ -19,7 +19,7 @@ class GamePrizeSearch extends GamePrize
     {
         return [
             [['id', 'game_id', 'status', 'create_time'], 'integer'],
-            [['name', 'desc', 'win_ids'], 'safe'],
+            [['name', 'instruction', 'win_ids'], 'safe'],
         ];
     }
 
@@ -66,7 +66,7 @@ class GamePrizeSearch extends GamePrize
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'desc', $this->desc])
+            ->andFilterWhere(['like', 'instruction', $this->desc])
             ->andFilterWhere(['like', 'win_ids', $this->win_ids]);
 
         return $dataProvider;
