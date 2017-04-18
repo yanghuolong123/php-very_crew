@@ -33,9 +33,10 @@ class GamePrizeController extends Controller
      * Lists all GamePrize models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($game_id)
     {
         $searchModel = new GamePrizeSearch();
+        $searchModel->game_id = $game_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

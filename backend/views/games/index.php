@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'options' => ['style'=>'width:10%;'],
                 //'template' => '{view} {update} {delete}',
-                'template' => '{game-video} {apply} {update} {delete}',
+                'template' => '{game-video} {apply} {prize} {update} {delete}',
                 'buttons' => [
                     'game-video' => function ($url, $model, $key) {
                         $options = [
@@ -77,6 +77,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         ];
                         $url = Url::to(['game-apply/index','game_id'=>$model->id]);
                         return Html::a('<span class="glyphicon glyphicon-equalizer"></span>', $url, $options);
+                    },
+                    'prize' => function($url, $model, $key) {
+                        $options = [
+                            'title' => Yii::t('yii', '奖项设置'),
+                            'aria-label' => Yii::t('yii', '奖项设置'),
+                        ];
+                        $url = Url::to(['game-prize/index','game_id'=>$model->id]);
+                        return Html::a('<span class="glyphicon glyphicon-king"></span>', $url, $options);
                     },
                 ],
             ],
