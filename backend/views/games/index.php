@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'aria-label' => Yii::t('yii', '参赛作品'),
                         ];
                         $url = Url::to(['game-video/index','game_id'=>$model->id]);
-                        return Html::a('<span class="glyphicon glyphicon-align-center"></span>', $url, $options);
+                        return Html::a('<span class="glyphicon glyphicon-tasks"></span>', $url, $options);
                     },
                 ],
             ],
