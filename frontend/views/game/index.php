@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="join-games">
-    <h4 style="color: #00c66b;">正在进行的比赛</h4>
+    <h4 style="color: #00c66b;">大赛列表</h4>
     <?= GridView::widget([
         //'showHeader' => false,
         'summary' => '',
