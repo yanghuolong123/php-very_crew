@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'desc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'instruction')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'win_ids')->textInput(['maxlength' => true]) ?>
 
