@@ -12,6 +12,7 @@ use Yii;
  * @property string $name
  * @property string $desc
  * @property string $win_ids
+ * @property integer $order
  * @property integer $status
  * @property integer $create_time
  */
@@ -31,8 +32,8 @@ class TblGamePrize extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['game_id', 'name', 'desc', 'win_ids', 'status', 'create_time'], 'required'],
-            [['game_id', 'status', 'create_time'], 'integer'],
+            [['game_id', 'name', 'desc', 'win_ids', 'order', 'status', 'create_time'], 'required'],
+            [['game_id', 'order', 'status', 'create_time'], 'integer'],
             [['name', 'win_ids'], 'string', 'max' => 128],
             [['desc'], 'string', 'max' => 255],
         ];
@@ -49,6 +50,7 @@ class TblGamePrize extends \yii\db\ActiveRecord
             'name' => '奖项名称',
             'desc' => '奖项描述',
             'win_ids' => '获奖作品id,用“，”分割',
+            'order' => '排序',
             'status' => '状态',
             'create_time' => '创建时间',
         ];
