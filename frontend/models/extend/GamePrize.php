@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\native;
+namespace app\models\extend;
 
 class GamePrize extends \app\models\native\TblGamePrize {
     

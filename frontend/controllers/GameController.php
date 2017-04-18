@@ -11,6 +11,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use app\util\Constant;
 use app\models\extend\GameApply;
+use app\models\extend\GamePrize;
 
 class GameController extends \app\util\BaseController {
 
@@ -95,9 +96,11 @@ class GameController extends \app\util\BaseController {
 
     public function actionResult($id) {
         $model = $this->findModel($id);
+        $prizes = GamePrize::findAll(['game_id'=>$model->id]);
 
         return $this->render('result', [
                     'model' => $model,
+                    'prizes' => $prizes,
         ]);
     }
 
