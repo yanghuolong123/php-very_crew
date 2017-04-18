@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'type',
             'name',
             //'logo',
-            'content:raw',
+            //'content:raw',
             // 'order',
             [
                 'attribute' => 'status',
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['date', 'Y-M-d'],
             ],
            'number',
-           'result:raw',
+           //'result:raw',
             // 'createtime:datetime',
 
             [
