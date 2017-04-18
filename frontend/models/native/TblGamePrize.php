@@ -49,7 +49,7 @@ class TblGamePrize extends \yii\db\ActiveRecord
             'game_id' => '大赛id',
             'name' => '奖项名称',
             'instruction' => '奖项描述',
-            'win_ids' => '获奖作品id,用“，”分割',
+            'win_ids' => '获奖作品id,用“，”分割;例如 2,3,6,1',
             'sort' => '排序',
             'status' => '状态',
             'create_time' => '创建时间',
