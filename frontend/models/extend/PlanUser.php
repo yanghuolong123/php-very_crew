@@ -11,7 +11,7 @@ class PlanUser extends \app\models\native\TblPlanUser {
         return [
             [['uid', 'plan_id'], 'required'],
             [['uid', 'plan_id', 'role', 'status', 'createtime', 'updatetime'], 'integer'],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
             [['role_name'], 'string', 'max' => 128],
             [['role'], 'default', 'value' => 0],
         ];

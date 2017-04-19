@@ -19,7 +19,7 @@ class PlanUserSearch extends PlanUser
     {
         return [
             [['id', 'type', 'uid', 'plan_id', 'role', 'status', 'createtime', 'updatetime'], 'integer'],
-            [['desc'], 'safe'],
+            [['instruction'], 'safe'],
         ];
     }
 
@@ -69,7 +69,7 @@ class PlanUserSearch extends PlanUser
             'updatetime' => $this->updatetime,
         ]);
 
-        $query->andFilterWhere(['like', 'desc', $this->desc]);
+        $query->andFilterWhere(['like', 'instruction', $this->instruction]);
 
         return $dataProvider;
     }

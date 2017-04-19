@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'plan_id',
             'role',
             'status',
-            'desc',
+            'instruction',
             'createtime:datetime',
             'updatetime:datetime',
         ],

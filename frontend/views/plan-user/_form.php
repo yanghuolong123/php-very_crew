@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?php // $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'desc')->textarea()->label('备注') ?>
+    <?= $form->field($model, 'instruction')->textarea()->label('备注') ?>
 
     <?php // $form->field($model, 'createtime')->textInput() ?>
 
