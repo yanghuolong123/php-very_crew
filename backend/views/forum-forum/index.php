@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a($data->name, ['forum-thread/index', 'fid'=>$data->id]);
                 },
             ],
-            'desc',
+            'instruction',
             'sort',
             //'status',
             [

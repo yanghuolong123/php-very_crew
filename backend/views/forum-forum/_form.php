@@ -19,7 +19,7 @@ use app\models\extend\ForumForum;
 
     <?= $form->field($model, 'status')->dropDownList(ForumForum::getStatusArr()) ?>
 
-    <?= $form->field($model, 'desc')->textarea() ?>
+    <?= $form->field($model, 'instruction')->textarea() ?>
     <?php // $form->field($model, 'create_time')->textInput() ?>
 
     <?php // $form->field($model, 'update_time')->textInput() ?>
