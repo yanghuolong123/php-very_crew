@@ -47,5 +47,9 @@ ALTER TABLE `tbl_comment` CHANGE `type` `type` TINYINT( 1 ) NOT NULL COMMENT '�
 /* done */
 ALTER TABLE `tbl_games` CHANGE `order` `sort` INT( 6 ) NOT NULL COMMENT '排序';
 
-
+/* done */
 ALTER TABLE `tbl_forum_forum` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述';
+
+
+/* done */
+ALTER TABLE `tbl_plan_user` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '申请说明';
