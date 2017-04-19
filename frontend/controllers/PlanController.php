@@ -121,6 +121,7 @@ class PlanController extends \app\util\BaseController {
         $model = new PlanUser();
 
         $model->type = 1;
+        $model->uid = Yii::$app->user->id;
         if ($model->load(Yii::$app->request->post())) {
             $model->role_name = MetaData::getVal($model->role);
 
