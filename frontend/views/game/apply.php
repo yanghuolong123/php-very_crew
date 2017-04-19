@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
  
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true])->label("申请人") ?>
+    <?= $form->field($model, 'username')->textInput(['maxlength' => true])->label("申请人 (我们会按照申请人个人资料中的联系方式与您联系)默认注册用户名") ?>
 
     <?= $form->field($model, 'amount')->dropDownList(GameApply::getAmountList(), ['prompt' => '请选择'])->label("申请资助金额") ?>
 
