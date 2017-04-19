@@ -19,7 +19,7 @@ class GameApplySearch extends GameApply
     {
         return [
             [['id', 'user_id', 'game_id', 'amount', 'join_num', 'len_minute', 'len_second', 'status', 'create_time'], 'integer'],
-            [['username', 'summary', 'condition', 'ability', 'advantage'], 'safe'],
+            [['username', 'summary', 'conditions', 'ability', 'advantage'], 'safe'],
         ];
     }
 
@@ -72,7 +72,7 @@ class GameApplySearch extends GameApply
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'summary', $this->summary])
-            ->andFilterWhere(['like', 'condition', $this->condition])
+            ->andFilterWhere(['like', 'conditions', $this->conditions])
             ->andFilterWhere(['like', 'ability', $this->ability])
             ->andFilterWhere(['like', 'advantage', $this->advantage]);
 

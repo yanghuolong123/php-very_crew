@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'join_num',
             'len_minute',
             'len_second',
-            'condition',
+            'conditions',
             'ability',
             'advantage',
             'status',
