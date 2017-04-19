@@ -25,5 +25,8 @@ cp -r -f /home/work/www/very_crew/ /home/work/www/very_crew-test/
 cd /home/work/www/very_crew-test/frontend
 chmod -R 777 runtime web/assets web/uploads
 
+cd /home/work/www/very_crew-test/backend
+chmod -R 777 runtime web/assets web/uploads
+
 sed -i 's/zd_very_crew/zd_very_crew-test/g' /home/work/www/very_crew-test/backend/config/db.php
 sed -i 's/zd_very_crew/zd_very_crew-test/g' /home/work/www/very_crew-test/frontend/config/db.php
