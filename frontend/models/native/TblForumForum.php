@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property string $desc
+ * @property string $instruction
  * @property integer $threads
  * @property integer $sort
  * @property integer $status
@@ -32,10 +32,10 @@ class TblForumForum extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'desc', 'threads', 'sort', 'status', 'createtime', 'updatetime'], 'required'],
+            [['name', 'instruction', 'threads', 'sort', 'status', 'createtime', 'updatetime'], 'required'],
             [['threads', 'sort', 'status', 'createtime', 'updatetime'], 'integer'],
             [['name'], 'string', 'max' => 128],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
         ];
     }
 
@@ -47,7 +47,7 @@ class TblForumForum extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => '名称',
-            'desc' => '描述',
+            'instruction' => '描述',
             'threads' => '帖子数',
             'sort' => '排序',
             'status' => '状态',
