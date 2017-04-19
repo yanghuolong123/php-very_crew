@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'parent_id',
             'group_key',
-            'key',
+            'mkey',
             'value',
             'sort',
             'status',

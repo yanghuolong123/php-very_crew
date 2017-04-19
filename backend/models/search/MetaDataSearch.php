@@ -19,7 +19,7 @@ class MetaDataSearch extends MetaData
     {
         return [
             [['id', 'parent_id', 'sort', 'status'], 'integer'],
-            [['group_key', 'key', 'value'], 'safe'],
+            [['group_key', 'mkey', 'value'], 'safe'],
         ];
     }
 
@@ -66,7 +66,7 @@ class MetaDataSearch extends MetaData
         ]);
 
         $query->andFilterWhere(['like', 'group_key', $this->group_key])
-            ->andFilterWhere(['like', 'key', $this->key])
+            ->andFilterWhere(['like', 'mkey', $this->mkey])
             ->andFilterWhere(['like', 'value', $this->value]);
 
         return $dataProvider;

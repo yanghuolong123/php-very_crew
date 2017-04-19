@@ -15,7 +15,7 @@ use app\models\extend\MetaData;
 
     <?= $form->field($model, 'group_key')->dropDownList(MetaData::getGroupKeyArr()) ?>
 
-    <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'mkey')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
 

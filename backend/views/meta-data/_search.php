@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'group_key') ?>
 
-    <?= $form->field($model, 'key') ?>
+    <?= $form->field($model, 'mkey') ?>
 
     <?= $form->field($model, 'value') ?>
 

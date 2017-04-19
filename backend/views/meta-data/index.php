@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return MetaData::getGroupKeyArr(false, $data->group_key);
                 },
             ],
-            'key',
+            'mkey',
             'value',
             'sort',
             'status',
