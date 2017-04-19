@@ -8,6 +8,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Game Prizes';
+$this->params['breadcrumbs'][] = ['label' => '大赛管理', 'url' => ['games/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="game-prize-index">

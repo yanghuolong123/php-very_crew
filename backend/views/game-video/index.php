@@ -13,6 +13,7 @@ use app\models\extend\Games;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = '参赛作品';
+$this->params['breadcrumbs'][] = ['label' => '大赛管理', 'url' => ['games/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="game-video-index">
