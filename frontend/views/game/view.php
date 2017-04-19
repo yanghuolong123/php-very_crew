@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-8 game_content">
             <blockquote>
-                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....</span>, 参与作品数: <span class="gamenum"><?= $model->number ?></span></p>
+                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....</span></p>
             </blockquote>
             <p><?= $model->content ?></p>
         </div>
