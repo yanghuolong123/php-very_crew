@@ -19,7 +19,7 @@ class ForumForumSearch extends ForumForum
     {
         return [
             [['id', 'sort', 'status', 'createtime', 'updatetime'], 'integer'],
-            [['name', 'desc'], 'safe'],
+            [['name', 'instruction'], 'safe'],
         ];
     }
 
@@ -67,7 +67,7 @@ class ForumForumSearch extends ForumForum
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
-        $query->andFilterWhere(['like', 'name', $this->desc]);
+        $query->andFilterWhere(['like', 'name', $this->instruction]);
 
         return $dataProvider;
     }

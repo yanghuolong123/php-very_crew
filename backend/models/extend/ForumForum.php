@@ -9,7 +9,7 @@ class ForumForum extends \app\models\native\TblForumForum {
             [['name', 'sort', 'status'], 'required'],
             [['sort', 'status', 'createtime', 'updatetime'], 'integer'],
             [['name'], 'string', 'max' => 128],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
         ];
     }
 
