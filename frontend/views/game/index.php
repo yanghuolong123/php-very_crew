@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Games::getStatusArr(false, $data->status);
                 },
             ],
-            [
-                'attribute' => 'number',
-            ],
+//            [
+//                'attribute' => 'number',
+//            ],
             [
                 'attribute' => 'begin_time',
                 'value' => function($data) {
