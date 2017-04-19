@@ -12,7 +12,7 @@ use Yii;
  * @property string $name
  * @property string $logo
  * @property string $content
- * @property integer $order
+ * @property integer $sort
  * @property integer $status
  * @property integer $begin_time
  * @property integer $end_time
@@ -36,8 +36,8 @@ class TblGames extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'name', 'logo', 'content', 'order', 'status', 'begin_time', 'end_time', 'number', 'result', 'createtime'], 'required'],
-            [['type', 'order', 'status', 'begin_time', 'end_time', 'number', 'createtime'], 'integer'],
+            [['type', 'name', 'logo', 'content', 'sort', 'status', 'begin_time', 'end_time', 'number', 'result', 'createtime'], 'required'],
+            [['type', 'sort', 'status', 'begin_time', 'end_time', 'number', 'createtime'], 'integer'],
             [['content', 'result'], 'string'],
             [['name', 'logo'], 'string', 'max' => 128],
         ];
@@ -54,7 +54,7 @@ class TblGames extends \yii\db\ActiveRecord
             'name' => '大赛名称',
             'logo' => '大赛logo',
             'content' => '大赛描述',
-            'order' => '排序',
+            'sort' => '排序',
             'status' => '状态',
             'begin_time' => '开始时间',
             'end_time' => '结束时间',
