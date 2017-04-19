@@ -8,7 +8,7 @@ class VideoUser extends \app\models\native\TblVideoUser {
         return [
             [['uid', 'video_id',], 'required'],
             [['uid', 'type', 'video_id', 'role', 'is_star', 'status', 'createtime'], 'integer'],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
             [['role'], 'default', 'value' => 0],
             [['role_name'], 'string', 'max' => 128],
         ];

@@ -15,7 +15,7 @@ use Yii;
  * @property string $role_name
  * @property integer $is_star
  * @property integer $status
- * @property string $desc
+ * @property string $instruction
  * @property integer $createtime
  */
 class TblVideoUser extends \yii\db\ActiveRecord
@@ -34,10 +34,10 @@ class TblVideoUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'type', 'video_id', 'role', 'role_name', 'is_star', 'status', 'desc', 'createtime'], 'required'],
+            [['uid', 'type', 'video_id', 'role', 'role_name', 'is_star', 'status', 'instruction', 'createtime'], 'required'],
             [['uid', 'type', 'video_id', 'role', 'is_star', 'status', 'createtime'], 'integer'],
             [['role_name'], 'string', 'max' => 128],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,7 +55,7 @@ class TblVideoUser extends \yii\db\ActiveRecord
             'role_name' => '角色名称',
             'is_star' => '是否为主演',
             'status' => '状态',
-            'desc' => '描述',
+            'instruction' => '描述',
             'createtime' => '加入时间',
         ];
     }

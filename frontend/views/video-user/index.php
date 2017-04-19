@@ -67,10 +67,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'status',
             [
                 'label' => '备注',
-                'attribute' => 'desc',
+                'attribute' => 'instruction',
                 'options' => ['style'=>'width:40%;'],
             ],   
-            //'desc',
+            //'instruction',
             // 'createtime:datetime',
             [
                 'class' => 'yii\grid\ActionColumn',

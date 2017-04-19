@@ -11,7 +11,7 @@ use Yii;
  * @property integer $uid
  * @property string $title
  * @property string $url
- * @property string $desc
+ * @property string $instruction
  * @property integer $status
  * @property integer $createtime
  */
@@ -31,10 +31,10 @@ class TblUserAlbum extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'title', 'url', 'desc', 'status', 'createtime'], 'required'],
+            [['uid', 'title', 'url', 'instruction', 'status', 'createtime'], 'required'],
             [['uid', 'status', 'createtime'], 'integer'],
             [['title', 'url'], 'string', 'max' => 128],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
         ];
     }
 
@@ -48,7 +48,7 @@ class TblUserAlbum extends \yii\db\ActiveRecord
             'uid' => '用户id',
             'title' => '标题',
             'url' => '路径',
-            'desc' => '简介',
+            'instruction' => '简介',
             'status' => '状态',
             'createtime' => '创建时间',
         ];

@@ -19,7 +19,7 @@ class VideoUserSearch extends VideoUser
     {
         return [
             [['id', 'uid', 'video_id', 'role', 'is_star', 'status', 'createtime'], 'integer'],
-            [['desc'], 'safe'],
+            [['instruction'], 'safe'],
         ];
     }
 
@@ -68,7 +68,7 @@ class VideoUserSearch extends VideoUser
             'createtime' => $this->createtime,
         ]);
 
-        $query->andFilterWhere(['like', 'desc', $this->desc]);
+        $query->andFilterWhere(['like', 'instruction', $this->instruction]);
 
         return $dataProvider;
     }

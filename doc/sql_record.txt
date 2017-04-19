@@ -52,3 +52,6 @@ ALTER TABLE `tbl_forum_forum` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACT
 
 /* done */
 ALTER TABLE `tbl_plan_user` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '申请说明';
+
+/* done */
+ALTER TABLE `tbl_user_album` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '简介';

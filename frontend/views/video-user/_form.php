@@ -25,7 +25,7 @@ use app\models\extend\MetaData;
 
     <?= $form->field($model, 'role_name')->textInput(['maxlength' => true])->label('角色') ?>
     
-    <?= $form->field($model, 'desc')->textarea(['maxlength' => true])->label('备注') ?>
+    <?= $form->field($model, 'instruction')->textarea(['maxlength' => true])->label('备注') ?>
 
     <?= Html::activeHiddenInput($model, 'uid') ?>
 
