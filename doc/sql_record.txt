@@ -44,5 +44,6 @@ ALTER TABLE `tbl_user` CHANGE `nickname` `nickname` VARCHAR( 32 ) CHARACTER SET 
 /* done */
 ALTER TABLE `tbl_comment` CHANGE `type` `type` TINYINT( 1 ) NOT NULL COMMENT '类型:1评论，2留言，3私信，4消息，5帖子回复';
 
+/* done */
 ALTER TABLE `tbl_games` CHANGE `order` `sort` INT( 6 ) NOT NULL COMMENT '排序';
 
