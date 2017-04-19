@@ -15,10 +15,10 @@ class ForumThreadController extends \app\util\BaseController {
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['update', 'delete'],
+                'only' => ['update', 'my', 'delete', 'create'],
                 'rules' => [
                     [
-                        'actions' => ['my', 'delete'],
+                        'actions' => ['delete', 'my', 'update', 'create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
