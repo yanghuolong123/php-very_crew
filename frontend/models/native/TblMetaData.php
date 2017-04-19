@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $parent_id
  * @property string $group_key
- * @property string $key
+ * @property string $mkey
  * @property string $value
  * @property integer $sort
  * @property integer $status
@@ -31,10 +31,10 @@ class TblMetaData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'group_key', 'key', 'value', 'sort', 'status'], 'required'],
+            [['parent_id', 'group_key', 'mkey', 'value', 'sort', 'status'], 'required'],
             [['parent_id', 'sort', 'status'], 'integer'],
             [['group_key'], 'string', 'max' => 64],
-            [['key'], 'string', 'max' => 65],
+            [['mkey'], 'string', 'max' => 65],
             [['value'], 'string', 'max' => 128],
         ];
     }
@@ -48,7 +48,7 @@ class TblMetaData extends \yii\db\ActiveRecord
             'id' => 'ID',
             'parent_id' => '父ID',
             'group_key' => '分组KEY',
-            'key' => 'KEY',
+            'mkey' => 'KEY',
             'value' => 'VALUE',
             'sort' => '排序',
             'status' => '状态',
