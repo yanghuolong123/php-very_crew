@@ -19,7 +19,7 @@ class UserAlbumSearch extends UserAlbum
     {
         return [
             [['id', 'uid', 'status', 'createtime'], 'integer'],
-            [['title', 'url', 'desc'], 'safe'],
+            [['title', 'url', 'instruction'], 'safe'],
         ];
     }
 
@@ -67,7 +67,7 @@ class UserAlbumSearch extends UserAlbum
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'desc', $this->desc]);
+            ->andFilterWhere(['like', 'instruction', $this->instruction]);
 
         return $dataProvider;
     }

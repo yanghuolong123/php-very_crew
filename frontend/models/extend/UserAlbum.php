@@ -11,7 +11,7 @@ class UserAlbum extends \app\models\native\TblUserAlbum {
             [['url'], 'required'],
             [['uid', 'status', 'createtime'], 'integer'],
             [['title', 'url'], 'string', 'max' => 128],
-            [['desc'], 'string', 'max' => 255],
+            [['instruction'], 'string', 'max' => 255],
         ];
     }
 

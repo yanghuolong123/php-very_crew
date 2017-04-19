@@ -31,7 +31,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
                   <a class="album-img" href="<?= $album->url ?>"><img src="<?= CommonUtil::cropImgLink($album->url,330,220) ?>" alt="<?= $album->title ?>"></a>
                   <div class="caption">
                       <h5>标题：<?= CommonUtil::cutstr($album->title,20) ?></h5>
-                    <p style="height: 60px;">说明：<?= CommonUtil::cutstr($album->desc,65) ?></p>
+                    <p style="height: 60px;">说明：<?= CommonUtil::cutstr($album->instruction,65) ?></p>
                     <?php if($searchModel->uid == Yii::$app->user->id): ?>
                     <p>
                         <?= Html::a('编辑', ['user-album/update', 'id' => $album->id], ['class' => 'btn btn-primary']) ?>
@@ -71,7 +71,7 @@ $this->registerJsFile('@web/plugin/zoom/js/zoom.js',['depends'=>['app\assets\App
 //            'uid',
 //            'title',
 //            'url:url',
-//            'desc',
+//            'instruction',
 //            // 'status',
 //            // 'createtime:datetime',
 //

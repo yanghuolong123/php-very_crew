@@ -22,7 +22,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
 
     <?= $form->field($model, 'url')->imgInput() ?>
 
-    <?= $form->field($model, 'desc')->textarea() ?>
+    <?= $form->field($model, 'instruction')->textarea() ?>
 
     <div class="form-group">
         <div class="col-sm-1 col-md-offset-2">

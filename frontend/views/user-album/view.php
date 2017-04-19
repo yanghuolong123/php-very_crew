@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'uid',
             'title',
             'url:url',
-            'desc',
+            'instruction',
             'status',
             'createtime:datetime',
         ],

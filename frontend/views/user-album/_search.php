@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'url') ?>
 
-    <?= $form->field($model, 'desc') ?>
+    <?= $form->field($model, 'instruction') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
