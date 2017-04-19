@@ -32,7 +32,7 @@ if (!CommonUtil::isMobile()) {
     <?php else: ?>
         <div class="container">
                             
-                <video id="payer" class="video-js vjs-default-skin"
+                <video id="payer" class="video-js vjs-default-skin vjs-big-play-centered"
                        controls preload="auto"
                        poster="<?= CommonUtil::cropImgLink($model->logo,600,350); ?>"
                        data-setup='{"autoplay": false,"loop": true,"width": 640,"height": 200}'>           
