@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h3 class="title"><?= Html::encode($forum->name) ?></h3>
                     <blockquote>
                         <p class="text-success">帖子数: <span class="number"><?= $forum->threads; ?></span></p>
-                        <p class="text-muted"><?= $forum->desc; ?></p>
+                        <p class="text-muted"><?= $forum->instruction; ?></p>
                     </blockquote>
                 </div>
                 <div class="col-md-4">
@@ -84,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="list-group">
                     <?php foreach ($forums as $forum): ?>
-                    <a href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id]) ?>" title="<?= $forum->desc ?>" data-toggle="tooltip" data-placement="top" class="list-group-item"><?= $forum->name ?></a>
+                    <a href="<?= Url::to(['forum-thread/index', 'fid'=>$forum->id]) ?>" title="<?= $forum->instruction ?>" data-toggle="tooltip" data-placement="top" class="list-group-item"><?= $forum->name ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>
