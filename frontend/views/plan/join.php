@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <?= $form->field($model, 'role')->dropDownList(MetaData::getGroupList('planRole'),['prompt'=>'请选择']) ?>
     
-    <?= $form->field($model, 'desc')->textarea(['rows' => 6]) ?>    
+    <?= $form->field($model, 'instruction')->textarea(['rows' => 6]) ?>    
 
     <?= $form->field($model, 'uid', ['template' => "{input}"])->hiddenInput(['value'=>Yii::$app->user->id]) ?>
     
