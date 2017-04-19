@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'len_second')->textInput()->label("预计视频时长:秒") ?>
 
-    <?= $form->field($model, 'condition')->textarea(['maxlength' => true])->label("哪些条件能保证您在期限内顺利完成作品？") ?>
+    <?= $form->field($model, 'conditions')->textarea(['maxlength' => true])->label("哪些条件能保证您在期限内顺利完成作品？") ?>
 
     <?= $form->field($model, 'ability')->textarea(['maxlength' => true])->label("拍摄经验/经历/技能") ?>
 
