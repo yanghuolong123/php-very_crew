@@ -208,4 +208,26 @@ class CommonUtil {
         return pathinfo($file, PATHINFO_EXTENSION);
     }
 
+    /**
+     * 删除目录及其下文件或文件夹
+     * 
+     * @param type $path
+     * @param type $del_self
+     */
+    public static function deleteDir($path, $del_self = false) {
+        $files = glob($path . '/*');
+        foreach ($files as $file_path) {
+            if (is_file($file_path)) {
+                unlink($file_path);
+            } else {
+                deleteDir($file_path);
+                rmdir($file_path);
+            }
+        }
+
+        if ($del_self) {
+            rmdir($path);
+        }
+    }
+
 }
