@@ -27,12 +27,15 @@ class Games extends \app\models\native\TblGames {
     public function beforeSave($insert) {
         if ($this->isNewRecord) {
             $this->createtime = time();
+        } else {
+            $videoArr = Yii::$app->db->createCommand('select video_id from tbl_game_video where game_id=' . $this->id)->queryColumn();
+            if (!empty($videoArr)) {
+                Video::updateAll(['status' => ($this->status < 3 ? 2 : 1)], ['in', 'id', $videoArr]);
+            }
         }
 
-        $videoArr = Yii::$app->db->createCommand('select video_id from tbl_game_video where game_id=' . $this->id)->queryColumn();
-        if (!empty($videoArr)) {
-            Video::updateAll(['status' => (empty($this->status) ? 2 : 1)], ['in', 'id', $videoArr]);
-        }
+
+
 
 
         return parent::beforeSave($insert);
