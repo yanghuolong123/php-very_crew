@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'logo',
             'content:ntext',
-            'order',
+            'sort',
             'status',
             'begin_time:datetime',
             'end_time:datetime',
