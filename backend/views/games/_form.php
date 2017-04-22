@@ -43,7 +43,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
             ]
     ]); ?>
 
-    <?= $form->field($model, 'order')->textInput(['value'=>0]) ?>
+    <?= $form->field($model, 'sort')->textInput(['value'=>0]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(Games::getStatusArr()) ?>
     
