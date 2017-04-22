@@ -34,10 +34,6 @@ class Games extends \app\models\native\TblGames {
             }
         }
 
-
-
-
-
         return parent::beforeSave($insert);
     }
 
