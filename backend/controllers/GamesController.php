@@ -91,6 +91,7 @@ class GamesController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             $model->begin_time = date('Y-m-d');
+            $model->sort = 0;
             return $this->render('create', [
                 'model' => $model,
             ]);
