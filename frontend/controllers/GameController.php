@@ -47,6 +47,7 @@ class GameController extends \app\util\BaseController {
     public function actionIndex() {
         $searchModel = new GamesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = ['defaultOrder' => ['sort' => SORT_DESC]];
 
         return $this->render('index', [
                     'searchModel' => $searchModel,
