@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             //'logo',
             //'content:raw',
-            // 'order',
+            'sort',
             [
                 'attribute' => 'status',
                 'filter' => Games::getStatusArr(),
