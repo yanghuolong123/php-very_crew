@@ -52,6 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <?php else: ?>
     <div class="alert alert-success">
-        <h4>你已经提交过此大赛的资助申请</h4>
+        <h4>您已经提交成功，我们工作人员会在评估后通知您申请结果。感谢您的参与！</h4>
     </div>
 <?php endif; ?>

@@ -148,7 +148,7 @@ class GameController extends \app\util\BaseController {
         $model->user_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $game_id]);
+            return $this->redirect(['apply', 'game_id' => $game_id]);
         } else {
             $model->username = Yii::$app->user->identity->nickname;
             return $this->render('apply', [
