@@ -63,7 +63,7 @@ class GameController extends \app\util\BaseController {
         }
         $model = $this->findModel($id);
         $query = GameVideoSearch::find();
-        $query->andWhere(['game_id' => $id]);
+        $query->andWhere(['game_id' => $id, 'status'=>0]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
