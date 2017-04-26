@@ -9,6 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\extend\VideoUser;
 use app\models\extend\Games;
+use app\models\extend\GameVideo;
 
 class VideoController extends \app\util\BaseController {
 
@@ -73,9 +74,9 @@ class VideoController extends \app\util\BaseController {
             \app\models\extend\PlanUser::turnToVideoUser($model->plan_id, $model->id);
             $gameId = Yii::$app->request->post('game_id');
             if (!empty($gameId)) {
-                Yii::$app->db->createCommand('insert into tbl_game_video (game_id, video_id, user_id, createtime) values (:game_id, :video_id, :user_id, :createtime)', [':game_id' => $gameId, ':video_id' => $model->id, ':user_id'=>$model->uid, ':createtime' => time()])->execute();
-                Games::updateAllCounters(['number'=>1], ['id'=>$gameId]);
-                $model->updateAttributes(['status'=>-2]);
+                Yii::$app->db->createCommand('insert into tbl_game_video (game_id, video_id, user_id, createtime) values (:game_id, :video_id, :user_id, :createtime)', [':game_id' => $gameId, ':video_id' => $model->id, ':user_id' => $model->uid, ':createtime' => time()])->execute();
+                Games::updateAllCounters(['number' => 1], ['id' => $gameId]);
+                $model->updateAttributes(['status' => -2]);
             }
             return $this->redirect(['video-user/index', 'video_id' => $model->id]);
         } else {
@@ -102,6 +103,8 @@ class VideoController extends \app\util\BaseController {
 
     public function actionDelete($id) {
         $this->findModel($id)->updateAttributes(['status' => -1]);
+        GameVideo::updateAll(['status' => -1], ['video_id' => $id]);
+
 
         return $this->redirect(['video/my']);
     }
@@ -132,7 +135,7 @@ class VideoController extends \app\util\BaseController {
     public function actionMy() {
         $searchModel = new VideoSearch();
         $searchModel->uid = Yii::$app->user->id;
-        $searchModel->status = [1,2];
+        $searchModel->status = [1, 2];
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
 
