@@ -28,7 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
 //            'user_id',
 //            'game_id',
-            'username',
+//            'username',
+            [
+                'attribute' => 'username',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::a($data->username,['user/view', 'id' => $data->user_id]);
+                },
+            ],
             'amount',
             'summary',
             'join_num',
