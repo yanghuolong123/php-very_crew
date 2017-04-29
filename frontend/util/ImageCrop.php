@@ -52,6 +52,7 @@ class ImageCrop {
         $this->src_file=$src_file;
         $this->dst_file=$dst_file;
         if(!$dst_file) $this->dst_file = $this->src_file ;
+        ini_set("memory_limit","-1");
     }
 
     function SetSrcFile($src_file) {
