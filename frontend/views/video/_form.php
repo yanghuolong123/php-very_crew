@@ -43,9 +43,15 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     
     <?php if(isset($_GET['game_id']) && !empty($_GET['game_id'])): ?>
     <div class="form-group ">
-        <label for="video-game" class="col-lg-2 control-label">所属活动</label>
+        <label for="video-game" class="col-lg-2 control-label">所属大赛</label>
         <div class="col-lg-4"><?= Html::hiddenInput('game_id', $_GET['game_id']) ?><input type="text" maxlength="128" name="game" value="<?= app\models\extend\Games::findOne($_GET['game_id'])->name ?>" disabled="true" class="form-control" id="video-game"></div>
         <div class="col-lg-5"><div class="help-block"></div></div>
+    </div>
+    <?php else: ?>
+    <div class="form-group ">
+        <div class="col-lg-8 col-md-offset-1">
+    <p class="text-warning center-block">此页为一般作品上传页面，如为参赛作品请在“参加比赛”-“上传参赛作品”页面进行作品提交</p>
+        </div>
     </div>
     <?php endif; ?>
     
