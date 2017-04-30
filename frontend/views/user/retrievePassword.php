@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
         <div class="form-group ">
             <div class="col-lg-8 col-md-offset-1">
-        <p class="text-danger center-block">将会发送一个找回密码的特别链接到您的邮箱，通过该链接可以进入重置密码的页面</p>
+        <p class="text-danger center-block">将会发送一个找回密码的特别链接到您的验证邮箱，通过该链接可以进入重置密码的页面</p>
             </div>
         </div>
     
