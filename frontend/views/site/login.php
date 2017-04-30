@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'password')->passwordInput() ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-2 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-5\">{error}</div>",
+            'template' => "<div class=\"col-lg-offset-2 col-lg-3\">{input} {label} ".Html::a("找回密码", ['user/retrieve-password'])."</div>\n<div class=\"col-lg-5\">{error}</div>",
         ]) ?>
 
         <div class="form-group">

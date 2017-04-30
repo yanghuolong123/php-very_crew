@@ -16,15 +16,16 @@ class User extends \app\models\native\TblUser {
     public function rules() {
         return [
             [['username', 'nickname'], 'required'],
-            [['password', 'verifyPassword'], 'required', 'on' => 'register'],
+            [['password', 'verifyPassword'], 'required', 'on' => ['register', 'resetPassword']],
+            [['email'], 'required', 'on' => 'retrievePassword'],
             [['password', 'verifyPassword', 'oldPassword'], 'required', 'on' => 'modifyPassword'],
             //[['avatar', 'mobile'], 'required', 'on' => 'perfect'],
             [['username', 'mobile', 'email'], 'unique'],
-            //[['username', 'email'], 'email'],
+            [['email'], 'email'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
             [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
-            ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['register', 'modifyPassword']],
-            ['verifyCode', 'captcha', 'on' => ['register', 'modifyPassword']],
+            ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['register', 'modifyPassword', 'resetPassword']],
+            ['verifyCode', 'captcha', 'on' => ['register', 'modifyPassword', 'resetPassword']],
             ['username', 'validRegister', 'on' => 'register'],
             ['oldPassword', 'validOldPassword', 'on' => 'modifyPassword'],
         ];
