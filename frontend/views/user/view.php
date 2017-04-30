@@ -23,7 +23,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
             <div class="row">
                 <div class="col-lg-3">
                     <?php if($model->id == Yii::$app->user->id): ?>
-                    <p><?= Html::a('完善我的资料', ['user-profile/update', 'uid' => $model->id], ['class' => 'btn btn-success']) ?></p>
+                    <p><?= Html::a('完善我的资料', ['user-profile/update', 'uid' => $model->id], ['class' => 'btn btn-success']) ?> <?= Html::a('修改密码', ['user/modify-passwd', 'id' => $model->id], ['class' => 'btn btn-info']) ?></p>
                     <?php endif; ?>
                     <p class="thumbnail"><?= Html::img(CommonUtil::cropImgLink($model->avatar,320, 320)) ?></p>
                     

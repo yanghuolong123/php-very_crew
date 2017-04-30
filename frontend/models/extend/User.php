@@ -9,6 +9,7 @@ class User extends \app\models\native\TblUser {
     private static $_user = [];
     public $verifyCode;
     public $verifyPassword;
+    public $oldPassword;
 
     //public $profile;
 
@@ -16,20 +17,23 @@ class User extends \app\models\native\TblUser {
         return [
             [['username', 'nickname'], 'required'],
             [['password', 'verifyPassword'], 'required', 'on' => 'register'],
+            [['password', 'verifyPassword', 'oldPassword'], 'required', 'on' => 'modifyPassword'],
             //[['avatar', 'mobile'], 'required', 'on' => 'perfect'],
             [['username', 'mobile', 'email'], 'unique'],
             //[['username', 'email'], 'email'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
             [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
-            ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => 'register'],
-            ['verifyCode', 'captcha', 'on' => 'register'],
+            ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['register', 'modifyPassword']],
+            ['verifyCode', 'captcha', 'on' => ['register', 'modifyPassword']],
             ['username', 'validRegister', 'on' => 'register'],
+            ['oldPassword', 'validOldPassword', 'on' => 'modifyPassword'],
         ];
     }
 
     public function attributeLabels() {
         return array_merge([
             'verifyCode' => '验证码',
+            'oldPassword' => '旧密码',
             'verifyPassword' => '确认密码',
                 ], parent::attributeLabels());
     }
@@ -93,6 +97,15 @@ class User extends \app\models\native\TblUser {
 //            if (preg_match("/^[0-9a-zA-Z]+@(([0-9a-zA-Z]+)[.])+[a-z]{2,4}$/i", $this->username) && self::find()->where(['email' => $this->username, 'status' => 1])->exists()) {
 //                $this->addError($attribute, '该邮箱已被注册.');
 //            }
+        }
+    }
+
+    public function validOldPassword($attribute, $params) {
+        if (!$this->hasErrors()) {
+            $user = $this->findOne($this->id);
+            if ($user->password != md5($this->oldPassword)) {
+                $this->addError($attribute, '原密码输入错误.');
+            }
         }
     }
 
