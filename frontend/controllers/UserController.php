@@ -102,12 +102,15 @@ class UserController extends \yii\web\Controller {
         }
 
         $model = User::findOne(['username' => $username]);
+        if (empty($model)) {
+            throw new \yii\web\NotFoundHttpException('用户名(邮箱/手机号)不正确!');
+        }
 
         $model->setScenario('resetPassword');
 
         $beforePassword = '';
         if ($model->load(Yii::$app->request->post())) {
-            $beforePassword = $model->password;            
+            $beforePassword = $model->password;
             if ($model->validate()) {
                 $model->password = md5($model->password);
                 if ($model->save(false)) {
