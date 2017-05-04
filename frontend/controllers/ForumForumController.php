@@ -13,7 +13,7 @@ class ForumForumController extends \app\util\BaseController {
         $searchModel = new ForumThreadSearch();
         $searchModel->status = 0;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['recommand' => SORT_DESC, 'recommand_time'=>SORT_DESC]];
+        $dataProvider->sort = ['defaultOrder' => ['recommand' => SORT_DESC, 'recommand_time'=>SORT_DESC, 'id'=>SORT_DESC]];
         $dataProvider->pagination->pageSize = 12;
         
         return $this->render('index', [
