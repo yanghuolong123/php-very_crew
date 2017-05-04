@@ -7,7 +7,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $showMsg = '可跳过';
 if(isset($_GET['game_id']) && !empty($_GET['game_id'])) {
-   $showMsg = '<span style="font-size:12px;">是否关联主要成员是评判是否为新作品的重要依据 '.Html::a('关联技巧', ['forum-thread/view', 'id'=>3]).'</span>'; 
+   $showMsg = '<span style="font-size:12px;">是否关联主要成员是评判是否为新作品的重要依据 '.Html::a('关联技巧', ['forum-thread/view', 'id'=>3],['target'=>'_blank']).'</span>'; 
 }
 ?>
 <div class="video-create">
