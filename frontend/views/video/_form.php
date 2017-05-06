@@ -152,11 +152,15 @@ $(function() {
         $li.find('span.state').text('上传中，请等候... ');
         
         $percent.css( 'width', percentage * 100 + '%' );
+        if(percentage==1) {
+            percentage = 0.99;
+        }
         $li.find('span.text').text( Math.round( percentage * 100 ) + '%' );
     });
     
     uploader.on( 'uploadSuccess', function( file, obj ) {
         $( '#'+file.id ).find('span.state').text('上传成功 ');
+        $( '#'+file.id ).find('span.text').text('100% ');
         $('#video-file').val(obj.data);
     });
 
