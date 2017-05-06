@@ -11,7 +11,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <?php if(!empty($model->result)): ?>
     <div class="col-md-12"><p><?= $model->result ?></p></div>
-     
+    
+    <?php else: ?>
+    <div class="alert alert-info">
+        <h3>比赛结果还为揭晓...</h3>
+    </div>
+    <?php endif; ?>
+</div>
+
+<?php if(!empty($prizes)): ?>
+<div class="row">
         <?php foreach ($prizes as $prize): ?>
         <?php 
             $videoArr = explode(',', trim($prize->win_ids));
@@ -32,10 +41,5 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endforeach; ?>
         </div>
         <?php endforeach; ?>
-     
-    <?php else: ?>
-    <div class="alert alert-info">
-        <h3>比赛结果还为揭晓...</h3>
     </div>
-    <?php endif; ?>
-</div>
+<?php endif; ?>
