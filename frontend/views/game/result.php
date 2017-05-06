@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             $videoArr = explode(',', trim($prize->win_ids));
             $prizeVideos = Yii::$app->db->createCommand('SELECT * FROM `tbl_video` WHERE `id` IN ('.trim($prize->win_ids).') ORDER BY FIELD(id, '.trim($prize->win_ids).')')->queryAll(PDO::FETCH_OBJ);            
         ?>
-        <div class="row">
+       
             <div class="container"><h3 style="color:#008200;"><?= $prize->name ?></h3></div>
             <?php foreach ($prizeVideos as $video): ?>
             <div class="col-sm-6 col-md-3">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
             </div>
             <?php endforeach; ?>
-        </div>
+        
         <?php endforeach; ?>
     </div>
     <?php else: ?>
