@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <?php if(!empty($prizes)): ?>
-<div class="row">
+<div>
         <?php foreach ($prizes as $prize): ?>
         <?php 
             $videoArr = explode(',', trim($prize->win_ids));
