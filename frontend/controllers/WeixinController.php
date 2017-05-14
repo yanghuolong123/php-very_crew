@@ -18,7 +18,8 @@ class WeixinController extends Controller {
 
     public function actionIndex() {
         list($echostr) = CommonUtil::validParams(array('echostr'));
-
+        LogUtil::logs('wx', '2222222');
+        exit;
         if ($this->checkSignature()) {
             if (empty($echostr)) {
                 LogUtil::logs('wx', '2222222');
