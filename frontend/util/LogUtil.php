@@ -11,7 +11,7 @@ class LogUtil {
      * @param type $msg
      */
     public static function logs($file, $msg) {
-        $file = BASE_PATH . '/logs/' . date('Y-m-d') . '_' . $file . '.log';
+        $file = BASE_PATH . '/logs/' . $file . '_' . date('Y-m-d') . '.log';
         error_log(date('Y-m-d H:i:s') . ' ' . $msg . "\n", 3, $file);
     }
 
