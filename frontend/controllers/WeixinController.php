@@ -23,7 +23,7 @@ class WeixinController extends Controller {
             if (empty($echostr)) {
                 LogUtil::logs('wx', '2222222');
                 echo "";
-                die;
+                exit;
                 $this->responseMsg();
             } else {
                 echo $echostr;
