@@ -25,6 +25,7 @@ class WeixinController extends Controller {
             if (empty($echostr)) {
                 $this->responseMsg();
             } else {
+                LogUtil::logs('wx', '$echostr:'.$echostr);
                 echo $echostr;
             }
         } else {
