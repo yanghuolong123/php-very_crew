@@ -230,4 +230,19 @@ class CommonUtil {
         }
     }
 
+    /**
+     * 验证$_GET参数是否存在
+     * 
+     * @param type $params
+     * @return type
+     */
+    public static function validParams($params = array()) {
+        $paramArr = array();
+        foreach ($params as $param) {
+            $paramArr[] = isset($_GET[$param]) ? $_GET[$param] : '';
+        }
+
+        return $paramArr;
+    }
+
 }
