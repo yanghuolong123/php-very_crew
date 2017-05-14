@@ -21,9 +21,6 @@ class WeixinController extends Controller {
         
         if ($this->checkSignature()) {
             if (empty($echostr)) {
-                LogUtil::logs('wx', '33333333333');
-//                echo "";
-//                exit;
                 $this->responseMsg();
             } else {
                 echo $echostr;
