@@ -33,6 +33,7 @@ class WeixinController extends Controller {
     }
 
     public function responseMsg() {
+        LogUtil::logs('wx', '1111');
         $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : '';
         if (empty($postStr)) {
             LogUtil::logs('wx', 'postStr empty!');
