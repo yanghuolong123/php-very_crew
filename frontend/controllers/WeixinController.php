@@ -10,7 +10,7 @@ use app\util\CommonUtil;
 
 class WeixinController extends Controller {
 
-    public $token = 'feichangjuzu123';
+    public $token = 'feichangjuzu123456';
     public $appid = 'wx2705fb0b58b923b6';
     public $secret = 'f36da1173c0a891fdac60da21cbb7c06';
     public $api_url = 'https://api.weixin.qq.com';
