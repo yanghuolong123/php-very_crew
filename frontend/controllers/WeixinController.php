@@ -17,6 +17,7 @@ class WeixinController extends Controller {
     private $_accessToken;
 
     public function actionIndex() {
+        LogUtil::logs('wx',"test 1111111111");
         list($echostr) = CommonUtil::validParams(array('echostr'));
         
         if ($this->checkSignature()) {
