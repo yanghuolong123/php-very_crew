@@ -101,6 +101,7 @@ class ImageCrop {
                     @imagegif($this->dImage,$this->dst_file);
                     break;
                 default:
+                    @imagejpeg($this->dImage,$this->dst_file,100);
                     break;
             }
         }
