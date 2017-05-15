@@ -31,7 +31,7 @@ class HomeController extends \app\util\BaseController {
 
         $etag = md5($src . $width . $height . $mode);
         $src = Yii::$app->basePath . '/web' . base64_decode($src);  
-        var_dump($src);
+        var_dump($src);die;
         $pathInfo = pathinfo($src);
         $dst = Yii::$app->basePath . '/web/assets/' . $etag . '.' . $pathInfo['extension'];
 
