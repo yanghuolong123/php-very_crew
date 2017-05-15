@@ -1,10 +1,5 @@
 <?php
 
-//date_default_timezone_set('PRC');
-defined('DS') or define('DS', DIRECTORY_SEPARATOR);
-defined('TIMESTAMP') or define('TIMESTAMP', time());
-defined('DATETIME') or define('DATETIME', date('Y-m-d H:i:s', TIMESTAMP));
-defined('USE_KEY') or define('USE_KEY', 'b2e7');
 
 /**
  * 验证$_GET参数是否存在
