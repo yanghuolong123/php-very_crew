@@ -47,7 +47,7 @@ class HomeController extends \app\util\BaseController {
         }
 
         if (!file_exists($dst)) {
-            ini_set('memory_limit', '-1');
+            //ini_set('memory_limit', '-1');
             \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $mode);
         }
 
