@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use app\util\XmlUtil;
 use app\util\LogUtil;
+use app\util\CommonUtil;
 
 class WeixinController extends Controller {
 
@@ -22,7 +23,7 @@ class WeixinController extends Controller {
     private $_accessToken;
 
     public function actionIndex() {
-        list($echostr) = validParams(array('echostr'));
+        list($echostr) = CommonUtil::validParams(array('echostr'));
 
         if ($this->checkSignature()) {
             if (empty($echostr)) {
@@ -62,7 +63,7 @@ class WeixinController extends Controller {
  
 
     private function checkSignature() {
-        list($signature, $timestamp, $nonce) = validParams(array('signature', 'timestamp', 'nonce'));
+        list($signature, $timestamp, $nonce) = CommonUtil::validParams(array('signature', 'timestamp', 'nonce'));
 
         $token = $this->token;
         $tmpArr = array($token, $timestamp, $nonce);
