@@ -4,49 +4,58 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use app\util\LogUtil;
+use app\util\XmlUtil;
+use app\util\CommonUtil;
 
 class WeixinController extends Controller {
 
-//    public $token = 'yanghuolonghebingbing123';
-//    public $appid = 'wxa2d2cc7d8b460302';
-//    public $secret = 'f36da1173c0a891fdac60da21cbb7c06';
-//    public $api_url = 'https://api.weixin.qq.com';
-//    private $_accessToken;
-    
     public $token = 'feichangjuzu123456';
     public $appid = 'wx2705fb0b58b923b6';
     public $secret = '63b572bc483358797be65ea66b156290';
     public $api_url = 'https://api.weixin.qq.com';
     private $_accessToken;
+    
+//    public $token = 'yanghuolonghebingbing123';
+//    public $appid = 'wxa2d2cc7d8b460302';
+//    public $secret = 'f36da1173c0a891fdac60da21cbb7c06';
+//    public $api_url = 'https://api.weixin.qq.com';
+//    private $_accessToken;
+   
 
     public function actionIndex() {
-        list($echostr) = validParams(array('echostr'));
-
+        LogUtil::logs('wx',"test 1111111111");
+        list($echostr) = CommonUtil::validParams(array('echostr'));
+        LogUtil::logs('wx','$echostr:'.$echostr);
         if ($this->checkSignature()) {
             if (empty($echostr)) {
+                echo "";
+                                exit(0);
                 $this->responseMsg();
             } else {
+                LogUtil::logs('wx', '$echostr:'.$echostr);
                 echo $echostr;
             }
         } else {
-            logs('wx', 'valid error: ' . var_export(isset($_GET) ? $_GET : 'unknown', TRUE));
+            LogUtil::logs('wx', 'valid error: ' . var_export(isset($_GET) ? $_GET : 'unknown', TRUE));
         }
 
         exit(0);
     }
 
     public function responseMsg() {
+        LogUtil::logs('wx', '222222222222222');
         $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : '';
         if (empty($postStr)) {
-            logs('wx', 'postStr empty!');
+            LogUtil::logs('wx', 'postStr empty!');
             exit(1);
         }
-        logs('wx', 'postStr:' . var_export($postStr, true));
+        LogUtil::logs('wx', 'postStr:' . var_export($postStr, true));
 
         libxml_disable_entity_loader(true);
         $postStr = preg_replace('/<!\[CDATA\[(.*)\]\]>/', '$1', $postStr);
-        $data = xml_parser($postStr);
-        // logs('wx', 'data:' . var_export($data, true));
+        $data = XmlUtil::xml_parser($postStr);
+        // LogUtil::logs('wx', 'data:' . var_export($data, true));
 
         $this->listen($data);
 
@@ -54,41 +63,12 @@ class WeixinController extends Controller {
         $msgArr['FromUserName'] = $data['ToUserName'];
         $msgArr['CreateTime'] = time();
         $msgArr['MsgType'] = 'text';
-        $msgArr['Content'] = '亲，远古神龙欢迎您的到来！' . " \n 1、输入\"双色球\"，可以推荐给你幸运号码";
+        $msgArr['Content'] = '亲，非常剧组欢迎您的到来！';
         $this->sendMsg($msgArr);
     }
 
     public function listen($data) {
         $this->subscribe($data);
-        $this->lottery($data);
-    }
-
-    // 彩票
-    public function lottery(&$data) {
-        logs('wx', var_export($data, true));
-        if (isset($data['Content']) && ($data['Content'] == '双色球')) {
-            $green = $red = [1, 2];
-//            $listsData = iterator_to_array(Yii::$app->mongo->selectCollection('lottery')->find()->sort(array('issue' => -1)), false);
-//            foreach ($listsData as &$list) {
-//                unset($list['_id']);
-//                $green[$list['green']] = isset($green[$list['green']]) ? $green[$list['green']] + 1 : 1;
-//                foreach ($list['red'] as $r) {
-//                    $red[$r] = isset($red[$r]) ? $red[$r] + 1 : 1;
-//                }
-//            }
-//            arsort($green);
-//            arsort($red);
-//            
-//            $red = array_keys(array_slice($red, 0, 6, true));
-//            sort($red);
-
-            $msgArr['ToUserName'] = $data['FromUserName'];
-            $msgArr['FromUserName'] = $data['ToUserName'];
-            $msgArr['CreateTime'] = time();
-            $msgArr['MsgType'] = 'text';
-            $msgArr['Content'] = implode(', ', $red) . '   ' . key($green);
-            $this->sendMsg($msgArr);
-        }
     }
 
     // 定阅
@@ -98,13 +78,13 @@ class WeixinController extends Controller {
             $msgArr['FromUserName'] = $data['ToUserName'];
             $msgArr['CreateTime'] = time();
             $msgArr['MsgType'] = 'text';
-            $msgArr['Content'] = '亲，感谢你的支持！' . " \n 1、输入\"双色球\"，可以推荐给你幸运号码";
+            $msgArr['Content'] = '亲，感谢你的支持！' . " 非常剧组欢迎您!";
             $this->sendMsg($msgArr);
         }
     }
 
     private function checkSignature() {
-        list($signature, $timestamp, $nonce) = validParams(array('signature', 'timestamp', 'nonce'));
+        list($signature, $timestamp, $nonce) = CommonUtil::validParams(array('signature', 'timestamp', 'nonce'));
 
         $token = $this->token;
         $tmpArr = array($token, $timestamp, $nonce);
@@ -153,26 +133,6 @@ class WeixinController extends Controller {
         }
 
         return $arr;
-    }
-
-    public function actionTest() {
-        $green = $red = [];
-        $listsData = iterator_to_array(Yii::$app->mongo->selectCollection('lottery')->find()->sort(array('issue' => -1)), false);
-        foreach ($listsData as &$list) {
-            unset($list['_id']);
-            $green[$list['green']] = isset($green[$list['green']]) ? $green[$list['green']] + 1 : 1;
-            foreach ($list['red'] as $r) {
-                $red[$r] = isset($red[$r]) ? $red[$r] + 1 : 1;
-            }
-        }
-        arsort($green);
-        arsort($red);
-        $red = array_keys(array_slice($red, 0, 6, true));
-        sort($red);
-        echo '<pre>';
-        var_dump($green);
-        echo '</pre>';
-        echo implode(', ', $red) . '   ' . key($green);
     }
 
 }
