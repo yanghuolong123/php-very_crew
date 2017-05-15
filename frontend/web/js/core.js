@@ -122,7 +122,7 @@ PicUploader.prototype = {
         self.settings['before'] && self.settings['before']();
 
         $.ajax({
-            url: 'index.php?r=upload/upload-file',
+            url: '/upload/upload-file',
             type: 'post',
             data: picFormData,
             dataType: 'json',
