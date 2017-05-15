@@ -45,14 +45,12 @@ class HomeController extends \app\util\BaseController {
                 exit();
             }
         }
-        var_dump($src,11111);
-var_dump($dst,11111);
+
         if (!file_exists($dst)) {
-            var_dump($dst,2222222222);
             ini_set('memory_limit', '256M');
             \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $mode);
         }
-var_dump($dst,33333333);die;
+
         header('Last Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
         header('Expires: ' . gmdate("D, d M Y H:i:s", time() + 3600) . ' GMT');
         header('Pragma: Cache');

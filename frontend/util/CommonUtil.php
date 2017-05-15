@@ -155,9 +155,9 @@ class CommonUtil {
     public static function cropImgLink($src = '', $width = 330, $height = 220, $mode = 1, $static = true) {
         $pathInfo = pathinfo($src);
         $file = md5(base64_encode($src) . $width . $height . $mode) . '.' . $pathInfo['extension'];
-//        if ($static) {
-//            return '/assets/' . $file . '?src=' . base64_encode($src) . '&width=' . $width . '&height=' . $height . '&mode=' . $mode;
-//        }
+        if ($static) {
+            return '/assets/' . $file . '?src=' . base64_encode($src) . '&width=' . $width . '&height=' . $height . '&mode=' . $mode;
+        }
         return Url::to(['home/crop-img', 'src' => base64_encode($src), 'width' => $width, 'height' => $height, 'mode' => $mode]);
     }
 
