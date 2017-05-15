@@ -100,9 +100,9 @@ class ImageCrop {
                 case IMAGETYPE_GIF :
                     @imagegif($this->dImage,$this->dst_file);
                     break;
-                case IMAGETYPE_BMP;
-                    @imagewbmp($this->dImage,$this->dst_file);
-                    break;
+//                case IMAGETYPE_BMP;
+//                    @imagewbmp($this->dImage,$this->dst_file);
+//                    break;
                 default:
                     break;
             }
