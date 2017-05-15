@@ -32,7 +32,7 @@ $form->field($model, 'province', [
 ])->dropDownList(Distrinct::getDistrictList(0), [
     'prompt' => '请选择省',
     'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){
+            $.post("/district/index?pid="+$(this).val(), function(data){
                 $("#' . $m . '-city").html("<option value=\"\">请选择城市</option>").append(data);
                 $("#' . $m . '-county").html("<option value=\"\">请选择县</option>");
                 $("#' . $m . '-country").html("<option value=\"\">请选择乡</option>");
@@ -49,7 +49,7 @@ $form->field($model, 'city', [
 ])->dropDownList(Distrinct::getDistrictList($model->province), [
     'prompt' => '请选择城市',
     'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){               
+            $.post("/district/index?pid="+$(this).val(), function(data){               
                 $("#' . $m . '-county").html("<option value=\"\">请选择县</option>").append(data);
                 $("#' . $m . '-country").html("<option value=\"\">请选择乡</option>");
             });   
@@ -76,7 +76,7 @@ $form->field($model, 'city', [
     ])->dropDownList(Distrinct::getDistrictList($model->city), [
         'prompt' => '请选择县',
         'onchange' => '
-            $.post("index.php?r=district/index&pid="+$(this).val(), function(data){               
+            $.post("/district/index?pid="+$(this).val(), function(data){               
                 $("#' . $m . '-country").html("<option value=\"\">请选择乡</option>").append(data);               
             });   
         ',

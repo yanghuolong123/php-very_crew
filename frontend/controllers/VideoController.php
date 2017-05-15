@@ -117,7 +117,8 @@ class VideoController extends \app\util\BaseController {
         }
     }
 
-    public function actionDing($id) {
+    public function actionDing() {
+        $id = Yii::$app->request->post('id');
         $model = $this->findModel($id);
         $model->updateCounters(['support' => 1]);
 

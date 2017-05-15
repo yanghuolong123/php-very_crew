@@ -118,7 +118,7 @@ if (!CommonUtil::isMobile()) {
 
 function video_ding(id) {
     var obj = $("#video_ding_"+id);
-    $.post("index.php?r=video/ding&id=" + id, function(e) {
+    $.post("<?= Url::to(['video/ding']) ?>",{id: id}, function(e) {
         obj.addClass("selected");
         obj.html(e.data);
         obj.on('click', function(evt) {
@@ -129,7 +129,7 @@ function video_ding(id) {
 
 function video_cai(id) {
     var obj = $("#video_cai_"+id);
-    $.post("index.php?r=video/cai", {id: id}, function(e) {
+    $.post("<?= Url::to(['video/cai']) ?>", {id: id}, function(e) {
         obj.addClass("selected");
         obj.html(e.data);
         obj.on('click', function(evt) {

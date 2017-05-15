@@ -54,14 +54,14 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
         'mongodb' => require(__DIR__.'/mongodb.php'),
         'redis' => require(__DIR__ . '/redis.php'),
-        /*
+         
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+         
     ],
     'params' => $params,
 ];

@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $this->beginBlock('game-video-vote-Js') ?> 
 
 function gameVote(id) {
-$.post("index.php?r=game/ajax-vote", {id: id}, function(e) { 
+$.post("/game/ajax-vote", {id: id}, function(e) { 
 if(e.success == false) {
 var msg = "亲，你没有登陆，如果你已有帐号请先登陆进行投票，也可以填写你的邮箱，我们会给你发一个链接进行投票。";
 msg += "\n<br/><br/>";
@@ -141,7 +141,7 @@ alerting({msg:"请填写正确邮箱格式"});
 return;
 }
 
-$.post('index.php?r=game/ajax-mail', {email:email,voteId:voteId}, function(e){
+$.post('/game/ajax-mail', {email:email,voteId:voteId}, function(e){
 greeting({msg:"请查看您的邮箱，收到邮件后可以点击链接进行投票"});
 });
 });
