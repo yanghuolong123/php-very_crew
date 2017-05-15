@@ -45,6 +45,7 @@ class HomeController extends \app\util\BaseController {
                 exit();
             }
         }
+        var_dump($src,11111);
 var_dump($dst,11111);
         if (!file_exists($dst)) {
             var_dump($dst,2222222222);
