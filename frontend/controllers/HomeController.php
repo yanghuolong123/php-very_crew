@@ -30,8 +30,7 @@ class HomeController extends \app\util\BaseController {
         }
 
         $etag = md5($src . $width . $height . $mode);
-        $src = Yii::$app->basePath . '/web' . base64_decode($src);  
-        var_dump($src);die;
+        $src = Yii::$app->basePath . '/web' . base64_decode($src);        
         $pathInfo = pathinfo($src);
         $dst = Yii::$app->basePath . '/web/assets/' . $etag . '.' . $pathInfo['extension'];
 
@@ -48,6 +47,7 @@ class HomeController extends \app\util\BaseController {
         }
 
         if (!file_exists($dst)) {
+            var_dump($src, "gggggggggggggggggg");
             ini_set('memory_limit', '256M');
             \app\util\CommonUtil::cropImg($src, $dst, $width, $height, $mode);
         }
