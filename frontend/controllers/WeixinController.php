@@ -44,7 +44,7 @@ class WeixinController extends \app\util\BaseController {
         $data = XmlUtil::xml_parser($postStr);
         LogUtil::logs('wx', 'data:' . var_export($data, true));
 
-        //$this->listen($data);
+        $this->listen($data);
 
         $msgArr['ToUserName'] = $data['FromUserName'];
         $msgArr['FromUserName'] = $data['ToUserName'];
