@@ -24,7 +24,7 @@ class WeixinController extends Controller {
    
 
     public function actionIndex() {
-        LogUtil::logs('wx',"test 1111111111");
+        //LogUtil::logs('wx',"test 1111111111");
         list($echostr) = CommonUtil::validParams(array('echostr'));
         LogUtil::logs('wx','$echostr:'.$echostr);
         if ($this->checkSignature()) {
@@ -33,7 +33,7 @@ class WeixinController extends Controller {
                                 exit(0);
                 $this->responseMsg();
             } else {
-                LogUtil::logs('wx', '$echostr:'.$echostr);
+                //LogUtil::logs('wx', '$echostr:'.$echostr);
                 echo $echostr;
             }
         } else {
