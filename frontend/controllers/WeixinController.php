@@ -3,12 +3,11 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\Controller;
 use app\util\LogUtil;
 use app\util\XmlUtil;
 use app\util\CommonUtil;
 
-class WeixinController extends Controller {
+class WeixinController extends \app\util\BaseController {
 
     public $token = 'feichangjuzu123456';
     public $appid = 'wx2705fb0b58b923b6';
