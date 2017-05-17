@@ -87,7 +87,7 @@ class WeixinController extends \app\util\BaseController {
     }
 
     public function sendMsg($arr) {
-        echo arrToXmlStr($arr);
+        echo XmlUtil::arrToXmlStr($arr);
         exit(0);
     }
 
