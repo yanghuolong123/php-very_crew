@@ -42,7 +42,7 @@ class WeixinController extends \app\util\BaseController {
         libxml_disable_entity_loader(true);
         $postStr = preg_replace('/<!\[CDATA\[(.*)\]\]>/', '$1', $postStr);
         $data = XmlUtil::xml_parser($postStr);
-        LogUtil::logs('wx', 'data:' . var_export($data, true));
+        //LogUtil::logs('wx', 'data:' . var_export($data, true));
 
         $this->listen($data);
 
