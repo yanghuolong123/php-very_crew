@@ -14,23 +14,14 @@ class WeixinController extends \app\util\BaseController {
     public $secret = '63b572bc483358797be65ea66b156290';
     public $api_url = 'https://api.weixin.qq.com';
     private $_accessToken;
-    
-//    public $token = 'yanghuolonghebingbing123';
-//    public $appid = 'wxa2d2cc7d8b460302';
-//    public $secret = 'f36da1173c0a891fdac60da21cbb7c06';
-//    public $api_url = 'https://api.weixin.qq.com';
-//    private $_accessToken;
-   
 
     public function actionIndex() {
-        //LogUtil::logs('wx',"test 1111111111");
         list($echostr) = CommonUtil::validParams(array('echostr'));
-        LogUtil::logs('wx','$echostr:'.$echostr);
+        LogUtil::logs('wx', '$echostr:' . $echostr);
         if ($this->checkSignature()) {
             if (empty($echostr)) {
                 $this->responseMsg();
             } else {
-                //LogUtil::logs('wx', '$echostr:'.$echostr);
                 echo $echostr;
             }
         } else {
@@ -41,7 +32,6 @@ class WeixinController extends \app\util\BaseController {
     }
 
     public function responseMsg() {
-        LogUtil::logs('wx', '222222222222222');
         $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : '';
         if (empty($postStr)) {
             LogUtil::logs('wx', 'postStr empty!');
@@ -52,9 +42,9 @@ class WeixinController extends \app\util\BaseController {
         libxml_disable_entity_loader(true);
         $postStr = preg_replace('/<!\[CDATA\[(.*)\]\]>/', '$1', $postStr);
         $data = XmlUtil::xml_parser($postStr);
-        // LogUtil::logs('wx', 'data:' . var_export($data, true));
+        LogUtil::logs('wx', 'data:' . var_export($data, true));
 
-        $this->listen($data);
+        //$this->listen($data);
 
         $msgArr['ToUserName'] = $data['FromUserName'];
         $msgArr['FromUserName'] = $data['ToUserName'];
