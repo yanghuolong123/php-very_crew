@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'username',
                 'format' => 'raw',
                 'value' => function($data) {
-                    return Html::a($data->username,Yii::$app->params['frontendHost'].'user/view&id='.$data->user_id, ['target'=>'_blank']);// Html::a($data->username,['user/view', 'id' => $data->user_id]);
+                    return Html::a($data->username,Yii::$app->params['frontendHost'].'user/view?id='.$data->user_id, ['target'=>'_blank']);// Html::a($data->username,['user/view', 'id' => $data->user_id]);
                 },
             ],
             'amount',
