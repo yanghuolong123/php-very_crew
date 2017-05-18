@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     $video = Video::findOne($data->video_id);
                     $user = User::findOne($data->user_id);
                     $return = Html::a(Html::img(CommonUtil::cropImgLink($video->logo, 240,150,1,false),['class'=>'thumbnail']),['video/view','id'=>$video->id]);
-                    $return .= "<p>作品名称：".Html::a($video->title,Yii::$app->params['frontendHost'].'/index.php?r=video/view&id='.$video->id, ['target'=>'_blank'])."</p>";
-                    $return .= "<p>参与人：".Html::a($user->nickname,Yii::$app->params['frontendHost'].'/index.php?r=user/view&id='.$user->id, ['target'=>'_blank'])."</p>";
+                    $return .= "<p>作品名称：".Html::a($video->title,Yii::$app->params['frontendHost'].'video/view?id='.$video->id, ['target'=>'_blank'])."</p>";
+                    $return .= "<p>参与人：".Html::a($user->nickname,Yii::$app->params['frontendHost'].'user/view?id='.$user->id, ['target'=>'_blank'])."</p>";
                     return $return;                     
                 },
                 'options' => ['style'=>'width:20%;'],
