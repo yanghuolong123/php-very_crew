@@ -35,7 +35,7 @@ if (!CommonUtil::isMobile()) {
                 <video id="payer" class="video-js vjs-default-skin vjs-big-play-centered"
                        controls preload="auto"
                        poster="<?= CommonUtil::cropImgLink($model->logo,600,350); ?>"
-                       data-setup='{"autoplay": false,"loop": true,"width": 640,"height": 200}'>           
+                       data-setup='{}'>           
                     <source src="<?= $model->file; ?>" type="video/<?= trim(strrchr($model->file, '.'), '.') ?>" />
                     
                     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
@@ -137,6 +137,25 @@ function video_cai(id) {
         });
     });
 }
+
+var options = {"autoplay": false,"loop": true,"width": 640,"height": 200};
+
+var player = videojs('payer', options, function onPlayerReady() {
+  //videojs.log('Your player is ready!');
+
+  // In this context, `this` is the player that was created by Video.js.
+  //this.play();
+
+   
+  <?php if($model->status == 2 && Yii::$app->user->id != $model->uid): ?>
+  // How about an event listener?
+  this.on('play', function() {      
+    this.pause();
+    alerting({msg: '此作品为参赛作品，在大赛开始评比前只有此作品成员可以观看'});
+    //videojs.log('Awww...over so soon?!');
+  });
+  <?php endif; ?>
+});
 
 <?php $this->endBlock() ?> 
 <?php $this->registerJs($this->blocks['video-ding-cai-Js'], \yii\web\View::POS_END); ?>
