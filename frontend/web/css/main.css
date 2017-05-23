@@ -70,3 +70,7 @@ and open the template in the editor.
 .navbar-brand {
     padding-top: 10px;
 }
+
+.modal {
+    z-index: 110000;
+}
