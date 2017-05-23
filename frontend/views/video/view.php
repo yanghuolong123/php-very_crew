@@ -151,7 +151,7 @@ var player = videojs('payer', options, function onPlayerReady() {
   // How about an event listener?
   this.on('play', function() {      
     this.pause();
-    greeting({msg: '此作品为参赛作品，在大赛开始评比前只有此作品成员可以观看'});
+    greeting({title:'消息提示',msg: '此作品为参赛作品，在大赛开始评比前只有此作品成员可以观看。'}
     //videojs.log('Awww...over so soon?!');
   });
   <?php endif; ?>
