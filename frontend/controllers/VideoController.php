@@ -37,7 +37,7 @@ class VideoController extends \app\util\BaseController {
 
     public function actionIndex() {
         $searchModel = new VideoSearch();
-        $searchModel->status = 1;
+        $searchModel->status = [1,2];
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 12;
