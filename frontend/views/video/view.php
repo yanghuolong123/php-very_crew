@@ -147,7 +147,7 @@ var player = videojs('payer', options, function onPlayerReady() {
   //this.play();
 
    
-  <?php if($model->status == 2 && Yii::$app->user->id != $model->uid): ?>
+  <?php if( !isset($_GET['from']) && $model->status == 2 && Yii::$app->user->id != $model->uid): ?>
   // How about an event listener?
   this.on('play', function() {      
     this.pause();
