@@ -17,7 +17,7 @@ class UserController extends \yii\web\Controller {
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['id' => SORT_DESC]];
-        $dataProvider->pagination->pageSize = 12;
+        $dataProvider->pagination->pageSize = 30;
 
         return $this->render('index', [
                     'searchModel' => $searchModel,
