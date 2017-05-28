@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('上传我的作品', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('上传新作品', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <div class="table-responsive">
     <?= GridView::widget([
