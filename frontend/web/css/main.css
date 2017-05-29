@@ -74,3 +74,7 @@ and open the template in the editor.
 .modal {
     z-index: 110000;
 }
+
+.modal-dialog {
+    margin: 100px auto;
+}
