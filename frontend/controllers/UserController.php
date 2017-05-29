@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\extend\User;
 use app\models\extend\UserProfile;
+use app\models\extend\VideoUser;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\util\HttpUtil;
@@ -31,6 +32,7 @@ class UserController extends \yii\web\Controller {
             throw new \yii\web\NotFoundHttpException('user not exist!');
         }
         $profie = UserProfile::findOne(['uid' => $id]);
+        var_dump(VideoUser::find()->where(['uid'=>$id])->column());
         $perVideo = \app\models\extend\Video::find()->where(['uid' => $id])->andWhere(['>', 'status', 0])->orderBy('createtime desc')->limit(4)->all();
         $albums = \app\models\extend\UserAlbum::find()->where(['uid' => $id, 'status' => 0])->orderBy('createtime desc')->all();
 
