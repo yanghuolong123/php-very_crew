@@ -147,7 +147,7 @@ var player = videojs('payer', options, function onPlayerReady() {
   // In this context, `this` is the player that was created by Video.js.
   //this.play();
 
-   
+  this.load();
   <?php if( !isset($_GET['from']) && $model->status == 2 && !in_array(Yii::$app->user->id, ArrayHelper::map(ArrayHelper::toArray($members), "id", "uid"))): ?>
   // How about an event listener?
   this.on('play', function() {alert(1111);   
