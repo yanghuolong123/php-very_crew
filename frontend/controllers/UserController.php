@@ -32,8 +32,8 @@ class UserController extends \yii\web\Controller {
             throw new \yii\web\NotFoundHttpException('user not exist!');
         }
         $profie = UserProfile::findOne(['uid' => $id]);
-        var_dump(VideoUser::find()->select('video_id')->where(['uid'=>$id])->column());
-        $perVideo = \app\models\extend\Video::find()->where(['uid' => $id])->andWhere(['>', 'status', 0])->orderBy('createtime desc')->limit(4)->all();
+        $videoArr = VideoUser::find()->select('video_id')->where(['uid'=>$id])->column();
+        $perVideo = \app\models\extend\Video::find()->where(['in', 'id', $videoArr])->andWhere(['>', 'status', 0])->orderBy('createtime desc')->limit(4)->all();
         $albums = \app\models\extend\UserAlbum::find()->where(['uid' => $id, 'status' => 0])->orderBy('createtime desc')->all();
 
         return $this->render('view', [
