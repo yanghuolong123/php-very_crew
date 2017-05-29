@@ -1,0 +1,27 @@
+{
+     "button":[
+     {	
+          "type":"view",
+          "name":"主页",
+          "url":"http://www.womem.cn"
+      },
+      {	
+          "type":"view",
+          "name":"网站",
+          "url":"http://www.feichangjuzu.com"
+      },
+      {
+           "name":"服务",
+           "sub_button":[
+           {	
+               "type":"click",
+               "name":"星座",
+               "key":"MCCTV_RELATIVE_LOCATE"
+            },
+            {
+               "type":"click",
+               "name":"彩票",
+               "key":"MCCTV_MONITOR_ALARM"
+            }]
+       }]
+ }

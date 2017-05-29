@@ -87,7 +87,7 @@ class Weixin {
             $mongo->getCollection('weixin_send')->insert($arr);
             $mongo->close();
         }
-        
+
         return $data;
     }
 
@@ -135,6 +135,34 @@ class Weixin {
         }
 
         return 'get qrcode error';
+    }
+
+    /**
+     * 查询菜单
+     * 
+     * @param type $wid
+     * @return type
+     */
+    public function queryMenu() {
+        $url = $this->api_url . '/cgi-bin/menu/get?access_token=' . $this->_accessToken;
+        $data = HttpUtil::curl_get($url);
+
+        return json_decode($data, true);
+    }
+
+    /**
+     * 生成菜单
+     * 
+     * @param type $wid
+     * @param type $menu
+     * @return type
+     */
+    public function createMenu($menu) {
+        $url = $this->api_url . '/cgi-bin/menu/create?access_token=' . $this->_accessToken;
+        $menu = $this->urlencodeArr($menu);
+        $data = HttpUtil::curl_post($url, urldecode(json_encode($menu)));
+
+        return json_decode($data, true);
     }
 
 }
