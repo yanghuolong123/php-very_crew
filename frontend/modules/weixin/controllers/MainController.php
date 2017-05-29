@@ -45,7 +45,7 @@ class MainController extends \app\util\BaseController {
         $data = XmlUtil::xml_parser($postStr);
         //LogUtil::logs('wx', 'data:' . var_export($data, true));
 
-        //$this->listen($data);
+        $this->listen($data);
 
         $msgArr['ToUserName'] = $data['FromUserName'];
         $msgArr['FromUserName'] = $data['ToUserName'];
@@ -96,7 +96,7 @@ class MainController extends \app\util\BaseController {
 
     public function listen($data) {
         // 订阅关注监听
-        $listenSubscribe = new \app\modules\weixin\models\ListenSubscribe($this->_accessToken, $data);
+        $listenSubscribe = new app\modules\weixin\models\ListenSubscribe($this->_accessToken, $data);
         $listenSubscribe->listen();
     }
 
