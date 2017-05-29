@@ -5,15 +5,13 @@ namespace app\modules\weixin\models;
 abstract class Listen {
 
     public $params;
-    public $access_token;
 
-    public function __construct($token, $params = array()) {
+    public function __construct($params = array()) {
         $this->params = $params;
-        $this->access_token = $token;
     }
 
     abstract public function listen();
-    
+
     public function sendMsg($arr, $is_save = FALSE, $other = array()) {
         $xmlStr = arrToXmlStr($arr);
         echo $xmlStr;
@@ -26,4 +24,5 @@ abstract class Listen {
         }
         exit(0);
     }
+
 }
