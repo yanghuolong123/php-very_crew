@@ -41,7 +41,7 @@ $this->title = '非常剧组';
 </div>
 
 <div class="row">
-    <div class="container"><h3>作品推荐</h3></div>
+    <div class="container"><h3>作品推荐 <span class="pull-right title-more"><a href="<?= Url::to(['video/index']) ?>">更多作品 >></a></span></h3></div>
     <?php foreach ($recomVideos as $video): ?>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
@@ -57,7 +57,7 @@ $this->title = '非常剧组';
 </div>
 
 <div class="row">
-    <div class="container"><h3>最新计划</h3></div>
+    <div class="container"><h3>最新计划 <span class="pull-right title-more"><a href="<?= Url::to(['plan/index']) ?>">更多计划 >></a></span></h3></div>
     <?php foreach ($latestPlans as $plan): ?>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail" style="height:272px;">        
@@ -75,7 +75,7 @@ $this->title = '非常剧组';
 </div>
 
 <div class="row">
-    <div class="container"><h3>搭档推荐</h3></div>
+    <div class="container"><h3>搭档推荐 <span class="pull-right title-more"><a href="<?= Url::to(['user/index']) ?>">更多人员 >></a></span></h3></div>
     <?php foreach ($recomUsers as $user): ?>
     <div class="col-sm-6 col-md-2">
       <div class="thumbnail">
