@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'amount',
             'summary',
             'join_num',
+            'star_num',
             // 'len_minute',
             // 'len_second',
             // 'condition',

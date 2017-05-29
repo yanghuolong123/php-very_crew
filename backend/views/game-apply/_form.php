@@ -23,6 +23,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'summary')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'join_num')->textInput() ?>
+    
+    <?= $form->field($model, 'star_num')->textInput() ?>
 
     <?= $form->field($model, 'len_minute')->textInput() ?>
 
