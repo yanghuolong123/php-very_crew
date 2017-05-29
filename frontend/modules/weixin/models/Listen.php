@@ -2,6 +2,9 @@
 
 namespace app\modules\weixin\models;
 
+use Yii;
+use app\util\XmlUtil;
+
 abstract class Listen {
 
     public $params;
@@ -13,7 +16,7 @@ abstract class Listen {
     abstract public function listen();
 
     public function sendMsg($arr, $is_save = FALSE, $other = array()) {
-        $xmlStr = arrToXmlStr($arr);
+        $xmlStr = XmlUtil::arrToXmlStr($arr);
         echo $xmlStr;
         if ($is_save) {
             $mongo = Yii::$app->mongodb;
