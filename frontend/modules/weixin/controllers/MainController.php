@@ -70,7 +70,6 @@ class MainController extends \app\util\BaseController {
 //            return false;
 //        }
 //    }
-
 //    private function getAccessToken() {
 //        $cache = Yii::$app->cache;
 //        $this->_accessToken = $cache->get('access_token_' . $this->appid);
@@ -96,7 +95,7 @@ class MainController extends \app\util\BaseController {
 
     public function listen($data) {
         // 订阅关注监听
-        $listenSubscribe = new \app\modules\weixin\models\ListenSubscribe($this->_accessToken, $data);
+        $listenSubscribe = new \app\modules\weixin\models\ListenSubscribe($data);
         $listenSubscribe->listen();
     }
 
