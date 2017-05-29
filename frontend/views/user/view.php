@@ -81,7 +81,7 @@ $this->registerJsFile('@web/js/upload.js',['depends'=>['app\assets\AppAsset']]);
         
         <?php if(!empty($perVideo)): ?>
         <div class="row">
-            <div class="container"><h3>个人作品</h3></div>
+            <div class="container"><h3>参与作品</h3></div>
             <?php foreach ($perVideo as $video): ?>
             <div class="col-sm-6 col-md-3">
               <div class="thumbnail">
