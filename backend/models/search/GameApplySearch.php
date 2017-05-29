@@ -18,7 +18,7 @@ class GameApplySearch extends GameApply
     public function rules()
     {
         return [
-            [['id', 'user_id', 'game_id', 'amount', 'join_num', 'len_minute', 'len_second', 'status', 'create_time'], 'integer'],
+            [['id', 'user_id', 'game_id', 'amount', 'join_num', 'len_minute', 'star_num', 'len_second', 'status', 'create_time'], 'integer'],
             [['username', 'summary', 'conditions', 'ability', 'advantage'], 'safe'],
         ];
     }
@@ -64,6 +64,7 @@ class GameApplySearch extends GameApply
             'game_id' => $this->game_id,
             'amount' => $this->amount,
             'join_num' => $this->join_num,
+            'star_num' => $this->star_num,
             'len_minute' => $this->len_minute,
             'len_second' => $this->len_second,
             'status' => $this->status,
