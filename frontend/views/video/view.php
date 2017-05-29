@@ -149,10 +149,8 @@ var player = videojs('payer', options, function onPlayerReady() {
 
    
   <?php if( !isset($_GET['from']) && $model->status == 2 && !in_array(Yii::$app->user->id, ArrayHelper::map(ArrayHelper::toArray($members), "id", "uid"))): ?>
-  this.wView.allowsInlineMediaPlayback = YES;
-  this.wView.mediaPlaybackRequiresUserAction = NO;
   // How about an event listener?
-  this.on('play', function() {   
+  this.on('play', function() {      
     this.pause();
     greeting({title:'消息提示',msg: '此作品为参赛作品，在大赛开始评比前只有此作品成员可以观看。'});
     //videojs.log('Awww...over so soon?!');
