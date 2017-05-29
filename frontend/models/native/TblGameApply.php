@@ -14,6 +14,7 @@ use Yii;
  * @property integer $amount
  * @property string $summary
  * @property integer $join_num
+ * @property integer $star_num
  * @property integer $len_minute
  * @property integer $len_second
  * @property string $conditions
@@ -39,8 +40,8 @@ class TblGameApply extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'game_id', 'username', 'amount', 'summary', 'join_num', 'len_minute', 'len_second', 'conditions', 'ability', 'advantage', 'status', 'remark', 'create_time'], 'required'],
-            [['user_id', 'game_id', 'amount', 'join_num', 'len_minute', 'len_second', 'status', 'create_time'], 'integer'],
+            [['user_id', 'game_id', 'username', 'amount', 'summary', 'join_num', 'star_num', 'len_minute', 'len_second', 'conditions', 'ability', 'advantage', 'status', 'remark', 'create_time'], 'required'],
+            [['user_id', 'game_id', 'amount', 'join_num', 'star_num', 'len_minute', 'len_second', 'status', 'create_time'], 'integer'],
             [['username'], 'string', 'max' => 65],
             [['summary', 'conditions', 'ability', 'advantage', 'remark'], 'string', 'max' => 255],
         ];
@@ -59,6 +60,7 @@ class TblGameApply extends \yii\db\ActiveRecord
             'amount' => '金额',
             'summary' => '拍摄计划/剧情简介',
             'join_num' => '参与人数',
+            'star_num' => '主演人数',
             'len_minute' => '时长分钟',
             'len_second' => '时长秒',
             'conditions' => '条件',

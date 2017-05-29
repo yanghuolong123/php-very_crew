@@ -55,3 +55,7 @@ ALTER TABLE `tbl_plan_user` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTER
 
 /* done */
 ALTER TABLE `tbl_user_album` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '简介';
+
+
+ALTER TABLE `tbl_game_apply` ADD `star_num` INT NOT NULL COMMENT '主演人数' AFTER `join_num` ;
+

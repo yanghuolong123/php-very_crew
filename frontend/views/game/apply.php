@@ -30,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'summary')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'join_num')->textInput()->label("预计参与拍摄的人数") ?>
+    
+    <?= $form->field($model, 'star_num')->textInput()->label("主演人数") ?>
 
     <?= $form->field($model, 'len_minute')->textInput()->label("预计视频时长:分") ?>
 
