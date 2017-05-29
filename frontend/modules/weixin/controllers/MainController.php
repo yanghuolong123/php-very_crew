@@ -96,7 +96,7 @@ class MainController extends \app\util\BaseController {
 
     public function listen($data) {
         // 订阅关注监听
-        $listenSubscribe = new app\modules\weixin\models\ListenSubscribe($this->_accessToken, $data);
+        $listenSubscribe = new \app\modules\weixin\models\ListenSubscribe($this->_accessToken, $data);
         $listenSubscribe->listen();
     }
 

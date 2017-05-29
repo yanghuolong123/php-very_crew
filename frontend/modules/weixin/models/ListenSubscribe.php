@@ -4,8 +4,8 @@ namespace app\modules\weixin\models;
 
 class ListenSubscribe extends Listen {
 
-    public function __construct($token, $params = array()) {
-        parent::__construct($token, $params);
+    public function __construct($params = array()) {
+        parent::__construct($params);
     }
 
     public function listen() {
