@@ -84,6 +84,11 @@ $config = [
          
     ],
     'params' => $params,
+    'modules' => [
+        'weixin' => [
+            'class' => 'app\modules\weixin\WeixinModule',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
