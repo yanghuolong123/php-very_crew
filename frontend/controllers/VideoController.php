@@ -57,7 +57,7 @@ class VideoController extends \app\util\BaseController {
         }
         $model->updateCounters(['views' => 1]);
 
-        $otherWorks = Video::find()->where(['uid' => $model->uid, 'status' => 1])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
+        $otherWorks = Video::find()->where(['uid' => $model->uid])->andWhere(['in', 'status', [1,2]])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
         $members = VideoUser::findAll(['video_id' => $id, 'status' => 0]);
 
         return $this->render('view', [
