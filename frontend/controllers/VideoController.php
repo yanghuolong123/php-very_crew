@@ -59,7 +59,7 @@ class VideoController extends \app\util\BaseController {
 
         $otherWorks = Video::find()->where(['uid' => $model->uid])->andWhere(['in', 'status', [1,2]])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
         $members = VideoUser::findAll(['video_id' => $id, 'status' => 0]);
-
+        var_dump(\yii\helpers\ArrayHelper::map(\yii\helpers\ArrayHelper::toArray($members), "id", "uid"));
         return $this->render('view', [
                     'model' => $model,
                     'otherWorks' => $otherWorks,
