@@ -22,7 +22,7 @@ abstract class Listen {
             $mongo = Yii::$app->mongodb;
             $arr['create_datetime'] = isset($arr['CreateTime']) ? date('Y-m-d H:i:s', $arr['CreateTime']) : date('Y-m-d H:i:s', TIMESTAMP);
             $arr['other'] = $other;
-            $mongo->selectCollection('weixin_send')->insert($arr);
+            $mongo->getCollection('weixin_send')->insert($arr);
             $mongo->close();
         }
         exit(0);
