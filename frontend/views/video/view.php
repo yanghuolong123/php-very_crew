@@ -149,7 +149,7 @@ var player = videojs('payer', options, function onPlayerReady() {
   
   <?php if( !isset($_GET['from']) && $model->status == 2 && !in_array(Yii::$app->user->id, ArrayHelper::map(ArrayHelper::toArray($members), "id", "uid"))): ?>
   alert(1111); 
-  this.load();
+  this.play();
   // How about an event listener?
   this.on('play', function() {  
     this.pause();
