@@ -6,19 +6,20 @@ use Yii;
 use app\util\LogUtil;
 use app\util\XmlUtil;
 use app\util\CommonUtil;
+use app\modules\weixin\models\Weixin;
 
 class MainController extends \app\util\BaseController {
 
-    public $token = 'feichangjuzu123456';
-    public $appid = 'wx2705fb0b58b923b6';
-    public $secret = '63b572bc483358797be65ea66b156290';
-    public $api_url = 'https://api.weixin.qq.com';
-    private $_accessToken;
+//    public $token = 'feichangjuzu123456';
+//    public $appid = 'wx2705fb0b58b923b6';
+//    public $secret = '63b572bc483358797be65ea66b156290';
+//    private $_accessToken;
 
     public function actionIndex() {
         list($echostr) = CommonUtil::validParams(array('echostr'));
-        
-        if ($this->checkSignature()) {
+
+        $weixin = new Weixin();
+        if ($weixin->checkSignature()) {
             if (empty($echostr)) {
                 $this->responseMsg();
             } else {
@@ -54,72 +55,49 @@ class MainController extends \app\util\BaseController {
         $this->sendMsg($msgArr);
     }
 
-    public function listen($data) {
-        $this->subscribe($data);
-    }
+//    private function checkSignature() {
+//        list($signature, $timestamp, $nonce) = CommonUtil::validParams(array('signature', 'timestamp', 'nonce'));
+//
+//        $token = $this->token;
+//        $tmpArr = array($token, $timestamp, $nonce);
+//        sort($tmpArr, SORT_STRING);
+//        $tmpStr = implode($tmpArr);
+//        $tmpStr = sha1($tmpStr);
+//
+//        if ($tmpStr == $signature) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
-    // 定阅
-    public function subscribe(&$data) {
-        if (isset($data['Event']) && $data['Event'] == 'subscribe') {
-            $msgArr['ToUserName'] = $data['FromUserName'];
-            $msgArr['FromUserName'] = $data['ToUserName'];
-            $msgArr['CreateTime'] = time();
-            $msgArr['MsgType'] = 'text';
-            $msgArr['Content'] = '亲，感谢你的支持！' . " 非常剧组欢迎您!";
-            $this->sendMsg($msgArr);
-        }
-    }
+//    private function getAccessToken() {
+//        $cache = Yii::$app->cache;
+//        $this->_accessToken = $cache->get('access_token_' . $this->appid);
+//        if (!empty($this->_accessToken)) {
+//            return $this->_accessToken;
+//        }
+//
+//        $url = Constant::WeiXin_Api_Url . '/cgi-bin/token?grant_type=client_credential&appid=' . $this->appid . '&secret=' . $this->secret;
+//        $data = json_decode(curl_get($url), true);
+//
+//        if (isset($data['access_token']) && isset($data['expires_in'])) {
+//            $this->_accessToken = $data['access_token'];
+//            $cache->set('access_token_' . $this->appid, $data['access_token'], $data['expires_in'] - 3600);
+//        }
+//
+//        return $this->_accessToken;
+//    }
 
-    private function checkSignature() {
-        list($signature, $timestamp, $nonce) = CommonUtil::validParams(array('signature', 'timestamp', 'nonce'));
-
-        $token = $this->token;
-        $tmpArr = array($token, $timestamp, $nonce);
-        sort($tmpArr, SORT_STRING);
-        $tmpStr = implode($tmpArr);
-        $tmpStr = sha1($tmpStr);
-
-        if ($tmpStr == $signature) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function sendMsg($arr) {
+    protected function sendMsg($arr) {
         echo XmlUtil::arrToXmlStr($arr);
         exit(0);
     }
 
-    public function getAccessToken() {
-        $cache = Yii::$app->cache;
-        $this->_accessToken = $cache->get('access_token_' . $this->appid);
-        if (!empty($this->_accessToken)) {
-            return $this->_accessToken;
-        }
-
-        $url = $this->api_url . '/cgi-bin/token?grant_type=client_credential&appid=' . $this->appid . '&secret=' . $this->secret;
-        $data = json_decode(curl_get($url), true);
-
-        if (isset($data['access_token']) && isset($data['expires_in'])) {
-            $this->_accessToken = $data['access_token'];
-            $cache->set('access_token_' . $this->appid, $data['access_token'], $data['expires_in'] - 3600);
-        }
-
-        return $this->_accessToken;
-    }
-
-    protected function urlencodeArr($arr) {
-        foreach ($arr as $key => $val) {
-            if (is_scalar($val)) {
-                $arr[$key] = urlencode($val);
-            }
-            if (is_array($val)) {
-                $arr[$key] = $this->urlencodeArr($val);
-            }
-        }
-
-        return $arr;
+    public function listen($data) {
+        // 订阅关注监听
+        $listenSubscribe = new \app\modules\weixin\models\ListenSubscribe($this->_accessToken, $data);
+        $listenSubscribe->listen();
     }
 
 }
