@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use app\models\extend\MetaData;
 use app\util\CommonUtil;
 use app\models\extend\User;
+use yii\helpers\ArrayHelper;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品搜索', 'url' => ['index']];
@@ -147,7 +148,7 @@ var player = videojs('payer', options, function onPlayerReady() {
   //this.play();
 
    
-  <?php if( !isset($_GET['from']) && $model->status == 2 && Yii::$app->user->id != $model->uid): ?>
+  <?php if( !isset($_GET['from']) && $model->status == 2 && in_array(Yii::$app->user->id, ArrayHelper::map(ArrayHelper::toArray($members), "id", "uid"))): ?>
   // How about an event listener?
   this.on('play', function() {      
     this.pause();
