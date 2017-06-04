@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '名称',
                 'format' => 'raw',
                 'options' => ['style'=>'width:15%;'],
-                'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
+                //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ],
             //'title',
             //'content:ntext',
@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '名称',
                 'format' => 'raw',
                 'options' => ['style'=>'width:15%;'],
-                'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
+                //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ], 
             [
                 'attribute' => 'type',
@@ -119,7 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{remove}',
+                'template' => '{view} {remove}',
                 //'header' => '操作',
                 'buttons' => [
                     'remove' => function ($url, $model, $key) {
