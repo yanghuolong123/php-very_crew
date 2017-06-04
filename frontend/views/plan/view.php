@@ -8,7 +8,7 @@ use yii\helpers\Url;
 use app\util\CommonUtil;
 
 $this->title = $model->title;
-//$this->params['breadcrumbs'][] = ['label' => '我的计划', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '搜计划', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 //$plan = Plan::findOne($model->id);
@@ -16,11 +16,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="plan-view">
 
     <?php if($model->uid != Yii::$app->user->id): ?>
-    <div class="container">
+     
         <p>           
             <?= Html::a('加入拍摄计划', ['join', 'plan_id' => $model->id], ['class' => 'btn btn-success']) ?>
         </p>
-    </div>
+     
+    <?php else: ?>     
+        <p>           
+            <?= Html::a('编辑此计划', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        </p>     
     <?php endif; ?>
     
     <p>        
