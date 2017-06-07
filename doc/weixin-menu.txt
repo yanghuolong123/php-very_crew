@@ -2,13 +2,13 @@
      "button":[
      {	
           "type":"view",
-          "name":"主页",
-          "url":"http://www.womem.cn"
+          "name":"网站",
+          "url":"http://www.feichangjuzu.com"
       },
       {	
           "type":"view",
-          "name":"网站",
-          "url":"http://www.feichangjuzu.com"
+          "name":"大赛",
+          "url":"http://feichangjuzu.com/game/view?id=3"
       },
       {
            "name":"服务",
