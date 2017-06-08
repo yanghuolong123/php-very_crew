@@ -160,7 +160,7 @@ var player = videojs('payer', options, function onPlayerReady() {
 });
 
 <?php 
-    $jssdk = new app\modules\weixin\models\JSSDK();
+    $jssdk = new \app\modules\weixin\models\JSSDK();
     $signPackage = $jssdk->GetSignPackage();
 ?>
 
