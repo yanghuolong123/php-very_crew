@@ -15,6 +15,7 @@ $this->registerCssFile('@web/plugin/video.js/video-js.min.css', ['depends' => ['
 $this->registerJsFile('@web/plugin/video.js/ie8/videojs-ie8.min.js', ['depends' => ['app\assets\AppAsset']]);
 //$this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerJsFile('@web/plugin/video.js/video.min.js', ['depends' => ['app\assets\AppAsset']]);
+$this->registerJsFile('http://res.wx.qq.com/open/js/jweixin-1.0.0.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCss('#payer {
     max-width: 1130px;
     width:100%;     
@@ -157,6 +158,53 @@ var player = videojs('payer', options, function onPlayerReady() {
   });
   <?php endif; ?>
 });
+
+<?php 
+    $jssdk = new app\modules\weixin\models\JSSDK();
+    $signPackage = $jssdk->GetSignPackage();
+?>
+
+wx.config({
+    debug: true,
+    appId: '<?php echo $signPackage["appId"];?>',
+    timestamp: <?php echo $signPackage["timestamp"];?>,
+    nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+    signature: '<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function(){	
+	
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: '<?= $model->title ?>', // 分享标题
+            link: '<?= CURRENTURL ?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '<?= $model->logo ?>', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享给朋友
+        wx.onMenuShareAppMessage({
+          title: '<?= $model->title ?>', // 分享标题
+          desc: '<?= $model->content ?>', // 分享描述
+          link: '<?= CURRENTURL ?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: '<?= $model->logo ?>', // 分享图标
+          //type: '', // 分享类型,music、video或link，不填默认为link
+          //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+          success: function () { 
+              // 用户确认分享后执行的回调函数
+          },
+          cancel: function () { 
+              // 用户取消分享后执行的回调函数
+          }
+
+      });   
+});  
 
 <?php $this->endBlock() ?> 
 <?php $this->registerJs($this->blocks['video-ding-cai-Js'], \yii\web\View::POS_END); ?>
