@@ -165,7 +165,7 @@ var player = videojs('payer', options, function onPlayerReady() {
 ?>
 
 wx.config({
-    debug: true,
+    debug: false,
     appId: '<?php echo $signPackage["appId"];?>',
     timestamp: <?php echo $signPackage["timestamp"];?>,
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
@@ -179,7 +179,7 @@ wx.ready(function(){
         wx.onMenuShareTimeline({
             title: '<?= $model->title ?>', // 分享标题
             link: '<?= CURRENTURL ?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '<?= $model->logo ?>', // 分享图标
+            imgUrl: '<?= Yii::$app->request->hostInfo.$model->logo ?>', // 分享图标
             success: function () { 
                 // 用户确认分享后执行的回调函数
             },
@@ -193,7 +193,7 @@ wx.ready(function(){
           title: '<?= $model->title ?>', // 分享标题
           desc: '<?= $model->content ?>', // 分享描述
           link: '<?= CURRENTURL ?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: '<?= $model->logo ?>', // 分享图标
+          imgUrl: '<?= Yii::$app->request->hostInfo.$model->logo ?>', // 分享图标
           //type: '', // 分享类型,music、video或link，不填默认为link
           //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
           success: function () { 
