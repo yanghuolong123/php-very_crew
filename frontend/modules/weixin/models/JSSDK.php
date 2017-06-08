@@ -68,6 +68,7 @@ class JSSDK {
         echo '<pre>';
         var_dump($res);
         echo '</pre>';
+        die;
         $ticket = $res['ticket'];
         if ($ticket) {
             $cache->set("jsapi_ticket_" . $this->appId, $ticket, 3600);
