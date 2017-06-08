@@ -10,7 +10,12 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        $weixin = new \app\modules\weixin\models\Weixin();
+        $jssdk = new \app\modules\weixin\models\JSSDK();
+    $signPackage = $jssdk->GetSignPackage();
+    echo '<pre>';
+    var_dump($signPackage);
+    echo '</pre>';
+        //$weixin = new \app\modules\weixin\models\Weixin();
         //echo $weixin->getQrCodeImg(11);
         //$data = $weixin->uploadFile("/home/yanghuolong/桌面/非常剧组/game1.png");
 //        $arr = array(
@@ -21,12 +26,12 @@ class TestController extends \app\util\BaseController {
 //        ));
 //        $data = $weixin->sendMsg($arr);
 
-        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
-        $data = $weixin->createMenu($menu);
-
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
+//        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
+//        $data = $weixin->createMenu($menu);
+//
+//        echo '<pre>';
+//        var_dump($data);
+//        echo '</pre>';
         //echo CommonUtil::getFileExtension("11/111.mp4");
         //logs('test', "dsdsdssd");
 //        echo TIMESTAMP;
