@@ -65,11 +65,7 @@ class JSSDK {
 
         $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$this->accessToken";
         $res = json_decode(HttpUtil::curl_get($url), true);
-        echo '<pre>';
-        var_dump($res);
-        echo '</pre>';
-        die;
-
+        
         if (isset($res['ticket']) && !empty($res['ticket'])) {
             $ticket = $res['ticket'];
             $cache->set("jsapi_ticket_" . $this->appId . '_' . md5(__DIR__), $ticket, 3600);
