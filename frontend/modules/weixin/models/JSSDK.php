@@ -58,7 +58,7 @@ class JSSDK {
 
     private function getJsApiTicket() {
         $cache = Yii::$app->cache;
-        $ticket = $cache->get("jsapi_ticket_" . $this->appId);
+        $ticket = $cache->get("jsapi_ticket_" . $this->appId.'_'.md5(__DIR__));
         if (!empty($ticket)) {
             return $ticket;
         }
@@ -71,7 +71,7 @@ class JSSDK {
         die;
         $ticket = $res['ticket'];
         if ($ticket) {
-            $cache->set("jsapi_ticket_" . $this->appId, $ticket, 3600);
+            $cache->set("jsapi_ticket_" . $this->appId.'_'.md5(__DIR__), $ticket, 3600);
         }
 
         return $ticket;
