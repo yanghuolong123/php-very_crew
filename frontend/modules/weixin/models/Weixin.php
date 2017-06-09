@@ -42,7 +42,7 @@ class Weixin {
         $cache = Yii::$app->cache;
         $this->_accessToken = $cache->get('access_token_' . $this->appid);
         if (!empty($this->_accessToken)) {
-            //return $this->_accessToken;
+            return $this->_accessToken;
         }
 
         $url = $this->api_url . '/cgi-bin/token?grant_type=client_credential&appid=' . $this->appid . '&secret=' . $this->secret;

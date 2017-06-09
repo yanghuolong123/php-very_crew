@@ -63,7 +63,7 @@ class JSSDK {
         $cache = Yii::$app->cache;
         $ticket = $cache->get("jsapi_ticket_" . $this->appId . '_' . md5(__DIR__));
         if (!empty($ticket)) {
-            //return $ticket;
+            return $ticket;
         }
 
         $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$this->accessToken";
