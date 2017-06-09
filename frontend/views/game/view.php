@@ -155,3 +155,12 @@ $(function(){
 
 <?php $this->endBlock() ?> 
 <?php $this->registerJs($this->blocks['game-video-vote-Js'], \yii\web\View::POS_END); ?>
+
+<?=
+$this->render('/inc/_wxshare', [
+    'title' => $model->name,
+    'content' => $model->content,
+    'logo' => 'http://feichangjuzu.com/uploads/2016/08/11/147092177573581.jpg',
+    'shareUrl' => CURRENTURL,
+])
+?>
