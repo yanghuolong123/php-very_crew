@@ -57,5 +57,13 @@ class TestController extends \app\util\BaseController {
 //                    ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email'=>'yanghuolong@zhisland.com', 'gameVideoId' => 1])))
 //                    ->send();
     }
+    
+    public function actionClearWeixin() {
+        $cache = Yii::$app->cache;
+        $cache->delete('access_token_wx2705fb0b58b923b6');
+        $cache->delete('jsapi_ticket_wx2705fb0b58b923b6');
+        
+        echo '已清除掉 微信 access_token, jsap_ticket 缓存!';
+    }
 
 }
