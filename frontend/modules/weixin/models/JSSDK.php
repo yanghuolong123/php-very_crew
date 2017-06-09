@@ -57,6 +57,9 @@ class JSSDK {
     }
 
     private function getJsApiTicket() {
+        if (Yii::$app->request->serverName == 'my.frontend.verycrew.com') {
+            return '';
+        }
         $cache = Yii::$app->cache;
         $ticket = $cache->get("jsapi_ticket_" . $this->appId . '_' . md5(__DIR__));
         if (!empty($ticket)) {
@@ -65,7 +68,7 @@ class JSSDK {
 
         $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$this->accessToken";
         $res = json_decode(HttpUtil::curl_get($url), true);
-        
+
         if (isset($res['ticket']) && !empty($res['ticket'])) {
             $ticket = $res['ticket'];
             $cache->set("jsapi_ticket_" . $this->appId . '_' . md5(__DIR__), $ticket, 3600);

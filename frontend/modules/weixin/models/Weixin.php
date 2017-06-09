@@ -36,6 +36,9 @@ class Weixin {
     }
 
     public function getAccessToken() {
+        if(Yii::$app->request->serverName == 'my.frontend.verycrew.com') {
+            return '';
+        }
         $cache = Yii::$app->cache;
         $this->_accessToken = $cache->get('access_token_' . $this->appid);
         if (!empty($this->_accessToken)) {
