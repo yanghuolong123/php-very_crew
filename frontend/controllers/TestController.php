@@ -10,12 +10,12 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        echo Yii::$app->request->hostInfo;
-//        $jssdk = new \app\modules\weixin\models\JSSDK();
-//    $signPackage = $jssdk->GetSignPackage();
-//    echo '<pre>';
-//    var_dump($signPackage);
-//    echo '</pre>';
+        //echo Yii::$app->request->serverName;
+        $jssdk = new \app\modules\weixin\models\JSSDK();
+    $signPackage = $jssdk->GetSignPackage();
+    echo '<pre>';
+    var_dump($signPackage);
+    echo '</pre>';
         //$weixin = new \app\modules\weixin\models\Weixin();
         //echo $weixin->getQrCodeImg(11);
         //$data = $weixin->uploadFile("/home/yanghuolong/桌面/非常剧组/game1.png");
