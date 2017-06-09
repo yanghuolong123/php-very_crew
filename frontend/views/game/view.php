@@ -159,7 +159,7 @@ $(function(){
 <?=
 $this->render('/inc/_wxshare', [
     'title' => $model->name,
-    'content' => $model->content,
+    'content' => strip_tags($model->content),
     'logo' => 'http://feichangjuzu.com/uploads/2016/08/11/147092177573581.jpg',
     'shareUrl' => CURRENTURL,
 ])
