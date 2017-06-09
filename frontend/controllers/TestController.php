@@ -10,12 +10,14 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
+        echo trim('《too bad》', '《..》');
+        
         //echo Yii::$app->request->serverName;
-        $jssdk = new \app\modules\weixin\models\JSSDK();
-    $signPackage = $jssdk->GetSignPackage();
-    echo '<pre>';
-    var_dump($signPackage);
-    echo '</pre>';
+//        $jssdk = new \app\modules\weixin\models\JSSDK();
+//    $signPackage = $jssdk->GetSignPackage();
+//    echo '<pre>';
+//    var_dump($signPackage);
+//    echo '</pre>';
         //$weixin = new \app\modules\weixin\models\Weixin();
         //echo $weixin->getQrCodeImg(11);
         //$data = $weixin->uploadFile("/home/yanghuolong/桌面/非常剧组/game1.png");
@@ -26,7 +28,6 @@ class TestController extends \app\util\BaseController {
 //                'content' => '亲，您的微信已和易家帐号成功绑定，欢迎您的使用！',
 //        ));
 //        $data = $weixin->sendMsg($arr);
-
 //        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
 //        $data = $weixin->createMenu($menu);
 //
@@ -57,12 +58,12 @@ class TestController extends \app\util\BaseController {
 //                    ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email'=>'yanghuolong@zhisland.com', 'gameVideoId' => 1])))
 //                    ->send();
     }
-    
+
     public function actionClearWeixin() {
         $cache = Yii::$app->cache;
         $cache->delete('access_token_wx2705fb0b58b923b6');
         $cache->delete('jsapi_ticket_wx2705fb0b58b923b6');
-        
+
         echo '已清除掉 微信 access_token, jsap_ticket 缓存!';
     }
 
