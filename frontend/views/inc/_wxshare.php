@@ -11,7 +11,7 @@ $signPackage = $jssdk->GetSignPackage();
 <?php $this->beginBlock('wx-share-Js') ?> 
 
 wx.config({
-    debug: false,
+    debug: true,
     appId: '<?php echo $signPackage["appId"];?>',
     timestamp: <?php echo $signPackage["timestamp"];?>,
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
