@@ -120,6 +120,14 @@ $footerNav = Article::getByGroopKey('footer_nav');
         </footer>
 
         <?php $this->endBody() ?>
+        <?=
+        $this->render('/inc/_wxshare', [
+            'title' => '非常剧组',
+            'content' => '拍摄爱好者自行成立并专注服务于我们拍摄者自己的平台，我们致力于利用互联网让传统的拍摄过程变得便捷、有趣、高效，让广大视频拍摄爱好者、从业者走到一起，共同营造一个高活跃度的创作圈，并与广大商家一道，挖掘视频作品的价值，构建视频营销生态链，创造新的视频营销模式，最终实现创作者与商家的共赢。',
+            'logo' => '/uploads/2016/08/11/147092177573581.jpg',
+            'shareUrl' => Yii::$app->request->hostInfo,
+        ])
+        ?>
     </body>
 </html>
 <?php $this->endPage() ?>

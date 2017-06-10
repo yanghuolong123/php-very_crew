@@ -8,6 +8,8 @@ use yii\web\UploadedFile;
 class BaseController extends \yii\web\Controller {
 
     public $enableCsrfValidation = false;
+    
+    public $wxShareAlone = false;
 
     public function actionUploadFile() {
         $file = UploadedFile::getInstanceByName('file');
