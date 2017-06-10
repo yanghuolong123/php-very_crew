@@ -1,8 +1,12 @@
+<?php 
+use yii\helpers\Html;
+?>
 <?php if(Yii::$app->controller->wxShareAlone == false): ?>
 <?php
 
-$this->registerJsFile('http://res.wx.qq.com/open/js/jweixin-1.0.0.js', ['depends' => ['app\assets\AppAsset']]);
 Yii::$app->controller->wxShareAlone = true;
+Html::jsFile('http://res.wx.qq.com/open/js/jweixin-1.0.0.js');
+//$this->registerJsFile('http://res.wx.qq.com/open/js/jweixin-1.0.0.js', ['depends' => ['app\assets\AppAsset']]);
 
 $jssdk = new \app\modules\weixin\models\JSSDK();
 $signPackage = $jssdk->GetSignPackage();
