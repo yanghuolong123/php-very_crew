@@ -11,9 +11,9 @@ $config = [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+//        'cache' => [
+//            'class' => 'yii\caching\FileCache',
+//        ],
         'log' => [
             'targets' => [
                 [
@@ -39,6 +39,7 @@ $config = [
         ],
         'db' => $db,
         'redis' => require(__DIR__ . '/redis.php'),
+        'cache' => require(__DIR__.'/memcache.php'),
     ],
     'params' => $params,
     /*

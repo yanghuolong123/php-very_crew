@@ -43,11 +43,33 @@ class CommonController extends Controller {
                     ->setTo($json->email)
                     ->setFrom(['yhl27ml@163.com' => '非常剧组'])
                     ->setSubject("非常剧组大赛投票")
-                    ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email'=>$json->email, 'gameVideoId' => $json->voteId])))
+                    ->setHtmlBody('欢迎您参加大赛投票，' . Html::a('进行投票', Url::to(['game/email-vote', 'email' => $json->email, 'gameVideoId' => $json->voteId])))
                     ->send();
 
             --$len;
         }
+    }
+
+    /**
+     * 更新微信token
+     * 
+     */
+    public function actionUpdateWxToken() {
+        $weixin = new \app\modules\weixin\models\Weixin();
+
+        $cache = Yii::$app->cache;
+        $cache->delete('access_token_' . $weixin->appid);
+        $cache->delete('jsapi_ticket_' . $weixin->appid);
+        echo "已清除掉 微信 access_token, jsap_ticket 缓存!\n";
+
+        $accessToken = $weixin->getAccessToken();
+        $cache->set('access_token_' . $weixin->appid, $accessToken, 3600);
+        echo "accessToken:" . $accessToken . "\n";
+
+        $jssdk = new \app\modules\weixin\models\JSSDK();
+        $jssdkTicket = $jssdk->getJsApiTicket();
+        $cache->set('jsapi_ticket_' . $weixin->appid, $jssdkTicket, 3600);
+        echo "jssdkTicket:$jssdkTicket\n";
     }
 
 }

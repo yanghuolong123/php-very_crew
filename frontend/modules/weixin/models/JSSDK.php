@@ -56,8 +56,8 @@ class JSSDK {
         return $str;
     }
 
-    private function getJsApiTicket() {
-        if (Yii::$app->request->serverName == 'my.frontend.verycrew.com') {
+    public function getJsApiTicket() {
+        if (isset(Yii::$app->request->serverName) && Yii::$app->request->serverName == 'my.frontend.verycrew.com') {
             return '';
         }
         $cache = Yii::$app->cache;
