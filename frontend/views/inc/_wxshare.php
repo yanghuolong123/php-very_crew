@@ -1,8 +1,8 @@
 <?php if(Yii::$app->controller->wxShareAlone == false): ?>
 <?php
 
-Yii::$app->controller->wxShareAlone = true;
 $this->registerJsFile('http://res.wx.qq.com/open/js/jweixin-1.0.0.js', ['depends' => ['app\assets\AppAsset']]);
+Yii::$app->controller->wxShareAlone = true;
 
 $jssdk = new \app\modules\weixin\models\JSSDK();
 $signPackage = $jssdk->GetSignPackage();
