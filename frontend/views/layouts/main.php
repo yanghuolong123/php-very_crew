@@ -119,7 +119,6 @@ $footerNav = Article::getByGroopKey('footer_nav');
             </div>
         </footer>
 
-        <?php $this->endBody() ?>
         <?=
         $this->render('/inc/_wxshare', [
             'title' => '非常剧组',
@@ -128,6 +127,8 @@ $footerNav = Article::getByGroopKey('footer_nav');
             'shareUrl' => Yii::$app->request->hostInfo,
         ])
         ?>
+        <?php $this->endBody() ?>
+        
     </body>
 </html>
 <?php $this->endPage() ?>
