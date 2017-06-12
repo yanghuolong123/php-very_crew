@@ -162,10 +162,9 @@ var player = videojs('payer', options, function onPlayerReady() {
 <?php $this->registerJs($this->blocks['video-ding-cai-Js'], \yii\web\View::POS_END); ?>
 
 <?=
-var_dump($model->content, 22222);
 $this->render('/inc/_wxshare', [
     'title' => '非常剧组-《'.$model->title.'》',
-    'content' => strip_tags($model->content),
+    'content' => $model->content,
     'logo' => $model->logo,
     'shareUrl' => CURRENTURL,
 ])
