@@ -5,11 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\extend\PlanUser;
 use app\models\search\PlanUserSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class PlanUserController extends Controller {
+class PlanUserController extends \app\util\BaseController {
 
     public function behaviors() {
         return [

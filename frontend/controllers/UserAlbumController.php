@@ -5,14 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\extend\UserAlbum;
 use app\models\search\UserAlbumSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UserAlbumController implements the CRUD actions for UserAlbum model.
  */
-class UserAlbumController extends Controller
+class UserAlbumController extends \app\util\BaseController
 {
     /**
      * @inheritdoc

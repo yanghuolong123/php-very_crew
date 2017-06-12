@@ -4,12 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\extend\UserProfile;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\extend\User;
 
-class UserProfileController extends Controller {
+class UserProfileController extends \app\util\BaseController {
 
     public function behaviors() {
         return [
