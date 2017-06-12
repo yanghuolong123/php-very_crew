@@ -164,7 +164,7 @@ var player = videojs('payer', options, function onPlayerReady() {
 <?=
 $this->render('/inc/_wxshare', [
     'title' => '非常剧组-《'.$model->title.'》',
-    'content' => $model->content,
+    'content' => trim($model->content),
     'logo' => $model->logo,
     'shareUrl' => CURRENTURL,
 ])

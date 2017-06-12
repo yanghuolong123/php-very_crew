@@ -37,7 +37,7 @@ wx.ready(function(){
         // 分享给朋友
         wx.onMenuShareAppMessage({
           title: '<?= $title ?>', // 分享标题
-          desc: "<?= $content ?>", // 分享描述
+          desc: '<?= $content ?>', // 分享描述
           link: '<?= $shareUrl ?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
           imgUrl: '<?= Yii::$app->request->hostInfo.$logo ?>', // 分享图标
           //type: '', // 分享类型,music、video或link，不填默认为link
