@@ -45,19 +45,19 @@ $footerNav = Article::getByGroopKey('footer_nav');
             ]);
             if(!CommonUtil::isMobile()) {
                 
-//                echo Nav::widget([
-//                    'options' => ['class' => 'navbar-nav navbar-left'],
-//                    'items' => [
-//                        ['label' => '首页', 'url' => ['/home/index']],
-//                        ['label' => '上传作品', 'url' => ['/video/create']],
-//                        ['label' => '发布计划', 'url' => ['/plan/create']],
-//                        ['label' => '参加比赛', 'url' => ['/game/index']],
-//                        ['label' => '搜作品', 'url' => ['/video/index']],
-//                        ['label' => '搜人员', 'url' => ['/user/index']],
-//                        ['label' => '搜计划', 'url' => ['/plan/index']],
-//                        ['label' => '论坛', 'url' => ['/forum-forum/index']],
-//                    ],
-//                ]);
+                echo Nav::widget([
+                    'options' => ['class' => 'navbar-nav navbar-left'],
+                    'items' => [
+                        ['label' => '首页', 'url' => ['/home/index']],
+                        ['label' => '上传作品', 'url' => ['/video/create']],
+                        ['label' => '发布计划', 'url' => ['/plan/create']],
+                        ['label' => '参加比赛', 'url' => ['/game/index']],
+                        ['label' => '搜作品', 'url' => ['/video/index']],
+                        ['label' => '搜人员', 'url' => ['/user/index']],
+                        ['label' => '搜计划', 'url' => ['/plan/index']],
+                        ['label' => '论坛', 'url' => ['/forum-forum/index']],
+                    ],
+                ]);
 
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav navbar-right'],
@@ -100,7 +100,19 @@ $footerNav = Article::getByGroopKey('footer_nav');
                 ]);
             
             } else {
-                
+                echo Nav::widget([
+                    //'options' => ['class' => 'navbar-nav navbar-left'],
+                    'items' => [
+                        ['label' => '首页', 'url' => ['/home/index']],
+                        ['label' => '上传作品', 'url' => ['/video/create']],
+                        ['label' => '发布计划', 'url' => ['/plan/create']],
+                        ['label' => '参加比赛', 'url' => ['/game/index']],
+                        ['label' => '搜作品', 'url' => ['/video/index']],
+                        ['label' => '搜人员', 'url' => ['/user/index']],
+                        ['label' => '搜计划', 'url' => ['/plan/index']],
+                        ['label' => '论坛', 'url' => ['/forum-forum/index']],
+                    ],
+                ]);
             }
             
             NavBar::end();
