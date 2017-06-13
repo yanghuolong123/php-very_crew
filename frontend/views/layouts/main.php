@@ -43,78 +43,59 @@ $footerNav = Article::getByGroopKey('footer_nav');
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            if(!CommonUtil::isMobile()) {
-                
-                echo Nav::widget([
-                    'options' => ['class' => 'navbar-nav navbar-left'],
-                    'items' => [
-                        ['label' => '首页', 'url' => ['/home/index']],
-                        ['label' => '上传作品', 'url' => ['/video/create']],
-                        ['label' => '发布计划', 'url' => ['/plan/create']],
-                        ['label' => '参加比赛', 'url' => ['/game/index']],
-                        ['label' => '搜作品', 'url' => ['/video/index']],
-                        ['label' => '搜人员', 'url' => ['/user/index']],
-                        ['label' => '搜计划', 'url' => ['/plan/index']],
-                        ['label' => '论坛', 'url' => ['/forum-forum/index']],
-                    ],
-                ]);
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-left'],
+                'items' => [
+                    ['label' => '首页', 'url' => ['/home/index']],
+                    ['label' => '上传作品', 'url' => ['/video/create']],
+                    ['label' => '发布计划', 'url' => ['/plan/create']],
+                    ['label' => '参加比赛', 'url' => ['/game/index']],
+                    ['label' => '搜作品', 'url' => ['/video/index']],
+                    ['label' => '搜人员', 'url' => ['/user/index']],
+                    ['label' => '搜计划', 'url' => ['/plan/index']],
+                    ['label' => '论坛', 'url' => ['/forum-forum/index']],
+                ],
+            ]);
 
-                echo Nav::widget([
-                    'options' => ['class' => 'navbar-nav navbar-right'],
-                    'items' => [
-                        [
-                            'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="' . CommonUtil::cropImgLink(Yii::$app->user->identity->avatar, 50, 50) . '">  ' . Yii::$app->user->identity->nickname . ' ' . $tips : '',
-                            'visible' => !Yii::$app->user->isGuest,
-                            'encode' => false,
-                            'linkOptions' => ['class' => 'avatar'],
-                            'items' => [
-                                ['label' => '<span class="glyphicon glyphicon-user"></span> 我的主页', 'url' => ['user/view', 'id' => Yii::$app->user->id], 'encode' => false],
-                                ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">' . ($user_msg ? '(' . $user_msg . ')' : '') . '</span>', 'url' => ['comment/my-list', 'type' => 2], 'encode' => false],
-                                ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">' . ($user_private_msg ? '(' . $user_private_msg . ')' : '') . '</span>', 'url' => ['comment/my-list', 'type' => 3], 'encode' => false],
-                                ['label' => '<span class="glyphicon glyphicon-bell"></span> 我的消息 <span class="tip_num">' . ($user_news ? '(' . $user_news . ')' : '') . '</span>', 'url' => ['comment/my-list', 'type' => 4], 'encode' => false],
-                                '<li class="divider"></li>',
-                                ['label' => '我的计划', 'url' => ['plan/my']],
-                                ['label' => '我的作品', 'url' => ['video/my']],
-                                ['label' => '我的帖子', 'url' => ['forum-thread/my']],
-                                '<li class="divider"></li>',
-                                '<li>'
-                                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                                . Html::submitButton(
-                                        '<span class="glyphicon glyphicon-log-out"></span> 安全退出', ['class' => 'btn btn-link']
-                                )
-                                . Html::endForm()
-                                . '</li>',
-                            ],
-                        ],
-                        [
-                            'label' => '登录',
-                            'url' => ['site/login'],
-                            'visible' => Yii::$app->user->isGuest,
-                        ],
-                        [
-                            'label' => '注册',
-                            'url' => ['site/register'],
-                            'visible' => Yii::$app->user->isGuest,
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    [
+                        'label' => !Yii::$app->user->isGuest ? '<img class="avatar" src="' . CommonUtil::cropImgLink(Yii::$app->user->identity->avatar, 50, 50) . '">  ' . Yii::$app->user->identity->nickname . ' ' . $tips : '',
+                        'visible' => !Yii::$app->user->isGuest,
+                        'encode' => false,
+                        'linkOptions' => ['class' => 'avatar'],
+                        'items' => [
+                            ['label' => '<span class="glyphicon glyphicon-user"></span> 我的主页', 'url' => ['user/view', 'id' => Yii::$app->user->id], 'encode' => false],
+                            ['label' => '<span class="glyphicon glyphicon-comment"></span> 我的留言 <span class="tip_num">' . ($user_msg ? '(' . $user_msg . ')' : '') . '</span>', 'url' => ['comment/my-list', 'type' => 2], 'encode' => false],
+                            ['label' => '<span class="glyphicon glyphicon-envelope"></span> 我的私信 <span class="tip_num">' . ($user_private_msg ? '(' . $user_private_msg . ')' : '') . '</span>', 'url' => ['comment/my-list', 'type' => 3], 'encode' => false],
+                            ['label' => '<span class="glyphicon glyphicon-bell"></span> 我的消息 <span class="tip_num">' . ($user_news ? '(' . $user_news . ')' : '') . '</span>', 'url' => ['comment/my-list', 'type' => 4], 'encode' => false],
+                            '<li class="divider"></li>',
+                            ['label' => '我的计划', 'url' => ['plan/my']],
+                            ['label' => '我的作品', 'url' => ['video/my']],
+                            ['label' => '我的帖子', 'url' => ['forum-thread/my']],
+                            '<li class="divider"></li>',
+                            '<li>'
+                            . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                            . Html::submitButton(
+                                    '<span class="glyphicon glyphicon-log-out"></span> 安全退出', ['class' => 'btn btn-link']
+                            )
+                            . Html::endForm()
+                            . '</li>',
                         ],
                     ],
-                ]);
-            
-            } else {
-                echo Nav::widget([
-                    //'options' => ['class' => 'navbar-nav navbar-left'],
-                    'items' => [
-                        ['label' => '首页', 'url' => ['/home/index']],
-                        ['label' => '上传作品', 'url' => ['/video/create']],
-                        ['label' => '发布计划', 'url' => ['/plan/create']],
-                        ['label' => '参加比赛', 'url' => ['/game/index']],
-                        ['label' => '搜作品', 'url' => ['/video/index']],
-                        ['label' => '搜人员', 'url' => ['/user/index']],
-                        ['label' => '搜计划', 'url' => ['/plan/index']],
-                        ['label' => '论坛', 'url' => ['/forum-forum/index']],
+                    [
+                        'label' => '登录',
+                        'url' => ['site/login'],
+                        'visible' => Yii::$app->user->isGuest,
                     ],
-                ]);
-            }
-            
+                    [
+                        'label' => '注册',
+                        'url' => ['site/register'],
+                        'visible' => Yii::$app->user->isGuest,
+                    ],
+                ],
+            ]);
             NavBar::end();
             ?>
 
