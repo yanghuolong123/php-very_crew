@@ -78,3 +78,7 @@ and open the template in the editor.
 .modal-dialog {
     margin: 200px auto;
 }
+
+.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    max-height: 1000px;
+}
