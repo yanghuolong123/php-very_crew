@@ -11,6 +11,7 @@ use app\util\CommonUtil;
 use yii\helpers\Url;
 use app\models\extend\Article;
 use app\util\Constant;
+use app\util\ExtNavBar;
 
 AppAsset::register($this);
 
@@ -36,13 +37,15 @@ $footerNav = Article::getByGroopKey('footer_nav');
 
         <div class="wrap">
             <?php
-            NavBar::begin([
+            ExtNavBar::begin([
                 'brandLabel' => '<img style="height:32px;" src="/image/logo.png" />',
                 'brandUrl' => Yii::$app->homeUrl,
+                'screenReaderToggleText' => '导航',
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
+            
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-left'],
                 'items' => [
@@ -96,7 +99,7 @@ $footerNav = Article::getByGroopKey('footer_nav');
                     ],
                 ],
             ]);
-            NavBar::end();
+            ExtNavBar::end();
             ?>
 
             <div class="container">

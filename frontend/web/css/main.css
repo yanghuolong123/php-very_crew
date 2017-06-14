@@ -82,3 +82,8 @@ and open the template in the editor.
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
     max-height: 500px;
 }
+
+.navbar-inverse .navbar-toggle {
+    border-color: #52aea5;
+    color: #52aea5;
+}
