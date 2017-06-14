@@ -16,7 +16,7 @@ wx.config({
     timestamp: <?php echo $signPackage["timestamp"];?>,
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
     signature: '<?php echo $signPackage["signature"];?>',
-    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareWeibo']
 });
 
 wx.ready(function(){	
@@ -49,7 +49,50 @@ wx.ready(function(){
               // 用户取消分享后执行的回调函数
           }
 
-      });   
+      });  
+      
+      // 分享到QQ
+      wx.onMenuShareQQ({
+        title: '<?= $title ?>', // 分享标题
+        desc: '<?= $content ?>', // 分享描述
+        link: '<?= $shareUrl ?>', // 分享链接
+        imgUrl: '<?= Yii::$app->request->hostInfo.$logo ?>', // 分享图标
+        success: function () { 
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+           // 用户取消分享后执行的回调函数
+        }
+    });
+    
+    // 分享到QQ空间
+    wx.onMenuShareQZone({
+        title: '<?= $title ?>', // 分享标题
+        desc: '<?= $content ?>', // 分享描述
+        link: '<?= $shareUrl ?>', // 分享链接
+        imgUrl: '<?= Yii::$app->request->hostInfo.$logo ?>', // 分享图标
+        success: function () { 
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    
+    // 分享到腾讯微博
+    wx.onMenuShareWeibo({
+        title: '<?= $title ?>', // 分享标题
+        desc: '<?= $content ?>', // 分享描述
+        link: '<?= $shareUrl ?>', // 分享链接
+        imgUrl: '<?= Yii::$app->request->hostInfo.$logo ?>', // 分享图标
+        success: function () { 
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    
 });  
 <?php $this->endBlock() ?> 
 <?php $this->registerJs($this->blocks['wx-share-Js'], \yii\web\View::POS_END); ?>
