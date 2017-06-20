@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
         ]);
         ?>
-        <?= $form->field($model, 'oldPassword')->label('原密码') ?>
+        <?= $form->field($model, 'oldPassword')->passwordInput()->label('原密码') ?>
         <?= $form->field($model, 'password')->passwordInput()->label('新密码') ?>
         <?= $form->field($model, 'verifyPassword')->passwordInput() ?>
         <?=
