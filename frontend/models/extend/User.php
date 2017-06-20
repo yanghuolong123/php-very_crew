@@ -20,7 +20,7 @@ class User extends \app\models\native\TblUser {
             [['email'], 'required', 'on' => 'retrievePassword'],
             [['password', 'verifyPassword', 'oldPassword'], 'required', 'on' => 'modifyPassword'],
             [['email', 'mobile'], 'required', 'on' => 'perfect'],
-            [['username', 'mobile', 'email'], 'unique'],
+            [['username', 'mobile', 'email'], 'unique', 'on' => 'perfect'],
             [['email'], 'email'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
             [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
@@ -28,6 +28,7 @@ class User extends \app\models\native\TblUser {
             ['verifyCode', 'captcha', 'on' => ['register', 'modifyPassword', 'resetPassword']],
             ['username', 'validRegister', 'on' => 'register'],
             ['oldPassword', 'validOldPassword', 'on' => 'modifyPassword'],
+            [['email'], 'validEmailNotExist', 'on' => 'retrievePassword'],
         ];
     }
 
@@ -106,6 +107,15 @@ class User extends \app\models\native\TblUser {
             $user = $this->findOne($this->id);
             if ($user->password != md5($this->oldPassword)) {
                 $this->addError($attribute, '原密码输入错误.');
+            }
+        }
+    }
+    
+    public function validEmailNotExist($attribute, $params) {
+        if (!$this->hasErrors()) {
+            $user = $this->findOne(['email' => $this->email]);
+            if (!$user) {
+                $this->addError($attribute, '本站不存在此邮箱');
             }
         }
     }

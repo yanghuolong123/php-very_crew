@@ -72,12 +72,19 @@ class UserController extends \app\util\BaseController {
     public function actionRetrievePassword() {
         $model = new User();
         $model->setScenario('retrievePassword');
+        
+        if (Yii::$app->request->isAjax) {
+            $model->load(Yii::$app->request->post());
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-        if ($model->load(Yii::$app->request->post())) {
-            $code = md5($model->username . date('Y-m-d') . HttpUtil::getClientUserIp());
-            $msg = '您好，' . $model->username . ":<br/><br/>";
+            return \yii\bootstrap\ActiveForm::validate($model, ['email']);
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate(['email'])) {
+            $code = md5($model->email . date('Y-m-d') . HttpUtil::getClientUserIp());
+            $msg = '您好' .":<br/><br/>";
             $msg .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我们收到一个您希望通过电子邮件重新设置您在 非常剧组 的帐号密码的请求。您可以点击下面的链接重设密码： ';
-            $msg .= Html::a("重置密码", Url::to(['user/reset-password', 'username' => $model->username, 'code' => $code], true));
+            $msg .= Html::a("重置密码", Url::to(['user/reset-password', 'email' => $model->email, 'code' => $code], true));
             $msg .= " <br/><br/><br/>如果这个请求不是由您发起的，那没问题，您不用担心，您可以安全地忽略这封邮件。如果您有任何疑问，可以回复这封邮件向我们提问。谢谢！";
 
             Yii::$app->mailer->compose()
@@ -87,8 +94,8 @@ class UserController extends \app\util\BaseController {
                     ->setHtmlBody($msg, 'text/html')
                     ->send();
 
-            Yii::$app->redis->SET(\app\util\Constant::RetrievePassword . $model->username, $code);
-            Yii::$app->redis->EXPIRE(\app\util\Constant::RetrievePassword . $model->username, 3600);
+            Yii::$app->redis->SET(\app\util\Constant::RetrievePassword . $model->email, $code);
+            Yii::$app->redis->EXPIRE(\app\util\Constant::RetrievePassword . $model->email, 3600);
             Yii::$app->session->setFlash('retrievePasswordHasSendEmail');
         }
 
@@ -97,15 +104,15 @@ class UserController extends \app\util\BaseController {
         ]);
     }
 
-    public function actionResetPassword($username, $code) {
-        $cacheCode = Yii::$app->redis->GET(\app\util\Constant::RetrievePassword . $username);
-        if (empty($cacheCode) || $cacheCode != md5($username . date('Y-m-d') . HttpUtil::getClientUserIp())) {
+    public function actionResetPassword($email, $code) {
+        $cacheCode = Yii::$app->redis->GET(\app\util\Constant::RetrievePassword . $email);
+        if (empty($cacheCode) || $cacheCode != $code) {
             Yii::$app->session->setFlash('resetPassword', false);
         }
 
-        $model = User::findOne(['username' => $username]);
+        $model = User::findOne(['email' => $email]);
         if (empty($model)) {
-            throw new \yii\web\NotFoundHttpException('用户名(邮箱/手机号)不正确!');
+            throw new \yii\web\NotFoundHttpException('邮箱验证不正确!');
         }
 
         $model->setScenario('resetPassword');
