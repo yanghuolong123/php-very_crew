@@ -2,6 +2,8 @@
 
 namespace app\modules\weixin\models;
 
+use app\util\LogUtil;
+
 class ListenSubscribe extends Listen {
 
     public function __construct($params = array()) {
@@ -13,7 +15,9 @@ class ListenSubscribe extends Listen {
             if (!empty($this->params['EventKey'])) {
                 // 参赛作品投票
                 $videoId = ltrim($this->params['EventKey'], 'qrscene_');
+                LogUtil::logs('wx', "videoId:$videoId");
                 $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
+                LogUtil::logs('wx', "msg:$msg");
             }
 
             $msgArr['ToUserName'] = $this->params['FromUserName'];
