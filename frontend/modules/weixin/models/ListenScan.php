@@ -25,7 +25,7 @@ class ListenScan extends Listen {
             $msgArr['FromUserName'] = $this->params['ToUserName'];
             $msgArr['CreateTime'] = TIMESTAMP;
             $msgArr['MsgType'] = 'text';
-            $msgArr['Content'] = "dssdsd";
+            $msgArr['Content'] = $msg;
 
             $this->sendMsg($msgArr);
         }
