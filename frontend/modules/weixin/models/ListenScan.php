@@ -3,6 +3,7 @@
 namespace app\modules\weixin\models;
 
 use app\models\extend\GameVideo;
+use app\util\LogUtil;
 
 class ListenScan extends Listen {
 
