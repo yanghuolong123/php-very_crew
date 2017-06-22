@@ -19,7 +19,7 @@ class TestController extends \app\util\BaseController {
 //    var_dump($signPackage);
 //    echo '</pre>';
         $weixin = new \app\modules\weixin\models\Weixin();
-        echo $weixin->getQrCodeImg(77);
+        echo $weixin->getQrCodeImg(75);
         //$data = $weixin->uploadFile("/home/yanghuolong/桌面/非常剧组/game1.png");
 //        $arr = array(
 //            'touser' => 'CDATA[oTbmFxG5r1WRrHdb32O5y2aSAIkc',
