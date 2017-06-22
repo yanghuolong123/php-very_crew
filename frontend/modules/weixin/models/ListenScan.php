@@ -3,7 +3,6 @@
 namespace app\modules\weixin\models;
 
 use app\models\extend\GameVideo;
-use app\util\LogUtil;
 
 class ListenScan extends Listen {
 
@@ -15,14 +14,13 @@ class ListenScan extends Listen {
         if (($this->params['MsgType'] == 'event') && ($this->params['Event'] == 'SCAN')) {
             // 参赛作品投票
             $videoId = $this->params['EventKey'];
-            
-           $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
-//
-//            if (empty($msg)) {
-//                return;
-//            }
 
-           LogUtil::logs('wx', "msg:$msg ");
+            $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
+
+            if (empty($msg)) {
+                return;
+            }
+
             $msgArr['ToUserName'] = $this->params['FromUserName'];
             $msgArr['FromUserName'] = $this->params['ToUserName'];
             $msgArr['CreateTime'] = TIMESTAMP;
