@@ -129,7 +129,7 @@ class Weixin {
         $cache = Yii::$app->cache;
         $imgUrl = $cache->get('getQrCodeImg_' . $scene_id);
         if (!empty($imgUrl)) {
-            return $imgUrl;
+            //return $imgUrl;
         }
 
         $url = $this->api_url . '/cgi-bin/qrcode/create?access_token=' . $this->_accessToken;
