@@ -2,6 +2,7 @@
 
 namespace app\models\extend;
 
+use Yii;
 use app\models\extend\Video;
 
 class GameVideo extends \app\models\native\TblGameVideo {
