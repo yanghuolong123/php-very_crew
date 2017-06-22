@@ -13,7 +13,7 @@ class ListenScan extends Listen {
     public function listen() {
         if (($this->params['MsgType'] == 'event') && ($this->params['Event'] == 'SCAN')) {
             // 参赛作品投票
-            //$videoId = $this->params['EventKey'];
+            $videoId = $this->params['EventKey'];
 //            $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
 //
 //            if (empty($msg)) {
