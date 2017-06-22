@@ -20,9 +20,9 @@ class GameVideo extends \app\models\native\TblGameVideo {
         
         $model = $this->findOne(['video_id'=>$videoId]);
         $model->updateCounters(['votes' => 1]);
-//        $collection->insert(['game_video_id' => $model->id, 'openid' => $openId, 'time' => DATETIME]);
-//        
-//        return '亲，感谢你对作品 《'.$videoModel->title.'》投票了一票!';
+        $collection->insert(['game_video_id' => $model->id, 'open_id' => $openId, 'time' => DATETIME]);
+        
+        return '亲，感谢你对作品 《'.$videoModel->title.'》投票了一票!';
     }
     
 }
