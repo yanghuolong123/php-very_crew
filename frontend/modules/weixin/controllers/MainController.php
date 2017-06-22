@@ -59,6 +59,10 @@ class MainController extends \app\util\BaseController {
         // 订阅关注监听
         $listenSubscribe = new \app\modules\weixin\models\ListenSubscribe($data);
         $listenSubscribe->listen();
+        
+        // 场景扫描
+        $listenScan = new \app\modules\weixin\models\ListenScan($data);
+        $listenScan->listen();
     }
 
 }
