@@ -10,7 +10,7 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        echo trim('《too bad》', '《..》');
+       // echo trim('《too bad》', '《..》');
         
         //echo Yii::$app->request->serverName;
 //        $jssdk = new \app\modules\weixin\models\JSSDK();
@@ -18,8 +18,8 @@ class TestController extends \app\util\BaseController {
 //    echo '<pre>';
 //    var_dump($signPackage);
 //    echo '</pre>';
-        //$weixin = new \app\modules\weixin\models\Weixin();
-        //echo $weixin->getQrCodeImg(11);
+        $weixin = new \app\modules\weixin\models\Weixin();
+        echo $weixin->getQrCodeImg(77);
         //$data = $weixin->uploadFile("/home/yanghuolong/桌面/非常剧组/game1.png");
 //        $arr = array(
 //            'touser' => 'CDATA[oTbmFxG5r1WRrHdb32O5y2aSAIkc',

@@ -36,7 +36,7 @@ class Weixin {
     }
 
     public function getAccessToken() {
-        if(isset(Yii::$app->request->serverName) && Yii::$app->request->serverName == 'my.frontend.verycrew.com') {
+        if (isset(Yii::$app->request->serverName) && Yii::$app->request->serverName == 'my.frontend.verycrew.com') {
             return '';
         }
         $cache = Yii::$app->cache;
@@ -125,19 +125,28 @@ class Weixin {
      * @param type $expire
      * @return string
      */
-    public function getQrCodeImg($scene_id, $expire = 1800) {
+    public function getQrCodeImg($scene_id, $isPermanent = false, $prefix = '', $expire = 1800) {
         $url = $this->api_url . '/cgi-bin/qrcode/create?access_token=' . $this->_accessToken;
+        $arr = $isPermanent ? [
+            'action_name' => 'QR_LIMIT_STR_SCENE',
+            'action_info' => array('scene' => array('scene_id' => $scene_id)),
+                ] : [
+            'expire_seconds' => $expire,
+            'action_name' => 'QR_SCENE',
+            'action_info' => array('scene' => array('scene_id' => $scene_id)),
+        ];
         $data = HttpUtil::curl_post($url, json_encode(array(
                     'expire_seconds' => $expire,
                     'action_name' => 'QR_SCENE',
-                    'action_info' => array('scene' => array('scene_id' => $scene_id)),
+                    'action_info' => array('scene' => array('scene_str' => $prefix . $scene_id)),
         )));
         $data = json_decode($data, true);
         if (isset($data['ticket']) && !empty($data['ticket'])) {
-            return Html::img('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket']);
+            //return Html::img('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket']);
+            return 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket'];
         }
 
-        return 'get qrcode error';
+        return 'error';
     }
 
     /**
