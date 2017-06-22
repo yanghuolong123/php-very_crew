@@ -9,6 +9,8 @@ class GameVideo extends \app\models\native\TblGameVideo {
     
     public static function gameVote($videoId, $openId) {
         $videoModel = Video::findOne($videoId);
+        
+        return;
         if(empty($videoId)) {
             return;
         }
