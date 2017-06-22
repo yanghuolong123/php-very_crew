@@ -126,6 +126,12 @@ class Weixin {
      * @return string
      */
     public function getQrCodeImg($scene_id, $isPermanent = false, $prefix = '', $expire = 1800) {
+        $cache = Yii::$app->cache;
+        $imgUrl = $cache->get('getQrCodeImg_' . $scene_id);
+        if (!empty($imgUrl)) {
+            return $imgUrl;
+        }
+
         $url = $this->api_url . '/cgi-bin/qrcode/create?access_token=' . $this->_accessToken;
         $arr = $isPermanent ? [
             'action_name' => 'QR_LIMIT_STR_SCENE',
@@ -143,7 +149,9 @@ class Weixin {
         $data = json_decode($data, true);
         if (isset($data['ticket']) && !empty($data['ticket'])) {
             //return Html::img('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket']);
-            return 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket'];
+            $imgUrl = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket'];
+            $cache->set('getQrCodeImg_' . $scene_id, $imgUrl, $expire);
+            return $imgUrl;
         }
 
         return 'error';
