@@ -17,9 +17,9 @@ class GameVideo extends \app\models\native\TblGameVideo {
         if (!empty($collection->findOne(['game_video_id' => $videoId, 'open_id' => $openId]))) {
             return '亲，你已经对作品 《'.$videoModel->title.'》投票过了，感谢你的参与!';
         }
-//        
-//        $model = $this->findOne(['video_id'=>$videoId]);
-//        $model->updateCounters(['votes' => 1]);
+        
+        $model = $this->findOne(['video_id'=>$videoId]);
+        $model->updateCounters(['votes' => 1]);
 //        $collection->insert(['game_video_id' => $model->id, 'openid' => $openId, 'time' => DATETIME]);
 //        
 //        return '亲，感谢你对作品 《'.$videoModel->title.'》投票了一票!';
