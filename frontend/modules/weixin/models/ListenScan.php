@@ -15,14 +15,14 @@ class ListenScan extends Listen {
         if (($this->params['MsgType'] == 'event') && ($this->params['Event'] == 'SCAN')) {
             // 参赛作品投票
             $videoId = $this->params['EventKey'];
-            LogUtil::logs('wx', "videdoId:$videoId ");
-           // $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
+            
+           $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
 //
 //            if (empty($msg)) {
 //                return;
 //            }
 
-
+           LogUtil::logs('wx', "msg:$msg ");
             $msgArr['ToUserName'] = $this->params['FromUserName'];
             $msgArr['FromUserName'] = $this->params['ToUserName'];
             $msgArr['CreateTime'] = TIMESTAMP;
