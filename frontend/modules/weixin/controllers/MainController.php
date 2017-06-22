@@ -42,12 +42,12 @@ class MainController extends \app\util\BaseController {
 
         $this->listen($data);
 
-        $msgArr['ToUserName'] = $data['FromUserName'];
-        $msgArr['FromUserName'] = $data['ToUserName'];
-        $msgArr['CreateTime'] = time();
-        $msgArr['MsgType'] = 'text';
-        $msgArr['Content'] = '亲，非常剧组欢迎您的到来！';
-        $this->sendMsg($msgArr);
+//        $msgArr['ToUserName'] = $data['FromUserName'];
+//        $msgArr['FromUserName'] = $data['ToUserName'];
+//        $msgArr['CreateTime'] = time();
+//        $msgArr['MsgType'] = 'text';
+//        $msgArr['Content'] = '亲，非常剧组欢迎您的到来！';
+//        $this->sendMsg($msgArr);
     }
 
     protected function sendMsg($arr) {
