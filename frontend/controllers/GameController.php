@@ -63,7 +63,7 @@ class GameController extends \app\util\BaseController {
         }
         $model = $this->findModel($id);
         $query = GameVideoSearch::find();
-        $query->andWhere(['game_id' => $id, 'status'=>0]);
+        $query->andWhere(['game_id' => $id, 'status' => 0]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -78,26 +78,33 @@ class GameController extends \app\util\BaseController {
     }
 
     public function actionAjaxVote() {
-        $id = intval(Yii::$app->request->post('id'));
-        if (Yii::$app->user->isGuest) {
-            $this->sendRes(false, '', $id);
+        $videoId = intval(Yii::$app->request->post('videoId'));
+        $weixin = new \app\modules\weixin\models\Weixin();
+        $res = $weixin->getQrCodeImg($videoId);
+        if ($res == 'error') {
+            $this->sendRes(false, '网路错误');
         }
-
-        $collection = Yii::$app->mongodb->getCollection('game_vote_record');
-        if (!empty($collection->findOne(['game_video_id' => $id, 'uid' => Yii::$app->user->id]))) {
-            $this->sendRes(true, '', 0);
-        }
-
-        $model = GameVideo::findOne($id);
-        $model->updateCounters(['votes' => 1]);
-        $collection->insert(['game_video_id' => $model->id, 'uid' => Yii::$app->user->id, 'time' => DATETIME]);
-
-        $this->sendRes(true, '', $model->votes);
+        $this->sendRes(true, 'success', $res);
+//        $id = intval(Yii::$app->request->post('id'));
+//        if (Yii::$app->user->isGuest) {
+//            $this->sendRes(false, '', $id);
+//        }
+//
+//        $collection = Yii::$app->mongodb->getCollection('game_vote_record');
+//        if (!empty($collection->findOne(['game_video_id' => $id, 'uid' => Yii::$app->user->id]))) {
+//            $this->sendRes(true, '', 0);
+//        }
+//
+//        $model = GameVideo::findOne($id);
+//        $model->updateCounters(['votes' => 1]);
+//        $collection->insert(['game_video_id' => $model->id, 'uid' => Yii::$app->user->id, 'time' => DATETIME]);
+//
+//        $this->sendRes(true, '', $model->votes);
     }
 
     public function actionResult($id) {
         $model = $this->findModel($id);
-        $prizes = GamePrize::findAll(['game_id'=>$model->id]);
+        $prizes = GamePrize::findAll(['game_id' => $model->id]);
 
         return $this->render('result', [
                     'model' => $model,
@@ -105,6 +112,9 @@ class GameController extends \app\util\BaseController {
         ]);
     }
 
+    /**
+     * @deprecated since version number
+     */
     public function actionAjaxMail() {
         $email = Yii::$app->request->post('email');
         $voteId = Yii::$app->request->post('voteId');
@@ -112,6 +122,14 @@ class GameController extends \app\util\BaseController {
         $this->sendRes();
     }
 
+    /**
+     * @deprecated since version number
+     * 
+     * @param type $email
+     * @param type $gameVideoId
+     * @return type
+     * @throws NotFoundHttpException
+     */
     public function actionEmailVote($email, $gameVideoId) {
         $collection = Yii::$app->mongodb->getCollection('game_vote_record');
         $resutl = 0;
