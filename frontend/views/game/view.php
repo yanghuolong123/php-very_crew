@@ -126,7 +126,7 @@ $(function(){
             }
 
             var imgUrl = e.data;            
-            vote.attr("data-content","<img style=\"height: 50px;width: 50px;\" src='"+imgUrl+"' />");
+            vote.attr("data-content","<span class="text-center"><img style=\"height: 50px;width: 50px;\" src='"+imgUrl+"' /></span>");
         });
     });
 
