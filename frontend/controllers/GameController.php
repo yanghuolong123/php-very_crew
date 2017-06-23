@@ -80,7 +80,7 @@ class GameController extends \app\util\BaseController {
     public function actionAjaxVote() {
         $videoId = intval(Yii::$app->request->post('videoId'));
         $weixin = new \app\modules\weixin\models\Weixin();
-        $res = $weixin->getQrCodeImg($videoId);
+        $res = $weixin->getQrCodeImg($videoId, 600);
         if ($res == 'error') {
             $this->sendRes(false, '网路错误');
         }

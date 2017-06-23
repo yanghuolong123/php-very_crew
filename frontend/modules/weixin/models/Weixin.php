@@ -125,7 +125,7 @@ class Weixin {
      * @param type $expire
      * @return string
      */
-    public function getQrCodeImg($scene_id, $isPermanent = false, $prefix = '', $expire = 1800) {
+    public function getQrCodeImg($scene_id, $expire = 1800, $isPermanent = false, $prefix = '') {
         $cache = Yii::$app->cache;
         $imgUrl = $cache->get('getQrCodeImg_' . $scene_id);
         if (!empty($imgUrl)) {
@@ -135,7 +135,7 @@ class Weixin {
         $url = $this->api_url . '/cgi-bin/qrcode/create?access_token=' . $this->_accessToken;
         $arr = $isPermanent ? [
             'action_name' => 'QR_LIMIT_STR_SCENE',
-            'action_info' => array('scene' => array('scene_str' => $prefix.$scene_id)),
+            'action_info' => array('scene' => array('scene_str' => $prefix . $scene_id)),
                 ] : [
             'expire_seconds' => $expire,
             'action_name' => 'QR_SCENE',
