@@ -118,7 +118,7 @@ function gameVote(id) {
 $(function(){
     $('a.game_vote').click(function(){
         var videoId = $(this).prev().val();
-        var vote = $(this);
+        var imgUrl;
         $.ajax({
         	url:"<?= Url::to(['game/ajax-vote']) ?>",
         	async:false,
@@ -130,11 +130,11 @@ $(function(){
                             return;
                         }
 
-                        var imgUrl = e.data;            
-                        vote.attr("data-content","<span class=\"text-center\"><img style=\"height: 50px;width: 50px;\" src='"+imgUrl+"' /></span>");
+                        imgUrl = e.data;            
+                        
         	}
         });
-        
+        $(this).attr("data-content","<span class=\"text-center\"><img src='"+imgUrl+"' /></span>");
     });
 
     $("#list-sort").change(function(){
