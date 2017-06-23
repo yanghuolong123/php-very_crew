@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
               <?php if($model->status>0): ?>
               <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>
-              <p class="text-left"><button <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> type="button" onclick="gameVote(<?= $gameVideo->video_id ?>)" class="btn btn-primary btn-small game_vote">投一票</button></p>
+              <p class="text-left"><button <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> type="button" onclick="gameVote(<?= $gameVideo->video_id ?>)" class="btn btn-primary btn-small game_vote" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">投一票</button></p>
               <?php endif; ?>
             </div>
           </div>
@@ -106,6 +106,8 @@ function gameVote(id) {
             greeting({title:"消息提示",msg:e.msg});
             return;
         }
+        
+        var imgUrl = e.data;
         
     });
 }
