@@ -121,24 +121,6 @@ $(function(){
             }, 800);
         });
     }); 
-<!--    $('a.game_vote').click(function(){
-        var videoId = $(this).prev().val();
-        var vote = $(this);
-        var imgUrl;
-        $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: videoId}, function(e) { 
-            if(e.success == false) {           
-                greeting({title:"消息提示",msg:e.msg});
-                return;
-            }
-
-            imgUrl = e.data;            
-            vote.attr("data-content","111");
-            setTimeout(function(){//alert(imgUrl);
-                vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-            }, 800);
-        });
-        
-    });-->
 
     $("#list-sort").change(function(){
         var val = $(this).val();
