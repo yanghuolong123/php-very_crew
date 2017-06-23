@@ -102,53 +102,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 function gameVote(id) {
     $.post("<?= Url::to(['game/ajax-vote']) ?>", {id: id}, function(e) { 
-        if(e.success == false) {
-            var msg = "亲，你没有登陆，如果你已有帐号请先登陆进行投票，也可以填写你的邮箱，我们会给你发一个链接进行投票。";
-            msg += "\n<br/><br/>";
-            msg += '<form method="post" class="form-horizontal">';
-            msg += '<div class="form-group">';
-            msg += '<label for="vote-email" class="col-lg-2 control-label">投票邮箱</label>';
-            msg += '<div class="col-lg-5"><input type="text" placeholder="邮箱" autofocus="" name="vote-email" class="form-control" id="vote-email"></div>';
-            msg += '<div class="col-lg-2"><button id="voteMailBnt" name="vote-mail-bnt" class="btn btn-info" type="button">确定</button></div>';
-            msg += '</div>';
-            msg += '<input type="hidden" name="vote-video" value="'+e.data+'" id="vote-video">';
-            msg += '</form>';
-            greeting({title:"消息提示",msg:msg});
+        if(e.success == false) {           
+            greeting({title:"消息提示",msg:e.msg});
             return;
         }
-        if(e.data>0) {
-            $("#votes_"+id).html(e.data);
-            greeting({msg:"投票成功，感谢您的参与"});
-        } else {
-            alerting({msg:"亲，您已对此参赛作品投过票了，感谢您的参与"});
-        }
+        
     });
 }
 
 $(function(){
+
     $("#list-sort").change(function(){
         var val = $(this).val();
         var url = "<?= Url::to(['game/view','id'=>$model->id]) ?>&sorting="+val + "#vote";
         location.href = url;
     });
-    
-    $(document).on('click', '#voteMailBnt', function(){
-        var email = $.trim($('#vote-email').val());
-        var voteId = $('#vote-video').val();
-        if(email.length==0) {
-            alerting({msg:"请先填写邮箱"});
-            return;
-        }
-        var reg = /\w+[@]{1}\w+[.]\w+/;
-        if(!reg.test(email)){
-            alerting({msg:"请填写正确邮箱格式"});
-            return;
-        }
-        
-        $.post('<?= Url::to(['game/ajax-vote']) ?>', {email:email,voteId:voteId}, function(e){
-            greeting({msg:"请查看您的邮箱，收到邮件后可以点击链接进行投票"});
-        });
-    });
+ 
 });
 
 <?php $this->endBlock() ?> 
