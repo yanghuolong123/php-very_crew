@@ -80,6 +80,11 @@ $this->params['breadcrumbs'][] = $this->title;
               <?php if($model->status>0): ?>
               <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>
               <p class="text-left"><button <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?> type="button" onclick="gameVote(<?= $gameVideo->video_id ?>)" class="btn btn-primary btn-small game_vote" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">投一票</button></p>
+              
+              <p class="text-left">
+                  <?= Html::hiddenInput('video_id'.$gameVideo->video_id, $gameVideo->video_id, ['id'=>''.$gameVideo->video_id]) ?>
+                  <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="">投一票</a>
+              </p>
               <?php endif; ?>
             </div>
           </div>
@@ -113,12 +118,27 @@ function gameVote(id) {
 }
 
 $(function(){
+    $('a.game_vote').click(function(){
+        var videoId = $(this).prev().val();
+        var vote = $(this);
+        $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: videoId}, function(e) { 
+            if(e.success == false) {           
+                greeting({title:"消息提示",msg:e.msg});
+                return;
+            }
+
+            var imgUrl = e.data;
+            vote.attr("data-content",e.data);
+        });
+    });
 
     $("#list-sort").change(function(){
         var val = $(this).val();
         var url = "<?= Url::to(['game/view','id'=>$model->id]) ?>&sorting="+val + "#vote";
         location.href = url;
     });
+    
+    $('[data-toggle="popover"]').popover()
  
 });
 
