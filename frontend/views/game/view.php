@@ -114,11 +114,10 @@ $(function(){
                 return;
             }
 
-            imgUrl = e.data;            
-            vote.attr("data-content","111");
-            setTimeout(function(){//alert(imgUrl);
+            imgUrl = e.data;
+            //setTimeout(function(){//alert(imgUrl);
                 vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-            }, 800);
+            //}, 800);
         });
     }); 
 
