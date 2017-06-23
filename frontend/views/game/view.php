@@ -81,6 +81,9 @@ $this->params['breadcrumbs'][] = $this->title;
               <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>              
               <p class="text-left">
                   <?= Html::hiddenInput('video_id'.$gameVideo->video_id, $gameVideo->video_id, ['id'=>''.$gameVideo->video_id]) ?>
+                  <!--
+                  <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-html="true" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="<span style='color:red;'>加载中，请等候...<img src='/image/loading.gif'/></span>">投一票</a>
+                  -->
                   <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-html="true" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="<span style='color:red;'>加载中，请等候...<img src='/image/loading.gif'/></span>">投一票</a>
               </p>
               <?php endif; ?>
@@ -105,22 +108,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $(function(){
     $(document).on("click","a.game_vote",function(e){
+        
         var videoId = $(this).prev().val();
         var vote = $(this);
         var imgUrl;
-        $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: videoId}, function(e) { 
-            if(e.success == false) {           
-                greeting({title:"消息提示",msg:e.msg});
-                return;
-            }
-
-            imgUrl = e.data;
-            //setTimeout(function(){
-                
-                vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-                alert(imgUrl);
-            //}, 800);
+        $.ajax({
+        	url:"<?= Url::to(['game/ajax-vote']) ?>",
+        	async:false,
+        	type: "POST",
+        	data: {videoId: videoId},
+        	success: function(e){
+                    if(e.success == false) {           
+                        //greeting({title:"消息提示",msg:e.msg});
+                        //return;
+                    }
+                    
+                    imgUrl = "http://my.frontend.verycrew.com/image/logo.png";//e.data;
+                    vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+        	}
         });
+        //vote.trigger('click');
+        //imgUrl = "http://my.frontend.verycrew.com/image/logo.png";
+        //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+        //alert(imgUrl);
+        vote.popover();
     }); 
 
     $("#list-sort").change(function(){
@@ -129,7 +140,7 @@ $(function(){
         location.href = url;
     });
     
-    $('[data-toggle="popover"]').popover()
+    //$('[data-toggle="popover"]').popover()
  
 });
 
