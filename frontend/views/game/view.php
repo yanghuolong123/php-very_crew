@@ -118,23 +118,16 @@ function gameVote(id) {
 $(function(){
     $('a.game_vote').click(function(){
         var videoId = $(this).prev().val();
-        var imgUrl;
-        $.ajax({
-        	url:"<?= Url::to(['game/ajax-vote']) ?>",
-        	async:false,
-        	type: "POST",
-        	data: {videoId: videoId},
-        	success: function(e){
-        		if(e.success == false) {           
-                            greeting({title:"消息提示",msg:e.msg});
-                            return;
-                        }
+        var vote = $(this);
+        $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: videoId}, function(e) { 
+            if(e.success == false) {           
+                greeting({title:"消息提示",msg:e.msg});
+                return;
+            }
 
-                        imgUrl = e.data;            
-                        
-        	}
+            var imgUrl = e.data;            
+            vote.attr("data-content","<span class=\"text-center\"><img class=\"width:50px;height:50px;\" src='"+imgUrl+"' /></span>");
         });
-        $(this).attr("data-content","<span class=\"text-center\"><img src='"+imgUrl+"' /></span>");
     });
 
     $("#list-sort").change(function(){
