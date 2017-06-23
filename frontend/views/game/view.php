@@ -103,32 +103,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php $this->beginBlock('game-video-vote-Js') ?> 
 
-function gameVote(id) {
-    $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: id}, function(e) { 
-        if(e.success == false) {           
-            greeting({title:"消息提示",msg:e.msg});
-            return;
-        }
-        
-        var imgUrl = e.data;
-        
-    });
-}
-
 $(function(){
     $('a.game_vote').click(function(){
         var videoId = $(this).prev().val();
         var vote = $(this);
+        var imgUrl;
         $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: videoId}, function(e) { 
             if(e.success == false) {           
                 greeting({title:"消息提示",msg:e.msg});
                 return;
             }
 
-            var imgUrl = e.data;            
-            vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-            window.setTimeout("eval(1);",1000);
+            imgUrl = e.data;            
+            //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+            
         });
+        setTimeout(function(){
+            vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+        }, 800);
     });
 
     $("#list-sort").change(function(){
