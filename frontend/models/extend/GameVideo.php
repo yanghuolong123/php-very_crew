@@ -22,7 +22,7 @@ class GameVideo extends \app\models\native\TblGameVideo {
         self::updateAllCounters(['votes' => 1], ['video_id' => $videoId]);
         $collection->insert(['game_video_id' => $videoId, 'open_id' => $openId, 'time' => DATETIME]);
 
-        return '亲，感谢你对作品 《' . $videoModel->title . '》投票了一票!';
+        return '亲，感谢你对作品 <a href="'.Url::to(['/video/view', 'id'=>$videoId], TRUE).'">《' . $videoModel->title . '》</a>投票了一票!';
     }
 
 }
