@@ -119,16 +119,22 @@ $(function(){
     $('a.game_vote').click(function(){
         var videoId = $(this).prev().val();
         var vote = $(this);
-        $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: videoId}, function(e) { 
-            if(e.success == false) {           
-                greeting({title:"消息提示",msg:e.msg});
-                return;
-            }
+        $.ajax({
+        	url:"<?= Url::to(['game/ajax-vote']) ?>",
+        	async:false,
+        	type: "POST",
+        	data: {videoId: videoId},
+        	success: function(e){
+        		if(e.success == false) {           
+                            greeting({title:"消息提示",msg:e.msg});
+                            return;
+                        }
 
-            var imgUrl = e.data;            
-            vote.attr("data-content","<span class=\"text-center\"><img style=\"height: 50px;width: 50px;\" src='"+imgUrl+"' /></span>");
-            alert(imgUrl);
+                        var imgUrl = e.data;            
+                        vote.attr("data-content","<span class=\"text-center\"><img style=\"height: 50px;width: 50px;\" src='"+imgUrl+"' /></span>");
+        	}
         });
+        
     });
 
     $("#list-sort").change(function(){
