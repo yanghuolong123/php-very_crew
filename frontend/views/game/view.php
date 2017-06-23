@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>              
               <p class="text-left">
                   <?= Html::hiddenInput('video_id'.$gameVideo->video_id, $gameVideo->video_id, ['id'=>''.$gameVideo->video_id]) ?>
-                  <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="<span class='color:red;'>加载中，请稍后...</span>">投一票</a>
+                  <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-html="true" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="<span class='color:red;'>加载中，请稍后...</span>">投一票</a>
               </p>
               <?php endif; ?>
             </div>
