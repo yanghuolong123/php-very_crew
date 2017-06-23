@@ -115,7 +115,8 @@ $(function(){
             }
 
             imgUrl = e.data;
-            //setTimeout(function(){//alert(imgUrl);
+            //setTimeout(function(){
+                alert(imgUrl);
                 vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
             //}, 800);
         });
