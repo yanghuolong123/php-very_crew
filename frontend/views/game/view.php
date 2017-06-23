@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $this->beginBlock('game-video-vote-Js') ?> 
 
 function gameVote(id) {
-    $.post("<?= Url::to(['game/ajax-vote']) ?>", {id: id}, function(e) { 
+    $.post("<?= Url::to(['game/ajax-vote']) ?>", {videoId: id}, function(e) { 
         if(e.success == false) {           
             greeting({title:"消息提示",msg:e.msg});
             return;
