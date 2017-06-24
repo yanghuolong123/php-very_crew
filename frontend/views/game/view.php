@@ -124,14 +124,19 @@ $(function(){
                     }
                     
                     imgUrl = "http://my.frontend.verycrew.com/image/logo.png";//e.data;
-                    vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+                    //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
         	}
         });
         //vote.trigger('click');
         //imgUrl = "http://my.frontend.verycrew.com/image/logo.png";
-        //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-        //alert(imgUrl);
-        vote.popover();
+        //setTimeout(function(){
+            //alert(11);
+            //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+        //}, 1000);
+        vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
+        //alert(vote.attr("data-content"));
+        vote.popover("show");
+        
     }); 
 
     $("#list-sort").change(function(){
@@ -140,7 +145,7 @@ $(function(){
         location.href = url;
     });
     
-    //$('[data-toggle="popover"]').popover()
+    $('[data-toggle="popover"]').popover()
  
 });
 
