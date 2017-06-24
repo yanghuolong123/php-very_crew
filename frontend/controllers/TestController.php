@@ -11,8 +11,12 @@ class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
         $cache = Yii::$app->cache;
-        echo $cache->get("getQrCodeImg_76");
-        //$cache->flush();
+        $cache->set('test_1', 'test1111111111', 60);
+        echo $cache->get('test1').'aaaaa';
+        
+//        $cache = Yii::$app->cache;
+//        echo $cache->get("getQrCodeImg_76");
+//        //$cache->flush();
         
         // echo trim('《too bad》', '《..》');
         //echo Yii::$app->request->serverName;
