@@ -143,6 +143,7 @@ class Weixin {
             'action_info' => array('scene' => array('scene_id' => $scene_id)),
         ];
         $data = HttpUtil::curl_post($url, json_encode($arr));
+        LogUtil::logs('wx', "wx qrcode response code: $data");
         $data = json_decode($data, true);
         if (isset($data['ticket']) && !empty($data['ticket'])) {
             //return Html::img('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket']);
