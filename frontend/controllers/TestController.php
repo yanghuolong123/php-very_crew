@@ -28,6 +28,7 @@ class TestController extends \app\util\BaseController {
 //        ));
 //        $data = $weixin->sendMsg($arr);
         $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
+        $weixin = new \app\modules\weixin\models\Weixin();
         $data = $weixin->createMenu($menu);
 //
 //        echo '<pre>';
