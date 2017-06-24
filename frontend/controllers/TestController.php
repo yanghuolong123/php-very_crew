@@ -10,16 +10,15 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-       // echo trim('《too bad》', '《..》');
-        
+        // echo trim('《too bad》', '《..》');
         //echo Yii::$app->request->serverName;
 //        $jssdk = new \app\modules\weixin\models\JSSDK();
 //    $signPackage = $jssdk->GetSignPackage();
 //    echo '<pre>';
 //    var_dump($signPackage);
 //    echo '</pre>';
-        $weixin = new \app\modules\weixin\models\Weixin();
-        echo $weixin->getQrCodeImg(73);
+//        $weixin = new \app\modules\weixin\models\Weixin();
+//        echo $weixin->getQrCodeImg(73);
         //$data = $weixin->uploadFile("/home/yanghuolong/桌面/非常剧组/game1.png");
 //        $arr = array(
 //            'touser' => 'CDATA[oTbmFxG5r1WRrHdb32O5y2aSAIkc',
@@ -28,8 +27,8 @@ class TestController extends \app\util\BaseController {
 //                'content' => '亲，您的微信已和易家帐号成功绑定，欢迎您的使用！',
 //        ));
 //        $data = $weixin->sendMsg($arr);
-//        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
-//        $data = $weixin->createMenu($menu);
+        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
+        $data = $weixin->createMenu($menu);
 //
 //        echo '<pre>';
 //        var_dump($data);

@@ -3,25 +3,25 @@
      {	
           "type":"view",
           "name":"网站",
-          "url":"http://www.feichangjuzu.com"
+          "url":"http://frontend.feichangjuzu.com"
       },
       {	
           "type":"view",
           "name":"大赛",
-          "url":"http://feichangjuzu.com/game/view?id=3"
+          "url":"http://frontend.feichangjuzu.com/game/view?id=3"
       },
       {
            "name":"服务",
            "sub_button":[
            {	
-               "type":"click",
-               "name":"星座",
-               "key":"MCCTV_RELATIVE_LOCATE"
+               "type":"view",
+               "name":"联系我们",
+               "url":"http://frontend.feichangjuzu.com/article/view?id=3"
             },
             {
-               "type":"click",
-               "name":"彩票",
-               "key":"MCCTV_MONITOR_ALARM"
+               "type":"view",
+               "name":"常见问题",
+               "url":"http://frontend.feichangjuzu.com/article/view?id=3"
             }]
        }]
  }
