@@ -119,22 +119,16 @@ $(function(){
         	data: {videoId: videoId},
         	success: function(e){
                     if(e.success == false) {           
-                        //greeting({title:"消息提示",msg:e.msg});
-                        //return;
+                        alerting({title:"消息提示",msg:e.msg});
+                        return;
                     }
                     
                     imgUrl = "http://my.frontend.verycrew.com/image/logo.png";//e.data;
                     //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
         	}
         });
-        //vote.trigger('click');
-        //imgUrl = "http://my.frontend.verycrew.com/image/logo.png";
-        //setTimeout(function(){
-            //alert(11);
-            //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-        //}, 1000);
+         
         vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
-        //alert(vote.attr("data-content"));
         vote.popover("show");
         
     }); 
