@@ -10,7 +10,8 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        $cache = Yii::$app->cache->flush();
+        $cache = Yii::$app->cache;
+        echo $cache->get("getQrCodeImg_76");
         
         // echo trim('《too bad》', '《..》');
         //echo Yii::$app->request->serverName;
