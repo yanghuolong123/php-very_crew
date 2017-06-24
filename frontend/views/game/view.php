@@ -123,11 +123,11 @@ $(function(){
                         return;
                     }
                     
-                    imgUrl = "http://my.frontend.verycrew.com/image/logo.png";//e.data;
+                    imgUrl = e.data;
                     //vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
         	}
         });
-         
+        // imgUrl = "http://my.frontend.verycrew.com/image/logo.png";
         vote.attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span>");
         vote.popover("show");
         
