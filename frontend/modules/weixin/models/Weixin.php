@@ -5,7 +5,7 @@ namespace app\modules\weixin\models;
 use Yii;
 use app\util\CommonUtil;
 use app\util\HttpUtil;
-use yii\helpers\Html;
+use app\util\LogUtil;
 
 class Weixin {
 
@@ -129,6 +129,7 @@ class Weixin {
         $cache = Yii::$app->cache;
         $imgUrl = $cache->get('getQrCodeImg_' . $scene_id);
         if (!empty($imgUrl)) {
+            LogUtil::logs('wx', "cache qrcodeImg url： $imgUrl");
             return $imgUrl;
         }
 
