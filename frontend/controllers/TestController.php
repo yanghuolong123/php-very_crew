@@ -13,6 +13,7 @@ class TestController extends \app\util\BaseController {
         $cache = Yii::$app->cache;
         //$cache->set('test_1', 'test1111111111', 60);
         echo $cache->get('test_1').':aaaaa';
+        $cache->flush();
         
 //        $cache = Yii::$app->cache;
 //        echo $cache->get("getQrCodeImg_76");
