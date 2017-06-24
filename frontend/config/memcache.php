@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'class' => 'yii\caching\MemCache',
+    //'class' => 'yii\caching\MemCache',
+    'class' => '\app\components\ext\ExtMemCache',
     //'useMemcached' => true,
     'servers' => [
         [
