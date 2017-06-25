@@ -81,10 +81,11 @@ $this->params['breadcrumbs'][] = $this->title;
               <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>              
               <p class="text-left">
                   <?= Html::hiddenInput('video_id'.$gameVideo->video_id, $gameVideo->video_id, ['id'=>''.$gameVideo->video_id]) ?>
-                  <!--
+                  <?php if($model->status!=1): ?>
+                  <button disabled="disabled" type="button" class="btn btn-primary btn-small game_vote">投一票</button>
+                  <?php else: ?>
                   <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-html="true" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="<span style='color:red;'>加载中，请等候...<img src='/image/loading.gif'/></span>">投一票</a>
-                  -->
-                  <a tabindex="0" class="btn btn-primary btn-small game_vote" <?php if($model->status!=1): ?>disabled="disabled"<?php endif; ?>  role="button" data-placement="top" data-html="true" data-toggle="popover" data-trigger="focus" title="微信扫一扫投票" data-content="<span style='color:red;'>加载中，请等候...<img src='/image/loading.gif'/></span>">投一票</a>
+                  <?php endif; ?>
               </p>
               <?php endif; ?>
             </div>
