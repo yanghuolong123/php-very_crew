@@ -11,7 +11,7 @@ use app\util\CommonUtil;
 use yii\helpers\Url;
 use app\models\extend\Article;
 use app\util\Constant;
-use app\util\ExtNavBar;
+use app\components\ext\ExtNavBar;
 
 AppAsset::register($this);
 
