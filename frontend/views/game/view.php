@@ -107,10 +107,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $this->beginBlock('game-video-vote-Js') ?> 
 
 $(function(){
-    $(document).on("click","a.game_vote",function(e){
-        
+    $(document).on("click","a.game_vote",function(e){        
         var videoId = $(this).prev().val();
         var vote = $(this);
+        if(vote.attr("disabled") == "disabled") {
+            alert(111);
+            return;
+        }
         var imgUrl;
         $.ajax({
         	url:"<?= Url::to(['game/ajax-vote']) ?>",
