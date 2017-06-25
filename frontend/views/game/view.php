@@ -112,7 +112,6 @@ $(function(){
         var vote = $(this);
         if(vote.attr("disabled") == "disabled") {
             vote.popover("destroy");
-            alert(111);
             return;
         }
         var imgUrl;
