@@ -111,7 +111,7 @@ $(function(){
         var videoId = $(this).prev().val();
         var vote = $(this);
         if(vote.attr("disabled") == "disabled") {
-            vote.popover("hide");
+            vote.popover("destroy");
             alert(111);
             return;
         }
