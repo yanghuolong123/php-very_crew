@@ -67,7 +67,7 @@ class GameController extends \app\util\BaseController {
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-        $dataProvider->pagination->pageSize = 12;
+        $dataProvider->pagination->pageSize = 120;
         $dataProvider->sort = ['defaultOrder' => [$sorting => SORT_DESC]];
 
         return $this->render($view, [
