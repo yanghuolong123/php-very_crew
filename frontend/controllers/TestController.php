@@ -36,9 +36,9 @@ class TestController extends \app\util\BaseController {
 //                'content' => '亲，您的微信已和易家帐号成功绑定，欢迎您的使用！',
 //        ));
 //        $data = $weixin->sendMsg($arr);
-        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
-        $weixin = new \app\modules\weixin\models\Weixin();
-        $data = $weixin->createMenu($menu);
+//        $menu = json_decode(file_get_contents(BASE_PATH . '/doc/weixin-menu.txt'), true);
+//        $weixin = new \app\modules\weixin\models\Weixin();
+//        $data = $weixin->createMenu($menu);
 //
 //        echo '<pre>';
 //        var_dump($data);
