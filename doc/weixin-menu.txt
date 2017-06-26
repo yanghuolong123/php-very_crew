@@ -3,12 +3,12 @@
      {	
           "type":"view",
           "name":"网站",
-          "url":"http://frontend.feichangjuzu.com"
+          "url":"http://www.feichangjuzu.com"
       },
       {	
           "type":"view",
           "name":"大赛",
-          "url":"http://frontend.feichangjuzu.com/game/view?id=3"
+          "url":"http://www.feichangjuzu.com/game/view?id=3"
       },
       {
            "name":"服务",
@@ -16,12 +16,12 @@
            {	
                "type":"view",
                "name":"联系我们",
-               "url":"http://frontend.feichangjuzu.com/article/view?id=3"
+               "url":"http://www.feichangjuzu.com/article/view?id=3"
             },
             {
                "type":"view",
                "name":"常见问题",
-               "url":"http://frontend.feichangjuzu.com/article/view?id=3"
+               "url":"http://www.feichangjuzu.com/article/view?id=3"
             }]
        }]
  }
