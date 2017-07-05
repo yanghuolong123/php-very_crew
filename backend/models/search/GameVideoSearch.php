@@ -18,7 +18,7 @@ class GameVideoSearch extends GameVideo
     public function rules()
     {
         return [
-            [['id', 'game_id', 'video_id', 'user_id', 'votes', 'score', 'createtime'], 'integer'],
+            [['id', 'game_id', 'video_id', 'user_id', 'votes', 'score', 'status', 'createtime'], 'integer'],
             [['remark'], 'safe'],
         ];
     }
@@ -65,6 +65,7 @@ class GameVideoSearch extends GameVideo
             'user_id' => $this->user_id,
             'votes' => $this->votes,
             'score' => $this->score,
+            'status' => $this->status,
             'createtime' => $this->createtime,
         ]);
 
