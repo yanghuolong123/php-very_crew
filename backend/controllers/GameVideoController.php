@@ -37,6 +37,7 @@ class GameVideoController extends Controller
     {
         $searchModel = new GameVideoSearch();
         $searchModel->game_id = $game_id;
+        $searchModel->status = 0;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder' => ['createtime' => SORT_DESC]];
 
