@@ -30,7 +30,7 @@ class Games extends \app\models\native\TblGames {
         } else {
             $videoArr = Yii::$app->db->createCommand('select video_id from tbl_game_video where status=0 and game_id=' . $this->id)->queryColumn();
             if (!empty($videoArr)) {
-                Video::updateAll(['status' => ($this->status < 3 ? 2 : 1)], ['in', 'id', $videoArr]);
+                Video::updateAll(['status' => ($this->status < 1 ? 2 : 1)], ['in', 'id', $videoArr]);
             }
         }
 
