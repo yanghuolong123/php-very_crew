@@ -27,6 +27,7 @@ class User extends \app\models\native\TblUser {
             ['verifyPassword', 'compare', 'compareAttribute' => 'password', 'on' => ['register', 'modifyPassword', 'resetPassword']],
             ['verifyCode', 'captcha', 'on' => ['register', 'modifyPassword', 'resetPassword']],
             ['username', 'validRegister', 'on' => 'register'],
+            ['username', 'unique', 'on' => 'register'],
             ['oldPassword', 'validOldPassword', 'on' => 'modifyPassword'],
             [['email'], 'validEmailNotExist', 'on' => 'retrievePassword'],
         ];
