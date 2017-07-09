@@ -55,7 +55,7 @@ class GameController extends \app\util\BaseController {
         ]);
     }
 
-    public function actionView($id, $sorting = 'id') {
+    public function actionView($id, $sorting = 'createtime') {
         $type = Yii::$app->request->get("type");
         $view = "view";
         if (!empty($type) && $type == "activity") {
