@@ -44,6 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
     .modal-dialog{
         margin: 130px auto;
     }
+    .gamestatus a{
+        text-decoration: underline;
+    }
 </style>
 
 <div class="games-view container">     
@@ -51,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-8 game_content">
             <blockquote>
-                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....</span></p>
+                <p><span class="gamestatus"><?= Games::getStatusArr(false, $model->status) ?>.....，<a href="#vote">查看作品</a></span></p>
             </blockquote>
             <p><?= $model->content ?></p>
         </div>
