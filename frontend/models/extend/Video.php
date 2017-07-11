@@ -65,4 +65,8 @@ class Video extends \app\models\native\TblVideo {
         return ArrayHelper::map(ArrayHelper::toArray($data), 'id', 'title');
     }
 
+    public static function getIdsBySearchName($name) {
+        return static::find()->select(['id'])->andFilterWhere(['like', 'title', $name])->createCommand()->queryColumn();
+    }
+
 }

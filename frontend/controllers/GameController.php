@@ -57,6 +57,7 @@ class GameController extends \app\util\BaseController {
 
     public function actionView($id, $sorting = 'createtime') {
         $type = Yii::$app->request->get("type");
+        $search = Yii::$app->request->get("search");
         $view = "view";
         if (!empty($type) && $type == "activity") {
             $view = $type;
@@ -64,6 +65,13 @@ class GameController extends \app\util\BaseController {
         $model = $this->findModel($id);
         $query = GameVideoSearch::find();
         $query->andWhere(['game_id' => $id, 'status' => 0]);
+        if(!empty($search)) {
+            if(is_numeric($search)) {
+                $query->andWhere(['id'=>$search]);
+            } else {
+                $query->andWhere(['in', 'video_id', \app\models\extend\Video::getIdsBySearchName($search)]);
+            }
+        }
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
