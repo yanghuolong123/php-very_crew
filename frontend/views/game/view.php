@@ -139,14 +139,15 @@ $(function(){
         vote.popover("show");
         
     }); 
-
+    
+    $('[data-toggle="popover"]').popover();
+alert(1111);
     $("#list-sort").change(function(){
-        var val = $(this).val();
+        var val = $(this).val();alert(val);
         var url = "<?= Url::to(['game/view','id'=>$model->id]) ?>&sorting="+val + "#vote";
         location.href = url;
-    });
+    });   
     
-    $('[data-toggle="popover"]').popover()
  
 });
 
