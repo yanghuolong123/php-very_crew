@@ -47,6 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
     .gamestatus a{
         text-decoration: underline;
     }
+    .game-search {
+        float: right;
+        margin-right: 5px;
+    }
 </style>
 
 <div class="games-view container">     
@@ -69,10 +73,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     
     
-    <a name="vote"></a>
-    <?php if(!empty($dataProvider->models)): ?>
+   <a name="vote"></a>    
    <div class="row">
-       <div class="container title"><span class="list-titile">当前参赛作品</span><?= Html::dropDownList('sort', $sort, ['id'=>'按ID排序', 'score'=>'按得分排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success pull-right']) ?></div>
+       <div class="container title">
+           <span class="list-titile"><?php if(isset($_GET['search'])): ?>搜索参赛作品<?php else: ?>当前参赛作品<?php endif; ?></span>           
+           <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success pull-right']) ?>
+           <span class="game-search"><input type="text" class="search-game-video" placeholder="搜索:ID/作品名称"></span>
+       </div>
+       <?php if(!empty($dataProvider->models)): ?>
         <?php foreach ($dataProvider->models as $gameVideo): ?>
         <?php $video = Video::findOne($gameVideo->video_id)  ?>
         <div class="col-sm-6 col-md-3">
@@ -80,6 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><img src="<?= CommonUtil::cropImgLink($video->logo) ?>" alt="<?= $video->title ?>"><div class="duration"><?= $video->duration ?></div></a>
             <div class="caption">
               <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
+              <p>ID：<?= $gameVideo->id ?></p>
               <?php if($model->status>0): ?>
               <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>              
               <p class="text-left">
@@ -95,12 +104,13 @@ $this->params['breadcrumbs'][] = $this->title;
           </div>
         </div>
         <?php endforeach; ?>
+      <?php else: ?>
+             <div class="alert alert-info">
+                 <h3><?php if(isset($_GET['search'])): ?>没有搜索到参赛作品...<?php else: ?>暂时没有参赛作品...<?php endif; ?></h3>
+             </div>
+      <?php endif; ?>
    </div>
-    <?php else: ?>
-        <div class="alert alert-info">
-            <h3>暂时没有参赛作品...</h3>
-        </div>
-    <?php endif; ?>
+    
     
     <?= \yii\widgets\LinkPager::widget([
         'pagination' => $dataProvider->pagination,
@@ -141,12 +151,23 @@ $(function(){
     }); 
     
     $('[data-toggle="popover"]').popover();
-alert(1111);
+
     $("#list-sort").change(function(){
-        var val = $(this).val();alert(val);
+        var val = $(this).val();
         var url = "<?= Url::to(['game/view','id'=>$model->id]) ?>&sorting="+val + "#vote";
         location.href = url;
-    });   
+    }); 
+    
+    $(".search-game-video").focusout(function(){
+        var val = $.trim($(this).val());
+        
+        if(val == "") {
+            location.href = "<?= Url::to(['game/view','id'=>$model->id]) ?>" + "#vote";
+            return;
+        }
+        
+        location.href = "<?= Url::to(['game/view','id'=>$model->id]) ?>&search=" + val + "#vote";
+    });
     
  
 });
