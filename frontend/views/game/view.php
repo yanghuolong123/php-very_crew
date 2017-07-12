@@ -76,9 +76,27 @@ $this->params['breadcrumbs'][] = $this->title;
    <a name="vote"></a>    
    <div class="row">
        <div class="container title">
-           <span class="list-titile"><?php if(isset($_GET['search'])): ?>搜索参赛作品<?php else: ?>当前参赛作品<?php endif; ?></span>           
-           <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success pull-right']) ?>
-           <span class="game-search"><input type="text" class="search-game-video" placeholder="搜索:ID/作品名称"></span>
+                      
+           
+           
+           
+           <div class="row">
+            <div class="col-lg-4">
+                <span class="list-titile"><?php if(isset($_GET['search'])): ?>搜索参赛作品<?php else: ?>当前参赛作品<?php endif; ?></span>
+            </div>
+            <div class="col-lg-4">
+              <div class="input-group">
+                <input type="text" class="search-game-video form-control" placeholder="搜索:ID/作品名称">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-4">               
+                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success pull-right']) ?>              
+            </div>
+            
+          </div>
        </div>
        <?php if(!empty($dataProvider->models)): ?>
         <?php foreach ($dataProvider->models as $gameVideo): ?>
