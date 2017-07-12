@@ -47,6 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
     .gamestatus a{
         text-decoration: underline;
     }
+    #list-sort{
+        margin-top: 2px;
+    }
     .game-search {
         float: right !important;
         margin-right: 5px;
