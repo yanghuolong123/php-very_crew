@@ -47,13 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
     .gamestatus a{
         text-decoration: underline;
     }
-    #list-sort{
-        margin-top: 2px;
-    }
-    .game-search {
-        float: right !important;
-        margin-right: 5px;
-    }
 </style>
 
 <div class="games-view container">     
@@ -87,10 +80,11 @@ $this->params['breadcrumbs'][] = $this->title;
               <div class="input-group">
                 <input type="text" class="search-game-video form-control" placeholder="搜索:ID/作品名称">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
+                  <button class="btn btn-default search-btn" type="button">Go!</button>
                 </span>
               </div>
             </div>
+            <div class=""></div>
             <div class="col-lg-2">               
                 <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success form-control']) ?>              
             </div>            
@@ -174,8 +168,8 @@ $(function(){
         location.href = url;
     }); 
     
-    $(".search-game-video").focusout(function(){
-        var val = $.trim($(this).val());
+    $(".search-btn").click(function(){
+        var val = $.trim($(".search-game-video").val());
         
         if(val == "") {
             location.href = "<?= Url::to(['game/view','id'=>$model->id]) ?>" + "#vote";
