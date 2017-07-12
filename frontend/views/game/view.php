@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
             </div>
             <div class="col-lg-4">               
-                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success pull-right']) ?>              
+                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success']) ?>              
             </div>
             
           </div>
