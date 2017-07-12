@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
         text-decoration: underline;
     }
     .game-search {
-        float: right;
+        float: right !important;
         margin-right: 5px;
     }
 </style>
