@@ -76,12 +76,8 @@ $this->params['breadcrumbs'][] = $this->title;
    <a name="vote"></a>    
    <div class="row">
        <div class="container title">
-                      
-           
-           
-           
            <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <span class="list-titile"><?php if(isset($_GET['search'])): ?>搜索参赛作品<?php else: ?>当前参赛作品<?php endif; ?></span>
             </div>
             <div class="col-lg-4">
@@ -92,10 +88,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </span>
               </div>
             </div>
-            <div class="col-lg-4">               
-                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success']) ?>              
-            </div>
-            
+            <div class="col-lg-2">               
+                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success form-control']) ?>              
+            </div>            
           </div>
        </div>
        <?php if(!empty($dataProvider->models)): ?>
