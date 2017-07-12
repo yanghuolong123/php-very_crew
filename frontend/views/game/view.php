@@ -47,6 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
     .gamestatus a{
         text-decoration: underline;
     }
+    #list-sort{
+        padding-left: 5px;
+    }
 </style>
 
 <div class="games-view container">     
@@ -84,7 +87,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </span>
               </div>
             </div>
-            <div class=""></div>
             <div class="col-lg-2">               
                 <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success form-control']) ?>              
             </div>            
