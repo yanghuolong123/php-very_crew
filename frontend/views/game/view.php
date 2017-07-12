@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-2">               
-                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按投票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success form-control']) ?>              
+                <?= Html::dropDownList('sort', $sort, ['id'=>'按参赛时间排序', 'votes'=>'按得票排序'], ['id'=>'list-sort', 'class'=>'btn btn-success form-control']) ?>              
             </div>            
           </div>
        </div>
@@ -100,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <h4><a data-toggle="tooltip" data-placement="bottom" title="<?= $video->title ?>" href="<?= Url::to(['video/view', 'id'=>$video->id]) ?>"><?= CommonUtil::cutstr($video->title,22) ?></a></h4>
               <p>ID：<?= $gameVideo->id ?></p>
               <?php if($model->status>0): ?>
-              <p>投票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>              
+              <p>得票数：<span class="gamenum" id="votes_<?= $gameVideo->id ?>"><?= $gameVideo->votes ?></span></p>              
               <p class="text-left">
                   <?= Html::hiddenInput('video_id'.$gameVideo->video_id, $gameVideo->video_id, ['id'=>''.$gameVideo->video_id]) ?>
                   <?php if($model->status!=1): ?>
