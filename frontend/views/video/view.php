@@ -5,6 +5,7 @@ use app\models\extend\MetaData;
 use app\util\CommonUtil;
 use app\models\extend\User;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '作品搜索', 'url' => ['index']];
@@ -164,7 +165,7 @@ var player = videojs('payer', options, function onPlayerReady() {
 <?=
 $this->render('/inc/_wxshare', [
     'title' => '非常剧组-《'.$model->title.'》',
-    'content' => trim($model->content),
+    'content' => trim(Html::encode($model->content)),
     'logo' => $model->logo,
     'shareUrl' => CURRENTURL,
 ])
