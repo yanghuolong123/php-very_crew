@@ -18,10 +18,10 @@ class PlanController extends \app\util\BaseController {
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['update', 'index', 'create', 'delete'],
+                'only' => ['update', 'create', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['update', 'index', 'create', 'delete'],
+                        'actions' => ['update', 'create', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
