@@ -20,7 +20,7 @@ class VideoController extends \app\util\BaseController {
                 'only' => ['create', 'index', 'update', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'index', 'update', 'delete'],
+                        'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
