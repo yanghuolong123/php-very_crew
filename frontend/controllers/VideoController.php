@@ -17,7 +17,7 @@ class VideoController extends \app\util\BaseController {
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'only' => ['create', 'index', 'update', 'delete'],
+                'only' => ['create', 'update', 'delete'],
                 'rules' => [
                     [
                         'actions' => ['create', 'update', 'delete'],
