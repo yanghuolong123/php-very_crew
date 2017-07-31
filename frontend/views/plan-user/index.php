@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'uid',
             [
                 'attribute' => 'uid',
-                'label' => '加入人员',
+                'label' => '计划成员及备选入人员',
                 'format' => 'raw',
                 'value' => function($data) {
                     $user = User::getInfo($data->uid);
