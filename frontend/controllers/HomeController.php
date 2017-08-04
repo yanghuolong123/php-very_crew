@@ -76,6 +76,7 @@ class HomeController extends \app\util\BaseController {
             'ipaddr' => \app\util\HttpUtil::getClientUserIp(),
             'uri' => $accessUrl,
             'datetime' => DATETIME,
+            'time' => TIMESTAMP,
         ];
 
         $collection->insert($recordArr);
