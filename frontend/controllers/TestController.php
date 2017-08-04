@@ -10,16 +10,16 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        var_dump(\app\models\extend\Video::getIdsBySearchName('啊的萨发大赛'));
+        var_dump(Yii::$app->request->url);
+        
+//        /var_dump(\app\models\extend\Video::getIdsBySearchName('啊的萨发大赛'));
         //$cache = Yii::$app->cache;
         //$cache->set('test_1', 'test1111111111', 60);
         //echo $cache->get('test_1').':aaaaa';
         //$cache->flush();
-        
 //        $cache = Yii::$app->cache;
 //        echo $cache->get("getQrCodeImg_76");
 //        //$cache->flush();
-        
         // echo trim('《too bad》', '《..》');
         //echo Yii::$app->request->serverName;
 //        $jssdk = new \app\modules\weixin\models\JSSDK();

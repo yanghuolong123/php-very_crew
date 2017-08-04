@@ -130,6 +130,9 @@ $footerNav = Article::getByGroopKey('footer_nav');
             'shareUrl' => Yii::$app->request->hostInfo,
         ])
         ?>
+        <?=
+        $this->render('/inc/_tracerecord');
+        ?>
         <?php $this->endBody() ?>
         
     </body>

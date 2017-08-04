@@ -30,7 +30,7 @@ class HomeController extends \app\util\BaseController {
         }
 
         $etag = md5($src . $width . $height . $mode);
-        $src = Yii::$app->basePath . '/web' . base64_decode($src);        
+        $src = Yii::$app->basePath . '/web' . base64_decode($src);
         $pathInfo = pathinfo($src);
         $dst = Yii::$app->basePath . '/web/assets/' . $etag . '.' . $pathInfo['extension'];
 
@@ -59,6 +59,28 @@ class HomeController extends \app\util\BaseController {
         header("Content-type: image/jpeg");
 
         echo fread(fopen($dst, "r"), filesize($dst));
+    }
+
+    public function actionTraceRecord($accessUrl = '') {
+        if (!Yii::$app->request->isAjax) {
+            $this->sendRes(false, 'no ajax');
+        }
+        
+        $accessUrl = empty($accessUrl) ? Yii::$app->request->post('accessUrl') : $accessUrl;
+
+        $collection = Yii::$app->mongodb->getCollection('trace_record');
+        $recordArr = [
+            'uid' => !Yii::$app->user->isGuest ? Yii::$app->user->id : 0,
+            'username' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->username : '',
+            'nickname' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->nickname : '',
+            'ipaddr' => \app\util\HttpUtil::getClientUserIp(),
+            'uri' => $accessUrl,
+            'datetime' => DATETIME,
+        ];
+
+        $collection->insert($recordArr);
+
+        $this->sendRes();
     }
 
 }
