@@ -245,4 +245,17 @@ class CommonUtil {
         return $paramArr;
     }
 
+    /**
+     * 判断客户端是否是微信浏览器
+     * 
+     * @return boolean
+     */
+    public static function isWeixin() {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

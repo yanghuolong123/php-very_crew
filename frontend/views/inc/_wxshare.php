@@ -1,4 +1,4 @@
-<?php if(Yii::$app->controller->wxShareAlone == false): ?>
+<?php if(Yii::$app->controller->wxShareAlone == false && app\util\CommonUtil::isWeixin()): ?>
 <?php
 
 Yii::$app->controller->wxShareAlone = true;
