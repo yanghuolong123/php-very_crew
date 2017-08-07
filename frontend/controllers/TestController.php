@@ -11,7 +11,7 @@ class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
         var_dump(Yii::$app->request->url);
-        
+
 //        /var_dump(\app\models\extend\Video::getIdsBySearchName('啊的萨发大赛'));
         //$cache = Yii::$app->cache;
         //$cache->set('test_1', 'test1111111111', 60);
@@ -75,6 +75,41 @@ class TestController extends \app\util\BaseController {
         $cache->delete('jsapi_ticket_wx2705fb0b58b923b6');
 
         echo '已清除掉 微信 access_token, jsap_ticket 缓存!';
+    }
+
+    public function actionWxpay() {
+
+        //模式二
+        /**
+         * 流程：
+         * 1、调用统一下单，取得code_url，生成二维码
+         * 2、用户扫描二维码，进行支付
+         * 3、支付完成之后，微信服务器会通知支付成功
+         * 4、在支付成功通知中需要查单确认是否真正支付成功（见：notify.php）
+         */
+        //require_once Yii::$app->getBasePath().'/modules/weixin/components/wxpay/NativePay.php';
+        $notify = new \app\modules\weixin\components\wxpay\NativePay();
+        $input = new \WxPayUnifiedOrder();
+        $input->SetBody("非常剧组1");
+        $input->SetAttach("非常剧组2");
+        $input->SetOut_trade_no(\WxPayConfig::MCHID . date("YmdHis"));
+        $input->SetTotal_fee("1");
+        $input->SetTime_start(date("YmdHis"));
+        $input->SetTime_expire(date("YmdHis", time() + 600));
+        $input->SetGoods_tag("非常剧组3");
+        $input->SetNotify_url(Url::to(['/weixin/pay/notify'], TRUE));
+        $input->SetTrade_type("NATIVE");
+        $input->SetProduct_id("123456789");
+        $result = $notify->GetPayUrl($input);
+        //var_dump($result);die;
+        $url2 = $result["code_url"];
+        
+        //echo $url2;
+        //echo Url::to(['/weixin/pay/notify'], TRUE);
+
+        return $this->render('wxpay', [
+            'url' => $url2,
+        ]);
     }
 
 }
