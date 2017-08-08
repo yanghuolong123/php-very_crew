@@ -40,8 +40,10 @@ class PayNotifyCallBack extends \WxPayNotify
 		//查询订单，判断订单真实性
 		if(!$this->Queryorder($data["transaction_id"])){
 			$msg = "订单查询失败";
+                        \Log::DEBUG("订单查询失败");
 			return false;
 		}
+                \Log::DEBUG("NotifyProcess 成功！");
 		return true;
 	}
 }
