@@ -10,7 +10,15 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        var_dump(Yii::$app->request->url);
+//        $notify = new \app\modules\weixin\components\wxpay\PayNotifyCallBack();
+//        $logHandler = new \CLogFileHandler(BASE_PATH. "/logs/wxpay_" . date('Y-m-d') . '.log');
+//        $log = \Log::Init($logHandler, 15);
+//        //var_dump($notify->Queryorder('4000142001201708085145553608'));
+//        $dataStr = '{"appid":"wx2705fb0b58b923b6","attach":"\u975e\u5e38\u5267\u7ec42","bank_type":"CFT","cash_fee":"1","fee_type":"CNY","is_subscribe":"Y","mch_id":"1482346342","nonce_str":"jiwl9iqhdv9fydyclnc2yzhbx8x13x1q","openid":"oTbmFxG5r1WRrHdb32O5y2aSAIkc","out_trade_no":"148234634220170808144544","result_code":"SUCCESS","return_code":"SUCCESS","sign":"56B828E29E4B91E1E03C4BB5794131EC","time_end":"20170808144803","total_fee":"1","trade_type":"NATIVE","transaction_id":"4000142001201708085141954829"}';
+//        //var_dump(json_decode($dataStr, TRUE));
+//        var_dump($notify->NotifyCallBack(json_decode($dataStr, TRUE)));
+        
+        //var_dump(Yii::$app->request->url);
 
 //        /var_dump(\app\models\extend\Video::getIdsBySearchName('啊的萨发大赛'));
         //$cache = Yii::$app->cache;
