@@ -445,6 +445,7 @@ class WxPayApi
 	 */
 	public static function replyNotify($xml)
 	{
+            \Log::DEBUG("xml:".$xml);
 		echo $xml;
 	}
 	
