@@ -10,6 +10,8 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
+        \app\models\extend\Order::updatePaySuccess("201708091653322401", "dsdsdssd");
+        
 //        $notify = new \app\modules\weixin\components\wxpay\PayNotifyCallBack();
 //        $logHandler = new \CLogFileHandler(BASE_PATH. "/logs/wxpay_" . date('Y-m-d') . '.log');
 //        $log = \Log::Init($logHandler, 15);
@@ -86,6 +88,10 @@ class TestController extends \app\util\BaseController {
     }
 
     public function actionWxpay() {
+        
+        $order = \app\models\extend\Order::generateOrder(0.01, 12);
+        //var_dump($order);
+        //die;
 
         //模式二
         /**
@@ -100,14 +106,14 @@ class TestController extends \app\util\BaseController {
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("非常剧组1");
         $input->SetAttach("非常剧组2");
-        $input->SetOut_trade_no(\WxPayConfig::MCHID . date("YmdHis"));
-        $input->SetTotal_fee("1");
+        $input->SetOut_trade_no($order->orderno);
+        $input->SetTotal_fee($order->amount*100);
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("非常剧组3");
         $input->SetNotify_url(Url::to(['/weixin/pay/notify'], TRUE));
         $input->SetTrade_type("NATIVE");
-        $input->SetProduct_id("123456789");
+        $input->SetProduct_id($order->product_id);
         $result = $notify->GetPayUrl($input);
         //var_dump($result);die;
         $url2 = $result["code_url"];

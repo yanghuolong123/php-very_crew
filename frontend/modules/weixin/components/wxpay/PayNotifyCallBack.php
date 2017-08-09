@@ -44,6 +44,10 @@ class PayNotifyCallBack extends \WxPayNotify
 			return false;
 		}
                 \Log::DEBUG("NotifyProcess 成功！");
+                
+                // 修改本系统订单状态
+                \app\models\extend\Order::updatePaySuccess($data["out_trade_no"], $data["transaction_id"]);
+                
 		return true;
 	}
 }
