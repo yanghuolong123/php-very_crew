@@ -10,7 +10,7 @@ use app\util\CommonUtil;
 class TestController extends \app\util\BaseController {
 
     public function actionIndex() {
-        \app\models\extend\Order::updatePaySuccess("201708091653322401", "dsdsdssd");
+        //\app\models\extend\Order::updatePaySuccess("201708091653322401", "dsdsdssd");
         
 //        $notify = new \app\modules\weixin\components\wxpay\PayNotifyCallBack();
 //        $logHandler = new \CLogFileHandler(BASE_PATH. "/logs/wxpay_" . date('Y-m-d') . '.log');
