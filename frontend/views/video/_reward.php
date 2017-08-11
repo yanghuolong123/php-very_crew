@@ -83,9 +83,9 @@ $(function(){
             }
             
             $.post("<?= Url::to(['order/ispay']) ?>", {orderId: orderId}, function(e) {
-                //if(e.success == false) {
-                    //return false;
-                //}
+                if(e.success == false) {
+                    return false;
+                }
                 timesRun += 1;
                 $(".btn-reward").attr("data-content","<span class=\"text-center\"><span class=\"reward-success-tip\">打赏成功，金额:</span><span class=\"wx_pay_amount\">￥"+amount+"</span></span>");
                 $(".btn-reward").popover("show");
