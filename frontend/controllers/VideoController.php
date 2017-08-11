@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\extend\VideoUser;
 use app\models\extend\Games;
 use app\models\extend\GameVideo;
+use yii\helpers\Url;
 
 class VideoController extends \app\util\BaseController {
 
@@ -37,7 +38,7 @@ class VideoController extends \app\util\BaseController {
 
     public function actionIndex() {
         $searchModel = new VideoSearch();
-        $searchModel->status = [1,2];
+        $searchModel->status = [1, 2];
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 12;
@@ -57,7 +58,7 @@ class VideoController extends \app\util\BaseController {
         }
         $model->updateCounters(['views' => 1]);
 
-        $otherWorks = Video::find()->where(['uid' => $model->uid])->andWhere(['in', 'status', [1,2]])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
+        $otherWorks = Video::find()->where(['uid' => $model->uid])->andWhere(['in', 'status', [1, 2]])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
         $members = VideoUser::findAll(['video_id' => $id, 'status' => 0]);
 
         return $this->render('view', [
@@ -144,6 +145,38 @@ class VideoController extends \app\util\BaseController {
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionReward() {
+        $videoId = Yii::$app->request->post('videoId');
+        $amount = Yii::$app->request->post('amount');
+        $msg = Yii::$app->request->post('msg');
+        $payType = Yii::$app->request->post('payType');
+
+        $order = \app\models\extend\Order::generateOrder($amount, $videoId, 1, $payType, $msg);
+
+        $notify = new \app\modules\weixin\components\wxpay\NativePay();
+        $input = new \WxPayUnifiedOrder();
+        $input->SetBody("非常剧组1");
+        $input->SetAttach("非常剧组2");
+        $input->SetOut_trade_no($order->orderno);
+        $input->SetTotal_fee($order->amount * 100);
+        $input->SetTime_start(date("YmdHis"));
+        $input->SetTime_expire(date("YmdHis", time() + 600));
+        $input->SetGoods_tag("非常剧组3");
+        $input->SetNotify_url(Url::to(['/weixin/pay/notify'], TRUE));
+        $input->SetTrade_type("NATIVE");
+        $input->SetProduct_id($order->product_id);
+        $result = $notify->GetPayUrl($input);
+        if (!isset($result["code_url"])) {
+            $this->sendRes(false, 'error get pay weixin qrcode');
+        }
+
+        $qrcode = $result["code_url"];
+        $arr['qrcode'] = Url::to(['/weixin/pay/qrcode', 'data'=>urlencode($qrcode)]);
+        $arr['orderId'] = $order->id;
+
+        $this->sendRes(true, '', $arr);
     }
 
 }
