@@ -50,7 +50,7 @@ if (!CommonUtil::isMobile()) {
                 <a href="javascript:video_cai(<?= $model->id ?>);" id="video_cai_<?= $model->id ?>" class="abtn abtn-bury"><?= $model->oppose ?></a>
                 <a href="javascript:;" id="video_reward_<?= $model->id ?>" class="abtn btn-pay" data-toggle="modal" data-target="#myRewardModal">打赏</a>
             </p>
-            
+            <?php if(!empty($rewardList)): ?>
             <p>
             <div class="row">
                 <div class="container">                    
@@ -65,24 +65,20 @@ if (!CommonUtil::isMobile()) {
                       </tr>
                     </thead>
                     <tbody>
+                      <?php foreach ($rewardList as $reward): ?>
                       <tr>                         
-                        <td>缘故神龙</td>
-                        <td>100.00</td>
-                        <td><?= date('Y-m-d H:i:s') ?></td>
-                        <td>dsafsd四大发打算</td>
+                          <td><?= empty($reward->username) ? '******' : $reward->username ?></td>
+                        <td><?= $reward->amount ?></td>
+                        <td><?= date('Y-m-d H:i:s', $reward->pay_time) ?></td>
+                        <td><?= $reward->msg ?></td>
                       </tr>
-                      <tr>                         
-                        <td>缘故神龙</td>
-                        <td>100.00</td>
-                        <td><?= date('Y-m-d H:i:s') ?></td>
-                        <td>dsafsd四大发打算</td>
-                      </tr>
+                      <?php endforeach; ?> 
                     </tbody>
                   </table>
                 </div>                
             </div> 
             </p>
-            
+            <?php endif; ?>
             <p>
             <ul class="list-group">
                 <li class="list-group-item"><label>作品名称：</label> <?= $model->title ?></li>

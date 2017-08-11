@@ -60,11 +60,13 @@ class VideoController extends \app\util\BaseController {
 
         $otherWorks = Video::find()->where(['uid' => $model->uid])->andWhere(['in', 'status', [1, 2]])->andWhere(['<>', 'id', $id])->orderBy('id desc')->limit(8)->all();
         $members = VideoUser::findAll(['video_id' => $id, 'status' => 0]);
+        $rewardList = \app\models\extend\Order::findAll(['product_id'=>$id, 'status'=>0]);
 
         return $this->render('view', [
                     'model' => $model,
                     'otherWorks' => $otherWorks,
                     'members' => $members,
+                    'rewardList' => $rewardList,
         ]);
     }
 
