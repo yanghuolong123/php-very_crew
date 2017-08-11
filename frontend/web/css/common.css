@@ -130,3 +130,17 @@ span.number {
 .title-more a{
     color: #008200;
 }
+
+.btn-pay {
+    background-color: #ea6f5a;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding: 2px 15px;
+}
+
+a.btn-pay:hover,a.btn-pay:active, a.btn-pay:visited {
+    text-decoration: none;
+    color: #008000;
+}

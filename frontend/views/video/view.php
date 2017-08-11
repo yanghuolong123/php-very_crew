@@ -48,6 +48,7 @@ if (!CommonUtil::isMobile()) {
             <p>
                 <a href="javascript:video_ding(<?= $model->id ?>);" id="video_ding_<?= $model->id ?>" class="abtn abtn-digg"><?= $model->support ?></a>
                 <a href="javascript:video_cai(<?= $model->id ?>);" id="video_cai_<?= $model->id ?>" class="abtn abtn-bury"><?= $model->oppose ?></a>
+                <a href="javascript:;" id="video_reward_<?= $model->id ?>" class="abtn btn-pay" data-toggle="modal" data-target="#myRewardModal">打赏</a>
             </p>
             
             <p>
@@ -168,5 +169,11 @@ $this->render('/inc/_wxshare', [
     'content' => str_replace(["\r\n", "\n", "\r"], '',trim(Html::encode($model->content))),
     'logo' => $model->logo,
     'shareUrl' => CURRENTURL,
+])
+?>
+
+<?=
+$this->render('_reward', [
+    'model' => $model,
 ])
 ?>
