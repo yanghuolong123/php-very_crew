@@ -76,7 +76,7 @@ $(function(){
         $("#reward_amount").attr("disabled","disabled");
         
         var timesRun = 0;
-        timer=setInterval(function(){alert(orderId);
+        timer=setInterval(function(){
             if(timesRun > 0){
                 clearInterval(timer);
                 return;
