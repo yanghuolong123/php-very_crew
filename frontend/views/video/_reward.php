@@ -42,11 +42,13 @@ $(function(){
             $(".error_reward").text("");            
         } else {
             $(".error_reward").text("输入金额错误");
+            $(this).popover("destroy");
             return false;
         }
         
         if(amount == 0) {
             $(".error_reward").text("金额必须大于0");
+            $(this).popover("destroy");
             return false;
         }
         
