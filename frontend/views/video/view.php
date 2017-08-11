@@ -52,6 +52,33 @@ if (!CommonUtil::isMobile()) {
             </p>
             
             <p>
+            <div class="row">
+                <div class="container">                    
+                    <table class="table">
+                    <caption>打赏列表</caption>
+                    <thead>
+                      <tr>                         
+                        <th>姓名</th>
+                        <th>金额</th>
+                        <th>时间</th>
+                        <th>留言</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>                         
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>                
+            </div> 
+            </p>
+            
+            <p>
             <ul class="list-group">
                 <li class="list-group-item"><label>作品名称：</label> <?= $model->title ?></li>
                 <li class="list-group-item"><label>浏览量：</label> <?= $model->views ?></li>
