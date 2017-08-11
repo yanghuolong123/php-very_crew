@@ -67,7 +67,7 @@ $(function(){
                     }
                     //alert(e.data);
                     imgUrl = e.data.qrcode;
-                    orderId = e.data.OrderId;
+                    orderId = e.data.orderId;
         	}
         });
         $(this).attr("data-content","<span class=\"text-center\"><img height=\"150px\" width=\"150px\" src='"+imgUrl+"' /></span><br/><span class=\"text-center\">打赏金额:<span class=\"wx_pay_amount\">￥"+amount+"</span></span>");
@@ -76,7 +76,7 @@ $(function(){
         $("#reward_amount").attr("disabled","disabled");
         
         var timesRun = 0;
-        timer=setInterval(function(){
+        timer=setInterval(function(){alert(orderId);
             if(timesRun > 0){
                 clearInterval(timer);
                 return;
