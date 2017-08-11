@@ -14,6 +14,9 @@ use yii\helpers\Url;
     span.wx_pay_amount {
         color: #f5a623;
     }
+    .reward-success-tip {
+        color: red;
+    }
 </style>
 
 <?php $this->beginBlock('video-reward-Js') ?> 
@@ -72,14 +75,23 @@ $(function(){
         $(this).unbind("click");
         $("#reward_amount").attr("disabled","disabled");
         
+        var timesRun = 0;
         timer=setInterval(function(){
+            if(timesRun > 0){
+                clearInterval(timer);
+                return;
+            }
+            
             $.post("<?= Url::to(['order/ispay']) ?>", {orderId: orderId}, function(e) {
-                if(e.success == false) {
-                    return false;
-                }
+                //if(e.success == false) {
+                    //return false;
+                //}
+                timesRun += 1;
+                $(".btn-reward").attr("data-content","<span class=\"text-center\"><span class=\"reward-success-tip\">打赏成功，金额:</span><span class=\"wx_pay_amount\">￥"+amount+"</span></span>");
+                $(".btn-reward").popover("show");
             });
+            
         },3000);
-        //clearInteval(timer);
         
     });
 });
