@@ -12,7 +12,7 @@ use yii\web\NotFoundHttpException;
 use app\models\extend\ForumThread;
 use yii\helpers\Html;
 
-class CommentController extends \app\util\BaseController {
+class CommentController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

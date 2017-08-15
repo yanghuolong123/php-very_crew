@@ -12,7 +12,7 @@ use app\models\extend\Comment;
 use app\models\extend\MetaData;
 use yii\helpers\Html;
 
-class PlanController extends \app\util\BaseController {
+class PlanController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

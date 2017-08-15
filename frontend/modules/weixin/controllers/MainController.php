@@ -8,7 +8,7 @@ use app\util\XmlUtil;
 use app\util\CommonUtil;
 use app\modules\weixin\models\Weixin;
 
-class MainController extends \app\util\BaseController {
+class MainController extends \app\components\ext\BaseController {
 
     public function actionIndex() {
         list($echostr) = CommonUtil::validParams(array('echostr'));

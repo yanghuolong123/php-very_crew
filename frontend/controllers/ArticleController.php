@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\extend\Article;
 use yii\web\NotFoundHttpException;
 
-class ArticleController extends \app\util\BaseController {
+class ArticleController extends \app\components\ext\BaseController {
 
     public function actionView($id) {
         return $this->render('view', [

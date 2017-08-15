@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\util\CommonUtil;
 
-class TestController extends \app\util\BaseController {
+class TestController extends \app\components\ext\BaseController {
 
     public function actionIndex() {
         //\app\models\extend\Order::updatePaySuccess("201708091653322401", "dsdsdssd");

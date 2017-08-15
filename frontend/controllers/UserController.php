@@ -10,7 +10,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\util\HttpUtil;
 
-class UserController extends \app\util\BaseController {
+class UserController extends \app\components\ext\BaseController {
 
     public function actionIndex() {
         $searchModel = new \app\models\search\UserSearch();

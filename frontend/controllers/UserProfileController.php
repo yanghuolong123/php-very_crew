@@ -8,7 +8,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\extend\User;
 
-class UserProfileController extends \app\util\BaseController {
+class UserProfileController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

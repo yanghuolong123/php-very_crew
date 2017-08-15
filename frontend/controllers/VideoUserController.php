@@ -9,7 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\extend\User;
 
-class VideoUserController extends \app\util\BaseController {
+class VideoUserController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

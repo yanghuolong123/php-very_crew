@@ -4,7 +4,7 @@ namespace app\modules\weixin\controllers;
 
 use Yii;
 
-class PayController extends \app\util\BaseController {
+class PayController extends \app\components\ext\BaseController {
 
     public function actionQrcode() {
         error_reporting(E_ERROR);

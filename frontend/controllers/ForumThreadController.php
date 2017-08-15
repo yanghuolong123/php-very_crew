@@ -9,7 +9,7 @@ use yii\web\NotFoundHttpException;
 use app\models\extend\ForumForum;
 use yii\filters\VerbFilter;
 
-class ForumThreadController extends \app\util\BaseController {
+class ForumThreadController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

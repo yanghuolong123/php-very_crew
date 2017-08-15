@@ -13,7 +13,7 @@ use app\util\Constant;
 use app\models\extend\GameApply;
 use app\models\extend\GamePrize;
 
-class GameController extends \app\util\BaseController {
+class GameController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

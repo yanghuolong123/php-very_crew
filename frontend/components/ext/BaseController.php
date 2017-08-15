@@ -1,6 +1,6 @@
 <?php
 
-namespace app\util;
+namespace app\components\ext;
 
 use Yii;
 use yii\web\UploadedFile;

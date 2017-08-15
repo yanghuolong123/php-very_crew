@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 
-class HomeController extends \app\util\BaseController {
+class HomeController extends \app\components\ext\BaseController {
 
     public function actionIndex() {
         $banners = \app\models\extend\Advertisement::getAdByPos('banner');

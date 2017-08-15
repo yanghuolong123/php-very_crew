@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\extend\Distrinct;
 
-class DistrictController extends \app\util\BaseController {
+class DistrictController extends \app\components\ext\BaseController {
     
     public $enableCsrfValidation = false;
 

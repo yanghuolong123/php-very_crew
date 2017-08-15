@@ -6,7 +6,7 @@ use Yii;
 use app\models\extend\ForumForum;
 use app\models\search\ForumThreadSearch;
 
-class ForumForumController extends \app\util\BaseController {
+class ForumForumController extends \app\components\ext\BaseController {
 
     public function actionIndex() {
         $forums = ForumForum::find()->where(['status' => 0])->orderBy('sort asc')->all();

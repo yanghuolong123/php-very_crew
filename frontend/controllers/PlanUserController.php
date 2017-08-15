@@ -8,7 +8,7 @@ use app\models\search\PlanUserSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class PlanUserController extends \app\util\BaseController {
+class PlanUserController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [

@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * UserAlbumController implements the CRUD actions for UserAlbum model.
  */
-class UserAlbumController extends \app\util\BaseController
+class UserAlbumController extends \app\components\ext\BaseController
 {
     /**
      * @inheritdoc

@@ -12,7 +12,7 @@ use app\models\extend\Games;
 use app\models\extend\GameVideo;
 use yii\helpers\Url;
 
-class VideoController extends \app\util\BaseController {
+class VideoController extends \app\components\ext\BaseController {
 
     public function behaviors() {
         return [
