@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 //use yii\web\UploadedFile;
 
-class UploadController extends \app\util\BaseController {
+class UploadController extends \app\components\ext\BaseController {
 
 //    public $enableCsrfValidation = false;
 //

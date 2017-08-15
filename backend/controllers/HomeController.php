@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 
-class HomeController extends \app\util\BaseController {
+class HomeController extends \app\components\ext\BaseController {
 
     public function actionCropImg() {
         $width = Yii::$app->request->get('width');
