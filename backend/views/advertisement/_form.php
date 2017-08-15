@@ -15,7 +15,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
     <?php $form = ActiveForm::begin([
         'id' => 'advertisement-form',
-        'fieldClass' => 'app\util\ExtActiveField',
+        'fieldClass' => 'app\components\ext\ExtActiveField',
     ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>

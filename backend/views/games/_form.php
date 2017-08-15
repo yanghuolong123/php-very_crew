@@ -13,7 +13,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
     <?php $form = ActiveForm::begin([
         'id' => 'games-form',
-        'fieldClass' => 'app\util\ExtActiveField',
+        'fieldClass' => 'app\components\ext\ExtActiveField',
     ]); ?>
 
     <?php // $form->field($model, 'type')->textInput() ?>
