@@ -34,7 +34,7 @@ $planList = \app\models\extend\Plan::getPlanList(Yii::$app->user->id);
     <?php $form = ActiveForm::begin([
         'id' => 'video-form',
         'options' => ['enctype' => 'multipart/form-data','class' => 'form-horizontal', 'onsubmit'=>''],
-        'fieldClass' => 'app\util\ExtActiveField',
+        'fieldClass' => 'app\components\ext\ExtActiveField',
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-2 control-label'],

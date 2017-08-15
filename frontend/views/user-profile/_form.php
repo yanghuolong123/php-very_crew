@@ -30,7 +30,7 @@ $this->registerJsFile('@web/js/upload.js', ['depends' => ['app\assets\AppAsset']
     $form = ActiveForm::begin([
                 'id' => 'userprofile-form',
                 'options' => ['class' => 'form-horizontal'],
-                'fieldClass' => 'app\util\ExtActiveField',
+                'fieldClass' => 'app\components\ext\ExtActiveField',
                 'fieldConfig' => [
                     'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
                     'labelOptions' => ['class' => 'col-lg-2 control-label'],
