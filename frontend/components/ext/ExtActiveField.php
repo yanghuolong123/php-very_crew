@@ -3,6 +3,7 @@
 namespace app\components\ext;
 
 use yii\helpers\Html;
+use app\util\CommonUtil;
 
 class ExtActiveField extends \yii\widgets\ActiveField {
 
