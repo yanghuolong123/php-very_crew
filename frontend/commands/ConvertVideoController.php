@@ -40,7 +40,9 @@ class ConvertVideoController extends Controller {
             //print_r($videoInfo);
             if (isset($videoInfo['duration'])) {
                 $model->updateAttributes(['duration' => strstr($videoInfo['duration'], '.', true)]);
-                unlink($filePath);
+
+                rename($filePath, "/var/work/tmp/".basename($model->file));
+                //unlink($filePath);
             }
         }
     }
