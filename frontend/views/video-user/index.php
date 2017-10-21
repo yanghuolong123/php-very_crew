@@ -88,7 +88,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-sm-1 col-md-offset-10">
             <?= Html::hiddenInput("video_id", $searchModel->video_id) ?>
+            <?php if($dataProvider->count >0): ?>
             <?= Html::submitButton('提交保存', ['class' => 'btn btn-success']) ?>
+            <?php endif; ?>
         </div>
     </div>
     </form>
