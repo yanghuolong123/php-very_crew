@@ -88,5 +88,21 @@ class PlanUserController extends \app\components\ext\BaseController {
 
         return $this->redirect(['plan/my', 'plan_id' => $model->plan_id]);
     }
+    
+    public function actionBatchUpdate() {
+        $planUsers = $_POST['planUser'];
+        $planId = $_POST['plan_id'];
+        if (!is_array($planUsers)) {
+            throw new NotFoundHttpException('请求错误!');
+        }
+        foreach ($planUsers as $key => $role) {
+            $model = PlanUser::findOne($key);
+            $model->role_name = $role['role_name'];
+            $model->instruction = $role['instruction'];
+            $model->save();
+        }
+
+        return $this->redirect(['plan/view', 'id' => $planId]);
+    }
 
 }

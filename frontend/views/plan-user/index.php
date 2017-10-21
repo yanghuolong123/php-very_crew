@@ -6,6 +6,7 @@ use app\models\extend\User;
 use app\util\CommonUtil;
 use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
+use yii\helpers\Url;
 
  
 $this->title = '计划成员管理';
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php // Html::a('Create Plan User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <form method="post" action="<?= Url::to(['batch-update'])?> ">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
@@ -60,16 +62,20 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => '角色',
                 'attribute' => 'role_name',
-//                'format' => 'raw',
-//                'value' => function($data) {
-//                    return MetaData::getVal($data->role);
-//                },
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::textInput('planUser['.$data->id.'][role_name]', $data->role_name);//MetaData::getVal($data->role);
+                },
             ],
             // 'status',
             [
                 'label' => '备注',
                 'attribute' => 'instruction',
                 'options' => ['style'=>'width:40%'],
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::textarea('planUser['.$data->id.'][instruction]', $data->instruction, ['rows'=>5, 'cols'=>35]);//MetaData::getVal($data->role);
+                },
             ],
             //'instruction',
             // 'createtime:datetime',
@@ -81,4 +87,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
+    <div class="row">
+        <div class="col-sm-1 col-md-offset-10">
+            <?= Html::hiddenInput("plan_id", $searchModel->plan_id) ?>
+            <?php if($dataProvider->count >0): ?>
+            <?= Html::submitButton('提交保存', ['class' => 'btn btn-success']) ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    </form>
 </div>
