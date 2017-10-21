@@ -18,7 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php // Html::a('发布我的计划', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <h4>我发布的计划</h4>
-    <div class="table-responsive">
     <?= GridView::widget([
         //'showHeader' => false,
         'summary' => '',
@@ -28,21 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
             //['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-//            [
-//                'attribute'=>'id',
-//                'options' => ['style'=>'width:2%;'],
-//            ],
+            [
+                'attribute'=>'id',
+                'options' => ['style'=>'width:2%;'],
+            ],
             //'uid',
             [
                 'attribute' => 'title',
                 'label' => '名称',
                 'format' => 'raw',
-                'options' => ['style'=>'width:150px;'],
+                'options' => ['style'=>'width:15%;'],
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
-            ],
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;min-width:250px;'],
             ],
             //'title',
             //'content:ntext',
@@ -59,10 +54,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label'=>'地点',
-                'options' => ['style'=>'width:20%;min-width:100px;'],
+                'options' => ['style'=>'width:20%;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
             ],
-            
+            [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;'],
+            ],
             //'content:ntext',
             // 'province',
             // 'city',
@@ -78,9 +76,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    </div>
+    
     <h4>我加入的计划</h4>
-    <div class="table-responsive">
     <?= GridView::widget([
         //'showHeader' => false,
         'summary' => '',
@@ -89,21 +86,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
 
-//            [
-//                'attribute'=>'id',
-//                'options' => ['style'=>'width:2%;'],
-//            ], 
+            [
+                'attribute'=>'id',
+                'options' => ['style'=>'width:2%;'],
+            ], 
             [
                 'attribute' => 'title',
                 'label' => '名称',
                 'format' => 'raw',
-                'options' => ['style'=>'width:350px;'],
+                'options' => ['style'=>'width:15%;'],
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ], 
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;min-width:250px;'],
-            ],
             [
                 'attribute' => 'type',
                 'label' => '类型',
@@ -117,10 +110,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label'=>'地点',
-                'options' => ['style'=>'width:20%;min-width:100px;'],
+                'options' => ['style'=>'width:20%;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
             ],
-            
+            [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;'],
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {remove}',
@@ -141,5 +137,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-    </div>
 </div>
