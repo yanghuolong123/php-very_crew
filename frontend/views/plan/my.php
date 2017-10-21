@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php // Html::a('发布我的计划', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <h4>我发布的计划</h4>
+    <div class="table-responsive">
     <?= GridView::widget([
         //'showHeader' => false,
         'summary' => '',
@@ -137,4 +138,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
+    </div>
 </div>
