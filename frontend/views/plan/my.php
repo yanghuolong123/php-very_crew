@@ -40,6 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['style'=>'width:15%;'],
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ],
+            [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;min-width:250px;'],
+            ],
             //'title',
             //'content:ntext',
             [
@@ -55,13 +59,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label'=>'地点',
-                'options' => ['style'=>'width:20%;'],
+                'options' => ['style'=>'width:20%;min-width:100px;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
             ],
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;'],
-            ],
+            
             //'content:ntext',
             // 'province',
             // 'city',
@@ -100,6 +101,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ], 
             [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;min-width:250px;'],
+            ],
+            [
                 'attribute' => 'type',
                 'label' => '类型',
                 'options' => ['style'=>'width:5%;'],
@@ -112,13 +117,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label'=>'地点',
-                'options' => ['style'=>'width:20%;'],
+                'options' => ['style'=>'width:20%;min-width:100px;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
             ],
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;'],
-            ],
+            
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {remove}',
