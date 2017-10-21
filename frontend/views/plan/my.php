@@ -28,10 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            [
-                'attribute'=>'id',
-                'options' => ['style'=>'width:2%;'],
-            ],
+//            [
+//                'attribute'=>'id',
+//                'options' => ['style'=>'width:2%;'],
+//            ],
             //'uid',
             [
                 'attribute' => 'title',
@@ -89,10 +89,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
 
-            [
-                'attribute'=>'id',
-                'options' => ['style'=>'width:2%;'],
-            ], 
+//            [
+//                'attribute'=>'id',
+//                'options' => ['style'=>'width:2%;'],
+//            ], 
             [
                 'attribute' => 'title',
                 'label' => '名称',
