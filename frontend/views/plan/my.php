@@ -40,14 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ],
             [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;'],
+            ],
+            [
                 'label'=>'地点',
                 'options' => ['style'=>'width:20%;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
             ],
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;'],
-            ],
+            
             //'title',
             //'content:ntext',
             [
@@ -99,14 +100,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ], 
             [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;'],
+            ],
+            [
                 'label'=>'地点',
                 'options' => ['style'=>'width:20%;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
             ],
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;'],
-            ],
+            
             [
                 'attribute' => 'type',
                 'label' => '类型',
