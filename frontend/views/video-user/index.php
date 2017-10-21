@@ -6,6 +6,7 @@ use app\models\extend\User;
 use app\util\CommonUtil;
 use app\models\extend\MetaData;
 use app\models\extend\Distrinct;
+use yii\helpers\Url;
 
 $this->title = '关联作品成员';
 $this->params['breadcrumbs'][] = ['label' => '作品查看', 'url' => ['video/view', 'id' => $searchModel->video_id]];
@@ -19,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php  echo $this->render('_search_user', ['model' => $searchModel]); ?>
 
     <h3>作品成员列表</h3>
+    <form method="post" action="<?= Url::to(['batch-update'])?> ">
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
@@ -56,10 +58,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => '角色',
                 'attribute' => 'role_name',
-//                'format' => 'raw',
-//                'value' => function($data) {
-//                    return MetaData::getVal($data->role);
-//                },
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::textInput('videoUser['.$data->id.'][role_name]', $data->role_name);//MetaData::getVal($data->role);
+                },
             ],
             //'video_id',
             //'role',
@@ -69,6 +71,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '备注',
                 'attribute' => 'instruction',
                 'options' => ['style'=>'width:40%;'],
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::textarea('videoUser['.$data->id.'][instruction]', $data->instruction, ['rows'=>5, 'cols'=>35]);//MetaData::getVal($data->role);
+                },
             ],   
             //'instruction',
             // 'createtime:datetime',
@@ -79,4 +85,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
     ?>
+    <div class="row">
+        <div class="col-sm-1 col-md-offset-10">
+            <?= Html::hiddenInput("video_id", $searchModel->video_id) ?>
+            <?= Html::submitButton('提交保存', ['class' => 'btn btn-success']) ?>
+        </div>
+    </div>
+    </form>
 </div>
