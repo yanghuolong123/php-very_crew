@@ -39,6 +39,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['style'=>'width:15%;'],
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ],
+            [
+                'label'=>'地点',
+                'options' => ['style'=>'width:20%;'],
+                'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
+            ],
+            [
+                'attribute'=>'content',
+                'options' => ['style'=>'width:35%;'],
+            ],
             //'title',
             //'content:ntext',
             [
@@ -49,18 +58,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'tag',
-                'options' => ['style'=>'width:13%;'],
+                'options' => ['style'=>'width:15%;'],
                 'value' => function($data){ return implode(', ',MetaData::getArrVal(explode(',', trim($data->tag))));},
             ],
-            [
-                'label'=>'地点',
-                'options' => ['style'=>'width:20%;'],
-                'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
-            ],
-            [
-                'attribute'=>'content',
-                'options' => ['style'=>'width:35%;'],
-            ],
+            
             //'content:ntext',
             // 'province',
             // 'city',
@@ -98,17 +99,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
             ], 
             [
-                'attribute' => 'type',
-                'label' => '类型',
-                'options' => ['style'=>'width:5%;'],
-                'value' => function($data){ return MetaData::getVal($data->type);},
-            ],
-            [
-                'attribute' => 'tag',
-                'options' => ['style'=>'width:13%;'],
-                'value' => function($data){ return implode(', ',MetaData::getArrVal(explode(',', trim($data->tag))));},
-            ],
-            [
                 'label'=>'地点',
                 'options' => ['style'=>'width:20%;'],
                 'value' => function($data){ return implode(' ',Distrinct::getArrDistrict([$data->province, $data->city, $data->county])).' '.$data->address;},
@@ -117,6 +107,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'content',
                 'options' => ['style'=>'width:35%;'],
             ],
+            [
+                'attribute' => 'type',
+                'label' => '类型',
+                'options' => ['style'=>'width:5%;'],
+                'value' => function($data){ return MetaData::getVal($data->type);},
+            ],
+            [
+                'attribute' => 'tag',
+                'options' => ['style'=>'width:15%;'],
+                'value' => function($data){ return implode(', ',MetaData::getArrVal(explode(',', trim($data->tag))));},
+            ],
+            
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {remove}',
