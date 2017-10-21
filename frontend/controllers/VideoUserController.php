@@ -40,7 +40,7 @@ class VideoUserController extends \app\components\ext\BaseController {
         ]);
     }
 
-    public function actionCreate() {        
+    public function actionCreate() {
         $uid = Yii::$app->request->get('uid');
         $video_id = Yii::$app->request->get('video_id');
         if (empty($uid)) {
@@ -104,20 +104,20 @@ class VideoUserController extends \app\components\ext\BaseController {
                     'video_id' => $video_id,
         ]);
     }
-    
+
     public function actionBatchUpdate() {
         $videoUsers = $_POST['videoUser'];
         $videoId = $_POST['video_id'];
-        if(!is_array($videoUsers)) {
+        if (!is_array($videoUsers)) {
             throw new NotFoundHttpException('请求错误!');
         }
-        foreach ($videoUsers as $key=>$role) {
+        foreach ($videoUsers as $key => $role) {
             $model = VideoUser::findOne($key);
             $model->role_name = $role['role_name'];
             $model->instruction = $role['instruction'];
             $model->save();
         }
-        
+
         return $this->redirect(['video/view', 'id' => $videoId]);
     }
 
