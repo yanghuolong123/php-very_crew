@@ -98,6 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'options' => ['style'=>'width:15%;'],
                 //'value' => function($data){ return Html::a($data->title, ['view','id'=>$data->id]);},
+                'value' => function($data){ return "<div style='widht:250px;height:150px;'>".$data->title."</div>";},
             ], 
             [
                 'attribute'=>'content',
