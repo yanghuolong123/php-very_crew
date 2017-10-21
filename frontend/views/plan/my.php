@@ -77,8 +77,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    
+    </div>
     <h4>我加入的计划</h4>
+    <div class="table-responsive">
     <?= GridView::widget([
         //'showHeader' => false,
         'summary' => '',
