@@ -1,0 +1,126 @@
+{
+  "name": "videojs-playlist",
+  "version": "4.0.1",
+  "description": "Playlist plugin for Video.js",
+  "main": "dist/videojs-playlist.cjs.js",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "npm-run-all -p build:*",
+    "build:js": "npm-run-all build:js:rollup-modules build:js:rollup-umd build:js:bannerize build:js:uglify",
+    "build:js:bannerize": "bannerize dist/videojs-playlist.js --banner=scripts/banner.ejs",
+    "build:js:rollup-modules": "rollup -c scripts/modules.rollup.config.js",
+    "build:js:rollup-umd": "rollup -c scripts/umd.rollup.config.js",
+    "build:js:uglify": "uglifyjs dist/videojs-playlist.js --comments --mangle --compress --ie8 -o dist/videojs-playlist.min.js",
+    "build:test": "rollup -c scripts/test.rollup.config.js",
+    "clean": "rimraf dist test/dist",
+    "postclean": "mkdirp dist test/dist",
+    "docs": "npm-run-all docs:*",
+    "docs:api": "jsdoc src -r -c jsdoc.json -d docs/api",
+    "docs:toc": "doctoc README.md",
+    "lint": "vjsstandard",
+    "prestart": "npm run build",
+    "start": "npm-run-all -p start:server watch",
+    "start:server": "static -a 0.0.0.0 -p 9999 -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}' .",
+    "pretest": "npm-run-all lint build",
+    "test": "karma start test/karma.conf.js",
+    "preversion": "npm test",
+    "version": "node scripts/version.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:js-modules": "rollup -c scripts/modules.rollup.config.js -w",
+    "watch:js-umd": "rollup -c scripts/umd.rollup.config.js -w",
+    "watch:test": "rollup -c scripts/test.rollup.config.js -w",
+    "prepublish": "npm run build",
+    "prepush": "npm run lint",
+    "precommit": "npm run docs && git add README.md"
+  },
+  "keywords": [
+    "playlist",
+    "videojs",
+    "videojs-plugin"
+  ],
+  "author": {
+    "name": "Brightcove, Inc."
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brightcove/videojs-playlist"
+  },
+  "files": [
+    "CONTRIBUTING.md",
+    "dist/",
+    "docs/",
+    "index.html",
+    "scripts/",
+    "src/",
+    "test/"
+  ],
+  "dependencies": {
+    "global": "^4.3.2",
+    "video.js": "^5.19.2 || ^6.2.8"
+  },
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es3": "^1.0.1",
+    "bannerize": "^1.0.2",
+    "conventional-changelog-cli": "^1.3.1",
+    "conventional-changelog-videojs": "^3.0.0",
+    "doctoc": "^1.3.0",
+    "es5-shim": "^4.5.9",
+    "husky": "^0.13.3",
+    "jsdoc": "^3.4.3",
+    "karma": "~1.3.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-detect-browsers": "^2.2.5",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-qunit": "^1.2.1",
+    "karma-safari-launcher": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "node-static": "^0.7.9",
+    "node.extend": "^1.1.5",
+    "npm-run-all": "^4.0.2",
+    "qunitjs": "^1.21.0",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-json": "^2.1.1",
+    "rollup-plugin-multi-entry": "^2.0.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-watch": "^3.2.2",
+    "semver": "^5.3.0",
+    "sinon": "^2.2.0",
+    "uglify-js": "^3.0.7",
+    "videojs-standard": "^6.0.0"
+  },
+  "generator-videojs-plugin": {
+    "version": "5.0.0-7"
+  },
+  "engines": {
+    "node": ">=4.4.0"
+  },
+  "module": "dist/videojs-playlist.es.js",
+  "vjsstandard": {
+    "ignore": [
+      "dist",
+      "docs",
+      "scripts",
+      "test/dist",
+      "test/karma.conf.js"
+    ]
+  },
+  "readme": "[![Build Status](https://travis-ci.org/brightcove/videojs-playlist.svg?branch=master)](https://travis-ci.org/brightcove/videojs-playlist)\n\n# Playlist Plugin for video.js\n\n<!-- START doctoc generated TOC please keep comment here to allow auto update -->\n<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->\n\n\n- [Installation](#installation)\n- [Inclusion](#inclusion)\n- [Basic Usage](#basic-usage)\n- [License](#license)\n\n<!-- END doctoc generated TOC please keep comment here to allow auto update -->\n\n## Installation\n\nInstall videojs-playlist via npm (preferred):\n\n```sh\n$ npm install videojs-playlist\n```\n\nOr Bower:\n\n```sh\n$ bower install videojs-playlist\n```\n\n## Inclusion\n\nInclude videojs-playlist on your website using the tool(s) of your choice.\n\nThe simplest method of inclusion is a `<script>` tag after the video.js `<script>` tag:\n\n```html\n<script src=\"path/to/video.js/dist/video.js\"></script>\n<script src=\"path/to/videojs-playlist/dist/videojs-playlist.js\"></script>\n```\n\nWhen installed via npm, videojs-playlist supports Browserify-based workflows out of the box.\n\n## Basic Usage\n\nFor full details on how to use the playlist plugin can be found in [the API documentation](docs/api.md).\n\n```js\nvar player = videojs('video');\n\nplayer.playlist([{\n  sources: [{\n    src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',\n    type: 'video/mp4'\n  }],\n  poster: 'http://media.w3.org/2010/05/sintel/poster.png'\n}, {\n  sources: [{\n    src: 'http://media.w3.org/2010/05/bunny/trailer.mp4',\n    type: 'video/mp4'\n  }],\n  poster: 'http://media.w3.org/2010/05/bunny/poster.png'\n}, {\n  sources: [{\n    src: 'http://vjs.zencdn.net/v/oceans.mp4',\n    type: 'video/mp4'\n  }],\n  poster: 'http://www.videojs.com/img/poster.jpg'\n}, {\n  sources: [{\n    src: 'http://media.w3.org/2010/05/bunny/movie.mp4',\n    type: 'video/mp4'\n  }],\n  poster: 'http://media.w3.org/2010/05/bunny/poster.png'\n}, {\n  sources: [{\n    src: 'http://media.w3.org/2010/05/video/movie_300.mp4',\n    type: 'video/mp4'\n  }],\n  poster: 'http://media.w3.org/2010/05/video/poster.png'\n}]);\n\n// Play through the playlist automatically.\nplayer.playlist.autoadvance(0);\n```\n\n## License\n\nApache-2.0. Copyright (c) Brightcove, Inc.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/brightcove/videojs-playlist/issues"
+  },
+  "_id": "videojs-playlist@4.0.1",
+  "dist": {
+    "shasum": "4e937465f4756ef5af64db30ba82b98cdd1abe28"
+  },
+  "_from": "videojs-playlist@",
+  "_resolved": "https://registry.npmjs.org/videojs-playlist/-/videojs-playlist-4.0.1.tgz"
+}
