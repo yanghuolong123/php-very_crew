@@ -16,7 +16,6 @@ $this->registerCssFile('@web/plugin/video.js/video-js.min.css', ['depends' => ['
 $this->registerJsFile('@web/plugin/video.js/ie8/videojs-ie8.min.js', ['depends' => ['app\assets\AppAsset']]);
 //$this->registerJsFile('http://vjs.zencdn.net/5.4.6/video.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerJsFile('@web/plugin/video.js/video.min.js', ['depends' => ['app\assets\AppAsset']]);
-$this->registerJsFile('@web/plugin/videojs-playlist/dist/videojs-playlist.min.js', ['depends' => ['app\assets\AppAsset']]);
 $this->registerCss('#payer {
     max-width: 1130px;
     width:100%;     
@@ -170,26 +169,14 @@ function video_cai(id) {
     });
 }
 
-var options = {"autoplay": false,"loop": false,"width": 640,"height": 200};
-var list = [{
-  sources: [{
-    src: '/uploads/films/film-1.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '<?= CommonUtil::cropImgLink($model->logo,600,350); ?>'
-},{
-  sources: [{
-    src: '<?= $model->file; ?>',
-    type: 'video/mp4'
-  }],
-  poster: '<?= CommonUtil::cropImgLink($model->logo,600,350); ?>'
-}];
+var options = {"autoplay": false,"loop": true,"width": 640,"height": 200};
 
 var player = videojs('payer', options, function onPlayerReady() {
   //videojs.log('Your player is ready!');
 
   // In this context, `this` is the player that was created by Video.js.
   //this.play();
+
    
   <?php if( !isset($_GET['from']) && $model->status == 2 && !in_array(Yii::$app->user->id, ArrayHelper::map(ArrayHelper::toArray($members), "id", "uid"))): ?>
   // How about an event listener?
@@ -197,14 +184,8 @@ var player = videojs('payer', options, function onPlayerReady() {
     this.pause();
     greeting({title:'消息提示',msg: '此作品为参赛作品，在大赛开始评比前只有此作品成员可以观看。'});
     //videojs.log('Awww...over so soon?!');
-  });  
-  <?php endif; ?>
-  
-  this.playlist(list);
-  this.on('ended', function(){
-     this.playlist.currentItem(1);
   });
-  
+  <?php endif; ?>
 });
 
 <?php $this->endBlock() ?> 
