@@ -11,6 +11,7 @@ use Yii;
  * @property string $name
  * @property string $position
  * @property string $url
+ * @property string $link
  * @property integer $sort
  * @property integer $status
  * @property integer $createtime
@@ -31,9 +32,10 @@ class TblAdvertisement extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'position', 'url', 'sort', 'status', 'createtime'], 'required'],
+            [['name', 'position', 'url', 'link', 'sort', 'status', 'createtime'], 'required'],
             [['sort', 'status', 'createtime'], 'integer'],
             [['name', 'position', 'url'], 'string', 'max' => 128],
+            [['link'], 'string', 'max' => 255],
         ];
     }
 
@@ -47,6 +49,7 @@ class TblAdvertisement extends \yii\db\ActiveRecord
             'name' => '名称',
             'position' => '位置',
             'url' => '地址',
+            'link' => '链接',
             'sort' => '排序',
             'status' => '状态',
             'createtime' => '创建时间',
