@@ -21,7 +21,11 @@ $this->title = '非常剧组';
     <div class="carousel-inner" role="listbox">
         <?php foreach ($banners as $key => $banner): ?>
             <div class="item <?php if ($key == 0): ?>active<?php endif; ?>">
+                <?php if(empty($banner['link'])): ?>
                 <img src="<?= $banner['url'] ?>" alt="<?= $banner['name'] ?>">
+                <?php else: ?>
+                <a href="<?= $banner['link'] ?>"><img src="<?= $banner['url'] ?>" alt="<?= $banner['name'] ?>"></a>
+                <?php endif;?>
                 <div class="carousel-caption">
 
                 </div>
