@@ -222,9 +222,11 @@ function getStyle(box,top,left,index){
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-	<section id="title">
+        
+	<section id="title"> 
+            <a href="/">返回</a>
 		<h2>“非常剧组”大学生小微电影大赛——“学生的名义”，由“你”来传达~</h2>
+                
 	</section>
 
 	<div id="wrap">
