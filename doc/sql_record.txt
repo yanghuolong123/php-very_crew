@@ -59,3 +59,5 @@ ALTER TABLE `tbl_user_album` CHANGE `desc` `instruction` VARCHAR( 255 ) CHARACTE
 /* done */
 ALTER TABLE `tbl_game_apply` ADD `star_num` INT NOT NULL COMMENT '主演人数' AFTER `join_num` ;
 
+ALTER TABLE  `tbl_advertisement` ADD  `link` VARCHAR( 255 ) NOT NULL COMMENT  '链接' AFTER  `url` ;
+
