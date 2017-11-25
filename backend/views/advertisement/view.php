@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'position',
             'url:url',
+            'link:url',
             'sort',
             'status',
             'createtime:datetime',

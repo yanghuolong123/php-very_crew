@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'url:url',
+            'link:url',
             'sort',
             [
                 'attribute' => 'status',

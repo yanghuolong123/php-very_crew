@@ -23,6 +23,8 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
     <?= $form->field($model, 'position')->dropDownList(Advertisement::getPostionArr()) ?>
 
     <?= $form->field($model, 'url')->imgInput() ?>
+    
+    <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'sort')->textInput(['value'=>0]) ?>
 
