@@ -173,8 +173,8 @@ function video_cai(id) {
 var options = {"autoplay": false,"loop": false,"width": 640,"height": 200};
 var list = [{
   sources: [{
-    src: '/uploads/films/film-1.mp4',
-    //src: '<?= $model->file; ?>',
+    //src: '/uploads/films/film-1.mp4',
+    src: '<?= $model->file; ?>',
     type: 'video/mp4'
   }],
   poster: '<?= CommonUtil::cropImgLink($model->logo,600,350); ?>'
