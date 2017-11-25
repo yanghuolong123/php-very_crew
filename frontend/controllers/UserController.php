@@ -17,7 +17,7 @@ class UserController extends \app\components\ext\BaseController {
         $searchModel->status = 1;
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['id' => SORT_DESC]];
+        $dataProvider->sort = ['defaultOrder' => ['level'=>SORT_DESC, 'id' => SORT_DESC]];
         $dataProvider->pagination->pageSize = 30;
 
         return $this->render('index', [

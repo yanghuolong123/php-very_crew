@@ -10,7 +10,7 @@ class HomeController extends \app\components\ext\BaseController {
         $banners = \app\models\extend\Advertisement::getAdByPos('banner');
         $recomVideos = \app\models\extend\Video::find()->where(['status' => 1])->orderBy('createtime desc')->limit(8)->all();
         $latestPlans = \app\models\extend\Plan::find()->where(['status' => 1])->orderBy('createtime desc')->limit(6)->all();
-        $recomUsers = \app\models\extend\User::find()->where(['status' => 1])->andWhere(['<>', 'avatar', ''])->andFilterWhere(['<>', 'avatar', '/image/default_avatar.jpg'])->orderBy('createtime desc')->limit(12)->all();
+        $recomUsers = \app\models\extend\User::find()->where(['status' => 1])->andWhere(['>=','level',0])->andWhere(['<>', 'avatar', ''])->andFilterWhere(['<>', 'avatar', '/image/default_avatar.jpg'])->orderBy('createtime desc')->limit(12)->all();
 
         return $this->render('index', [
                     'banners' => $banners,

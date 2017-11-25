@@ -62,3 +62,5 @@ ALTER TABLE `tbl_game_apply` ADD `star_num` INT NOT NULL COMMENT '主演人数' 
 /* done */
 ALTER TABLE  `tbl_advertisement` ADD  `link` VARCHAR( 255 ) NOT NULL COMMENT  '链接' AFTER  `url` ;
 
+ALTER TABLE  `tbl_user` ADD  `level` TINYINT( 1 ) NOT NULL COMMENT  '等级：0注册用户，-1导入用户' AFTER  `thumb_avatar` ;
+
