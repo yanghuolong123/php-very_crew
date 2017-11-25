@@ -9,6 +9,7 @@ class Advertisement extends \app\models\native\TblAdvertisement {
             [['name', 'position', 'url', 'sort', 'status'], 'required'],
             [['sort', 'status', 'createtime'], 'integer'],
             [['name', 'position', 'url'], 'string', 'max' => 128],
+            [['link'], 'string', 'max' => 255],
         ];
     }
 
