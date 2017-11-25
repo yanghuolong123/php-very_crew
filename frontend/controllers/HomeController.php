@@ -5,6 +5,16 @@ namespace app\controllers;
 use Yii;
 
 class HomeController extends \app\components\ext\BaseController {
+    
+    public function actions() {
+        return [
+            'wall' => [
+                'class' => 'yii\web\ViewAction',
+                'viewPrefix' => 'wall',
+                'layout' => false,
+            ],
+        ];
+    }
 
     public function actionIndex() {
         $banners = \app\models\extend\Advertisement::getAdByPos('banner');
