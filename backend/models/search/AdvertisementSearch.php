@@ -19,7 +19,7 @@ class AdvertisementSearch extends Advertisement
     {
         return [
             [['id', 'sort', 'status', 'createtime'], 'integer'],
-            [['name', 'position', 'url'], 'safe'],
+            [['name', 'position', 'url', 'link'], 'safe'],
         ];
     }
 
