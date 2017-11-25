@@ -15,6 +15,7 @@ use Yii;
  * @property string $email
  * @property string $avatar
  * @property string $thumb_avatar
+ * @property integer $level
  * @property integer $status
  * @property integer $createtime
  */
@@ -34,8 +35,8 @@ class TblUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'nickname', 'mobile', 'email', 'avatar', 'thumb_avatar', 'status', 'createtime'], 'required'],
-            [['status', 'createtime'], 'integer'],
+            [['username', 'password', 'nickname', 'mobile', 'email', 'avatar', 'thumb_avatar', 'level', 'status', 'createtime'], 'required'],
+            [['level', 'status', 'createtime'], 'integer'],
             [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
             [['password', 'email'], 'string', 'max' => 65],
             [['avatar', 'thumb_avatar'], 'string', 'max' => 255],
@@ -56,6 +57,7 @@ class TblUser extends \yii\db\ActiveRecord
             'email' => '邮箱',
             'avatar' => '头像',
             'thumb_avatar' => '缩略图',
+            'level' => '等级：0注册用户，-1导入用户',
             'status' => '状态',
             'createtime' => '注册时间',
         ];
