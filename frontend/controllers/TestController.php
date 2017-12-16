@@ -12,10 +12,24 @@ class TestController extends \app\components\ext\BaseController {
 
     public function actionQrcodeLogin() {
         $model = new Weixin();
-        $qrImg = $model->getQrCodeImg(time(), 1800, false, "login_");
+        $prefix = 'login';
+        $scene_id = time();
+        $qrImg = $model->getQrCodeImg($scene_id, 1800, false, $prefix);
+        
         return $this->render("qrcodeLogin", [
             'qrImg'=>$qrImg,
+            'key' => $prefix.$scene_id,
         ]);
+    }
+    
+    public function actionQrlogin($key) {
+        $cache = Yii::$app->cache;
+        $data = $cache->get($key);
+        if(empty($data)) {
+            $this->sendRes(false, '');
+        }
+        
+        $this->sendRes(true, "", $data);
     }
 
     public function actionQimg() {

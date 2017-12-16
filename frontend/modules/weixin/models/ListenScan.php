@@ -13,21 +13,29 @@ class ListenScan extends Listen {
     public function listen() {
         if (($this->params['MsgType'] == 'event') && ($this->params['Event'] == 'SCAN')) {
             // 参赛作品投票
-            $videoId = $this->params['EventKey'];
+            $eventKey = $this->params['EventKey'];
 
-            $msg = GameVideo::gameVote($videoId, $this->params['FromUserName']);
+            if (is_numeric($eventKey)) {
+                $msg = GameVideo::gameVote($eventKey, $this->params['FromUserName']);
 
-            if (empty($msg)) {
-                return;
+                if (empty($msg)) {
+                    return;
+                }
+
+                $msgArr['ToUserName'] = $this->params['FromUserName'];
+                $msgArr['FromUserName'] = $this->params['ToUserName'];
+                $msgArr['CreateTime'] = TIMESTAMP;
+                $msgArr['MsgType'] = 'text';
+                $msgArr['Content'] = $msg;
+
+                $this->sendMsg($msgArr);
+            } elseif (strpos($eventKey, 'login_') !== false) {
+                $model = new \app\modules\weixin\models\Weixin();
+                $data = $model->getWeixUserinfo($this->params['FromUserName']);
+
+                $cache = Yii::$app->cache;
+                $cache->set($this->params['EventKey'], $data, 18000);
             }
-
-            $msgArr['ToUserName'] = $this->params['FromUserName'];
-            $msgArr['FromUserName'] = $this->params['ToUserName'];
-            $msgArr['CreateTime'] = TIMESTAMP;
-            $msgArr['MsgType'] = 'text';
-            $msgArr['Content'] = $msg;
-
-            $this->sendMsg($msgArr);
         }
 
         return;
