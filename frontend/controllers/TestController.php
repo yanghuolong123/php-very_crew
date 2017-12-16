@@ -6,13 +6,22 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\util\CommonUtil;
+use app\modules\weixin\models\Weixin;
 
 class TestController extends \app\components\ext\BaseController {
-    
+
+    public function actionQrcodeLogin() {
+        $model = new Weixin();
+        $qrImg = $model->getQrCodeImg(time(), 1800, false, "login_".date("Y-m-d"));
+        return $this->render("qrcodeLogin", [
+            'qrImg'=>$qrImg,
+        ]);
+    }
+
     public function actionQimg() {
         $model = new \app\modules\weixin\models\Weixin();
         //echo $model->getQrCodeImg(68);
-        
+
         $openId = "oTbmFxG5r1WRrHdb32O5y2aSAIkc";
         echo "<pre>";
         var_dump($model->getWeixUserinfo($openId));
@@ -21,7 +30,6 @@ class TestController extends \app\components\ext\BaseController {
 
     public function actionIndex() {
         //\app\models\extend\Order::updatePaySuccess("201708091653322401", "dsdsdssd");
-        
 //        $notify = new \app\modules\weixin\components\wxpay\PayNotifyCallBack();
 //        $logHandler = new \CLogFileHandler(BASE_PATH. "/logs/wxpay_" . date('Y-m-d') . '.log');
 //        $log = \Log::Init($logHandler, 15);
@@ -29,9 +37,7 @@ class TestController extends \app\components\ext\BaseController {
 //        $dataStr = '{"appid":"wx2705fb0b58b923b6","attach":"\u975e\u5e38\u5267\u7ec42","bank_type":"CFT","cash_fee":"1","fee_type":"CNY","is_subscribe":"Y","mch_id":"1482346342","nonce_str":"jiwl9iqhdv9fydyclnc2yzhbx8x13x1q","openid":"oTbmFxG5r1WRrHdb32O5y2aSAIkc","out_trade_no":"148234634220170808144544","result_code":"SUCCESS","return_code":"SUCCESS","sign":"56B828E29E4B91E1E03C4BB5794131EC","time_end":"20170808144803","total_fee":"1","trade_type":"NATIVE","transaction_id":"4000142001201708085141954829"}';
 //        //var_dump(json_decode($dataStr, TRUE));
 //        var_dump($notify->NotifyCallBack(json_decode($dataStr, TRUE)));
-        
         //var_dump(Yii::$app->request->url);
-
 //        /var_dump(\app\models\extend\Video::getIdsBySearchName('啊的萨发大赛'));
         //$cache = Yii::$app->cache;
         //$cache->set('test_1', 'test1111111111', 60);
@@ -98,11 +104,10 @@ class TestController extends \app\components\ext\BaseController {
     }
 
     public function actionWxpay() {
-        
+
         $order = \app\models\extend\Order::generateOrder(0.01, 12);
         //var_dump($order);
         //die;
-
         //模式二
         /**
          * 流程：
@@ -117,7 +122,7 @@ class TestController extends \app\components\ext\BaseController {
         $input->SetBody("非常剧组1");
         $input->SetAttach("非常剧组2");
         $input->SetOut_trade_no($order->orderno);
-        $input->SetTotal_fee($order->amount*100);
+        $input->SetTotal_fee($order->amount * 100);
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("非常剧组3");
@@ -127,12 +132,12 @@ class TestController extends \app\components\ext\BaseController {
         $result = $notify->GetPayUrl($input);
         //var_dump($result);die;
         $url2 = $result["code_url"];
-        
+
         //echo $url2;
         //echo Url::to(['/weixin/pay/notify'], TRUE);
 
         return $this->render('wxpay', [
-            'url' => $url2,
+                    'url' => $url2,
         ]);
     }
 

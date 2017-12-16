@@ -133,14 +133,27 @@ class Weixin {
             return $imgUrl;
         }
 
+        $action_name = '';
+        $action_info = [];
+        if (!$isPermanent && empty($prefix)) {
+            $action_name = 'QR_SCENE';
+            $action_info = ['scene' => ['scene_id' => $scene_id]];
+        } elseif (!$isPermanent && !empty($prefix)) {
+            $action_name = 'QR_STR_SCENE';
+            $action_info = ['scene' => ['scene_str' => $scene_id]];
+        } elseif ($isPermanent && empty($prefix)) {
+            $action_name = 'QR_LIMIT_SCENE';
+            $action_info = ['scene' => ['scene_id' => $scene_id]];
+        } elseif ($isPermanent && !empty($prefix)) {
+            $action_name = 'QR_LIMIT_STR_SCENE';
+            $action_info = ['scene' => ['scene_str' => $scene_id]];
+        }
+
         $url = $this->api_url . '/cgi-bin/qrcode/create?access_token=' . $this->_accessToken;
-        $arr = $isPermanent ? [
-            'action_name' => 'QR_LIMIT_STR_SCENE',
-            'action_info' => array('scene' => array('scene_str' => $prefix . $scene_id)),
-                ] : [
+        $arr = [
             'expire_seconds' => $expire,
-            'action_name' => 'QR_SCENE',
-            'action_info' => array('scene' => array('scene_id' => $scene_id)),
+            'action_name' => $action_name,
+            'action_info' => $action_info,
         ];
         $data = HttpUtil::curl_post($url, json_encode($arr));
         LogUtil::logs('wx', "wx qrcode response code: $data");
