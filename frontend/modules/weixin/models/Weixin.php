@@ -182,13 +182,14 @@ class Weixin {
 
         return json_decode($data, true);
     }
-    
-    public function getWeixUserinfo($openId, $lang="zh_CN") {
-        $url = $this->api_url .'/cgi-bin/user/info?access_token=' . $this->_accessToken."&openid=".$openId."&lang="+$lang;
+
+    public function getWeixUserinfo($openId, $lang = "zh_CN") {
+        $url = $this->api_url . '/cgi-bin/user/info?access_token=' . $this->_accessToken . "&openid=" . $openId . "&lang=" + $lang;
         $data = HttpUtil::curl_get($url);
-        LogUtil::logs('wx', "url: $url");
-        LogUtil::logs('wx', "getWeixUserinfo: $data");
-        
+        LogUtil::logs('wx', "openId:" . $openId);
+        LogUtil::logs('wx', "url:" . $url);
+        LogUtil::logs('wx', "getWeixUserinfo:" . $data);
+
         return json_decode($data, true);
     }
 
