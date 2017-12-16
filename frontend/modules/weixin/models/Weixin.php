@@ -182,5 +182,12 @@ class Weixin {
 
         return json_decode($data, true);
     }
+    
+    public function getWeixUserinfo($openId, $lang="zh_CN") {
+        $url = $this->api_url .'/cgi-bin/menu/create?access_token=' . $this->_accessToken."&openid=".$openId."&lang="+$lang;
+        $data = HttpUtil::curl_get($url);
+        
+        return json_decode($data, true);
+    }
 
 }
