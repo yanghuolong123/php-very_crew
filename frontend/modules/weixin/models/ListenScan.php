@@ -3,6 +3,7 @@
 namespace app\modules\weixin\models;
 
 use app\models\extend\GameVideo;
+use Yii;
 
 class ListenScan extends Listen {
 
