@@ -184,7 +184,7 @@ class Weixin {
     }
 
     public function getWeixUserinfo($openId, $lang = "zh_CN") {
-        $url = $this->api_url . '/cgi-bin/user/info?access_token=' . $this->_accessToken . "&openid=" . $openId . "&lang=" + $lang;
+        $url = $this->api_url . '/cgi-bin/user/info?access_token=' . $this->_accessToken . "&openid=" . $openId . "&lang=" . $lang;
         $data = HttpUtil::curl_get($url);
         LogUtil::logs('wx', "openId:" . $openId);
         LogUtil::logs('wx', "url:" . $url);
