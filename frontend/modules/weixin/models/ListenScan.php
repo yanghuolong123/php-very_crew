@@ -23,6 +23,14 @@ class ListenScan extends Listen {
                 if (empty($msg)) {
                     return;
                 }
+
+                $msgArr['ToUserName'] = $this->params['FromUserName'];
+                $msgArr['FromUserName'] = $this->params['ToUserName'];
+                $msgArr['CreateTime'] = TIMESTAMP;
+                $msgArr['MsgType'] = 'text';
+                $msgArr['Content'] = $msg;
+
+                $this->sendMsg($msgArr);
             } elseif (strpos($eventKey, 'login_') !== false) {
                 $model = new \app\modules\weixin\models\Weixin();
                 $data = $model->getWeixUserinfo($this->params['FromUserName']);
@@ -32,13 +40,13 @@ class ListenScan extends Listen {
                 $cache->set($this->params['EventKey'], $data, 18000);
             }
 
-            $msgArr['ToUserName'] = $this->params['FromUserName'];
-            $msgArr['FromUserName'] = $this->params['ToUserName'];
-            $msgArr['CreateTime'] = TIMESTAMP;
-            $msgArr['MsgType'] = 'text';
-            $msgArr['Content'] = $msg;
-
-            $this->sendMsg($msgArr);
+//            $msgArr['ToUserName'] = $this->params['FromUserName'];
+//            $msgArr['FromUserName'] = $this->params['ToUserName'];
+//            $msgArr['CreateTime'] = TIMESTAMP;
+//            $msgArr['MsgType'] = 'text';
+//            $msgArr['Content'] = $msg;
+//
+//            $this->sendMsg($msgArr);
         }
 
         return;
