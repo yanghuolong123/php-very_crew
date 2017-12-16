@@ -8,6 +8,11 @@ use yii\helpers\Url;
 use app\util\CommonUtil;
 
 class TestController extends \app\components\ext\BaseController {
+    
+    public function actionQimg() {
+        $model = new \app\modules\weixin\models\Weixin();
+        echo $model->getQrCodeImg(date('Y-m-d'));
+    }
 
     public function actionIndex() {
         //\app\models\extend\Order::updatePaySuccess("201708091653322401", "dsdsdssd");
