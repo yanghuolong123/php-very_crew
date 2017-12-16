@@ -1,7 +1,10 @@
 <hr>
 <h2>扫描微信公众号登陆Demo</h2>
 
-<img src="<?= $qrImg ?>" />
+<div id="login_info">
+    <h3 id="nickname"></h3>
+<img id="login_img" src="<?= $qrImg ?>" />
+</div>
 
 
 
@@ -13,8 +16,12 @@ var timer = setInterval(function(){
                 return false;
             }
             
-            alert(e.data.nickname);
             clearInterval(timer);
+            
+            $("#nickname").html(e.data.nickname+", 欢迎你登陆成功！");
+            $("#login_img").attr("src",e.data.headimgurl);
+            //alert(e.data.nickname);
+            
         });
 }, 1000);
 
