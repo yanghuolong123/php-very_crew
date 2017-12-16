@@ -11,7 +11,12 @@ class TestController extends \app\components\ext\BaseController {
     
     public function actionQimg() {
         $model = new \app\modules\weixin\models\Weixin();
-        echo $model->getQrCodeImg(68);
+        //echo $model->getQrCodeImg(68);
+        
+        $openId = "oTbmFxG5r1WRrHdb32O5y2aSAIkc";
+        echo "<pre>";
+        var_dump($model->getWeixUserinfo($openId));
+        echo "</pre>";
     }
 
     public function actionIndex() {
