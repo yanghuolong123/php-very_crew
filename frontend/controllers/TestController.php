@@ -11,7 +11,7 @@ class TestController extends \app\components\ext\BaseController {
     
     public function actionQimg() {
         $model = new \app\modules\weixin\models\Weixin();
-        echo $model->getQrCodeImg(date('Y-m-d'));
+        echo $model->getQrCodeImg(68);
     }
 
     public function actionIndex() {
