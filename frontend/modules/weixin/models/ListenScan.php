@@ -16,27 +16,29 @@ class ListenScan extends Listen {
             // 参赛作品投票
             $eventKey = $this->params['EventKey'];
 
+            $msg = '';
             if (is_numeric($eventKey)) {
                 $msg = GameVideo::gameVote($eventKey, $this->params['FromUserName']);
 
                 if (empty($msg)) {
                     return;
                 }
-
-                $msgArr['ToUserName'] = $this->params['FromUserName'];
-                $msgArr['FromUserName'] = $this->params['ToUserName'];
-                $msgArr['CreateTime'] = TIMESTAMP;
-                $msgArr['MsgType'] = 'text';
-                $msgArr['Content'] = $msg;
-
-                $this->sendMsg($msgArr);
             } elseif (strpos($eventKey, 'login_') !== false) {
                 $model = new \app\modules\weixin\models\Weixin();
                 $data = $model->getWeixUserinfo($this->params['FromUserName']);
+                $msg = '亲，欢迎你登陆成功！';
 
                 $cache = Yii::$app->cache;
                 $cache->set($this->params['EventKey'], $data, 18000);
             }
+
+            $msgArr['ToUserName'] = $this->params['FromUserName'];
+            $msgArr['FromUserName'] = $this->params['ToUserName'];
+            $msgArr['CreateTime'] = TIMESTAMP;
+            $msgArr['MsgType'] = 'text';
+            $msgArr['Content'] = $msg;
+
+            $this->sendMsg($msgArr);
         }
 
         return;
