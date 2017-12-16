@@ -12,7 +12,7 @@ class TestController extends \app\components\ext\BaseController {
 
     public function actionQrcodeLogin() {
         $model = new Weixin();
-        $qrImg = $model->getQrCodeImg(time(), 1800, false, "login_".date("Y-m-d"));
+        $qrImg = $model->getQrCodeImg(time(), 1800, false, "login_");
         return $this->render("qrcodeLogin", [
             'qrImg'=>$qrImg,
         ]);

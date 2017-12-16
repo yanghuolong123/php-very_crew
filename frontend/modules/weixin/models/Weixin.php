@@ -127,7 +127,7 @@ class Weixin {
      */
     public function getQrCodeImg($scene_id, $expire = 1800, $isPermanent = false, $prefix = '') {
         $cache = Yii::$app->cache;
-        $imgUrl = $cache->get('getQrCodeImg_' . $scene_id);
+        $imgUrl = $cache->get('getQrCodeImg_' . $scene_id.$prefix);
         if (!empty($imgUrl)) {
             LogUtil::logs('wx', "cache qrcodeImg url： $imgUrl");
             return $imgUrl;
@@ -140,13 +140,13 @@ class Weixin {
             $action_info = ['scene' => ['scene_id' => $scene_id]];
         } elseif (!$isPermanent && !empty($prefix)) {
             $action_name = 'QR_STR_SCENE';
-            $action_info = ['scene' => ['scene_str' => $scene_id]];
+            $action_info = ['scene' => ['scene_str' => $prefix.$scene_id]];
         } elseif ($isPermanent && empty($prefix)) {
             $action_name = 'QR_LIMIT_SCENE';
             $action_info = ['scene' => ['scene_id' => $scene_id]];
         } elseif ($isPermanent && !empty($prefix)) {
             $action_name = 'QR_LIMIT_STR_SCENE';
-            $action_info = ['scene' => ['scene_str' => $scene_id]];
+            $action_info = ['scene' => ['scene_str' => $prefix.$scene_id]];
         }
 
         $url = $this->api_url . '/cgi-bin/qrcode/create?access_token=' . $this->_accessToken;
@@ -161,7 +161,7 @@ class Weixin {
         if (isset($data['ticket']) && !empty($data['ticket'])) {
             //return Html::img('https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket']);
             $imgUrl = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' . $data['ticket'];
-            $cache->set('getQrCodeImg_' . $scene_id, $imgUrl, $expire);
+            $cache->set('getQrCodeImg_' . $scene_id.$prefix, $imgUrl, $expire);
             return $imgUrl;
         }
 
