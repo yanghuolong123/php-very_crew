@@ -171,7 +171,7 @@ class VideoController extends \app\components\ext\BaseController {
         $input->SetProduct_id($order->product_id);
         $result = $notify->GetPayUrl($input);
         if (!isset($result["code_url"])) {
-            $this->sendRes(false, 'error get pay weixin qrcode');
+            $this->sendRes(false, 'error get pay weixin qrcode',$result);
         }
 
         $qrcode = $result["code_url"];
