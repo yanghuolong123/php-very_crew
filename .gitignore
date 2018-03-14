@@ -1,2 +1,8 @@
 frontend/web/assets/*
 !frontend/web/assets/1.txt
+frontend/uploads/*
+!frontend/uploads/1.txt
+frontend/web/uploads/*
+!frontend/web/uploads/wall
+!frontend/web/uploads/films
+!frontend/web/uploads/tmp
