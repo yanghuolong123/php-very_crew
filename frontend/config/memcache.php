@@ -3,7 +3,7 @@
 return [
     //'class' => 'yii\caching\MemCache',
     'class' => '\app\components\ext\ExtMemCache',
-    //'useMemcached' => true,
+    'useMemcached' => true,
     'servers' => [
         [
             'host' => '127.0.0.1',
