@@ -6,3 +6,5 @@ frontend/web/uploads/*
 !frontend/web/uploads/wall
 !frontend/web/uploads/films
 !frontend/web/uploads/tmp
+frontend/runtime/*
+!frontend/runtime/1.txt
