@@ -16,7 +16,7 @@ class ConvertVideoController extends Controller {
     public $list_key = Constant::ConvertVideoList;
 
     public function actionIndex() {
-        //var_dump(Yii::$app->redis->LRANGE($this->list_key, 0, 10));
+        var_dump(Yii::$app->redis->LRANGE($this->list_key, 0, 10));
         $vido_id = Yii::$app->redis->RPOP($this->list_key);
         if (empty($vido_id)) {
             return;
@@ -31,7 +31,8 @@ class ConvertVideoController extends Controller {
             //$cmd = 'ffmpeg -i ' . $filePath . ' -y -vcodec libx264 -ar 22050 ' . $newFilePath;
             $cmd = 'ffmpeg -i ' . $filePath . ' -vf "movie=' . Yii::getAlias("@app/web") . '/image/logo.png,scale= 100:50 [logo]; [in][logo] overlay=10:10 [out]" -y -vcodec libx264 -b 1500000 -ar 22050 ' . $newFilePath;
             echo "\n===========================================\n";
-            echo exec($cmd);
+            exec($cmd, $output);
+            var_dump($output);
             //echo "$cmd\n";
             echo "\n===========================================\n";
             $model->updateAttributes(['status' => ($model->status == -2 ? 2 : 1), 'file' => $newFile]);
