@@ -31,7 +31,9 @@ class ConvertVideoController extends Controller {
             //$cmd = 'ffmpeg -i ' . $filePath . ' -y -vcodec libx264 -ar 22050 ' . $newFilePath;
             $cmd = '/var/work/tool/ffmpeg/ffmpeg -i ' . $filePath . ' -vf "movie=' . Yii::getAlias("@app/web") . '/image/logo.png,scale= 100:50 [logo]; [in][logo] overlay=10:10 [out]" -y -vcodec libx264 -b 1500000 -ar 22050 ' . $newFilePath;
             echo "\n================== 转码开始 =========================\n";
-            exec($cmd, &$out, $code);
+            exec('ls -a', $out1);
+            var_dump($out1);
+            exec($cmd, $out, $code);
             echo "$cmd\n";
             echo "output:\n";
             var_dump($out);
