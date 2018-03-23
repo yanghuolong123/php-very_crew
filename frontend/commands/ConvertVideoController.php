@@ -33,11 +33,7 @@ class ConvertVideoController extends Controller {
             echo "\n===========================================\n";
             //exec($cmd);
             //echo "$cmd\n";
-            ob_start();
-            passthru($cmd);
-            $var = ob_get_contents();
-            ob_end_clean();
-            var_dump($var);
+            echo system($cmd);
             echo "\n===========================================\n";
             $model->updateAttributes(['status' => ($model->status == -2 ? 2 : 1), 'file' => $newFile]);
 
