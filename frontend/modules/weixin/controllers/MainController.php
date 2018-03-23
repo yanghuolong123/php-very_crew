@@ -28,7 +28,7 @@ class MainController extends \app\components\ext\BaseController {
     }
 
     public function responseMsg() {
-        $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : '';
+        $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : file_get_contents("php://input");
         if (empty($postStr)) {
             LogUtil::logs('wx', 'postStr empty!');
             exit(1);
