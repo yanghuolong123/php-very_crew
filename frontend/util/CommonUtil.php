@@ -161,7 +161,7 @@ class CommonUtil {
         return Url::to(['home/crop-img', 'src' => base64_encode($src), 'width' => $width, 'height' => $height, 'mode' => $mode]);
     }
 
-    public static function video_info($file, $ffmpeg = '/home/work/tool/ffmpeg/ffmpeg') {
+    public static function video_info($file, $ffmpeg = '/var/work/tool/ffmpeg/ffmpeg') {
         if (!file_exists($ffmpeg)) {
             $ffmpeg = '/var/work/tool/ffmpeg/ffmpeg';
         }
