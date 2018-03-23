@@ -18,3 +18,5 @@ frontend/web/uploads/*
 frontend/runtime/*
 !frontend/runtime/1.txt
 /nbproject/private/
+logs/*
+!/logs/1.txt
