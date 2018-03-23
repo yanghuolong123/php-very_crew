@@ -29,11 +29,12 @@ class ConvertVideoController extends Controller {
             $newFile = dirname($newFile) . '/code_' . basename($newFile);
             $newFilePath = Yii::getAlias("@app/web") . $newFile;
             //$cmd = 'ffmpeg -i ' . $filePath . ' -y -vcodec libx264 -ar 22050 ' . $newFilePath;
-            $cmd = 'ffmpeg -i ' . $filePath . ' -vf "movie=' . Yii::getAlias("@app/web") . '/image/logo.png,scale= 100:50 [logo]; [in][logo] overlay=10:10 [out]" -y -vcodec libx264 -b 1500000 -ar 22050 ' . $newFilePath;
+            $cmd = '/var/work/tool/ffmpeg/ffmpeg -i ' . $filePath . ' -vf "movie=' . Yii::getAlias("@app/web") . '/image/logo.png,scale= 100:50 [logo]; [in][logo] overlay=10:10 [out]" -y -vcodec libx264 -b 1500000 -ar 22050 ' . $newFilePath;
             echo "\n===========================================\n";
-            exec($cmd);
+            exec($cmd, $out, $code);
             echo "$cmd\n";
-            echo shell_exec("ls -a");
+            var_dump($out);
+            echo "^^^^^^^^^^^^^^^^^ code:".$code;
             echo "\n===========================================\n";
             $model->updateAttributes(['status' => ($model->status == -2 ? 2 : 1), 'file' => $newFile]);
 
